@@ -6,8 +6,8 @@ const version = 2 + 1
   <div>
     <h1>Home page</h1>
     <NuxtLink to="/about">About page</NuxtLink>
-    <div class="hello">
+    <h1 class="text-3xl font-bold underline">
       Hello Nuxt {{ version }}!
-    </div>
+    </h1>
   </div>
 </template>
