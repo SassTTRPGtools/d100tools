@@ -13,5 +13,6 @@ export default defineNuxtConfig({
         },
     },
     plugins: [
+        "~/plugins/vue3-smooth-dnd.esm.js"
     ]
 })
