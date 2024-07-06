@@ -1,19 +1,7 @@
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen">
+    <AppHeader />
     <NuxtPage />
-<!--    <NuxtRouteAnnouncer />-->
-<!--    <NuxtWelcome />-->
+    <AppFooter />
   </div>
 </template>
-
-<style>
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.4s;
-}
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  filter: blur(1rem);
-}
-</style>

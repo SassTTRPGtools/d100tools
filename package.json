@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "nuxt": "^3.12.3",
-    "vue": "latest"
+    "vue": "latest",
+    "vue3-smooth-dnd": "^0.0.6"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
