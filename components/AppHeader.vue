@@ -12,9 +12,6 @@
           <!-- primary nav -->
           <div class="hidden md:flex items-center space-x-1">
             <a href="/character/stat" class="py-5 px-3 text-gray-700 hover:text-gray-900">角色創建</a>
-            <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Careers</a>
-            <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Blog</a>
-            <a href="#" class="py-5 px-3 text-gray-700 hover:text-gray-900">Contact Us</a>
           </div>
         </div>
         <!-- mobile button goes here -->
@@ -31,9 +28,6 @@
     <!-- mobile menu -->
     <div class="md:hidden" :class="isOpen ? 'block' : 'hidden'">
       <a href="/character/stat" class="block py-2 px-4 text-sm hover:bg-gray-200">角色創建</a>
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Careers</a>
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Blog</a>
-      <a href="#" class="block py-2 px-4 text-sm hover:bg-gray-200">Contact Us</a>
     </div>
   </nav>
 </template>
