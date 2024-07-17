@@ -1,7 +1,16 @@
 <script setup>
 import {Container, Draggable} from "vue3-smooth-dnd";
-import {DiceRoll, DiceRoller, exportFormats} from '@dice-roller/rpg-dice-roller';
-
+import {DiceRoller, exportFormats} from '@dice-roller/rpg-dice-roller';
+//TODO
+/**
+ * 1. 把強化規則還有替換規則加進去
+ * 然後，你能選擇以下任意2項強化（boosts）（或一項選兩次）：
+ * 將任何一項屬性的臨時與潛能改為 56/78（如果比較有利的話）。
+ * 將你的最高臨時屬性替換為 90，並將其潛能提高 10（最多 100）。 如果潛能比臨時低，則將潛能屬性提升到與臨時屬性相同。
+ * 將第二高的臨時屬性替換為 85，並將其潛力提高 10（最多 100）。 如果潛能比臨時低，則將潛能屬性提升到與臨時屬性相同。
+ * 為相同或兩個不同的屬性進行兩次屬性成長擲骰（參見下一節）。
+ * 2. 完成交換功能
+ */
 
 import {ref} from 'vue'
 
@@ -71,17 +80,26 @@ function generateState() {
   });
 
 }
-//TODO
-/**
- * 1. 重骰任何低於 11 的值
- * 2. 把強化規則還有替換規則加進去
- * 然後，你能選擇以下任意2項強化（boosts）（或一項選兩次）：
- * 將任何一項屬性的臨時與潛能改為 56/78（如果比較有利的話）。
- * 將你的最高臨時屬性替換為 90，並將其潛能提高 10（最多 100）。 如果潛能比臨時低，則將潛能屬性提升到與臨時屬性相同。
- * 將第二高的臨時屬性替換為 85，並將其潛力提高 10（最多 100）。 如果潛能比臨時低，則將潛能屬性提升到與臨時屬性相同。
- * 為相同或兩個不同的屬性進行兩次屬性成長擲骰（參見下一節）。
- * 3. 完成交換功能
- */
+
+function singleReroll(id) {
+  const Roller = new DiceRoller();
+  Roller.roll('1d100');
+
+  const jsonString = Roller.export(exportFormats.OBJECT);
+  const finalRes = [];
+
+  jsonString.log.forEach(function (item, index) {
+    finalRes[index] = item.rolls[0].rolls;
+    items.value[id-1].TempValue = finalRes[index][0].calculationValue;
+  });
+
+}
+
+
+
+const buttonText = computed(() => {
+  return item.value.TempValue <= 11 ? '重骰' : '臨時';
+});
 
 </script>
 
@@ -116,12 +134,12 @@ function generateState() {
         <div class="max-w-sm flex items-center border-b border-teal-500 pb-2">
           <input
               class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-              type="text" :value="item.TempValue">
+              type="text" :value="item.TempValue" :class="{ 'text-red-700': item.TempValue <= 11 }">
         </div>
         <button
-            class="w-20 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white  rounded"
-            type="button">
-          臨時
+            class="w-20 flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white rounded"
+            type="button" v-on:click="singleReroll(item.id)" :class="{ 'bg-red-100 text-red-700 border-red-100 hover:bg-red-300 hover:border-red-300': item.TempValue <= 11 }">
+          {{item.TempValue <= 11 ? "重骰" : "臨時"}}
         </button>
       </form>
     </Draggable>
