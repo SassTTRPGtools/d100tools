@@ -14,7 +14,7 @@ import {ref} from 'vue'
  */
 
 
-const items = ref([
+let items = ref([
   {id: 1, stat: "Ag", str: "靈巧", PotentValue: 0, TempValue: 0},
   {id: 2, stat: "Co", str: "體質", PotentValue: 0, TempValue: 0},
   {id: 3, stat: "Em", str: "同理心", PotentValue: 0, TempValue: 0},
@@ -62,29 +62,29 @@ function generateState() {
 }
 
 function singleReroll(id) {
-  const Roller = new DiceRoller();
-  Roller.roll('1d100');
+  if (items.value[id - 1].TempValue < 11) {
+    const Roller = new DiceRoller();
+    Roller.roll('1d100');
 
-  const jsonString = Roller.export(exportFormats.OBJECT);
-  const finalRes = [];
+    const jsonString = Roller.export(exportFormats.OBJECT);
+    const finalRes = [];
 
-  jsonString.log.forEach(function (item, index) {
-    const PotentValue = items.value[id - 1].PotentValue;
-    const TempValue = item.rolls[0].rolls[0].calculationValue;
+    jsonString.log.forEach(function (item, index) {
+      const PotentValue = items.value[id - 1].PotentValue;
+      const TempValue = item.rolls[0].rolls[0].calculationValue;
 
-    const filteredRolls = [PotentValue, TempValue];
-    filteredRolls.sort((a, b) => b - a);
+      const filteredRolls = [PotentValue, TempValue];
+      filteredRolls.sort((a, b) => b - a);
 
-    items.value[id - 1].PotentValue = filteredRolls[0];
-    items.value[id - 1].TempValue = filteredRolls[1];
-  });
-
+      items.value[id - 1].PotentValue = filteredRolls[0];
+      items.value[id - 1].TempValue = filteredRolls[1];
+    });
+  }
 }
 
 function clearStats() {
   if (confirm("確定要清空結果嗎？")) {
     resetSwap();
-    clearChangeAndSettingSwap();
     items.value.forEach(function (item, index) {
       items.value[index].PotentValue = 0;
       items.value[index].TempValue = 0;
@@ -98,20 +98,25 @@ const swapStats = ref([
   {id: 2, stat: "max", value: 2},
 ]);
 
-function resetSwap() {
-  swapStats.value[0].value = 0;
-  items.value = oriItems.value;
-}
-
 const swapChangeStatsId = ref([
   {id: 1, stat: "original", value: 0},
   {id: 2, stat: "altered", value: 0},
 ]);
 
+
+function resetSwap() {
+  console.log(oriItems.value,"|||resetSwap");
+  swapStats.value[0].value = 0;
+  items.value = JSON.parse(JSON.stringify(oriItems.value));
+  clearChangeAndSettingSwap();
+}
+
 function clearChangeAndSettingSwap() {
+
   swapChangeStatsId.value.forEach(function (item, index) {
     swapChangeStatsId.value[index].value = 0;
   });
+
 }
 
 function changeAndSettingSwap(id) {
@@ -125,14 +130,17 @@ function changeAndSettingSwap(id) {
   (swapChangeStatsId.value[0].value === 0 && swapChangeStatsId.value[1].value === 0) ? swapChangeStatsId.value[0].value = id : swapChangeStatsId.value[1].value = id;
 
   if (swapChangeStatsId.value[0].value > 0 && swapChangeStatsId.value[1].value > 0) {
+    console.log([swapChangeStatsId.value[0].value,swapChangeStatsId.value[1].value], "before");
     const [original, altered] = swapChangeStatsId.value.map(item => item.value - 1);
+    let swapValues = null;
     items.value.forEach(function (item, index) {
       if (index === original) {
-        const swapValues = oriItems.value[altered];
+        swapValues = oriItems.value[altered];
+        console.log()
         items.value[index].PotentValue = swapValues.PotentValue;
         items.value[index].TempValue = swapValues.TempValue;
       } else if (index === altered) {
-        const swapValues = oriItems.value[original];
+        swapValues = oriItems.value[original];
         items.value[index].PotentValue = swapValues.PotentValue;
         items.value[index].TempValue = swapValues.TempValue;
       }
