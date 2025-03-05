@@ -6,12 +6,20 @@ import KrushJson from '@/rolemaster/combatdata/CritTable/Krush.json';
 import PunctureJson from '@/rolemaster/combatdata/CritTable/Puncture.json';
 import SlashJson from '@/rolemaster/combatdata/CritTable/Slash.json';
 import StrikesJson from '@/rolemaster/combatdata/CritTable/Strikes.json';
+import SweepsJson from '@/rolemaster/combatdata/CritTable/Sweeps.json';
+import UnbalanceJson from '@/rolemaster/combatdata/CritTable/Unbalance.json';
+import ImpactJson from '@/rolemaster/combatdata/CritTable/Impact.json';
+import GrappleJson from '@/rolemaster/combatdata/CritTable/Grapple.json';
 
 const jsonData = {
   Krush: KrushJson,
   Puncture: PunctureJson,
   Slash: SlashJson,
   Strikes: StrikesJson,
+  Sweeps: SweepsJson,
+  Unbalance: UnbalanceJson,
+  Impact: ImpactJson,
+  Grapple: GrappleJson,
 };
 
 const selectedCategory = ref('Krush');
