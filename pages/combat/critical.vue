@@ -2,30 +2,73 @@
 import { DiceRoller, exportFormats } from '@dice-roller/rpg-dice-roller';
 import { ref, computed } from 'vue';
 
-import jsonData from '@/rolemaster/combatdata/CritTable/Krush.json';
+import KrushJson from '@/rolemaster/combatdata/CritTable/Krush.json';
+import PunctureJson from '@/rolemaster/combatdata/CritTable/Puncture.json';
+import SlashJson from '@/rolemaster/combatdata/CritTable/Slash.json';
+import StrikesJson from '@/rolemaster/combatdata/CritTable/Strikes.json';
+
+const jsonData = {
+  Krush: KrushJson,
+  Puncture: PunctureJson,
+  Slash: SlashJson,
+  Strikes: StrikesJson,
+};
+
+const selectedCategory = ref('Krush');
+const secondCategory = ref('A'); // 新增第二個下拉選單的選項
 const inputValue = ref(0);
 
+const categoryOptions = Object.keys(jsonData);
+const secondCategoryOptions = ['A', 'B', 'C', 'D', 'E']; // 第二個下拉選單的選項
 
 const filteredData = computed(() => {
-  const result = {};
-  for (const categoryName in jsonData) {
-    result[categoryName] = jsonData[categoryName].filter(
-      (item) =>
-        inputValue.value >= item.min && inputValue.value <= item.max
-    );
+  const selectedData = jsonData[selectedCategory.value];
+  if (selectedData && selectedData[secondCategory.value]) {
+    const secondSelectedData = selectedData[secondCategory.value];
+    if (Array.isArray(secondSelectedData)) {
+      return secondSelectedData.filter((item) => {
+        if (
+          typeof item.min === 'number' &&
+          typeof item.max === 'number' &&
+          typeof inputValue.value === 'number'
+        ) {
+          return inputValue.value >= item.min && inputValue.value <= item.max;
+        }
+        return false;
+      });
+    } else {
+      console.error(`jsonData[${selectedCategory.value}][${secondCategory.value}] is not an array.`);
+      return [];
+    }
+  } else {
+    console.error(`jsonData[${selectedCategory.value}] or jsonData[${selectedCategory.value}][${secondCategory.value}] is undefined.`);
+    return [];
   }
-  return result;
 });
-
 </script>
 <template>
   <div>
+    <label for="category">選擇重擊表：</label>
+    <select id="category" v-model="selectedCategory">
+      <option v-for="option in categoryOptions" :key="option" :value="option">
+        {{ option }}
+      </option>
+    </select>
+
+    <label for="secondCategory">選擇嚴重度：</label>
+    <select id="secondCategory" v-model="secondCategory">
+      <option v-for="option in secondCategoryOptions" :key="option" :value="option">
+        {{ option }}
+      </option>
+    </select>
+
     <label for="roll">輸入數字：</label>
     <input type="number" id="roll" v-model.number="inputValue" />
-    <div v-for="([categoryName, category], index) in Object.entries(filteredData)" :key="index">
-      <h3>{{ categoryName }}</h3>
+
+    <div>
+      <h3>{{ selectedCategory }}</h3>
       <ul>
-        <li v-for="(item, index) in category" :key="index">
+        <li v-for="(item, index) in filteredData" :key="index">
           {{ item.description }}
         </li>
       </ul>

@@ -7,7 +7,7 @@ import jsonData from '@/rolemaster/combatdata/fumble.json';
 </script>
 <template>
   <div>
-    <!-- {{ jsonData }} -->
+    {{ jsonData }}
   </div>
 </template>
 
