@@ -1,0 +1,512 @@
+{
+	"[severity]": [
+		{
+			"min": 1,
+			"max": 1,
+			"description": ""
+		},
+		{
+			"min": 2,
+			"max": 3,
+			"description": ""
+		},
+		{
+			"min": 4,
+			"max": 5,
+			"description": ""
+		},
+		{
+			"min": 6,
+			"max": 10,
+			"description": ""
+		},
+		{
+			"min": 11,
+			"max": 15,
+			"description": ""
+		},
+		{
+			"min": 16,
+			"max": 20,
+			"description": ""
+		},
+		{
+			"min": 21,
+			"max": 25,
+			"description": ""
+		},
+		{
+			"min": 26,
+			"max": 35,
+			"description": ""
+		},
+		{
+			"min": 36,
+			"max": 45,
+			"description": ""
+		},
+		{
+			"min": 46,
+			"max": 55,
+			"description": ""
+		},
+		{
+			"min": 56,
+			"max": 65,
+			"description": ""
+		},
+		{
+			"min": 66,
+			"max": 66,
+			"description": ""
+		},
+		{
+			"min": 67,
+			"max": 75,
+			"description": ""
+		},
+		{
+			"min": 76,
+			"max": 80,
+			"description": ""
+		},
+		{
+			"min": 81,
+			"max": 85,
+			"description": ""
+		},
+		{
+			"min": 86,
+			"max": 90,
+			"description": ""
+		},
+		{
+			"min": 91,
+			"max": 95,
+			"description": ""
+		},
+		{
+			"min": 96,
+			"max": 97,
+			"description": ""
+		},
+		{
+			"min": 98,
+			"max": 99,
+			"description": ""
+		},
+		{
+			"min": 100,
+			"max": 100,
+			"description": ""
+		}
+	],
+	"B": [
+		{
+			"min": 1,
+			"max": 1,
+			"description": ""
+		},
+		{
+			"min": 2,
+			"max": 3,
+			"description": ""
+		},
+		{
+			"min": 4,
+			"max": 5,
+			"description": ""
+		},
+		{
+			"min": 6,
+			"max": 10,
+			"description": ""
+		},
+		{
+			"min": 11,
+			"max": 15,
+			"description": ""
+		},
+		{
+			"min": 16,
+			"max": 20,
+			"description": ""
+		},
+		{
+			"min": 21,
+			"max": 25,
+			"description": ""
+		},
+		{
+			"min": 26,
+			"max": 35,
+			"description": ""
+		},
+		{
+			"min": 36,
+			"max": 45,
+			"description": ""
+		},
+		{
+			"min": 46,
+			"max": 55,
+			"description": ""
+		},
+		{
+			"min": 56,
+			"max": 65,
+			"description": ""
+		},
+		{
+			"min": 66,
+			"max": 66,
+			"description": ""
+		},
+		{
+			"min": 67,
+			"max": 75,
+			"description": ""
+		},
+		{
+			"min": 76,
+			"max": 80,
+			"description": ""
+		},
+		{
+			"min": 81,
+			"max": 85,
+			"description": ""
+		},
+		{
+			"min": 86,
+			"max": 90,
+			"description": ""
+		},
+		{
+			"min": 91,
+			"max": 95,
+			"description": ""
+		},
+		{
+			"min": 96,
+			"max": 97,
+			"description": ""
+		},
+		{
+			"min": 98,
+			"max": 99,
+			"description": ""
+		},
+		{
+			"min": 100,
+			"max": 100,
+			"description": ""
+		}
+	],
+	"C": [
+		{
+			"min": 1,
+			"max": 1,
+			"description": ""
+		},
+		{
+			"min": 2,
+			"max": 3,
+			"description": ""
+		},
+		{
+			"min": 4,
+			"max": 5,
+			"description": ""
+		},
+		{
+			"min": 6,
+			"max": 10,
+			"description": ""
+		},
+		{
+			"min": 11,
+			"max": 15,
+			"description": ""
+		},
+		{
+			"min": 16,
+			"max": 20,
+			"description": ""
+		},
+		{
+			"min": 21,
+			"max": 25,
+			"description": ""
+		},
+		{
+			"min": 26,
+			"max": 35,
+			"description": ""
+		},
+		{
+			"min": 36,
+			"max": 45,
+			"description": ""
+		},
+		{
+			"min": 46,
+			"max": 55,
+			"description": ""
+		},
+		{
+			"min": 56,
+			"max": 65,
+			"description": ""
+		},
+		{
+			"min": 66,
+			"max": 66,
+			"description": ""
+		},
+		{
+			"min": 67,
+			"max": 75,
+			"description": ""
+		},
+		{
+			"min": 76,
+			"max": 80,
+			"description": ""
+		},
+		{
+			"min": 81,
+			"max": 85,
+			"description": ""
+		},
+		{
+			"min": 86,
+			"max": 90,
+			"description": ""
+		},
+		{
+			"min": 91,
+			"max": 95,
+			"description": ""
+		},
+		{
+			"min": 96,
+			"max": 97,
+			"description": ""
+		},
+		{
+			"min": 98,
+			"max": 99,
+			"description": ""
+		},
+		{
+			"min": 100,
+			"max": 100,
+			"description": ""
+		}
+	],
+	"D": [
+		{
+			"min": 1,
+			"max": 1,
+			"description": ""
+		},
+		{
+			"min": 2,
+			"max": 3,
+			"description": ""
+		},
+		{
+			"min": 4,
+			"max": 5,
+			"description": ""
+		},
+		{
+			"min": 6,
+			"max": 10,
+			"description": ""
+		},
+		{
+			"min": 11,
+			"max": 15,
+			"description": ""
+		},
+		{
+			"min": 16,
+			"max": 20,
+			"description": ""
+		},
+		{
+			"min": 21,
+			"max": 25,
+			"description": ""
+		},
+		{
+			"min": 26,
+			"max": 35,
+			"description": ""
+		},
+		{
+			"min": 36,
+			"max": 45,
+			"description": ""
+		},
+		{
+			"min": 46,
+			"max": 55,
+			"description": ""
+		},
+		{
+			"min": 56,
+			"max": 65,
+			"description": ""
+		},
+		{
+			"min": 66,
+			"max": 66,
+			"description": ""
+		},
+		{
+			"min": 67,
+			"max": 75,
+			"description": ""
+		},
+		{
+			"min": 76,
+			"max": 80,
+			"description": ""
+		},
+		{
+			"min": 81,
+			"max": 85,
+			"description": ""
+		},
+		{
+			"min": 86,
+			"max": 90,
+			"description": ""
+		},
+		{
+			"min": 91,
+			"max": 95,
+			"description": ""
+		},
+		{
+			"min": 96,
+			"max": 97,
+			"description": ""
+		},
+		{
+			"min": 98,
+			"max": 99,
+			"description": ""
+		},
+		{
+			"min": 100,
+			"max": 100,
+			"description": ""
+		}
+	],
+	"E": [
+		{
+			"min": 1,
+			"max": 1,
+			"description": ""
+		},
+		{
+			"min": 2,
+			"max": 3,
+			"description": ""
+		},
+		{
+			"min": 4,
+			"max": 5,
+			"description": ""
+		},
+		{
+			"min": 6,
+			"max": 10,
+			"description": ""
+		},
+		{
+			"min": 11,
+			"max": 15,
+			"description": ""
+		},
+		{
+			"min": 16,
+			"max": 20,
+			"description": ""
+		},
+		{
+			"min": 21,
+			"max": 25,
+			"description": ""
+		},
+		{
+			"min": 26,
+			"max": 35,
+			"description": ""
+		},
+		{
+			"min": 36,
+			"max": 45,
+			"description": ""
+		},
+		{
+			"min": 46,
+			"max": 55,
+			"description": ""
+		},
+		{
+			"min": 56,
+			"max": 65,
+			"description": ""
+		},
+		{
+			"min": 66,
+			"max": 66,
+			"description": ""
+		},
+		{
+			"min": 67,
+			"max": 75,
+			"description": ""
+		},
+		{
+			"min": 76,
+			"max": 80,
+			"description": ""
+		},
+		{
+			"min": 81,
+			"max": 85,
+			"description": ""
+		},
+		{
+			"min": 86,
+			"max": 90,
+			"description": ""
+		},
+		{
+			"min": 91,
+			"max": 95,
+			"description": ""
+		},
+		{
+			"min": 96,
+			"max": 97,
+			"description": ""
+		},
+		{
+			"min": 98,
+			"max": 99,
+			"description": ""
+		},
+		{
+			"min": 100,
+			"max": 100,
+			"description": ""
+		}
+	]
+}
