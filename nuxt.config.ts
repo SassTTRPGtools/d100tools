@@ -1,18 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    compatibilityDate: '2024-04-03',
-    app: {
-        pageTransition: {name: 'page', mode: 'out-in'}
-    },
-    devtools: {enabled: true},
-    css: ['~/assets/css/main.css'],
-    postcss: {
-        plugins: {
-            tailwindcss: {},
-            autoprefixer: {},
-        },
-    },
-    plugins: [
-        "~/plugins/vue3-smooth-dnd.esm.js"
-    ]
+  compatibilityDate: '2024-04-03',
+
+  app: {
+      pageTransition: {name: 'page', mode: 'out-in'}
+  },
+  devtools: {enabled: true},
+  css: ['~/assets/css/main.css'],
+  modules: ['@ant-design-vue/nuxt'],
+  antd:{
+    // Options
+  }
 })

@@ -10,15 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@ant-design-vue/nuxt": "^1.4.6",
     "@dice-roller/vue": "^1.2.1",
+    "ant-design-vue": "^4.2.6",
     "nuxt": "^3.12.3",
+    "sweetalert2": "^11.17.2",
     "vue": "latest",
     "vue3-promise-dialog": "^0.3.4",
     "vue3-smooth-dnd": "^0.0.6"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.4"
   }
 }

@@ -1,31 +1,45 @@
 <script setup>
   import {DiceRollerRenderless} from '@dice-roller/vue';
-</script>
 
+</script>
 <template>
-  <div class="w-full flex justify-center items-center py-6">
-    <img class="w-8" src="https://dice-roller.github.io/documentation/hero.svg">
-    <span class="pl-2 text-lg font-bold">更多用法見 <a class="text-blue-400 underline"
-                                                       href="https://dice-roller.github.io/documentation/guide/#features"
-                                                       target="_blank">RPG Dice Roller</a></span>
+  <div>
+    <a-row justify="center" align="middle" style="padding: 24px 0;">
+      <a-col :span="24" style="text-align: center;">
+        <img src="https://dice-roller.github.io/documentation/hero.svg" style="width: 32px; vertical-align: middle;">
+        <a-typography-text style="margin-left: 8px; font-size: 16px; font-weight: bold;">
+          更多用法見
+          <a-typography-link href="https://dice-roller.github.io/documentation/guide/#features" target="_blank" style="text-decoration: underline; color: #1890ff;">
+            RPG Dice Roller
+          </a-typography-link>
+        </a-typography-text>
+      </a-col>
+    </a-row>
+
+    <DiceRollerRenderless v-slot="{ error, output, roll, on, bind }">
+      <a-row justify="center"  align="middle">
+        <a-col style="text-align: center;">
+          <a-form :style="{ maxWidth: '400px', display: 'inline-flex', width: '100%' }">
+            <a-form-item :style="{ flex: '1', marginBottom: '0' }">
+              <a-input v-on="on" v-bind="bind" placeholder="e.g. 1d100" />
+            </a-form-item>
+            <a-button type="primary" @click="roll" style="margin-left: 8px;">
+              確定
+            </a-button>
+          </a-form>
+        </a-col>
+      </a-row>
+      <a-row justify="center" style="padding: 24px 0;">
+        <a-col style="text-align: center; font-weight: bold;">
+          <a-typography-text v-if="output">{{ output }}</a-typography-text>
+        </a-col>
+      </a-row>
+
+      <a-row justify="center">
+        <a-col style="text-align: center;">
+          <a-typography-text type="danger" v-if="error" style="font-size: 12px; font-style: italic;">{{ error }}</a-typography-text>
+        </a-col>
+      </a-row>
+    </DiceRollerRenderless>
   </div>
-  <DiceRollerRenderless v-slot="{ currentNotation, error, output, roll, on, bind }">
-    <form class="w-full flex justify-center">
-      <div class="max-w-sm flex items-center border-b border-teal-500 pb-2">
-        <input
-            class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-            type="text"
-            v-on="on" v-bind="bind" placeholder="e.g. 1d100">
-        <button
-            class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
-            type="button" @click="roll">
-          確定
-        </button>
-      </div>
-    </form>
-    <div class="w-full flex justify-center py-6 font-bold">
-      <output v-if="output">{{ output }}</output>
-    </div>
-    <div class="text-center text-red-500 text-xs italic" v-if="error">{{ error }}</div>
-  </DiceRollerRenderless>
 </template>
