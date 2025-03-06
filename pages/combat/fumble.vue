@@ -1,61 +1,62 @@
 <script setup>
-import { DiceRoller, exportFormats } from '@dice-roller/rpg-dice-roller';
-import { reactive, ref } from 'vue';
-import jsonData from '@/rolemaster/combatdata/fumble.json';
+import { ref, computed } from 'vue';
+import { fumbleJson, fumbleOptions } from '@/rolemaster/utils/fumbleTables.js';
 
+const meleeCategories = ['OneHandedWeapons', 'TwoHandedWeapons', 'Animal', 'MountedCombat', 'Unarmed'];
+const rangedCategories = ['BowsAndCrossbows', 'Sling', 'Throwing', 'ElementalBolt', 'ElementalSphereCone'];
 
-const CategoryOptions = [
-  { value: 'OneHandedWeapons', label: '單手武器' },
-  { value: 'TwoHandedWeapons', label: '雙手武器' },
-  { value: 'Animal', label: '動物' },
-  { value: 'MountedCombat', label: '騎乘戰鬥' },
-  { value: 'Unarmed', label: '無武裝' },
-  { value: 'BowsAndCrossbows', label: '弓弩類' },
-  { value: 'Sling', label: '投石索' },
-  { value: 'Throwing', label: '投擲' },
-  { value: 'ElementalBolt', label: '元素箭' },
-  { value: 'ElementalSphereCone', label: '元素球／錐形' },
-];
+const selectedType = ref(true); // true for 'melee', false for 'ranged'
 
-const selectedCategory = ref(CategoryOptions[0].value);
-const rollResult = ref(null);
-const fumbleResult = ref(null);
+const selectedTableData = computed(() => {
+  const categories = selectedType.value ? meleeCategories : rangedCategories;
+  const data = [];
 
-const rollDice = () => {
-  const roller = new DiceRoller();
-  const roll = roller.roll('1d100');
-  rollResult.value = roll.total;
-  findFumbleResult();
-};
+  categories.forEach(category => {
+    fumbleJson[category].forEach(item => {
+      const existingItem = data.find(d => d.min === item.min && d.max === item.max);
+      if (existingItem) {
+        existingItem[category] = item.description;
+      } else {
+        data.push({
+          min: item.min,
+          max: item.max,
+          range: `${item.min}-${item.max}`,
+          [category]: item.description
+        });
+      }
+    });
+  });
 
-const findFumbleResult = () => {
-  const category = jsonData[selectedCategory.value];
-  if (category) {
-    fumbleResult.value = category.find(
-      (item) => rollResult.value >= item.min && rollResult.value <= item.max
-    );
-  }
-};
+  return data;
+});
 
+const tableColumns = computed(() => {
+  const categories = selectedType.value ? meleeCategories : rangedCategories;
+  return [
+    { title: '範圍', dataIndex: 'range', key: 'range', width: 100 },
+    ...categories.map(category => ({
+      title: fumbleOptions.find(option => option.value === category).label,
+      dataIndex: category,
+      key: category,
+      customCell: (record) => ({ children: record[category] || '' })
+    }))
+  ];
+});
 </script>
-
 
 <template>
   <div class="container">
-    <div class="form-container">
-      <a-form-item label="犯蠢結果表：">
-        <a-select v-model:value="selectedCategory" style="width: 200px">
-          <a-select-option v-for="option in CategoryOptions" :key="option.value" :value="option.value">
-            {{ option.label }}
-          </a-select-option>
-        </a-select>
-      </a-form-item>
-      <a-button type="primary" @click="rollDice">Roll Dice</a-button>
+    <div class="switch-container">
+      <a-switch
+        checked-children="近戰"
+        un-checked-children="遠程"
+        v-model:checked="selectedType"
+      />
     </div>
-    <div v-if="rollResult !== null" class="result">
-      <p>Roll Result: {{ rollResult }}</p>
-      <p v-if="fumbleResult">Fumble Result: {{ fumbleResult.description }}</p>
-      <p v-else>No result found.</p>
+
+    <div v-if="selectedTableData.length" class="table-container">
+      <h3>{{ selectedType ? '近戰犯蠢表' : '遠程犯蠢表' }}</h3>
+      <a-table :dataSource="selectedTableData" :columns="tableColumns" rowKey="range" :pagination="false" bordered />
     </div>
   </div>
 </template>
@@ -65,20 +66,25 @@ const findFumbleResult = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  height: 100vh;
-  padding-top: 20px;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
 }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.switch-container {
   margin-bottom: 20px;
 }
 
-.result {
+.table-container {
+  width: 70%;
+}
+
+h3 {
   text-align: center;
-  margin-top: 20px;
+}
+
+.ant-table th,
+.ant-table td {
+  text-align: center;
 }
 </style>

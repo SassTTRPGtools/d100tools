@@ -1,83 +1,142 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { critTables, critOptions } from '@/rolemaster/utils/critTables.js';
+import { critTables, critOptions, hitLocationMapping } from '@/rolemaster/utils/critTables.js';
 
-const selectedCategory = ref('Krush');
-const selectedsecondCategory = ref('A');
-const inputValue = ref(0);
-
-const critSeverityOptions = [
-  { value: 'A', label: 'A' },
-  { value: 'B', label: 'B' },
-  { value: 'C', label: 'C' },
-  { value: 'D', label: 'D' },
-  { value: 'E', label: 'E' },
+const physicalCategories = [
+  { value: 'Krush', label: '鈍擊' },
+  { value: 'Puncture', label: '穿刺' },
+  { value: 'Slash', label: '揮砍' },
+  { value: 'Strikes', label: '打擊' },
+  { value: 'Sweeps', label: '橫掃&摔投' },
+  { value: 'Unbalance', label: '不平衡' },
+  { value: 'Impact', label: '衝擊' },
+  { value: 'Subdual', label: '制伏' },
+  { value: 'Grapple', label: '擒拿' }
 ];
 
+const elementalCategories = [
+  { value: 'Heat', label: '熱量' },
+  { value: 'Cold', label: '寒冷' },
+  { value: 'Electricity', label: '閃電' },
+  { value: 'Holy', label: '神聖' },
+  { value: 'Stream', label: '蒸氣' },
+  { value: 'Acid', label: '強酸' }
+];
 
-const filteredData = computed(() => {
-  const selectedData = critTables[selectedCategory.value];
-  if (selectedData && selectedData[selectedsecondCategory.value]) {
-    const secondSelectedData = selectedData[selectedsecondCategory.value];
-    if (Array.isArray(secondSelectedData)) {
-      return secondSelectedData.filter((item) => {
-        if (
-          typeof item.min === 'number' &&
-          typeof item.max === 'number' &&
-          typeof inputValue.value === 'number'
-        ) {
-          return inputValue.value >= item.min && inputValue.value <= item.max;
-        }
-        return false;
-      });
-    } else {
-      console.error(`critTables[${selectedCategory.value}][${selectedsecondCategory.value}] is not an array.`);
-      return [];
-    }
-  } else {
-    console.error(`critTables[${selectedCategory.value}] or critTables[${selectedCategory.value}][${selectedsecondCategory.value}] is undefined.`);
-    return [];
-  }
+const selectedCategory = ref('Krush');
+
+const selectedTableData = computed(() => {
+  return critTables[selectedCategory.value];
 });
 
 const selectedCategoryLabel = computed(() => {
-  const category = critOptions.find(option => option.value === selectedCategory.value);
+  const category = [...physicalCategories, ...elementalCategories].find(option => option.value === selectedCategory.value);
   return category ? category.label : '';
 });
+
+const tableData = computed(() => {
+  if (selectedTableData.value) {
+    const severityLevels = ['A', 'B', 'C', 'D', 'E'];
+    const data = [];
+
+    severityLevels.forEach(severity => {
+      selectedTableData.value[severity].forEach(item => {
+        const existingItem = data.find(d => d.min === item.min && d.max === item.max);
+        if (existingItem) {
+          existingItem[severity] = item.description;
+        } else {
+          data.push({
+            min: item.min,
+            max: item.max,
+            range: `${item.min}-${item.max}`,
+            location: hitLocationMapping[item.min] || '未知部位',
+            [severity]: item.description
+          });
+        }
+      });
+    });
+
+    return data;
+  }
+  return [];
+});
 </script>
+
 <template>
-  <div style="display: flex; justify-content: center; padding-top: 20px;">
-    <div>
-      <a-space direction="vertical">
-        <a-form-item label="選擇重擊表：">
-          <a-select v-model:value="selectedCategory" :dropdownStyle="{ width: '400px' }">
-            <a-select-option v-for="option in critOptions" :key="option.value" :value="option.value">
-            {{ option.label }}
-          </a-select-option>
-          </a-select>
-        </a-form-item>
+  <div class="container">
+    <div class="button-container">
+      <h3>物理類型</h3>
+      <div class="button-group">
+        <a-button
+          v-for="option in physicalCategories"
+          :key="option.value"
+          @click="selectedCategory = option.value"
+          :type="selectedCategory === option.value ? 'primary' : 'default'"
+        >
+          {{ option.label }}
+        </a-button>
+      </div>
+      <h3>元素表</h3>
+      <div class="button-group">
+        <a-button
+          v-for="option in elementalCategories"
+          :key="option.value"
+          @click="selectedCategory = option.value"
+          :type="selectedCategory === option.value ? 'primary' : 'default'"
+        >
+          {{ option.label }}
+        </a-button>
+      </div>
+    </div>
 
-        <a-form-item label="選擇嚴重度：">
-          <a-select v-model:value="selectedsecondCategory">
-            <a-select-option v-for="option in critSeverityOptions" :key="option.value" :value="option.value">
-              {{ option.value }}
-            </a-select-option>
-          </a-select>
-        </a-form-item>
-
-        <a-form-item label="輸入數字：">
-          <a-input-number v-model:value="inputValue" />
-        </a-form-item>
-      </a-space>
+    <div v-if="selectedTableData" class="table-container">
+      <h3>{{ selectedCategoryLabel }}表（嚴重度）</h3>
+      <a-table :dataSource="tableData" :columns="[
+        { title: '部位', dataIndex: 'location', key: 'location', width: 100 },
+        { title: '範圍', dataIndex: 'range', key: 'range', width: 100 },
+        { title: 'A', dataIndex: 'A', key: 'A' },
+        { title: 'B', dataIndex: 'B', key: 'B' },
+        { title: 'C', dataIndex: 'C', key: 'C' },
+        { title: 'D', dataIndex: 'D', key: 'D' },
+        { title: 'E', dataIndex: 'E', key: 'E' }
+      ]" rowKey="range" :pagination="false" bordered />
     </div>
   </div>
-  
-  <h3>{{ selectedCategoryLabel }}</h3>
-      <a-list bordered>
-        <a-list-item v-for="(item, index) in filteredData" :key="index">
-          {{ item.description }}
-        </a-list-item>
-      </a-list>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.button-container {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.table-container {
+  width: 70%;
+}
+
+h3 {
+  text-align: center;
+}
+
+.ant-table th,
+.ant-table td {
+  text-align: center;
+}
+</style>
