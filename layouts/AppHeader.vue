@@ -16,13 +16,16 @@
         </template>
         <a-sub-menu key="weapons">
           <template #title>
-            <span>重擊&犯蠢表</span>
+            <span>相關表格</span>
           </template>
           <a-menu-item key="fumble">
             <NuxtLink to="/combat/fumble">犯蠢表</NuxtLink>
           </a-menu-item>
           <a-menu-item key="critical">
             <NuxtLink to="/combat/critical">重擊</NuxtLink>
+          </a-menu-item>
+          <a-menu-item key="attack">
+            <NuxtLink to="/combat/attack">攻擊</NuxtLink>
           </a-menu-item>
         </a-sub-menu>
       </a-sub-menu>
