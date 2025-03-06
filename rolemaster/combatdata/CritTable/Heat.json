@@ -3,510 +3,510 @@
 		{
 			"min": 1,
 			"max": 1,
-			"description": ""
+			"description": "就像你朝敵人彈了一根燃燒的火柴。✊+1"
 		},
 		{
 			"min": 2,
 			"max": 3,
-			"description": ""
+			"description": "只是輕微的燃燒。再努力點。✊+2"
 		},
 		{
 			"min": 4,
 			"max": 5,
-			"description": ""
+			"description": "敵人雙腿間的空氣波動起來，熱浪翻騰。✊+3"
 		},
 		{
 			"min": 6,
 			"max": 10,
-			"description": ""
+			"description": "敵人為了躲避火焰而跳舞。😵"
 		},
 		{
 			"min": 11,
 			"max": 15,
-			"description": ""
+			"description": "被燒傷的肩膀使敵人分心。✊+1, 💫[-25]"
 		},
 		{
 			"min": 16,
 			"max": 20,
-			"description": ""
+			"description": "這可能會奏效，但火勢不夠猛烈。還是很疼。✊+8"
 		},
 		{
 			"min": 21,
 			"max": 25,
-			"description": ""
+			"description": "敵人對自己的生存感到震驚。✊+1, 2💫[-25]"
 		},
 		{
 			"min": 26,
 			"max": 35,
-			"description": ""
+			"description": "嘶嘶作響的熱度使敵人向後跳。好的直覺。😵 , 🌊5', 🛠️(-25)"
 		},
 		{
 			"min": 36,
 			"max": 45,
-			"description": ""
+			"description": "敵人的大腿散發出淡淡的燒肉味。✊+3, -5, 💦(-10)"
 		},
 		{
 			"min": 46,
 			"max": 55,
-			"description": ""
+			"description": "由於一度燒傷，敵人發現很難使用他的手臂。奇怪的是，它並不疼。✊+10, -5, 🛠️"
 		},
 		{
 			"min": 56,
 			"max": 65,
-			"description": ""
+			"description": "疼痛的手臂燒傷使敵人放下手中的一切。✊+19"
 		},
 		{
 			"min": 66,
 			"max": 66,
-			"description": ""
+			"description": "敵人的肚子被燒傷並裂開。如果不移除盔甲，炙熱的熱量每輪造成5 點傷害，持續4輪。✊+14, 🩸1, -10, 💫[-50], 💫[-25], 👎"
 		},
 		{
 			"min": 67,
 			"max": 75,
-			"description": ""
+			"description": "敵人試圖後退以逃避熱量，但仍然受到下肢的燒傷。✊+17, 💦(-10), 💫[-25], 😵 ,👎"
 		},
 		{
 			"min": 76,
 			"max": 80,
-			"description": ""
+			"description": "火焰吞噬敵人的胸膛，舔舐著 臉。敵人必須在下一輪將火撲滅（眩暈原因）。✊+9, -5, 💫[-50]"
 		},
 		{
 			"min": 81,
 			"max": 85,
-			"description": ""
+			"description": "火焰躍向臉部，眼睛沒有受傷，但其他部位都被燃燒了。✊+22, -15"
 		},
 		{
 			"min": 86,
 			"max": 90,
-			"description": ""
+			"description": "當肌肉和肌腱燃燒時，敵人冒出大量煙霧。✊+12, -15, 💫[-50], 😵 ,👎"
 		},
 		{
 			"min": 91,
 			"max": 95,
-			"description": ""
+			"description": "大腳趾被燒成了灰燼，骨頭化為灰燼。✊+13, -20, 💦(-10), 💫[-50]"
 		},
 		{
 			"min": 96,
 			"max": 97,
-			"description": ""
+			"description": "敵人的屁股著火，脂肪燃燒冒煙。敵人發出了撕心裂肺的尖叫，放下了手中的一切。✊+19, -15, 💫[-75], 💫[-50]"
 		},
 		{
 			"min": 98,
 			"max": 99,
-			"description": ""
+			"description": "強力的爆炸將敵人擊退，同時任何手中的武器都飛了出去。✊+14, -30, 💫[-75], 🌊 10',😵"
 		},
 		{
 			"min": 100,
 			"max": 100,
-			"description": ""
+			"description": "敵人的臉被燒傷，他尖叫了2輪。然後敵人倒下，9輪後死亡。💀, -50, 2💫[-75]"
 		}
 	],
 	"B": [
 		{
 			"min": 1,
 			"max": 1,
-			"description": ""
+			"description": "敵人喜歡冷飲料1週。✊+3"
 		},
 		{
 			"min": 2,
 			"max": 3,
-			"description": ""
+			"description": "熱風襲擊敵人。✊+4"
 		},
 		{
 			"min": 4,
 			"max": 5,
-			"description": ""
+			"description": "敵人的下體受熱時，臉上閃過一絲關切之色。💦(-10)"
 		},
 		{
 			"min": 6,
 			"max": 10,
-			"description": ""
+			"description": "臀部燒傷使敵人失去平衡。✊+3, 😵"
 		},
 		{
 			"min": 11,
 			"max": 15,
-			"description": ""
+			"description": "敵人用手臂作為盾牌。幸運的是，這次攻擊不太強。✊+6, 💦(-10)"
 		},
 		{
 			"min": 16,
 			"max": 20,
-			"description": ""
+			"description": "敵人吸入熱風並嘔吐，下一輪他的DB-20。✊+4"
 		},
 		{
 			"min": 21,
 			"max": 25,
-			"description": ""
+			"description": "胸部灼傷產生水泡，皮膚收縮並龜裂。✊+12, 💫[-25]"
 		},
 		{
 			"min": 26,
 			"max": 35,
-			"description": ""
+			"description": "對下體的灼傷造成持續問題。✊+12, -5"
 		},
 		{
 			"min": 36,
 			"max": 45,
-			"description": ""
+			"description": "吞噬性但短暫的火焰使敵人失去平衡。在1輪內的任何重擊都將使其伏地。✊+2, 2💫[-25], 😵"
 		},
 		{
 			"min": 46,
 			"max": 55,
-			"description": ""
+			"description": "灼傷內臂，使一條小血管破裂。✊+8, 🩸2, 💫[-50]"
 		},
 		{
 			"min": 56,
 			"max": 65,
-			"description": ""
+			"description": "強力的爆炸使敵人跌倒，皮膚龜裂。✊+7, 💦(-10), 💫[-50], 💫[-25], 👎, 😵"
 		},
 		{
 			"min": 66,
 			"max": 66,
-			"description": ""
+			"description": "燃燒的疼痛使內臟被焚毀。敵人無法再生育。（-20 敵方士氣） ✊+15, -25, 💫[-75], 💫[-25]"
 		},
 		{
 			"min": 67,
 			"max": 75,
-			"description": ""
+			"description": "敵人的皮膚從腳趾上脫落，留下燒焦而血淋淋的腳甲。✊+16, -10, 💫[-50]"
 		},
 		{
 			"min": 76,
 			"max": 80,
-			"description": ""
+			"description": "皮膚龜裂，敵人喘不過氣來。疼痛難忍。✊+31, -5, 4💫[-25]"
 		},
 		{
 			"min": 81,
 			"max": 85,
-			"description": ""
+			"description": "敵人的大部分外耳被燒毀了。✊+25, -10, 💫[-50], 2💫[-25]"
 		},
 		{
 			"min": 86,
 			"max": 90,
-			"description": ""
+			"description": "對敵人的手施加爆炸，擊落了任何握住的東西。 ✊+22, -10, 💦(-10), 2💫[-50], 🛠️"
 		},
 		{
 			"min": 91,
 			"max": 95,
-			"description": ""
+			"description": "敵人試圖閃避，但火焰吞噬了他的腿，烤得焦黑。✊+30, -35, 🛠️(-75)"
 		},
 		{
 			"min": 96,
 			"max": 97,
-			"description": ""
+			"description": "盆骨穿破融化的皮膚和組織。✊+28, -35, 2💫[-50]"
 		},
 		{
 			"min": 98,
 			"max": 99,
-			"description": ""
+			"description": "火焰蔓延在身上，暴露了敵人的肋骨。燒焦的肉味難以忘懷。敵人燒傷，4輪後死亡。💀, ✊+17, -40, 4💫[-50]"
 		},
 		{
 			"min": 100,
 			"max": 100,
-			"description": ""
+			"description": "其中一只眼睛因熱而爆裂，舌頭被燒掉。這是一種痛苦但無聲的死亡。（敵人在第6輪結束時死亡。）💀, ✊+8, -40, 6💫[-50]"
 		}
 	],
 	"C": [
 		{
 			"min": 1,
 			"max": 1,
-			"description": ""
+			"description": "焦髮散發出一股惡臭。✊+4"
 		},
 		{
 			"min": 2,
 			"max": 3,
-			"description": ""
+			"description": "敵人閃避，只受到輕微灼傷。✊+4, 🛠️"
 		},
 		{
 			"min": 4,
 			"max": 5,
-			"description": ""
+			"description": "敵人在避開爆炸的同時絆了一下。✊+3, 😵"
 		},
 		{
 			"min": 6,
 			"max": 10,
-			"description": ""
+			"description": "火焰籠罩敵人的腳，但一會兒後就消散了。 ✊+7, 💫[-25]"
 		},
 		{
 			"min": 11,
 			"max": 15,
-			"description": ""
+			"description": "燒傷敵人一隻手背。✊+11, 💫[-25]"
 		},
 		{
 			"min": 16,
 			"max": 20,
-			"description": ""
+			"description": "爆炸迅速移動，但敵人更快， 向後避開。✊+4, 🌊 10',😵"
 		},
 		{
 			"min": 21,
 			"max": 25,
-			"description": ""
+			"description": "火焰籠罩胸部。有機衣物和盔甲化為灰燼。✊+3, 2💫[-25]"
 		},
 		{
 			"min": 26,
 			"max": 35,
-			"description": ""
+			"description": "烹飪重要器官。你為敵人感到遺憾。✊+10, -10"
 		},
 		{
 			"min": 36,
 			"max": 45,
-			"description": ""
+			"description": "焦黑的皮膚脫落並開始流血。✊+16, 🩸2, -5"
 		},
 		{
 			"min": 46,
 			"max": 55,
-			"description": ""
+			"description": "敵人一隻手上的兩根手指被燒 傷得非常嚴重，皮膚開始脫落。✊+9, -10, 💫[-50]"
 		},
 		{
 			"min": 56,
 			"max": 65,
-			"description": ""
+			"description": "敵人猛烈出擊，將爆炸擊開， 但手臂痛苦地燒傷提醒他不要重複這樣的行為。✊+12, -5, 💦(-10), 💫[-75], 🛠️"
 		},
 		{
 			"min": 66,
 			"max": 66,
-			"description": ""
+			"description": "火焰燃燒著腹部肌肉，暴露出腸道。✊+26, -30, 💫[-75], 💫[-50], 👎, 😵"
 		},
 		{
 			"min": 67,
 			"max": 75,
-			"description": ""
+			"description": "烤焦敵人的腳踝，聽到骨頭發出的碎裂聲。✊+16, -15, 💫[-50], 💫[-25]"
 		},
 		{
 			"min": 76,
 			"max": 80,
-			"description": ""
+			"description": "敵人轉向一側，但爆炸擊中側 面，燒傷皮膚和肌肉直至骨頭。✊+7, 🩸1, -20, 💫[-75]"
 		},
 		{
 			"min": 81,
 			"max": 85,
-			"description": ""
+			"description": "高溫將敵人的嘴唇熔化在一起。敵人無法說話...或尖叫。（-10 敵方士氣）✊+13, -20, 💫[-75]"
 		},
 		{
 			"min": 86,
 			"max": 90,
-			"description": ""
+			"description": "烹煮肘部的大部分皮膚，使敵人放下了手中的一切。✊+35, -20, 💦(-10), 💫[-50], 👎"
 		},
 		{
 			"min": 91,
 			"max": 95,
-			"description": ""
+			"description": "皮膚剝落，暴露出敵人整個下腿。✊+28, -40, 💫[-75]"
 		},
 		{
 			"min": 96,
 			"max": 97,
-			"description": ""
+			"description": "整個下背部都在燃燒，暴露出敵人的脊椎。敵人癱瘓，並在5 輪內被活活燒死。💀, ✊+1, -60, 🛠️(-100)"
 		},
 		{
 			"min": 98,
 			"max": 99,
-			"description": ""
+			"description": "爆炸在胸膛上打了個洞，暴露了跳動的心臟。心臟繼續跳動2分鐘。 (-20 敵方士氣。)💀, ✊+40, -50"
 		},
 		{
 			"min": 100,
 			"max": 100,
-			"description": ""
+			"description": "敵人的眼睛被煮爛，皮膚從臉上融化。敵人的盟友在下一輪因凝視這可怕的景象而失去1AP。💀, ✊+15, -75, 🛠️(-100)"
 		}
 	],
 	"D": [
 		{
 			"min": 1,
 			"max": 1,
-			"description": ""
+			"description": "稍微灼傷敵人的頰骨。✊+1, 💦(-10)"
 		},
 		{
 			"min": 2,
 			"max": 3,
-			"description": ""
+			"description": "敵人避開爆炸，但吸入了煙霧。✊+3, 💫[-25]"
 		},
 		{
 			"min": 4,
 			"max": 5,
-			"description": ""
+			"description": "敵人為了保護重要部位而倒下。💦(-10), 👎"
 		},
 		{
 			"min": 6,
 			"max": 10,
-			"description": ""
+			"description": "對脛骨造成灼傷，靴子將一段時間不舒服。✊+5, -5"
 		},
 		{
 			"min": 11,
 			"max": 15,
-			"description": ""
+			"description": "火焰籠罩敵人的手腕，形成一串水泡手鐲。✊+10, 💦(-10), 💫[-25]"
 		},
 		{
 			"min": 16,
 			"max": 20,
-			"description": ""
+			"description": "疼痛的頸部水泡使敵人的話語變得不連貫，直到受傷恢復。-5, 💫[-25]"
 		},
 		{
 			"min": 21,
 			"max": 25,
-			"description": ""
+			"description": "敵人用手臂擋住臉，將攻擊擋在腋下。✊+20, 💦(-10), 😵"
 		},
 		{
 			"min": 26,
 			"max": 35,
-			"description": ""
+			"description": "灼熱的熱度使移動變得痛苦。✊+7, -5, 💦(-30), 💫[-25]"
 		},
 		{
 			"min": 36,
 			"max": 45,
-			"description": ""
+			"description": "敵人短暫地轉身逃避爆炸，但在下腿上受傷，使他絆倒並跌落10'遠。💦(-20), 💫[-50], 👎, 😵, 🌊10'"
 		},
 		{
 			"min": 46,
 			"max": 55,
-			"description": ""
+			"description": "燒傷內臂，敵人幸運地沒有影響主要血管。✊+8, 🩸1, -5, 2💫[-50], 🛠️"
 		},
 		{
 			"min": 56,
 			"max": 65,
-			"description": ""
+			"description": "敵人的肩膀像培根脂一樣嘶嘶作響。✊+22, -10, 💫[-50], 😵 ,👎"
 		},
 		{
 			"min": 66,
 			"max": 66,
-			"description": ""
+			"description": "火焰包圍敵人，逐漸在5分鐘內將其燒死（每輪堆疊 -5 受傷減值， 持續60輪）。💀, ✊+2, 💦(-20), 7 💫[-50]"
 		},
 		{
 			"min": 67,
 			"max": 75,
-			"description": ""
+			"description": "膝蓋的燒傷使肉融化，暴露出骨頭。✊+16, 🩸1, -20, 💫[-50], 🛠️(-25)"
 		},
 		{
 			"min": 76,
 			"max": 80,
-			"description": ""
+			"description": "燒傷從臀部延伸到腋下。燃燒的盔甲每輪造成5點傷害，持續4輪或直到移除。✊+23, -15, 💦(-10), 💫[-50], 🛠️(-100)"
 		},
 		{
 			"min": 81,
 			"max": 85,
-			"description": ""
+			"description": "敵人幾乎所有的頭髮都燒光了，臉部被燒傷和起水泡。✊+37, -30, 💫[-25], 🛠️(-25)"
 		},
 		{
 			"min": 86,
 			"max": 90,
-			"description": ""
+			"description": "血液沸騰，血管在手臂爆裂。（-20 敵方士氣。）✊+12, 🩸6, -25, 2💫[-50]"
 		},
 		{
 			"min": 91,
 			"max": 95,
-			"description": ""
+			"description": "敵人的腿著火了，燃燒得非常猛烈。火無法撲滅，敵人在狂亂的 1 分鐘後死亡。💀, ✊+18, -40, 12💫[-25]"
 		},
 		{
 			"min": 96,
 			"max": 97,
-			"description": ""
+			"description": "敵人的腸子爆裂，灑滿了5'R內的所有人（-20 敵方士氣）。敵人在痛苦的（非活動）5分鐘後死亡。💀, ✊+19, -65, 🛠️(-100)"
 		},
 		{
 			"min": 98,
 			"max": 99,
-			"description": ""
+			"description": "敵人整個軀幹的皮膚都被燒掉了。敵人死成一堆。💀, ✊+23, -100"
 		},
 		{
 			"min": 100,
 			"max": 100,
-			"description": ""
+			"description": "敵人的脖子完全被燒掉，頭部掉落在地板上。💀, ✊+13, -125"
 		}
 	],
 	"E": [
 		{
 			"min": 1,
 			"max": 1,
-			"description": ""
+			"description": "熱度使敵人的視線模糊。✊+2, 💫[-25]"
 		},
 		{
 			"min": 2,
 			"max": 3,
-			"description": ""
+			"description": "衣服被燒焦了。今天上天眷顧敵人。他在思考這個。🛠️(-100)"
 		},
 		{
 			"min": 4,
 			"max": 5,
-			"description": ""
+			"description": "精準命中，但攻擊力較弱。✊+3, 💦(-10), 💫[-25]"
 		},
 		{
 			"min": 6,
 			"max": 10,
-			"description": ""
+			"description": "敵人認為自己逃脫了無恙，但膝蓋已受損。✊+1, -5, 🛠️(-75)"
 		},
 		{
 			"min": 11,
 			"max": 15,
-			"description": ""
+			"description": "火焰灼熱的熱量使敵人放下了手中的一切。✊+10, 💫[-25]"
 		},
 		{
 			"min": 16,
 			"max": 20,
-			"description": ""
+			"description": "面部燒傷使敵人尖叫並放下了保護臉部的一切。但為時已晚。✊+10, -5"
 		},
 		{
 			"min": 21,
 			"max": 25,
-			"description": ""
+			"description": "對上半身的爆炸造成劇烈疼痛，但沒有造成嚴重損傷。✊+26, 💦(-20)"
 		},
 		{
 			"min": 26,
 			"max": 35,
-			"description": ""
+			"description": "褲子著火了！敵人必須在下一輪專心撲滅火勢（眩暈原因）。✊+10, 💫[-75]"
 		},
 		{
 			"min": 36,
 			"max": 45,
-			"description": ""
+			"description": "敵人拼命掙扎以逃脫毀滅，最終摔倒在地。✊+14, 💦(-30), 💫[-50], 😵 ,👎"
 		},
 		{
 			"min": 46,
 			"max": 55,
-			"description": ""
+			"description": "敵人的大部分上臂被燙傷，留下一個疼痛的灼傷。✊+21, -10, 💫[-75]"
 		},
 		{
 			"min": 56,
 			"max": 65,
-			"description": ""
+			"description": "火焰蔓延到敵人的手上，他搖了搖手， 連同黑化的皮膚一起搖落。✊+25, -20, 💫[-50]"
 		},
 		{
 			"min": 66,
 			"max": 66,
-			"description": ""
+			"description": "敵人燃燒的腰部使其在1分鐘內從內部被摧毀（每輪堆疊 -20 受傷減值，持續12輪）。💀, ✊+7, 12💫[-50]"
 		},
 		{
 			"min": 67,
 			"max": 75,
-			"description": ""
+			"description": "外大腿深受燒傷，顯露出肌肉，腿部一時無法動彈。✊+15, -25, 💦(-20), 💫[-50], 😵"
 		},
 		{
 			"min": 76,
 			"max": 80,
-			"description": ""
+			"description": "火焰以一種奇特的方式跳舞，燃燒著敵人胸膛上看起來像骷髏的部位。 ✊+25, -10, 💦(-10), 2💫[-75]"
 		},
 		{
 			"min": 81,
 			"max": 85,
-			"description": ""
+			"description": "火焰籠罩著敵人的頭部，將頭皮燒到頭骨。✊+34, -30, 💦(-10), 💫[-50], 😵 ,👎"
 		},
 		{
 			"min": 86,
 			"max": 90,
-			"description": ""
+			"description": "前臂和手被焚燒，只剩下骨頭。敵人倒地尖叫了6輪。然後敵人死了。💀, ✊+4, -50"
 		},
 		{
 			"min": 91,
 			"max": 95,
-			"description": ""
+			"description": "腳被燒成炭和灰燼。敵人因疼痛昏迷，10分鐘後死亡。💀, ✊ +28, -65"
 		},
 		{
 			"min": 96,
 			"max": 97,
-			"description": ""
+			"description": "下體被燒毀，腿無法支撐。敵人只希望死亡。他的願望得到了實現。💀, ✊+62, -75"
 		},
 		{
 			"min": 98,
 			"max": 99,
-			"description": ""
+			"description": "火焰燒穿了敵人的身體，摧毀了心臟和肺部。💀, ✊+6, -125"
 		},
 		{
 			"min": 100,
 			"max": 100,
-			"description": ""
+			"description": "敵人的臉被燒掉，腦漿從眼睛和耳朵的洞中滲出。💀, -150"
 		}
 	]
 }

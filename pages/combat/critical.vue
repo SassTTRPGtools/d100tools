@@ -10,6 +10,12 @@ import SweepsJson from '@/rolemaster/combatdata/CritTable/Sweeps.json';
 import UnbalanceJson from '@/rolemaster/combatdata/CritTable/Unbalance.json';
 import ImpactJson from '@/rolemaster/combatdata/CritTable/Impact.json';
 import GrappleJson from '@/rolemaster/combatdata/CritTable/Grapple.json';
+import HeatJson from '@/rolemaster/combatdata/CritTable/Heat.json';
+import ColdJson from '@/rolemaster/combatdata/CritTable/Cold.json';
+import ElectricityJson from '@/rolemaster/combatdata/CritTable/Electricity.json';
+import HolyJson from '@/rolemaster/combatdata/CritTable/Holy.json';
+import StreamJson from '@/rolemaster/combatdata/CritTable/Stream.json';
+
 
 const jsonData = {
   Krush: KrushJson,
@@ -20,6 +26,11 @@ const jsonData = {
   Unbalance: UnbalanceJson,
   Impact: ImpactJson,
   Grapple: GrappleJson,
+  Heat: HeatJson,
+  Cold: ColdJson,
+  Electricity: ElectricityJson,
+  Holy: HolyJson,
+  Stream: StreamJson,
 };
 
 const selectedCategory = ref('Krush');
@@ -55,33 +66,38 @@ const filteredData = computed(() => {
 });
 </script>
 <template>
-  <div>
-    <label for="category">選擇重擊表：</label>
-    <select id="category" v-model="selectedCategory">
-      <option v-for="option in categoryOptions" :key="option" :value="option">
-        {{ option }}
-      </option>
-    </select>
-
-    <label for="secondCategory">選擇嚴重度：</label>
-    <select id="secondCategory" v-model="secondCategory">
-      <option v-for="option in secondCategoryOptions" :key="option" :value="option">
-        {{ option }}
-      </option>
-    </select>
-
-    <label for="roll">輸入數字：</label>
-    <input type="number" id="roll" v-model.number="inputValue" />
-
+  <div style="display: flex; justify-content: center; padding-top: 20px;">
     <div>
-      <h3>{{ selectedCategory }}</h3>
-      <ul>
-        <li v-for="(item, index) in filteredData" :key="index">
-          {{ item.description }}
-        </li>
-      </ul>
+      <a-space direction="vertical">
+        <a-form-item label="選擇重擊表：">
+          <a-select v-model:value="selectedCategory" :dropdownStyle="{ width: '400px' }">
+            <a-select-option v-for="option in categoryOptions" :key="option" :value="option">
+              {{ option }}
+            </a-select-option>
+          </a-select>
+        </a-form-item>
+
+        <a-form-item label="選擇嚴重度：">
+          <a-select v-model:value="secondCategory">
+            <a-select-option v-for="option in secondCategoryOptions" :key="option" :value="option">
+              {{ option }}
+            </a-select-option>
+          </a-select>
+        </a-form-item>
+
+        <a-form-item label="輸入數字：">
+          <a-input-number v-model:value="inputValue" />
+        </a-form-item>
+      </a-space>
     </div>
   </div>
+  
+  <h3>{{ selectedCategory }}</h3>
+      <a-list bordered>
+        <a-list-item v-for="(item, index) in filteredData" :key="index">
+          {{ item.description }}
+        </a-list-item>
+      </a-list>
 </template>
 
 <style scoped></style>
