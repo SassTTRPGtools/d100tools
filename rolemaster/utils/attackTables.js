@@ -80,6 +80,68 @@ const atkTables = {
   Whip: WhipJson,
 };
 
+const atkOptions = [
+  {
+    category: '元素法術類',
+    options: [
+      { value: 'BoltFire', label: '火焰箭' },
+      { value: 'BoltIce', label: '冰箭術' },
+      { value: 'BoltLightning', label: '閃電箭' },
+      { value: 'BoltWater', label: '水箭術' },
+      { value: 'BallFire', label: '火球' },
+      { value: 'BallCold', label: '冰凍球' },
+      { value: 'BallLightning', label: '閃電球' }
+    ]
+  },
+  {
+    category: '天生武器&石頭',
+    options: [
+      { value: 'Beak', label: '喙擊' },
+      { value: 'Bite', label: '啃咬' },
+      { value: 'Claw', label: '爪抓' },
+      { value: 'Horn', label: '角擊' },
+      { value: 'Stinger', label: '刺擊' },
+      { value: 'UnarmedStrikes', label: '無武裝打擊' },
+      { value: 'UnarmedSweeps', label: '無武裝橫掃' },
+      { value: 'Grapple', label: '擒拿' },
+      { value: 'Ram', label: '撞擊' },
+      { value: 'Trample', label: '踐踏' },
+      { value: 'Crush', label: '粉碎' },
+      { value: 'Rock', label: '石頭' }
+    ]
+  },
+  {
+    category: '遠程武器類',
+    options: [
+      { value: 'BowLong', label: '長弓' },
+      { value: 'BowShort', label: '短弓' },
+      { value: 'Sling', label: '投石索' },
+      { value: 'Crossbow', label: '十字弩' },
+      { value: 'Bola', label: '繩球' }
+    ]
+  },
+  {
+    category: '近戰武器類',
+    options: [
+      { value: 'Dagger', label: '匕首' },
+      { value: 'Rapier', label: '刺劍' },
+      { value: 'ArmingSword', label: '直劍' },
+      { value: 'Broadsword', label: '闊劍' },
+      { value: 'Falchion', label: '直刀' },
+      { value: 'Scimitar', label: '彎刀' },
+      { value: 'FightingStick', label: '單手棍' },
+      { value: 'Club', label: '棍棒' },
+      { value: 'Mace', label: '錘子' },
+      { value: 'WarHammer', label: '戰鎚' },
+      { value: 'BattleAxe', label: '戰斧' },
+      { value: 'Flail', label: '連枷' },
+      { value: 'Spear', label: '矛' },
+      { value: 'Whip', label: '鞭子' },
+      { value: 'Shield', label: '盾牌' }
+    ]
+  }
+];
+
 const atkSizeTables = {
   Miniscule: { label: '超微型', multiplier: 0.25 },
   Diminutive: { label: '微型', multiplier: 0.50 },
@@ -93,4 +155,4 @@ const atkSizeTables = {
   Enormous: { label: '泰坦級', multiplier: 5 },
 };
 
-export { atkTables, atkSizeTables };
+export { atkTables, atkOptions , atkSizeTables };
