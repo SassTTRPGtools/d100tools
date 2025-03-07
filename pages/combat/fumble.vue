@@ -46,16 +46,19 @@ const tableColumns = computed(() => {
 
 <template>
   <div class="container">
+    <a-card class="info-card">
+      ✊+X : X 傷害, 🩸X: 流血 X /輪, 💦 (-X): 疲勞減值, 🛠️ (-X): 損壞檢定, -X: 受傷減值, X 💫 [-xx]: 眩暈 X 輪及減值[-xx], 😵: 失衡, 🌊 X’: 擊退, 👎: 擊倒/伏地, 🕸️: 擒拿 X%, ✴️(X): 額外重擊, 💀: 目標瀕死或被擊敗
+    </a-card>
+
     <div class="switch-container">
       <a-switch
-        checked-children="近戰"
-        un-checked-children="遠程"
+        checked-children="近戰犯蠢表"
+        un-checked-children="遠程犯蠢表"
         v-model:checked="selectedType"
       />
     </div>
 
     <div v-if="selectedTableData.length" class="table-container">
-      <h3>{{ selectedType ? '近戰犯蠢表' : '遠程犯蠢表' }}</h3>
       <a-table :dataSource="selectedTableData" :columns="tableColumns" rowKey="range" :pagination="false" bordered />
     </div>
   </div>
@@ -72,6 +75,7 @@ const tableColumns = computed(() => {
 }
 
 .switch-container {
+  padding-top: 20px;
   margin-bottom: 20px;
 }
 

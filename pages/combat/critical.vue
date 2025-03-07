@@ -88,7 +88,9 @@ const tableData = computed(() => {
         </a-button>
       </div>
     </div>
-
+    <a-card class="info-card">
+      ✊+X : X 傷害, 🩸X: 流血 X /輪, 💦 (-X): 疲勞減值, 🛠️ (-X): 損壞檢定, -X: 受傷減值, X 💫 [-xx]: 眩暈 X 輪及減值[-xx], 😵: 失衡, 🌊 X’: 擊退, 👎: 擊倒/伏地, 🕸️: 擒拿 X%, ✴️(X): 額外重擊, 💀: 目標瀕死或被擊敗
+    </a-card>
     <div v-if="selectedTableData" class="table-container">
       <h3>{{ selectedCategoryLabel }}表（嚴重度）</h3>
       <a-table :dataSource="tableData" :columns="[
@@ -112,6 +114,11 @@ const tableData = computed(() => {
   justify-content: center;
   width: 100%;
   padding: 20px;
+}
+
+.info-card {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .button-container {
