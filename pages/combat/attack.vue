@@ -12,18 +12,7 @@ const selectedTableData = computed(() => {
 
 const getCritSeverity = (description, size) => {
   const severityMap = critSeverityOptions.map(option => option.value);
-    const sizeAdjustment = {
-    'Miniscule': -4,
-    'Diminutive': -3,
-    'Tiny': -2,
-    'Small': -1,
-    'Medium': 0,
-    'Big': 1,
-    'Large': 2,
-    'Huge': 3,
-    'Gigantic': 4,
-    'Enormous': 5
-  };
+  const sizeAdjustment = atkSizeTables[size].sizeAdjustment;
 
   let descriptionLetter;
   if (isNaN(description)) {
@@ -31,7 +20,7 @@ const getCritSeverity = (description, size) => {
     let currentlyIndex = severityMap.indexOf(descriptionLetter);
     let newIndex = severityMap.indexOf(descriptionLetter);
 
-    newIndex += sizeAdjustment[size];
+    newIndex += sizeAdjustment;
 
     if (newIndex < 0) {
       newIndex = 0;
@@ -60,9 +49,8 @@ const tableData = computed(() => {
         const row = data.find(d => d.range === range);
         const numericValue = parseFloat(description);
 
-          const newValue = Math.ceil(numericValue * multiplier);
-          row[key] = getCritSeverity(description.replace(numericValue, newValue), selectedSize.value);
-
+        const newValue = Math.ceil(numericValue * multiplier);
+        row[key] = getCritSeverity(description.replace(numericValue, newValue), selectedSize.value);
       }
     }
     return data;

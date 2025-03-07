@@ -14,7 +14,10 @@
         <template #title>
           <span>戰鬥</span>
         </template>
-        <a-sub-menu key="weapons">
+        <a-menu-item key="combat-tool">
+        <NuxtLink to="/combat/quickCheckTool">戰鬥快查工具</NuxtLink>
+      </a-menu-item>
+        <a-sub-menu key="combat-table">
           <template #title>
             <span>相關表格</span>
           </template>

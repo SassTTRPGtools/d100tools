@@ -143,16 +143,16 @@ const atkOptions = [
 ];
 
 const atkSizeTables = {
-  Miniscule: { label: '超微型', multiplier: 0.25 },
-  Diminutive: { label: '微型', multiplier: 0.50 },
-  Tiny: { label: '超小型', multiplier: 0.67 },
-  Small: { label: '小型', multiplier: 0.75 },
-  Medium: { label: '中型', multiplier: 1 },
-  Big: { label: '大型', multiplier: 1.5 },
-  Large: { label: '超大型', multiplier: 2 },
-  Huge: { label: '巨型', multiplier: 3 },
-  Gigantic: { label: '超巨型', multiplier: 4 },
-  Enormous: { label: '泰坦級', multiplier: 5 },
+  Miniscule: { label: '超微型', multiplier: 0.25,sizeAdjustment:-4 },
+  Diminutive: { label: '微型', multiplier: 0.50,sizeAdjustment:-3 },
+  Tiny: { label: '超小型', multiplier: 0.67,sizeAdjustment:-2 },
+  Small: { label: '小型', multiplier: 0.75,sizeAdjustment:-1 },
+  Medium: { label: '中型', multiplier: 1,sizeAdjustment:0 },
+  Big: { label: '大型', multiplier: 1.5,sizeAdjustment:1 },
+  Large: { label: '超大型', multiplier: 2,sizeAdjustment:2 },
+  Huge: { label: '巨型', multiplier: 3 ,sizeAdjustment:3},
+  Gigantic: { label: '超巨型', multiplier: 4 ,sizeAdjustment:4},
+  Enormous: { label: '泰坦級', multiplier: 5 ,sizeAdjustment:5},
 };
 
 export { atkTables, atkOptions , atkSizeTables };

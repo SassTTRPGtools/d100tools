@@ -45,13 +45,18 @@ const tableData = computed(() => {
         if (existingItem) {
           existingItem[severity] = item.description;
         } else {
-          data.push({
+            const location = Object.keys(hitLocationMapping).find(range => {
+            const [min, max] = range.split('-').map(Number);
+            return item.min >= min && item.max <= max;
+            }) || '未知部位';
+
+            data.push({
             min: item.min,
             max: item.max,
             range: `${item.min}-${item.max}`,
-            location: hitLocationMapping[item.min] || '未知部位',
+            location: hitLocationMapping[location],
             [severity]: item.description
-          });
+            });
         }
       });
     });
