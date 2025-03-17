@@ -32,6 +32,17 @@
           </a-menu-item>
         </a-sub-menu>
       </a-sub-menu>
+      <a-sub-menu key="spell">
+        <template #title>
+          <span>法術</span>
+        </template>
+        <a-menu-item key="spell-tool">
+          <NuxtLink to="/spell/quickCheckTool">法術快查工具</NuxtLink>
+        </a-menu-item>
+        <a-menu-item key="spell-list">
+          <NuxtLink to="/spell/spellList">法術列表</NuxtLink>
+        </a-menu-item>
+      </a-sub-menu>
     </a-menu>
   </div>
 </template>
