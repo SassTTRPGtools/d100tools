@@ -88,14 +88,6 @@ const spellOptions = [
     ],
   },
   {
-    category: '混合領域',
-    options: [
-      { value: 'HealerBase', label: '治療者' },
-      { value: 'MysticBase', label: '秘術師' },
-      { value: 'SorcererBase', label: '術士' },
-    ],
-  },
-  {
     category: '心神領域',
     options: [
       { value: 'OpenMentalism', label: '開放心神' },
@@ -106,6 +98,14 @@ const spellOptions = [
       { value: 'MonkBase', label: '修行者' },      
       { value: 'PsychographerBase', label: '心能術士' },
       { value: 'EvilMentalism', label: '邪惡心神' },
+    ],
+  },
+  {
+    category: '混合領域',
+    options: [
+      { value: 'HealerBase', label: '治療者' },
+      { value: 'MysticBase', label: '秘術師' },
+      { value: 'SorcererBase', label: '術士' },
     ],
   },
 ];
