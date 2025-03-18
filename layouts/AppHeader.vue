@@ -43,6 +43,19 @@
           <NuxtLink to="/spell/spellList">法術列表</NuxtLink>
         </a-menu-item>
       </a-sub-menu>
+      <a-sub-menu key="experimental">
+        <template #title>
+          <span>實驗功能</span>
+        </template>
+        <a-menu-item key="sheet-wound">
+        <NuxtLink to="/sheet/wound">傷勢紀錄表</NuxtLink>
+      </a-menu-item>
+        <a-menu-item key="sheet-import">
+        <NuxtLink to="/sheet/import">角色表導入</NuxtLink>
+      </a-menu-item>
+
+      </a-sub-menu>
+
     </a-menu>
   </div>
 </template>
