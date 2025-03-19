@@ -17,6 +17,9 @@
         <a-menu-item key="combat-tool">
         <NuxtLink to="/combat/quickCheckTool">戰鬥快查工具</NuxtLink>
       </a-menu-item>
+      <a-menu-item key="sheet-wound">
+        <NuxtLink to="/combat/wound">傷勢紀錄表</NuxtLink>
+      </a-menu-item>
         <a-sub-menu key="combat-table">
           <template #title>
             <span>相關表格</span>
@@ -47,9 +50,7 @@
         <template #title>
           <span>實驗功能</span>
         </template>
-        <a-menu-item key="sheet-wound">
-        <NuxtLink to="/sheet/wound">傷勢紀錄表</NuxtLink>
-      </a-menu-item>
+
         <a-menu-item key="sheet-import">
         <NuxtLink to="/sheet/import">角色表導入</NuxtLink>
       </a-menu-item>
