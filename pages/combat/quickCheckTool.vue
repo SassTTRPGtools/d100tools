@@ -1,9 +1,15 @@
 <script setup>
-import { ref, computed } from 'vue';
-import { message } from 'ant-design-vue';
+import { ref, computed, h, watch } from 'vue';
+import { message, notification } from 'ant-design-vue';
+import PlayerStatus from '@/components/PlayerStatus.vue'; // 新增導入 PlayerStatus 組件
 import { atkTables, atkOptions, atkSizeTables } from '@/rolemaster/utils/attackTables.js';
 import { critTables, critSeverityOptions, critKeyMapping, hitLocationMapping } from '@/rolemaster/utils/critTables.js';
+import { parseInput, calculatePlayerStats, calculateTotalReduction } from '@/utils/parser.js'; // 引入重複函數
+import { usePlayerStore } from '@/stores/playerStore';
+import { useCureStore } from '@/stores/cureStore';
 
+const cureStore = useCureStore();
+const playerStore = usePlayerStore();
 const selectedCategory = ref(atkOptions[0].category);
 const selectedSubCategory = ref(atkOptions[0].options[0].value);
 const selectedAttackerSize = ref('Medium');
@@ -11,6 +17,19 @@ const selectedTargetSize = ref('Medium');
 const selectedATValue = ref(1);
 const attackRoll = ref('');
 const critResult = ref('');
+const activeTab = ref(playerStore.activePlayerIndex); // 新增：控制目前啟用的分頁
+const applyToWound = ref(true); // 新增開關控制是否應用於傷勢紀錄表
+
+
+onMounted(() => {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    activeTab.value = playerStore.activePlayerIndex;
+  }
+  playerStore.players.forEach(player => {
+    calculatePlayerStats(player); // 自動計算玩家狀態
+  });
+});
+
 
 const subCategories = computed(() => {
   const category = atkOptions.find(option => option.category === selectedCategory.value);
@@ -162,72 +181,187 @@ const addRow = () => {
 const clearData = () => {
   tableData.value = [];
 };
+
+
+
+function addToWound(entry) {
+  if (playerStore.activePlayerIndex !== null) {
+    const activePlayer = playerStore.players[playerStore.activePlayerIndex];
+    const parsedResults = parseInput(entry);
+    if (parsedResults.symbols.length === 0) {
+      console.warn('無有效的傷勢描述');
+      return;
+    }
+    parsedResults.symbols.forEach(result => {
+      activePlayer.symbolEntries.push({ text: result });
+    });
+    calculatePlayerStats(activePlayer); // 更新玩家狀態
+    console.log('已新增至傷勢紀錄表:', parsedResults.symbols);
+  }
+}
+
+function isClient() {
+  return typeof window !== 'undefined';
+}
+
+function copyToClipboard(text) {
+  if (isClient()) {
+    navigator.clipboard.writeText(text).then(() => {
+      console.log('Copied to clipboard:', text);
+      notification.success({
+        message: '複製成功',
+        description: `已複製內容: ${text}`,
+        placement: 'topRight',
+      });
+      addToWound(text);
+    });
+  }
+}
+
+function renderCritOutcomeCell(text) {
+  return h(
+    'span',
+    {
+      style: { cursor: 'pointer' },
+      onClick: () => {
+        copyToClipboard(text);
+      },
+    },
+    text
+  );
+}
+
+
+function endTurn() {
+  playerStore.players.forEach(player => {
+    reduceDizzyStack(player);
+  });
+  
+}
+
+function reduceDizzyStack(player) {
+  const priorities = [
+    { regex: /(\d*)💫\[-75\]/, stack: 'dizzyStacks75' },
+    { regex: /(\d*)💫\[-50\]/, stack: 'dizzyStacks50' },
+    { regex: /(\d*)💫\[-25\]/, stack: 'dizzyStacks25' }
+  ];
+
+  for (const priority of priorities) {
+    for (let i = 0; i < player.symbolEntries.length; i++) {
+      const match = player.symbolEntries[i].text.match(priority.regex);
+      if (match) {
+        let count = match[1] ? parseInt(match[1]) : 1;
+        if (count > 1) {
+          player.symbolEntries[i].text = player.symbolEntries[i].text.replace(/^\d*/, count - 1);
+        } else {
+          player.symbolEntries.splice(i, 1);
+        }
+        calculatePlayerStats(player);
+        return;
+      }
+    }
+  }
+}
+
+function endCombat() {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    cureStore.players = JSON.parse(JSON.stringify(playerStore.players)); // 深拷貝資料
+    cureStore.players.forEach((player, index) => {
+      const excessFatigueReduction = Math.max(0, -player.excessFatigue); // 計算超出的疲勞減值
+      player.specialInjuryReduction = excessFatigueReduction; // 儲存到 specialInjuryReduction
+    });
+    cureStore.saveToLocalStorage();
+  }
+  playerStore.players.forEach((_, index) => playerStore.clearPlayerData(index)); // 清空 playerStore
+}
+
+// 監聽 selectedCategory 的變化，並自動更新 selectedSubCategory
+watch(selectedCategory, (newCategory) => {
+  const category = atkOptions.find(option => option.category === newCategory);
+  if (category && category.options.length > 0) {
+    selectedSubCategory.value = category.options[0].value;
+  }
+});
 </script>
 
 <template>
-  <div class="container">
-    <div class="controls-container">
+  <div class="flex flex-row gap-5">
+    <!-- 左側區塊 -->
+    <PlayerStatus
+      :applyToWound="applyToWound"
+      :activeTab="activeTab"
+      @update:activeTab="activeTab = $event"
+      @endCombat="endCombat"
+      @endTurn="endTurn"
+    />
+    <!-- 中間區塊 -->
+    <div class="container">
+      <div class="controls-container">
         <div class="select-group">
-        <a-select v-model:value="selectedCategory" style="width: 200px" @change="selectedSubCategory = subCategories.value[0].value">
-          <a-select-option v-for="option in atkOptions" :key="option.category" :value="option.category">
-            {{ option.category }}
-          </a-select-option>
-        </a-select>
-        <div class="button-group">
-          <a-button
-            v-for="option in subCategories"
-            :key="option.value"
-            :type="selectedSubCategory === option.value ? 'primary' : 'default'"
-            @click="selectedSubCategory = option.value" style="margin-left: 10px"
-          >
-            {{ option.label }}
-          </a-button>
+          <a-select v-model:value="selectedCategory" style="width: 200px">
+            <a-select-option v-for="option in atkOptions" :key="option.category" :value="option.category">
+              {{ option.category }}
+            </a-select-option>
+          </a-select>
+          <div class="button-group">
+            <a-button
+              v-for="option in subCategories"
+              :key="option.value"
+              :type="selectedSubCategory === option.value ? 'primary' : 'default'"
+              @click="selectedSubCategory = option.value"
+              style="margin-left: 10px"
+            >
+              {{ option.label }}
+            </a-button>
+          </div>
+        </div>
+        <div class="select-group">
+          <a-select v-model:value="selectedAttackerSize" style="width: 200px">
+            <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
+              {{ size.label }}
+            </a-select-option>
+          </a-select>
+          <a-select v-model:value="selectedATValue" style="width: 200px">
+            <a-select-option v-for="n in 10" :key="n" :value="n">
+              {{ n }}
+            </a-select-option>
+          </a-select>
+          <a-select v-model:value="selectedTargetSize" style="width: 200px">
+            <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
+              {{ size.label }}
+            </a-select-option>
+          </a-select>
+        </div>
+        <div class="input-group">
+          <a-input v-model:value="attackRoll" placeholder="攻擊值" style="width: 200px" required />
+          <a-input v-model:value="critResult" placeholder="重擊值" style="width: 200px" required />
+          <a-button type="primary" @click="addRow">確定</a-button>
+          <a-button type="danger" @click="clearData">清空</a-button>
         </div>
       </div>
-      <div class="select-group">
-        <a-select v-model:value="selectedAttackerSize" style="width: 200px">
-          <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
-            {{ size.label }}
-          </a-select-option>
-        </a-select>
-        <a-select v-model:value="selectedATValue" style="width: 200px">
-          <a-select-option v-for="n in 10" :key="n" :value="n">
-            {{ n }}
-          </a-select-option>
-        </a-select>
-        <a-select v-model:value="selectedTargetSize" style="width: 200px">
-          <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
-            {{ size.label }}
-          </a-select-option>
-        </a-select>
-      </div>
-      <div class="input-group">
-        <a-input v-model:value="attackRoll" placeholder="攻擊值" style="width: 200px" required />
-        <a-input v-model:value="critResult" placeholder="重擊值" style="width: 200px" required />
-        <a-button type="primary" @click="addRow">確定</a-button>
-        <a-button type="danger" @click="clearData">清空</a-button>
-      </div>
-    </div>
 
-    <a-card class="info-card">
-      ✊+X : X 傷害, 🩸X: 流血 X /輪, 💦 (-X): 疲勞減值, 🛠️ (-X): 損壞檢定, -X: 受傷減值, X 💫 [-xx]: 眩暈 X 輪及減值[-xx], 😵: 失衡, 🌊 X’: 擊退, 👎: 擊倒/伏地, 🕸️: 擒拿 X%, ✴️(X): 額外重擊, 💀: 目標瀕死或被擊敗
-    </a-card>
-    <div class="table-container">
-      <a-table :dataSource="tableData" :columns="[
-        { title: '攻擊', dataIndex: 'attackType', key: 'attackType', width: 120 },
-        { title: '攻擊者', dataIndex: 'attackerSize', key: 'attackerSize', width: 80  },
-        { title: 'AT', dataIndex: 'atValue', key: 'atValue' , width: 80 },
-        { title: '目標', dataIndex: 'targetSize', key: 'targetSize' , width: 80 },
-        { title: '兩者差距', dataIndex: 'sizeDifferenceText', key: 'sizeDifferenceText' , width: 120 },
-        { title: '攻擊值', dataIndex: 'attackRoll', key: 'attackRoll', width: 80  },
-        { title: '重擊值', dataIndex: 'critResult', key: 'critResult', width: 80  },
-        { title: '攻擊結果', dataIndex: 'attackOutcome', key: 'attackOutcome' , width: 100 },
-        { title: '重擊結果', dataIndex: 'critOutcome', key: 'critOutcome', scopedSlots: { customRender: 'critOutcome' } }
-      ]" rowKey="attackType" :pagination="false" bordered>
-        <template #critOutcome="{ text }">
-          <div v-html="text"></div>
-        </template>
-      </a-table>
+      <a-card class="info-card">
+        ✊+X : X 傷害, 🩸X: 流血 X /輪, 💦 (-X): 疲勞減值, 🛠️ (-X): 損壞檢定, -X: 受傷減值, X 💫 [-xx]: 眩暈 X 輪及減值[-xx], 😵: 失衡, 🌊 X’: 擊退, 👎: 擊倒/伏地, 🕸️: 擒拿 X%, ✴️(X): 額外重擊, 💀: 目標瀕死或被擊敗
+      </a-card>
+      <div class="table-container">
+        <a-table
+          :dataSource="tableData"
+          :columns="[
+            { title: '攻擊', dataIndex: 'attackType', key: 'attackType', width: 120 },
+            { title: '攻擊者', dataIndex: 'attackerSize', key: 'attackerSize', width: 80  },
+            { title: 'AT', dataIndex: 'atValue', key: 'atValue' , width: 80 },
+            { title: '目標', dataIndex: 'targetSize', key: 'targetSize' , width: 80 },
+            { title: '兩者差距', dataIndex: 'sizeDifferenceText', key: 'sizeDifferenceText' , width: 120 },
+            { title: '攻擊值', dataIndex: 'attackRoll', key: 'attackRoll', width: 80  },
+            { title: '重擊值', dataIndex: 'critResult', key: 'critResult', width: 80  },
+            { title: '攻擊結果', dataIndex: 'attackOutcome', key: 'attackOutcome', width: 100 },
+            { title: '重擊結果', dataIndex: 'critOutcome', key: 'critOutcome', customRender: ({ text }) => renderCritOutcomeCell(text) }
+          ]"
+          rowKey="attackType"
+          :pagination="false"
+          bordered
+        />
+      </div>
     </div>
   </div>
 </template>

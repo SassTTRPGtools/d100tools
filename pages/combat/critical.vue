@@ -6,6 +6,7 @@ import { useCureStore } from '@/stores/cureStore';
 import { notification } from 'ant-design-vue';
 import { parseInput, calculatePlayerStats, calculateTotalReduction } from '@/utils/parser.js'; // 引入重複函數
 import { useRouter } from 'vue-router';
+import PlayerStatus from '@/components/PlayerStatus.vue'; // 引入新的組件
 
 const runtimeConfig = useRuntimeConfig();
 const cureStore = useCureStore();
@@ -191,34 +192,13 @@ function endCombat() {
 <template>
   <div class="flex flex-row gap-5">
     <!-- 左側區塊 -->
-    <div
-      class="w-64 bg-gray-100 p-5 border-r border-gray-300 transition-opacity"
-      :class="{ 'opacity-0 pointer-events-none': !applyToWound }"
-    >
-      <template v-if="applyToWound">
-        <a-button type="primary" danger class="mb-4" @click="endCombat">結束戰鬥</a-button>
-        <h2 class="text-xl font-bold mb-4">玩家狀態</h2>
-        <ul>
-          <li
-            v-for="(player, index) in playerStore.players"
-            :key="index"
-            class="cursor-pointer p-2 border-b border-gray-300 hover:bg-gray-200"
-            :class="{ 'bg-blue-200': applyToWound && activeTab === index }" 
-            @click="activeTab = index"
-          >
-          <div>{{ player.tabTitle }}</div>
-            <div>
-              總減值：
-              {{ calculateTotalReduction(player) }}
-              <span v-if="player.dizzyStacks75 || player.dizzyStacks50 || player.dizzyStacks25">💫</span> <!-- 新增邏輯 -->
-            </div>
-            <div>流血：{{ player.totalBleeding }}🩸/每輪</div>
-          </li>
-        </ul>
-        <a-button type="primary" class="mt-4" @click="endTurn">結束回合</a-button>
-      </template>
-    </div>
-
+    <PlayerStatus
+      :applyToWound="applyToWound"
+      :activeTab="activeTab"
+      @update:activeTab="activeTab = $event"
+      @endCombat="endCombat"
+      @endTurn="endTurn"
+    />
     <!-- 中間區塊 -->
     <div class="flex-1 p-5">
       <div class="flex flex-col items-center justify-center w-full p-5">

@@ -17,12 +17,7 @@
         <a-menu-item key="combat-tool">
         <NuxtLink to="/combat/quickCheckTool">戰鬥快查工具</NuxtLink>
       </a-menu-item>
-      <a-menu-item key="sheet-wound">
-        <NuxtLink to="/combat/wound">傷勢紀錄表</NuxtLink>
-      </a-menu-item>
-      <a-menu-item key="sheet-cure">
-        <NuxtLink to="/combat/cure">治療傷勢表</NuxtLink>
-      </a-menu-item>
+
         <a-sub-menu key="combat-table">
           <template #title>
             <span>相關表格</span>
@@ -36,6 +31,17 @@
           <a-menu-item key="attack">
             <NuxtLink to="/combat/attack">攻擊</NuxtLink>
           </a-menu-item>
+        </a-sub-menu>
+        <a-sub-menu key="combat-sheet">
+          <template #title>
+            <span>紀錄表</span>
+          </template>
+          <a-menu-item key="sheet-wound">
+        <NuxtLink to="/combat/wound">傷勢紀錄表</NuxtLink>
+      </a-menu-item>
+      <a-menu-item key="sheet-cure">
+        <NuxtLink to="/combat/cure">治療傷勢表</NuxtLink>
+      </a-menu-item>
         </a-sub-menu>
       </a-sub-menu>
       <a-sub-menu key="spell">

@@ -130,6 +130,7 @@ function resetCureStore() {
   if (typeof window !== 'undefined' && window.localStorage) {
     cureStore.$state = { ...playerStore.$state }; // 重設為 playerStore 的狀態
     activeTab.value = playerStore.getActivePlayerIndex(); // 使用 getActivePlayerIndex 設定當前分頁
+    cureStore.saveToLocalStorage();
   }
 }
 

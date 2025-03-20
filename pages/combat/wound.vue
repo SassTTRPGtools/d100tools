@@ -3,18 +3,17 @@ import { ref, watch, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
 import { usePlayerStore } from '@/stores/playerStore';
 import { useCureStore } from '@/stores/cureStore';
-import { parseInput, calculatePlayerStats, calculateTotalReduction } from '@/utils/parser.js'; // 引入缺少的函數
+import { parseInput, calculatePlayerStats } from '@/utils/parser.js'; // 引入缺少的函數
+import PlayerStatus from '@/components/PlayerStatus.vue'; // 新增：導入 PlayerStatus 組件
 
 const activeTab = ref(0);
 const playerStore = usePlayerStore();
 const cureStore = useCureStore();
 
-// 在組件掛載時加載數據並設置第一個分頁為默認顯示
 onMounted(() => {
   if (typeof window !== 'undefined' && window.localStorage) {
-    activeTab.value = playerStore.activePlayerIndex; // 設置第一個分頁為默認顯示
+    activeTab.value = playerStore.activePlayerIndex;
   }
-  // 新增：重新計算每個玩家的狀態
   playerStore.players.forEach(player => {
     calculatePlayerStats(player);
   });
@@ -23,7 +22,7 @@ onMounted(() => {
 watch(
   () => activeTab.value,
   (newIndex) => {
-    playerStore.setActivePlayerIndex(newIndex); // 更新目前啟用的玩家分頁索引
+    playerStore.setActivePlayerIndex(newIndex);
     console.log('目前啟用的玩家分頁索引已更新:', newIndex);
   }
 );
@@ -48,11 +47,15 @@ function removeSymbolEntry(playerIndex, entryIndex) {
   calculatePlayerStats(player);
 }
 
+function clearAll(playerIndex) {
+  playerStore.clearPlayerData(playerIndex);
+}
 
 function endTurn() {
   playerStore.players.forEach(player => {
     reduceDizzyStack(player);
   });
+  
 }
 
 function reduceDizzyStack(player) {
@@ -79,14 +82,6 @@ function reduceDizzyStack(player) {
   }
 }
 
-function clearAll(playerIndex) {
-  playerStore.clearPlayerData(playerIndex);
-}
-
-function updateTabTitle(playerIndex, newTitle) {
-  playerStore.players[playerIndex].tabTitle = newTitle;
-}
-
 function endCombat() {
   if (typeof window !== 'undefined' && window.localStorage) {
     cureStore.players = JSON.parse(JSON.stringify(playerStore.players)); // 深拷貝資料
@@ -97,35 +92,25 @@ function endCombat() {
     cureStore.saveToLocalStorage();
   }
   playerStore.players.forEach((_, index) => playerStore.clearPlayerData(index)); // 清空 playerStore
+  router.push('/combat/cure'); // 跳轉到 /combat/cure 頁面
 }
+
+const applyToWound = ref(true);
 </script>
 
 <template>
   <div class="layout">
     <!-- 左側區塊 -->
-    <div class="sidebar">
-      <h2 class="text-xl font-bold mb-4">玩家狀態</h2>
-      <ul>
-        <li
-          v-for="(player, index) in playerStore.players"
-          :key="index"
-          class="player-summary"
-          @click="activeTab = index"
-        >
-          <div>{{ player.tabTitle }}</div>
-          <div>總減值：{{ calculateTotalReduction(player) }}</div>
-          <div>流血：{{ player.totalBleeding }}🩸/每輪</div>
-        </li>
-      </ul>
-    </div>
+    <PlayerStatus
+      :applyToWound="applyToWound"
+      :activeTab="activeTab"
+      @update:activeTab="activeTab = $event"
+      @endCombat="endCombat"
+      @endTurn="endTurn"
+    />
 
     <!-- 中間區塊 -->
     <div class="main-content">
-      <div class="flex flex-row">
-<div><a-button type="primary" class="mb-4 mt-4" @click="endTurn">結束回合</a-button></div>
-<div class="pl-4"><a-button type="primary" danger class="mb-4 mt-4" @click="endCombat">結束戰鬥</a-button></div>
-      </div>
-      
       <a-tabs v-model:activeKey="activeTab" type="card" class="player-tabs">
         <a-tab-pane
           v-for="(player, index) in playerStore.players"
@@ -137,7 +122,7 @@ function endCombat() {
               <a-input
                 v-model:value="player.tabTitle"
                 placeholder="修改分頁標題"
-                @change="updateTabTitle(index, player.tabTitle)"
+                @change="playerStore.updateTabTitle(index, player.tabTitle)"
                 class="mb-4"
               />
             </div>

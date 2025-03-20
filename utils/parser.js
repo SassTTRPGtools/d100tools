@@ -1,9 +1,29 @@
 export function parseInput(input) {
-  const cleanedInput = input.replace(/.*[。！]/, ''); // 忽略 "。" 和 "！" 之前的所有文字
-  const regex = /([^\s,]+(?:\[\-?\d+\])?)/g;
-  const matches = cleanedInput.match(regex);
+  // 使用 🔷 分割每一段
+  const parts = input.split('🔷').map(part => part.trim());
   const ignoreEmojis = ['✊', '🛠️', '😵', '🌊', '👎', '🕸️', '✴️', '💀'];
-  const symbols = matches ? matches.filter(match => !ignoreEmojis.some(emoji => match.includes(emoji))) : [];
+  const regex = /([^\s,]+(?:\[\-?\d+\])?)/g;
+
+  let symbols = [];
+
+  parts.forEach(part => {
+    // 個別處理每一段
+    const cleanedPart = part.replace(/.*[。！]/, ''); // 忽略 "。" 和 "！" 之前的所有文字
+    const matches = cleanedPart.match(regex);
+
+    if (matches) {
+      // 確保複數組合之間有 ","
+      matches.forEach((match, index) => {
+        if (index > 0 && !matches[index - 1].endsWith(',')) {
+          matches[index - 1] += ',';
+        }
+      });
+
+      // 過濾掉包含 ignoreEmojis 的項目
+      symbols = symbols.concat(matches.filter(match => !ignoreEmojis.some(emoji => match.includes(emoji))));
+    }
+  });
+
   return { symbols: symbols.map(symbol => symbol.replace(/,$/, '')) };
 }
 
