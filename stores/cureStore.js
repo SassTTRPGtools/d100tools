@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useCureStore = defineStore('cureStore', {
   state: () => ({
-    players: []
+    players: [] // 每個玩家的數據中包含 specialInjuryReduction
   }),
   actions: {
     loadFromLocalStorage() {

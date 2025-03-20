@@ -3,6 +3,7 @@ import { ref, watch, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
 import { usePlayerStore } from '@/stores/playerStore';
 import { useCureStore } from '@/stores/cureStore';
+import { parseInput, calculatePlayerStats, calculateTotalReduction } from '@/utils/parser.js'; // 引入缺少的函數
 
 const activeTab = ref(0);
 const playerStore = usePlayerStore();
@@ -13,12 +14,17 @@ onMounted(() => {
   if (typeof window !== 'undefined' && window.localStorage) {
     activeTab.value = playerStore.activePlayerIndex; // 設置第一個分頁為默認顯示
   }
+  // 新增：重新計算每個玩家的狀態
+  playerStore.players.forEach(player => {
+    calculatePlayerStats(player);
+  });
 });
 
 watch(
   () => activeTab.value,
   (newIndex) => {
     playerStore.setActivePlayerIndex(newIndex); // 更新目前啟用的玩家分頁索引
+    console.log('目前啟用的玩家分頁索引已更新:', newIndex);
   }
 );
 
@@ -36,102 +42,12 @@ function addEntry() {
   player.inputText = '';
 }
 
-function parseInput(input) {
-  const regex = /([^\s,]+(?:\[\-?\d+\])?)/g;
-  const matches = input.match(regex);
-  const ignoreEmojis = ['✊', '🛠️', '😵', '🌊', '👎', '🕸️', '✴️', '💀'];
-  const symbols = matches ? matches.filter(match => !ignoreEmojis.some(emoji => match.includes(emoji))) : [];
-  return { symbols: symbols.map(symbol => symbol.replace(/,$/, '')) };
-}
-
 function removeSymbolEntry(playerIndex, entryIndex) {
   const player = playerStore.players[playerIndex];
   player.symbolEntries.splice(entryIndex, 1);
   calculatePlayerStats(player);
 }
 
-function calculatePlayerStats(player) {
-  calculateDizzyStacks(player);
-  calculateFatigue(player);
-  calculateInjury(player);
-  calculateBleeding(player);
-}
-
-function calculateDizzyStacks(player) {
-  player.dizzyStacks75 = 0;
-  player.dizzyStacks50 = 0;
-  player.dizzyStacks25 = 0;
-  player.symbolEntries.forEach(entry => {
-    const match75 = entry.text.match(/(\d*)💫\[-75\]/);
-    const match50 = entry.text.match(/(\d*)💫\[-50\]/);
-    const match25 = entry.text.match(/(\d*)💫\[-25\]/);
-    if (match75) {
-      player.dizzyStacks75 += match75[1] ? parseInt(match75[1]) : 1;
-    }
-    if (match50) {
-      player.dizzyStacks50 += match50[1] ? parseInt(match50[1]) : 1;
-    }
-    if (match25) {
-      player.dizzyStacks25 += match25[1] ? parseInt(match25[1]) : 1;
-    }
-  });
-}
-
-function calculateFatigue(player) {
-  let currentTotalFatigue = 0;
-  let currentExcessFatigue = 0;
-  player.symbolEntries.forEach(entry => {
-    const match = entry.text.match(/💦\((\-?\d+)\)/);
-    if (match) {
-      const value = parseInt(match[1]);
-      if (currentTotalFatigue + value >= -50) {
-        currentTotalFatigue += value;
-      } else {
-        const remainingValue = -50 - currentTotalFatigue;
-        currentTotalFatigue = -50;
-        currentExcessFatigue += Math.abs(value - remainingValue);
-      }
-    }
-  });
-  player.totalFatigue = currentTotalFatigue;
-  player.excessFatigue = currentExcessFatigue;
-}
-
-function calculateInjury(player) {
-  let currentTotalInjury = 0;
-  player.symbolEntries.forEach(entry => {
-    if (!entry.text.includes('💦') && !entry.text.includes('💫')) {
-      const match = entry.text.match(/-\d+/);
-      if (match) {
-        currentTotalInjury += parseInt(match[0]);
-      }
-    }
-  });
-  player.totalInjury = currentTotalInjury;
-}
-
-function calculateBleeding(player) {
-  let currentTotalBleeding = 0;
-  player.symbolEntries.forEach(entry => {
-    const match = entry.text.match(/🩸(\d+)/);
-    if (match) {
-      currentTotalBleeding += parseInt(match[1]);
-    }
-  });
-  player.totalBleeding = currentTotalBleeding;
-}
-
-function calculateTotalReduction(player) {
-  let dizzyReduction = 0;
-  if (player.dizzyStacks75 > 0) {
-    dizzyReduction = -75;
-  } else if (player.dizzyStacks50 > 0) {
-    dizzyReduction = -50;
-  } else if (player.dizzyStacks25 > 0) {
-    dizzyReduction = -25;
-  }
-  return player.totalFatigue + player.totalInjury + -(player.excessFatigue) + dizzyReduction;
-}
 
 function endTurn() {
   playerStore.players.forEach(player => {
@@ -174,6 +90,10 @@ function updateTabTitle(playerIndex, newTitle) {
 function endCombat() {
   if (typeof window !== 'undefined' && window.localStorage) {
     cureStore.players = JSON.parse(JSON.stringify(playerStore.players)); // 深拷貝資料
+    cureStore.players.forEach((player, index) => {
+      const excessFatigueReduction = Math.max(0, -player.excessFatigue); // 計算超出的疲勞減值
+      player.specialInjuryReduction = excessFatigueReduction; // 儲存到 specialInjuryReduction
+    });
     cureStore.saveToLocalStorage();
   }
   playerStore.players.forEach((_, index) => playerStore.clearPlayerData(index)); // 清空 playerStore
@@ -182,7 +102,6 @@ function endCombat() {
 
 <template>
   <div class="layout">
-    {{playerStore.activePlayerIndex}}
     <!-- 左側區塊 -->
     <div class="sidebar">
       <h2 class="text-xl font-bold mb-4">玩家狀態</h2>

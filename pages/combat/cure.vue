@@ -2,6 +2,7 @@
 import { ref, onMounted, watch } from 'vue';
 import { useCureStore } from '@/stores/cureStore';
 import { usePlayerStore } from '@/stores/playerStore'; // 新增引入 usePlayerStore
+import { message } from 'ant-design-vue'; // 引入 Ant Design 的訊息提示
 
 const activeTab = ref(0);
 const cureStore = useCureStore();
@@ -32,6 +33,10 @@ onMounted(() => {
   }
   activeTab.value = 0; // 設置第一個分頁為默認顯示
   initializeEntries();
+
+  // 確保在頁面初始化時設置監聽器
+  const currentEntries = cureStore.players[activeTab.value]?.symbolEntries || [];
+  setupEntryWatchers(currentEntries);
 });
 
 function initializeEntries() {
@@ -41,22 +46,19 @@ function initializeEntries() {
         entry.isHeadInjury = false; // 初始化 isHeadInjury 屬性
       }
     });
+
+    // 初始化時計算 totalInjury
+console.log(player.symbolEntries);
+
+    player.totalInjury = player.symbolEntries.reduce((sum, entry) => {
+      const match = ((entry.text.match(/-\d+/) && !entry.text.includes('💦') && !entry.text.includes('💫') && !entry.text.includes('🩸')))?entry.text.match(/-?\d+/):0;
+      return sum + (match ? parseInt(match[0], 10) : 0);
+    }, 0);
   });
 }
 
 function getSeverity(entryText) {
-  const bleedingMatch = entryText.match(/🩸(\d+)/);
-  if (bleedingMatch) {
-    const bleedingValue = parseInt(bleedingMatch[1]);
-    if (bleedingValue >= 1 && bleedingValue <= 3) {
-      return '輕度';
-    } else if (bleedingValue >= 4 && bleedingValue <= 6) {
-      return '中度';
-    } else if (bleedingValue >= 7) {
-      return '重度';
-    }
-  }
-
+  
   const injuryMatch = entryText.match(/-?\d+/);
   if (injuryMatch) {
     const injuryValue = parseInt(injuryMatch[0]);
@@ -73,14 +75,13 @@ function getSeverity(entryText) {
 }
 
 function filterRelevantEntries(entries) {
-  return entries.filter(entry => 
-    entry.text.includes('🩸') || 
-    (entry.text.match(/-\d+/) && !entry.text.includes('💦') && !entry.text.includes('💫'))
+  return entries.filter(entry =>     
+    (entry.text.match(/-\d+/) && !entry.text.includes('💦') && !entry.text.includes('💫') && !entry.text.includes('🩸'))
   );
 }
 
 function calculateRecovery(value, category, isHeadInjury, severity, entryText) {
-  const isBleeding = entryText.includes('🩸');
+
   const injuryMatch = entryText.match(/-?\d+/);
   const injuryValue = injuryMatch ? Math.abs(parseInt(injuryMatch[0])) : 0;
 
@@ -100,9 +101,6 @@ function calculateRecovery(value, category, isHeadInjury, severity, entryText) {
   if (severity === '中度') recoveryDays *= 5;
   if (severity === '重度') recoveryDays *= 10;
 
-  if (isBleeding) {
-    return { recoveryDays, dailyRecovery: 0 };
-  }
 
   let dailyRecovery = Math.ceil(injuryValue / recoveryDays);
 
@@ -119,8 +117,13 @@ function calculateRecovery(value, category, isHeadInjury, severity, entryText) {
   return { recoveryDays, dailyRecovery };
 }
 
-function updateInjuryCategory(playerIndex, entryIndex, category) {
-  cureStore.updateInjuryCategory(playerIndex, entryIndex, category);
+
+function updateIsHeadInjury(playerIndex, entryIndex, isHeadInjury) {
+  const player = cureStore.players[playerIndex];
+  if (player && player.symbolEntries[entryIndex]) {
+    player.symbolEntries[entryIndex].isHeadInjury = isHeadInjury; // 更新數據
+    cureStore.saveToLocalStorage(); // 儲存更新的數據
+  }
 }
 
 function resetCureStore() {
@@ -128,6 +131,41 @@ function resetCureStore() {
     cureStore.$state = { ...playerStore.$state }; // 重設為 playerStore 的狀態
     activeTab.value = playerStore.getActivePlayerIndex(); // 使用 getActivePlayerIndex 設定當前分頁
   }
+}
+
+function addSpecialInjury(playerIndex, injuryText) {
+  const player = cureStore.players[playerIndex];
+  const injuryValue = parseInt(injuryText, 10);
+
+  if (!injuryText || isNaN(injuryValue)) {
+    message.error('請輸入有效的數值！');
+    return;
+  }
+
+  if (injuryValue > player.excessFatigue) {
+    message.error('輸入的數值超過了特殊受傷減值的上限！');
+    return;
+  }
+
+  player.symbolEntries.push({
+    text: `-${injuryValue}`, // 將數值轉為負數並新增到 entry.text
+    value: "",
+    category: null,
+    isHeadInjury: false,
+    recovery: { recoveryDays: 0, dailyRecovery: 0 },
+  });
+
+  player.excessFatigue -= injuryValue; // 扣減特殊受傷減值
+
+  // 重新計算 totalInjury
+  player.totalInjury = player.symbolEntries.reduce((sum, entry) => {
+    const match = entry.text.match(/-?\d+/);
+    return sum + (match ? parseInt(match[0], 10) : 0);
+  }, 0);
+
+  cureStore.saveToLocalStorage(); // 儲存更新的 cureStore 狀態
+  newInjuryText.value = ''; // 清空輸入框
+  message.success('特殊受傷減值已成功新增！');
 }
 
 // 監聽每個 entry 的 category、isHeadInjury、entry.text 和 entry.value，並重新計算恢復數據
@@ -149,10 +187,12 @@ watch(
   () => activeTab.value,
   () => {
     const currentEntries = cureStore.players[activeTab.value]?.symbolEntries || [];
-    setupEntryWatchers(currentEntries);
+    setupEntryWatchers(currentEntries); // 當 activeTab 改變時重新設置監聽器
   },
-  { immediate: true }
+  { immediate: true } // 確保在頁面初始化時立即執行
 );
+
+const newInjuryText = ref('');
 </script>
 
 <template>
@@ -170,7 +210,6 @@ watch(
         >
           <div>{{ player.tabTitle }}</div>
           <div>受傷減值：{{ player.totalInjury }}</div>
-          <div>流血：{{ player.totalBleeding }}🩸/每輪</div>
         </li>
       </ul>
     </div>
@@ -179,10 +218,26 @@ watch(
     <div class="main-content">
       <div v-if="cureStore.players[activeTab]" class="injury-details">
         <h2 class="text-xl font-bold mb-4">傷勢分類</h2>
+        <div class="special-injury-section" v-if="cureStore.players[activeTab].excessFatigue">
+          <div class="flex items-center gap-4 mb-4">
+            <span>特殊受傷減值：{{ cureStore.players[activeTab].excessFatigue || 0 }}</span>
+            <a-input
+              v-model:value="newInjuryText"
+              placeholder="輸入拆分的受傷減值"
+              class="injury-input"
+            />
+            <button
+              @click="addSpecialInjury(activeTab, newInjuryText)"
+              class="add-injury-button"
+            >
+              新增
+            </button>
+          </div>
+        </div>
         <ul>
           <li
             v-for="(entry, index) in filterRelevantEntries(cureStore.players[activeTab].symbolEntries)"
-            :key="index"
+            :key="cureStore.players[activeTab].symbolEntries.indexOf(entry)"
             class="injury-entry"
           >
             <div class="flex items-center gap-4">
@@ -192,10 +247,14 @@ watch(
                 :options="injuryCategories"
                 placeholder="選擇類型"
                 class="injury-category-select"
-                @change="updateInjuryCategory(activeTab, index, $event)"
               />
               <span>{{ getSeverity(entry.text) }}</span>
-              <a-checkbox v-model="entry.isHeadInjury">頭部受傷</a-checkbox>
+              <a-switch
+                :checked="entry.isHeadInjury"
+                @change="updateIsHeadInjury(activeTab, cureStore.players[activeTab].symbolEntries.indexOf(entry), $event)"
+              >
+              </a-switch>
+              <span>頭部受傷</span>
               <a-input-number
                 v-model:value="entry.value"
                 placeholder="輸入數值"
@@ -274,6 +333,27 @@ watch(
 
 .reset-button:hover {
   background-color: #0056b3;
+}
+
+.special-injury-section {
+  margin-bottom: 20px;
+}
+
+.injury-input {
+  width: 300px;
+}
+
+.add-injury-button {
+  padding: 5px 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-injury-button:hover {
+  background-color: #218838;
 }
 
 .summary {

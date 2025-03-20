@@ -20,5 +20,10 @@ export default defineNuxtConfig({
   ],
   antd:{
     // Options
-  }
+  },
+  runtimeConfig: {
+    public: {
+      nodeEnv: process.env.NODE_ENV || '',
+    },
+  },
 })
