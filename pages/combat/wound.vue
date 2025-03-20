@@ -2,27 +2,28 @@
 import { ref, watch, onMounted } from 'vue';
 import { message } from 'ant-design-vue';
 import { usePlayerStore } from '@/stores/playerStore';
+import { useCureStore } from '@/stores/cureStore';
 
 const activeTab = ref(0);
 const playerStore = usePlayerStore();
+const cureStore = useCureStore();
 
 // 在組件掛載時加載數據並設置第一個分頁為默認顯示
 onMounted(() => {
-  playerStore.loadFromLocalStorage();
-  activeTab.value = 0; // 設置第一個分頁為默認顯示
+  if (typeof window !== 'undefined' && window.localStorage) {
+    activeTab.value = playerStore.activePlayerIndex; // 設置第一個分頁為默認顯示
+  }
 });
 
-// 監控 players 的變化，並同步到 localStorage
 watch(
-  () => playerStore.players,
-  () => {
-    playerStore.saveToLocalStorage();
-  },
-  { deep: true }
+  () => activeTab.value,
+  (newIndex) => {
+    playerStore.setActivePlayerIndex(newIndex); // 更新目前啟用的玩家分頁索引
+  }
 );
 
-function addEntry(playerIndex) {
-  const player = playerStore.players[playerIndex];
+function addEntry() {
+  const player = playerStore.players[playerStore.activePlayerIndex];
   const parsedResults = parseInput(player.inputText);
   if (parsedResults.symbols.length === 0) {
     message.warning('請輸入有效的傷勢描述');
@@ -169,10 +170,19 @@ function clearAll(playerIndex) {
 function updateTabTitle(playerIndex, newTitle) {
   playerStore.players[playerIndex].tabTitle = newTitle;
 }
+
+function endCombat() {
+  if (typeof window !== 'undefined' && window.localStorage) {
+    cureStore.players = JSON.parse(JSON.stringify(playerStore.players)); // 深拷貝資料
+    cureStore.saveToLocalStorage();
+  }
+  playerStore.players.forEach((_, index) => playerStore.clearPlayerData(index)); // 清空 playerStore
+}
 </script>
 
 <template>
   <div class="layout">
+    {{playerStore.activePlayerIndex}}
     <!-- 左側區塊 -->
     <div class="sidebar">
       <h2 class="text-xl font-bold mb-4">玩家狀態</h2>
@@ -192,7 +202,11 @@ function updateTabTitle(playerIndex, newTitle) {
 
     <!-- 中間區塊 -->
     <div class="main-content">
-      <a-button type="primary" class="mb-4 mt-4" @click="endTurn">結束回合</a-button>
+      <div class="flex flex-row">
+<div><a-button type="primary" class="mb-4 mt-4" @click="endTurn">結束回合</a-button></div>
+<div class="pl-4"><a-button type="primary" danger class="mb-4 mt-4" @click="endCombat">結束戰鬥</a-button></div>
+      </div>
+      
       <a-tabs v-model:activeKey="activeTab" type="card" class="player-tabs">
         <a-tab-pane
           v-for="(player, index) in playerStore.players"
@@ -230,7 +244,7 @@ function updateTabTitle(playerIndex, newTitle) {
             <h1 class="text-2xl font-bold mb-4">傷勢狀態記錄</h1>
             <a-input
               v-model:value="player.inputText"
-              @pressEnter="addEntry(index)"
+              @pressEnter="addEntry()"
               placeholder="輸入傷勢描述..."
               class="mb-4"
             />

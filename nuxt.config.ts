@@ -13,7 +13,11 @@ export default defineNuxtConfig({
   },
   devtools: {enabled: true},
   css: ['~/assets/css/main.css'],
-  modules: ['@ant-design-vue/nuxt', '@pinia/nuxt'],
+  modules: [
+    '@ant-design-vue/nuxt', 
+    '@pinia/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
+  ],
   antd:{
     // Options
   }

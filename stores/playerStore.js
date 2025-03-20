@@ -14,17 +14,9 @@ export const usePlayerStore = defineStore('playerStore', {
       totalInjury: 0,
       totalBleeding: 0,
     })),
+    activePlayerIndex: 0, // 新增 activePlayerIndex
   }),
   actions: {
-    loadFromLocalStorage() {
-      const savedPlayers = localStorage.getItem('players');
-      if (savedPlayers) {
-        this.players = JSON.parse(savedPlayers);
-      }
-    },
-    saveToLocalStorage() {
-      localStorage.setItem('players', JSON.stringify(this.players));
-    },
     clearPlayerData(playerIndex) {
       this.players[playerIndex] = {
         tabTitle: `玩家 ${playerIndex + 1}`,
@@ -39,5 +31,18 @@ export const usePlayerStore = defineStore('playerStore', {
         totalBleeding: 0,
       };
     },
+    updateInjuryCategory(playerIndex, entryIndex, category) {
+      this.players[playerIndex].symbolEntries[entryIndex].category = category;
+    },
+    setActivePlayerIndex(index) {
+      this.activePlayerIndex = index;
+    },
+    getActivePlayerIndex() {
+      return this.activePlayerIndex;
+    },
+    getActivePlayer() {
+      return this.players[this.activePlayerIndex]; // 新增方法，取得當前活躍玩家
+    },
   },
+  persist: true, // 啟用持久化
 });

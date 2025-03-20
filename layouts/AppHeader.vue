@@ -20,6 +20,9 @@
       <a-menu-item key="sheet-wound">
         <NuxtLink to="/combat/wound">傷勢紀錄表</NuxtLink>
       </a-menu-item>
+      <a-menu-item key="sheet-cure">
+        <NuxtLink to="/combat/cure">治療傷勢表</NuxtLink>
+      </a-menu-item>
         <a-sub-menu key="combat-table">
           <template #title>
             <span>相關表格</span>
