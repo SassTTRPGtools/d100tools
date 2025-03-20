@@ -76,7 +76,10 @@ const levelZeroDetails = computed(() => {
 // Watch for changes in tableData to set the default selectedSpellList
 watch(tableData, (newTableData) => {
   if (newTableData.length > 0) {
-    selectedSpellList.value = newTableData[0].spellList;
+    const currentSpellListExists = newTableData.some(row => row.spellList === selectedSpellList.value);
+    if (!currentSpellListExists) {
+      selectedSpellList.value = newTableData[0].spellList;
+    }
   }
 }, { immediate: true });
 
@@ -116,18 +119,23 @@ const exportFavorites = () => {
 };
 
 const selectFavoriteSpellList = (spellList) => {
+  let found = false;
   for (const category of spellOptions) {
     for (const option of category.options) {
       const spells = spellTables[option.value] || [];
-      if (spells.some(spell => spell.spellList === spellList)) {
+      if (spells.some(spell => spell.spellList === spellList)) {        
         selectedCategory.value = category.category;
-        selectedOption.value = option.value;
-        selectedSpellList.value = spellList;
-        return;
+        selectedOption.value = option.value;       
+        selectedSpellList.value = spellList;     
+        found = true;
+        break;
       }
     }
+    if (found) break;
   }
-  message.error('找不到該法術列表');
+  if (!found) {
+    message.error('找不到該法術列表');
+  }
 };
 </script>
 

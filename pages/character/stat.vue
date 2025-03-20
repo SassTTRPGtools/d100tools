@@ -34,6 +34,7 @@ const growthTable = ref([
 
 let growthAttempts = ref([]); // 記錄每次成長的結果
 const diceResults = ref([]); // 用於存儲擲骰結果
+const growthAttemptCount = ref(0); // 新增變數來記錄每次使用次數
 
 function resetGrowthAttempts() {
   // 還原成長過程中的變化
@@ -74,8 +75,11 @@ function applyGrowth(item) {
 
   console.log(`屬性成長: ${item.str}, 骰子: ${range.dice}, 結果: ${rollResult}, 新臨時值: ${newTempValue}`);
 
+  // 增加使用次數
+  growthAttemptCount.value++;
+
   // 如果成長次數達到 2 次，顯示完成訊息並清空選擇
-  if (growthAttempts.value.length >= 2) {
+  if (growthAttemptCount.value >= 2) {
     $swal.fire({
       title: "完成強化",
       text: "已完成此強化的屬性成長。",
@@ -83,7 +87,7 @@ function applyGrowth(item) {
     }).then(() => {
       selectedEnhancement.value = null; // 清空選擇
       enhancementCount.value--; // 減少強化次數
-      diceResults.value = []; // 清空擲骰結果
+      growthAttemptCount.value = 0; // 重置使用次數
     });
   }
 }
@@ -195,11 +199,13 @@ function clearStats() {
         delete item.enhancementUsedFor85; // 清空 enhancementUsedFor85
         delete item.enhancementUsedFor90; // 清空 enhancementUsedFor90
         delete item.enhancementUsedText; // 清空 enhancementUsedText
+        
       });
 
       // 重置強化次數
       enhancementCount.value = 2;
-
+      diceResults.value = [];
+      growthAttempts.value = [];
       $swal.fire({
         title: "清除!",
         text: "結果已清空。",
@@ -366,7 +372,7 @@ function copyStatsToClipboard() {
 
     <a-row justify="center" style="padding-top: 20px;">
       <!-- 左側區塊：顯示擲骰結果 -->
-      <a-col :span="6" v-if="selectedEnhancement === '4'" class="dice-results-container">
+      <a-col :span="6" v-if="selectedEnhancement === '4' || Object.keys(diceResults).length > 0" class="dice-results-container">
         <h3>擲骰結果</h3>
         <ul>
           <li v-for="(result, index) in diceResults" :key="index">{{ result }}</li>
