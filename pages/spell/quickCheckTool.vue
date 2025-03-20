@@ -8,11 +8,25 @@ const selectedOption = ref(spellOptions[0].options[0].value);
 const selectedSpellList = ref('');
 const favoriteSpellLists = ref([]);
 
-// 載入最愛法術列表
+// 載入最愛法術列表，檢查 URL 中是否有 favorites 參數
 onMounted(() => {
-  const savedFavorites = localStorage.getItem('favoriteSpellLists');
-  if (savedFavorites) {
-    favoriteSpellLists.value = JSON.parse(savedFavorites);
+  const urlParams = new URLSearchParams(window.location.search);
+  const favoritesParam = urlParams.get('favorites');
+  if (favoritesParam) {
+    try {
+      const importedFavorites = JSON.parse(decodeURIComponent(favoritesParam));
+      if (Array.isArray(importedFavorites)) {
+        favoriteSpellLists.value = importedFavorites;
+        localStorage.setItem('favoriteSpellLists', JSON.stringify(favoriteSpellLists.value));        
+      }
+    } catch (error) {
+      message.error('URL 中的最愛法術列表格式無效');
+    }
+  } else {
+    const savedFavorites = localStorage.getItem('favoriteSpellLists');
+    if (savedFavorites) {
+      favoriteSpellLists.value = JSON.parse(savedFavorites);
+    }
   }
 });
 
@@ -90,47 +104,14 @@ const clearFavorites = () => {
   message.success('已清除所有最愛');
 };
 
+// 修改導出最愛功能
 const exportFavorites = () => {
-  Modal.info({
-    title: '導出最愛法術列表',
-    content: h('div', [
-      h(Input.TextArea, {
-        value: JSON.stringify(favoriteSpellLists.value, null, 2),
-        readOnly: true,
-        rows: 10
-      })
-    ]),
-    onOk() {},
-  });
-};
-
-const importFavorites = () => {
-  let inputValue = '';
-  Modal.confirm({
-    title: '導入最愛法術列表',
-    content: h('div', [
-      h(Input.TextArea, {
-        placeholder: '請輸入 JSON 格式的最愛法術列表',
-        onChange: (e) => {
-          inputValue = e.target.value;
-        },
-        rows: 10
-      })
-    ]),
-    onOk() {
-      try {
-        const importedFavorites = JSON.parse(inputValue);
-        if (Array.isArray(importedFavorites)) {
-          favoriteSpellLists.value = importedFavorites;
-          localStorage.setItem('favoriteSpellLists', JSON.stringify(favoriteSpellLists.value));
-          message.success('導入成功');
-        } else {
-          message.error('無效的 JSON 格式');
-        }
-      } catch (error) {
-        message.error('無效的 JSON 格式');
-      }
-    },
+  const baseUrl = window.location.origin + window.location.pathname;
+  const favoritesUrl = `${baseUrl}?favorites=${encodeURIComponent(JSON.stringify(favoriteSpellLists.value))}`;
+  navigator.clipboard.writeText(favoritesUrl).then(() => {
+    message.success('URL 已複製');
+  }).catch(() => {
+    message.error('複製失敗');
   });
 };
 
@@ -187,9 +168,6 @@ const selectFavoriteSpellList = (spellList) => {
       </a-button>
       <a-button @click="exportFavorites" type="default" style="margin-bottom: 20px;">
         導出最愛
-      </a-button>
-      <a-button @click="importFavorites" type="default" style="margin-bottom: 20px;">
-        導入最愛
       </a-button>
     </div>
       </a-collapse-panel>
