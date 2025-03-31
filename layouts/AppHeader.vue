@@ -51,11 +51,11 @@
         <a-menu-item key="spell-tool">
           <NuxtLink to="/spell/quickCheckTool">法術快查工具</NuxtLink>
         </a-menu-item>
+        <a-menu-item key="spell-list">
+          <NuxtLink to="/spell/spellList">法術查詢</NuxtLink>
+        </a-menu-item>
         <a-menu-item key="spell-ritual">
           <NuxtLink to="/spell/ritualTool">儀式計算表</NuxtLink>
-        </a-menu-item>
-        <a-menu-item key="spell-list">
-          <NuxtLink to="/spell/spellList">法術列表</NuxtLink>
         </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="treasure">

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, h, watch } from 'vue';
+import { ref, computed, h, watch, nextTick } from 'vue';
 import { message, notification } from 'ant-design-vue';
 import PlayerStatus from '@/components/PlayerStatus.vue'; // 新增導入 PlayerStatus 組件
 import { atkTables, atkOptions, atkSizeTables } from '@/rolemaster/utils/attackTables.js';
@@ -7,9 +7,11 @@ import { critTables, critSeverityOptions, critKeyMapping, hitLocationMapping } f
 import { parseInput, calculatePlayerStats, calculateTotalReduction } from '@/utils/parser.js'; // 引入重複函數
 import { usePlayerStore } from '@/stores/playerStore';
 import { useCureStore } from '@/stores/cureStore';
+import { useFavoritesStore } from '@/stores/favoritesStore'; // 新增導入 favoritesStore
 
 const cureStore = useCureStore();
 const playerStore = usePlayerStore();
+const favoritesStore = useFavoritesStore(); // 使用 Pinia 的 favoritesStore
 const selectedCategory = ref(atkOptions[0].category);
 const selectedSubCategory = ref(atkOptions[0].options[0].value);
 const selectedAttackerSize = ref('Medium');
@@ -20,10 +22,6 @@ const critResult = ref('');
 const activeTab = ref(playerStore.activePlayerIndex); // 新增：控制目前啟用的分頁
 const applyToWound = ref(true); // 新增開關控制是否應用於傷勢紀錄表
 const enableAddToWound = ref(false); // 新增開關控制是否啟用 addToWound
-const favorites = ref({
-  player: [],
-  npc: []
-});
 
 onMounted(() => {
   if (typeof window !== 'undefined' && window.localStorage) {
@@ -221,18 +219,14 @@ function renderCritOutcomeCell(text) {
     'span',
     {
       style: { cursor: 'pointer' },
-      onClick: () => {
-        copyToClipboard(text);
-      },
+      onClick: () => copyToClipboard(text),
     },
     text
   );
 }
 
 function endTurn() {
-  playerStore.players.forEach(player => {
-    reduceDizzyStack(player);
-  });
+  playerStore.players.forEach(reduceDizzyStack);
 }
 
 function reduceDizzyStack(player) {
@@ -242,21 +236,26 @@ function reduceDizzyStack(player) {
     { regex: /(\d*)💫\[-25\]/, stack: 'dizzyStacks25' }
   ];
 
-  for (const priority of priorities) {
-    for (let i = 0; i < player.symbolEntries.length; i++) {
-      const match = player.symbolEntries[i].text.match(priority.regex);
-      if (match) {
-        let count = match[1] ? parseInt(match[1]) : 1;
-        if (count > 1) {
-          player.symbolEntries[i].text = player.symbolEntries[i].text.replace(/^\d*/, count - 1);
-        } else {
-          player.symbolEntries.splice(i, 1);
-        }
-        calculatePlayerStats(player);
-        return;
-      }
+  for (const { regex } of priorities) {
+    const entryIndex = player.symbolEntries.findIndex(entry => regex.test(entry.text));
+    if (entryIndex !== -1) {
+      updateDizzyStack(player, entryIndex, regex);
+      return;
     }
   }
+}
+
+function updateDizzyStack(player, entryIndex, regex) {
+  const entry = player.symbolEntries[entryIndex];
+  const match = entry.text.match(regex);
+  const count = match[1] ? parseInt(match[1]) : 1;
+
+  if (count > 1) {
+    entry.text = entry.text.replace(/^\d*/, count - 1);
+  } else {
+    player.symbolEntries.splice(entryIndex, 1);
+  }
+  calculatePlayerStats(player);
 }
 
 function endCombat() {
@@ -280,7 +279,7 @@ const addFavorite = (type) => {
     atValue: selectedATValue.value,
     targetSize: selectedTargetSize.value
   };
-  favorites.value[type].push(newFavorite);
+  favoritesStore.addFavorite(type, newFavorite); // 使用 Pinia 的方法
   message.success(`${type === 'player' ? '玩家' : 'NPC'} 我的最愛已新增`);
 };
 
@@ -291,11 +290,16 @@ const applyFavorite = (favorite) => {
       selectedCategory.value = category.category;
       const subCategory = category.options.find(option => option.value === favorite.subCategory);
       if (subCategory) {
-        selectedSubCategory.value = subCategory.value;
+        selectedSubCategory.value = ''; // 先清空以確保 Vue 監測到變更
+        nextTick(() => { // 使用 nextTick 確保 DOM 更新後再設置值
+          selectedSubCategory.value = subCategory.value;
+        });
         selectedAttackerSize.value = favorite.attackerSize;
         selectedATValue.value = favorite.atValue;
         selectedTargetSize.value = favorite.targetSize;
         found = true;
+        console.log('已套用我的最愛:', selectedSubCategory.value, selectedAttackerSize.value, selectedATValue.value, selectedTargetSize.value);
+
         break;
       }
     }
@@ -305,10 +309,9 @@ const applyFavorite = (favorite) => {
   }
 };
 
-// 新增清空我的最愛功能
+// 清空我的最愛功能
 const clearFavorites = () => {
-  favorites.value.player = [];
-  favorites.value.npc = [];
+  favoritesStore.clearFavorites(); // 使用 Pinia 的方法
   message.success('所有我的最愛已清空');
 };
 
@@ -352,7 +355,7 @@ watch(selectedCategory, (newCategory) => {
               v-for="option in atkOptions.find(option => option.category === selectedCategory)?.options || []"
               :key="option.value"
               :type="selectedSubCategory === option.value ? 'primary' : 'default'"
-              @click="selectedSubCategory = option.value"
+              @click="() => selectedSubCategory = option.value"
               style="margin-left: 10px"
             >
               {{ option.label }}
@@ -420,7 +423,7 @@ watch(selectedCategory, (newCategory) => {
       <a-collapse>
         <a-collapse-panel key="player" header="玩家我的最愛">
           <ul>
-            <li v-for="(favorite, index) in favorites.player" :key="'player-' + index">
+            <li v-for="(favorite, index) in favoritesStore.favorites.player" :key="'player-' + index">
               <a @click="applyFavorite(favorite)">
                 {{ atkOptions.find(option => option.category === favorite.category)?.options.find(sub => sub.value === favorite.subCategory)?.label || favorite.subCategory }}
                 ({{ atkSizeTables[favorite.attackerSize]?.label || favorite.attackerSize }})
@@ -430,7 +433,7 @@ watch(selectedCategory, (newCategory) => {
         </a-collapse-panel>
         <a-collapse-panel key="npc" header="NPC 我的最愛">
           <ul>
-            <li v-for="(favorite, index) in favorites.npc" :key="'npc-' + index">
+            <li v-for="(favorite, index) in favoritesStore.favorites.npc" :key="'npc-' + index">
               <a @click="applyFavorite(favorite)">
                 {{ atkOptions.find(option => option.category === favorite.category)?.options.find(sub => sub.value === favorite.subCategory)?.label || favorite.subCategory }}
                 ({{ atkSizeTables[favorite.attackerSize]?.label || favorite.attackerSize }})
