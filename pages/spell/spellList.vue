@@ -1,11 +1,7 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
-import { spellTables, spellOptions } from '@/rolemaster/utils/spellTables.js';
-import { Tabs, TabPane, Button, message, AutoComplete } from 'ant-design-vue';
-
-const selectedSpell = computed(() => {
-  return Object.values(spellTables).flat() || [];
-});
+import { ref, computed } from 'vue';
+import { spellTables } from '@/rolemaster/utils/spellTables.js';
+import { message, AutoComplete } from 'ant-design-vue';
 
 const searchQuery = ref('');
 
@@ -22,43 +18,27 @@ const formatDetails = (spell) => {
   return `${spell.level}. ${spell.spellName}（範圍：${spell.areaOfEffect}；持續時間：${spell.duration}；射程：${spell.range}；類型：${spell.type}）：${spell.details}`;
 };
 
-const tableData = computed(() => {
-  if (selectedSpell.value.length > 0) {
-    const data = selectedSpell.value.map(spell => ({
-      mainList: spell.mainList,
-      spellList: spell.spellList,
-      spellName: spell.spellName,
-      details: formatDetails(spell),
-      level: spell.level,
-    }));
-    return data;
-  }
-  return [];
-});
-
 const filteredTableData = computed(() => {
   const query = searchQuery.value.toLowerCase();
 
-  // 搜尋 spellTables 的所有內容
   const allSpells = Object.values(spellTables).flat();
-
   const baseData = allSpells.filter(spell => spell.level !== 0);
 
   if (query) {
     return baseData
       .filter(spell => {
-      const details = formatDetails(spell).toLowerCase();
-      const mainList = spell.mainList.toLowerCase();
-      const spellList = spell.spellList.toLowerCase();
-      return details.includes(query) || mainList.includes(query) || spellList.includes(query);
+        const details = formatDetails(spell).toLowerCase();
+        const mainList = spell.mainList.toLowerCase();
+        const spellList = spell.spellList.toLowerCase();
+        return details.includes(query) || mainList.includes(query) || spellList.includes(query);
       })
       .map(spell => ({
-      mainList: spell.mainList,
-      spellList: spell.spellList,
-      details: formatDetails(spell),
-      level: spell.level,
+        mainList: spell.mainList,
+        spellList: spell.spellList,
+        details: formatDetails(spell),
+        level: spell.level,
       }));
-    }
+  }
 
   return baseData.map(spell => ({
     mainList: spell.mainList,
@@ -71,7 +51,7 @@ const filteredTableData = computed(() => {
 const copyToClipboard = (text) => {
   navigator.clipboard.writeText(text).then(() => {
     message.success('已複製');
-  }).catch(err => {
+  }).catch(() => {
     message.error('複製失敗');
   });
 };
