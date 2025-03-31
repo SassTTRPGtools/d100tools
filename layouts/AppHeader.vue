@@ -58,6 +58,12 @@
           <NuxtLink to="/spell/spellList">法術列表</NuxtLink>
         </a-menu-item>
       </a-sub-menu>
+      <a-sub-menu key="treasure">
+        <template #title>
+          <span>寶藏法則</span>
+        </template>
+
+      </a-sub-menu>
       <a-sub-menu key="experimental">
         <template #title>
           <span>實驗功能</span>

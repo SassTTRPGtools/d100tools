@@ -18,8 +18,9 @@ export const usePlayerStore = defineStore('playerStore', {
   }),
   actions: {
     clearPlayerData(playerIndex) {
+      const tabTitle = this.players[playerIndex].tabTitle; // 保留 tabTitle
       this.players[playerIndex] = {
-        tabTitle: `玩家 ${playerIndex + 1}`,
+        tabTitle, // 使用保留的 tabTitle
         inputText: '',
         symbolEntries: [],
         dizzyStacks75: 0,

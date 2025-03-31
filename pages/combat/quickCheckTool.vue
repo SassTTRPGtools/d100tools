@@ -19,7 +19,11 @@ const attackRoll = ref('');
 const critResult = ref('');
 const activeTab = ref(playerStore.activePlayerIndex); // 新增：控制目前啟用的分頁
 const applyToWound = ref(true); // 新增開關控制是否應用於傷勢紀錄表
-
+const enableAddToWound = ref(false); // 新增開關控制是否啟用 addToWound
+const favorites = ref({
+  player: [],
+  npc: []
+});
 
 onMounted(() => {
   if (typeof window !== 'undefined' && window.localStorage) {
@@ -28,12 +32,6 @@ onMounted(() => {
   playerStore.players.forEach(player => {
     calculatePlayerStats(player); // 自動計算玩家狀態
   });
-});
-
-
-const subCategories = computed(() => {
-  const category = atkOptions.find(option => option.category === selectedCategory.value);
-  return category ? category.options : [];
 });
 
 const tableData = ref([]);
@@ -165,7 +163,7 @@ const addRow = () => {
     : `小 ${sizeDifference.value} 級`;
 
   const newRow = {
-    attackType: subCategories.value.find(option => option.value === selectedSubCategory.value).label,
+    attackType: atkOptions.find(option => option.category === selectedCategory.value)?.options.find(sub => sub.value === selectedSubCategory.value)?.label || selectedSubCategory.value,
     attackerSize: atkSizeTables[selectedAttackerSize.value].label,
     atValue: selectedATValue.value,
     targetSize: atkSizeTables[selectedTargetSize.value].label,
@@ -181,8 +179,6 @@ const addRow = () => {
 const clearData = () => {
   tableData.value = [];
 };
-
-
 
 function addToWound(entry) {
   if (playerStore.activePlayerIndex !== null) {
@@ -213,7 +209,9 @@ function copyToClipboard(text) {
         description: `已複製內容: ${text}`,
         placement: 'topRight',
       });
-      addToWound(text);
+      if (enableAddToWound.value) { // 根據開關決定是否執行 addToWound
+        addToWound(text);
+      }
     });
   }
 }
@@ -231,12 +229,10 @@ function renderCritOutcomeCell(text) {
   );
 }
 
-
 function endTurn() {
   playerStore.players.forEach(player => {
     reduceDizzyStack(player);
   });
-  
 }
 
 function reduceDizzyStack(player) {
@@ -275,6 +271,47 @@ function endCombat() {
   playerStore.players.forEach((_, index) => playerStore.clearPlayerData(index)); // 清空 playerStore
 }
 
+// 新增我的最愛功能
+const addFavorite = (type) => {
+  const newFavorite = {
+    category: selectedCategory.value,
+    subCategory: selectedSubCategory.value,
+    attackerSize: selectedAttackerSize.value,
+    atValue: selectedATValue.value,
+    targetSize: selectedTargetSize.value
+  };
+  favorites.value[type].push(newFavorite);
+  message.success(`${type === 'player' ? '玩家' : 'NPC'} 我的最愛已新增`);
+};
+
+const applyFavorite = (favorite) => {
+  let found = false;
+  for (const category of atkOptions) {
+    if (category.category === favorite.category) {
+      selectedCategory.value = category.category;
+      const subCategory = category.options.find(option => option.value === favorite.subCategory);
+      if (subCategory) {
+        selectedSubCategory.value = subCategory.value;
+        selectedAttackerSize.value = favorite.attackerSize;
+        selectedATValue.value = favorite.atValue;
+        selectedTargetSize.value = favorite.targetSize;
+        found = true;
+        break;
+      }
+    }
+  }
+  if (!found) {
+    message.error('找不到該我的最愛設定');
+  }
+};
+
+// 新增清空我的最愛功能
+const clearFavorites = () => {
+  favorites.value.player = [];
+  favorites.value.npc = [];
+  message.success('所有我的最愛已清空');
+};
+
 // 監聽 selectedCategory 的變化，並自動更新 selectedSubCategory
 watch(selectedCategory, (newCategory) => {
   const category = atkOptions.find(option => option.category === newCategory);
@@ -296,6 +333,13 @@ watch(selectedCategory, (newCategory) => {
     />
     <!-- 中間區塊 -->
     <div class="container">
+      <!-- 新增開關 -->
+      <a-switch
+        v-model:checked="enableAddToWound"
+        checked-children="啟用傷勢紀錄"
+        un-checked-children="停用傷勢紀錄"
+        style="margin-bottom: 20px"
+      />
       <div class="controls-container">
         <div class="select-group">
           <a-select v-model:value="selectedCategory" style="width: 200px">
@@ -305,7 +349,7 @@ watch(selectedCategory, (newCategory) => {
           </a-select>
           <div class="button-group">
             <a-button
-              v-for="option in subCategories"
+              v-for="option in atkOptions.find(option => option.category === selectedCategory)?.options || []"
               :key="option.value"
               :type="selectedSubCategory === option.value ? 'primary' : 'default'"
               @click="selectedSubCategory = option.value"
@@ -354,7 +398,7 @@ watch(selectedCategory, (newCategory) => {
             { title: '兩者差距', dataIndex: 'sizeDifferenceText', key: 'sizeDifferenceText' , width: 120 },
             { title: '攻擊值', dataIndex: 'attackRoll', key: 'attackRoll', width: 80  },
             { title: '重擊值', dataIndex: 'critResult', key: 'critResult', width: 80  },
-            { title: '攻擊結果', dataIndex: 'attackOutcome', key: 'attackOutcome', width: 100 },
+            { title: '傷害', dataIndex: 'attackOutcome', key: 'attackOutcome', width: 100 },
             { title: '重擊結果', dataIndex: 'critOutcome', key: 'critOutcome', customRender: ({ text }) => renderCritOutcomeCell(text) }
           ]"
           rowKey="attackType"
@@ -362,6 +406,39 @@ watch(selectedCategory, (newCategory) => {
           bordered
         />
       </div>
+    </div>
+    <!-- 右側區塊 -->
+    <div class="favorites-container">
+      <div class="favorites-header">
+        <h3>新增我的最愛</h3>
+        <div class="button-row">          
+          <a-button type="primary" @click="addFavorite('player')">玩家</a-button>
+          <a-button type="primary" @click="addFavorite('npc')">NPC</a-button>
+          <a-button type="primary" danger @click="clearFavorites">清空最愛</a-button>
+        </div>
+      </div>
+      <a-collapse>
+        <a-collapse-panel key="player" header="玩家我的最愛">
+          <ul>
+            <li v-for="(favorite, index) in favorites.player" :key="'player-' + index">
+              <a @click="applyFavorite(favorite)">
+                {{ atkOptions.find(option => option.category === favorite.category)?.options.find(sub => sub.value === favorite.subCategory)?.label || favorite.subCategory }}
+                ({{ atkSizeTables[favorite.attackerSize]?.label || favorite.attackerSize }})
+              </a>
+            </li>
+          </ul>
+        </a-collapse-panel>
+        <a-collapse-panel key="npc" header="NPC 我的最愛">
+          <ul>
+            <li v-for="(favorite, index) in favorites.npc" :key="'npc-' + index">
+              <a @click="applyFavorite(favorite)">
+                {{ atkOptions.find(option => option.category === favorite.category)?.options.find(sub => sub.value === favorite.subCategory)?.label || favorite.subCategory }}
+                ({{ atkSizeTables[favorite.attackerSize]?.label || favorite.attackerSize }})
+              </a>
+            </li>
+          </ul>
+        </a-collapse-panel>
+      </a-collapse>
     </div>
   </div>
 </template>
@@ -402,5 +479,47 @@ watch(selectedCategory, (newCategory) => {
 .info-card {
   margin-bottom: 20px;
   text-align: center;
+}
+
+.favorites-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 置中 */
+  width: 20%;
+  padding: 20px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.favorites-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center; /* 按鈕置中 */
+  margin-top: 10px;
+}
+
+.favorites-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.favorites-list li {
+  margin-bottom: 5px;
+}
+
+.favorites-list a {
+  color: #1890ff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.ant-collapse {
+  width: 100%;
 }
 </style>
