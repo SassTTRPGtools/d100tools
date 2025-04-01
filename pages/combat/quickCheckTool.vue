@@ -169,7 +169,7 @@ const addRow = () => {
     attackRoll: attackRoll.value,
     critResult: critResult.value,
     attackOutcome: attackOutcome,
-    critOutcome: critOutcome
+    critOutcome: "✊"+attackOutcome+"🔷"+ critOutcome
   };
   tableData.value.unshift(newRow); // 新增結果在最前面
 };
@@ -350,17 +350,15 @@ watch(selectedCategory, (newCategory) => {
               {{ option.category }}
             </a-select-option>
           </a-select>
-          <div class="button-group">
-            <a-button
+          <a-select v-model:value="selectedSubCategory" style="width: 400px">
+            <a-select-option
               v-for="option in atkOptions.find(option => option.category === selectedCategory)?.options || []"
               :key="option.value"
-              :type="selectedSubCategory === option.value ? 'primary' : 'default'"
-              @click="() => selectedSubCategory = option.value"
-              style="margin-left: 10px"
+              :value="option.value"
             >
               {{ option.label }}
-            </a-button>
-          </div>
+            </a-select-option>
+          </a-select>
         </div>
         <div class="select-group">
           <a-select v-model:value="selectedAttackerSize" style="width: 200px">
@@ -401,8 +399,7 @@ watch(selectedCategory, (newCategory) => {
             { title: '兩者差距', dataIndex: 'sizeDifferenceText', key: 'sizeDifferenceText' , width: 120 },
             { title: '攻擊值', dataIndex: 'attackRoll', key: 'attackRoll', width: 80  },
             { title: '重擊值', dataIndex: 'critResult', key: 'critResult', width: 80  },
-            { title: '傷害', dataIndex: 'attackOutcome', key: 'attackOutcome', width: 100 },
-            { title: '重擊結果', dataIndex: 'critOutcome', key: 'critOutcome', customRender: ({ text }) => renderCritOutcomeCell(text) }
+            { title: '傷害結果', dataIndex: 'critOutcome', key: 'critOutcome', customRender: ({ text }) => renderCritOutcomeCell(text) }
           ]"
           rowKey="attackType"
           :pagination="false"

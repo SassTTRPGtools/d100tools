@@ -1,13 +1,22 @@
 <script setup>
-import { ref, computed, watchEffect } from 'vue';
+import { ref, computed, watchEffect, watch } from 'vue';
 import { atkTables, atkOptions, atkSizeTables } from '@/rolemaster/utils/attackTables.js';
 import { critSeverityOptions } from '@/rolemaster/utils/critTables.js';
 
-const selectedCategory = ref(atkOptions[0].options[0].value);
+const selectedCategory = ref(atkOptions[0].category);
+const selectedSubCategory = ref(atkOptions[0].options[0].value);
 const selectedSize = ref('Medium'); // 預設為中型
 
+// 監聽 selectedCategory 的變化，並自動更新 selectedSubCategory
+watch(selectedCategory, (newCategory) => {
+  const category = atkOptions.find(option => option.category === newCategory);
+  if (category && category.options.length > 0) {
+    selectedSubCategory.value = category.options[0].value;
+  }
+});
+
 const selectedTableData = computed(() => {
-  return atkTables[selectedCategory.value];
+  return atkTables[selectedSubCategory.value];
 });
 
 const getCritSeverity = (description, size) => {
@@ -75,7 +84,7 @@ const images = import.meta.glob('/public/ATKTableImage/*.webp', { query: '?url',
 const imageSrc = ref('');
 
 watchEffect(async () => {
-  const imageName = selectedCategory.value.replace(/\s+/g, '') + '.webp';
+  const imageName = selectedSubCategory.value.replace(/\s+/g, '') + '.webp';
   if (images[`/public/ATKTableImage/${imageName}`]) {
     imageSrc.value = await images[`/public/ATKTableImage/${imageName}`]();
   } else {
@@ -87,20 +96,22 @@ watchEffect(async () => {
 <template>
   <div class="container">
     <div class="controls-container">
-      <div class="button-container">
-        <div v-for="category in atkOptions" :key="category.category">
-          <h3>{{ category.category }}</h3>
-          <div class="button-group">
-            <a-button
-              v-for="option in category.options"
-              :key="option.value"
-              @click="selectedCategory = option.value"
-              :type="selectedCategory === option.value ? 'primary' : 'default'"
-            >
-              {{ option.label }}
-            </a-button>
-          </div>
-        </div>
+      <div class="select-group">
+        <!-- 改為下拉選單 -->
+        <a-select v-model:value="selectedCategory" style="width: 200px">
+          <a-select-option v-for="option in atkOptions" :key="option.category" :value="option.category">
+            {{ option.category }}
+          </a-select-option>
+        </a-select>
+        <a-select v-model:value="selectedSubCategory" style="width: 400px">
+          <a-select-option
+            v-for="option in atkOptions.find(option => option.category === selectedCategory)?.options || []"
+            :key="option.value"
+            :value="option.value"
+          >
+            {{ option.label }}
+          </a-select-option>
+        </a-select>
       </div>
     </div>
 
@@ -149,6 +160,12 @@ watchEffect(async () => {
   align-items: center;
   justify-content: center;
   padding-top: 20px;
+}
+
+.select-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .button-container {

@@ -86,11 +86,11 @@ const atkOptions = [
     options: [
       { value: 'BoltFire', label: '火焰箭' },
       { value: 'BoltIce', label: '冰箭術' },
-      { value: 'BoltLightning', label: '閃電箭' },
+      { value: 'BoltLightning', label: '閃電箭/電擊箭' },
       { value: 'BoltWater', label: '水箭術' },
       { value: 'BallFire', label: '火球' },
       { value: 'BallCold', label: '冰凍球' },
-      { value: 'BallLightning', label: '閃電球' }
+      { value: 'BallLightning', label: '閃電球/電擊球' }
     ]
   },
   {
@@ -100,23 +100,23 @@ const atkOptions = [
       { value: 'Bite', label: '啃咬' },
       { value: 'Claw', label: '爪抓' },
       { value: 'Horn', label: '角擊' },
-      { value: 'Stinger', label: '刺擊' },
+      { value: 'Stinger', label: '刺擊/飛鏢(-1)/吹箭(-1)' },
       { value: 'UnarmedStrikes', label: '無武裝打擊' },
       { value: 'UnarmedSweeps', label: '無武裝橫掃' },
-      { value: 'Grapple', label: '擒拿' },
+      { value: 'Grapple', label: '擒拿/摔跤/小型網(-1)/網子/大型網(+1)' },
       { value: 'Ram', label: '撞擊' },
       { value: 'Trample', label: '踐踏' },
       { value: 'Crush', label: '粉碎' },
-      { value: 'Rock', label: '石頭' }
+      { value: 'Rock', label: '石頭/小石頭(-1)/大石頭(+1)' }
     ]
   },
   {
     category: '遠程武器類',
     options: [
       { value: 'BowLong', label: '長弓' },
-      { value: 'BowShort', label: '短弓' },
-      { value: 'Sling', label: '投石索' },
-      { value: 'Crossbow', label: '十字弩' },
+      { value: 'BowShort', label: '短弓/複合弓' },
+      { value: 'Sling', label: '投石索/投石仗(+1)/彈弓(-1)' },
+      { value: 'Crossbow', label: '輕弩/手弩(-1)/重弩(+1)' },
       { value: 'Bola', label: '繩球' }
     ]
   },
@@ -124,20 +124,20 @@ const atkOptions = [
     category: '近戰武器類',
     options: [
       { value: 'Dagger', label: '匕首' },
-      { value: 'Rapier', label: '刺劍' },
-      { value: 'ArmingSword', label: '直劍' },
-      { value: 'Broadsword', label: '闊劍' },
-      { value: 'Falchion', label: '直刀' },
-      { value: 'Scimitar', label: '彎刀' },
-      { value: 'FightingStick', label: '單手棍' },
-      { value: 'Club', label: '棍棒' },
-      { value: 'Mace', label: '錘子' },
-      { value: 'WarHammer', label: '戰鎚' },
-      { value: 'BattleAxe', label: '戰斧' },
-      { value: 'Flail', label: '連枷' },
-      { value: 'Spear', label: '矛' },
+      { value: 'Rapier', label: '刺劍/銳劍(-1)' },
+      { value: 'ArmingSword', label: '直劍/短劍(-1)/長劍(+1)' },
+      { value: 'Broadsword', label: '闊劍/大劍(+1)/長柄刀(+1)' },
+      { value: 'Falchion', label: '直刀/大直刀(+1)/砍刀(-1)' },
+      { value: 'Scimitar', label: '彎刀/長彎刀(+1)' },
+      { value: 'FightingStick', label: '單手棍/輕棍(-1)/長棍(+1)' },
+      { value: 'Club', label: '棍棒/短棒(-1)/投擲棍(-1)/巨棍(+1)' },
+      { value: 'Mace', label: '錘子/輕錘(-1)/巨錘(+1)' },
+      { value: 'WarHammer', label: '戰鎚/軍用鶴嘴錘(+1)/長柄斧(+1)' },
+      { value: 'BattleAxe', label: '戰斧/手斧(-1)/巨斧(+1)/斧槍(+1)' },
+      { value: 'Flail', label: '連枷/輕型連枷(-1)/重型連枷(+1)' },
+      { value: 'Spear', label: '矛/標槍(-1)/2H-矛(+1)/長矛(+1)/斧槍(+1)/長柄斧(+1)' },
       { value: 'Whip', label: '鞭子' },
-      { value: 'Shield', label: '盾牌' }
+      { value: 'Shield', label: '標準盾/小盾(-1)/大盾/牆盾' }
     ]
   }
 ];
