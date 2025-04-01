@@ -1,6 +1,8 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { fumbleJson, fumbleOptions } from '@/rolemaster/utils/fumbleTables.js';
+import { notification } from 'ant-design-vue';
+import { h } from 'vue';
 
 const meleeCategories = ['OneHandedWeapons', 'TwoHandedWeapons', 'Animal', 'MountedCombat', 'Unarmed'];
 const rangedCategories = ['BowsAndCrossbows', 'Sling', 'Throwing', 'ElementalBolt', 'ElementalSphereCone'];
@@ -30,6 +32,36 @@ const selectedTableData = computed(() => {
   return data;
 });
 
+function isClient() {
+  return typeof window !== 'undefined';
+}
+
+function copyToClipboard(text) {
+  if (isClient()) {
+    navigator.clipboard.writeText(text).then(() => {
+      console.log('Copied to clipboard:', text);
+      notification.success({
+        message: '複製成功',
+        description: `已複製內容: ${text}`,
+        placement: 'topRight',
+      });
+    });
+  }
+}
+
+function renderCell(text) {
+  return h(
+    'span',
+    {
+      style: { cursor: 'pointer' },
+      onClick: () => {
+        copyToClipboard(text);
+      },
+    },
+    text
+  );
+}
+
 const tableColumns = computed(() => {
   const categories = selectedType.value ? meleeCategories : rangedCategories;
   return [
@@ -38,7 +70,7 @@ const tableColumns = computed(() => {
       title: fumbleOptions.find(option => option.value === category).label,
       dataIndex: category,
       key: category,
-      customCell: (record) => ({ children: record[category] || '' })
+      customRender: ({ text }) => text ? renderCell(text) : ''
     }))
   ];
 });
