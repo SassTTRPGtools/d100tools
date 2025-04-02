@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, h, watch, nextTick } from 'vue';
+import { ref, computed, h, watch, nextTick, onMounted } from 'vue';
 import { message, notification } from 'ant-design-vue';
 import PlayerStatus from '@/components/PlayerStatus.vue'; // 新增導入 PlayerStatus 組件
 import { atkTables, atkOptions, atkSizeTables } from '@/rolemaster/utils/attackTables.js';
@@ -30,6 +30,19 @@ onMounted(() => {
   playerStore.players.forEach(player => {
     calculatePlayerStats(player); // 自動計算玩家狀態
   });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const dataParam = urlParams.get('data');
+  if (dataParam) {
+    const parsedData = JSON.parse(decodeURIComponent(dataParam));
+    if (parsedData.players) {
+      playerStore.players = parsedData.players;
+    }
+    if (parsedData.favorites) {
+      favoritesStore.favorites = parsedData.favorites;
+    }
+    message.success('已從連結載入玩家狀態和我的最愛');
+  }
 });
 
 const tableData = ref([]);
@@ -315,6 +328,25 @@ const clearFavorites = () => {
   message.success('所有我的最愛已清空');
 };
 
+function saveAndCopyLink() {
+  const dataToSave = {
+    players: playerStore.players,
+    favorites: favoritesStore.favorites,
+  };
+  const jsonString = encodeURIComponent(JSON.stringify(dataToSave));
+  const link = `${window.location.origin}${window.location.pathname}?data=${jsonString}`;
+  
+  if (isClient()) {
+    navigator.clipboard.writeText(link).then(() => {
+      notification.success({
+        message: '連結已複製',
+        description: '玩家狀態和我的最愛已儲存並複製到剪貼簿',
+        placement: 'topRight',
+      });
+    });
+  }
+}
+
 // 監聽 selectedCategory 的變化，並自動更新 selectedSubCategory
 watch(selectedCategory, (newCategory) => {
   const category = atkOptions.find(option => option.category === newCategory);
@@ -343,6 +375,7 @@ watch(selectedCategory, (newCategory) => {
         un-checked-children="停用傷勢紀錄"
         style="margin-bottom: 20px"
       />
+      <a-button type="default" @click="saveAndCopyLink">儲存並複製連結</a-button>
       <div class="controls-container">
         <div class="select-group">
           <a-select v-model:value="selectedCategory" style="width: 200px">
@@ -414,7 +447,7 @@ watch(selectedCategory, (newCategory) => {
         <div class="button-row">          
           <a-button type="primary" @click="addFavorite('player')">玩家</a-button>
           <a-button type="primary" @click="addFavorite('npc')">NPC</a-button>
-          <a-button type="primary" danger @click="clearFavorites">清空最愛</a-button>
+          <a-button type="primary" danger @click="clearFavorites">清空最愛</a-button>          
         </div>
       </div>
       <a-collapse>
