@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, h, watch, nextTick, onMounted } from 'vue';
-import { message, notification } from 'ant-design-vue';
+import { message, notification, Modal } from 'ant-design-vue';
 import PlayerStatus from '@/components/PlayerStatus.vue'; // 新增導入 PlayerStatus 組件
 import { atkTables, atkOptions, atkSizeTables } from '@/rolemaster/utils/attackTables.js';
 import { critTables, critSeverityOptions, critKeyMapping, hitLocationMapping } from '@/rolemaster/utils/critTables.js';
@@ -22,6 +22,19 @@ const critResult = ref('');
 const activeTab = ref(playerStore.activePlayerIndex); // 新增：控制目前啟用的分頁
 const applyToWound = ref(true); // 新增開關控制是否應用於傷勢紀錄表
 const enableAddToWound = ref(false); // 新增開關控制是否啟用 addToWound
+
+const isModalVisible = ref(false); // 控制外跳視窗的顯示
+const jsonInput = ref(''); // 儲存用戶輸入的 JSON
+
+function openJsonModal() {
+  isModalVisible.value = true;
+}
+
+function handleJsonSubmit() {
+  loadJSON(jsonInput.value);
+  isModalVisible.value = false;
+  jsonInput.value = ''; // 清空輸入框
+}
 
 onMounted(() => {
   if (typeof window !== 'undefined' && window.localStorage) {
@@ -220,10 +233,37 @@ function copyToClipboard(text) {
         description: `已複製內容: ${text}`,
         placement: 'topRight',
       });
-      if (enableAddToWound.value) { // 根據開關決定是否執行 addToWound
-        addToWound(text);
-      }
     });
+  }
+}
+
+function saveAndCopyJSON() {
+  const dataToSave = {
+    players: playerStore.players,
+    favorites: favoritesStore.favorites,
+  };
+  const jsonString = JSON.stringify(dataToSave, null, 2); // 格式化 JSON
+  copyToClipboard(jsonString);
+  notification.success({
+    message: 'JSON 已複製',
+    description: '玩家狀態和我的最愛已儲存並複製到剪貼簿',
+    placement: 'topRight',
+  });
+}
+
+function loadJSON(jsonString) {
+  try {
+    const parsedData = JSON.parse(jsonString);
+    if (parsedData.players) {
+      playerStore.players = parsedData.players;
+    }
+    if (parsedData.favorites) {
+      favoritesStore.favorites = parsedData.favorites;
+    }
+    message.success('已成功載入 JSON 資料');
+  } catch (error) {
+    message.error('載入 JSON 失敗，請檢查格式是否正確');
+    console.error('JSON 載入錯誤:', error);
   }
 }
 
@@ -328,25 +368,6 @@ const clearFavorites = () => {
   message.success('所有我的最愛已清空');
 };
 
-function saveAndCopyLink() {
-  const dataToSave = {
-    players: playerStore.players,
-    favorites: favoritesStore.favorites,
-  };
-  const jsonString = encodeURIComponent(JSON.stringify(dataToSave));
-  const link = `${window.location.origin}${window.location.pathname}?data=${jsonString}`;
-  
-  if (isClient()) {
-    navigator.clipboard.writeText(link).then(() => {
-      notification.success({
-        message: '連結已複製',
-        description: '玩家狀態和我的最愛已儲存並複製到剪貼簿',
-        placement: 'topRight',
-      });
-    });
-  }
-}
-
 // 監聽 selectedCategory 的變化，並自動更新 selectedSubCategory
 watch(selectedCategory, (newCategory) => {
   const category = atkOptions.find(option => option.category === newCategory);
@@ -375,7 +396,23 @@ watch(selectedCategory, (newCategory) => {
         un-checked-children="停用傷勢紀錄"
         style="margin-bottom: 20px"
       />
-      <a-button type="default" @click="saveAndCopyLink">儲存並複製連結</a-button>
+      <div class="button-row">
+        <a-button type="default" @click="saveAndCopyJSON">複製 JSON</a-button>
+        <div style="width: 20px; display: inline-block;"></div>
+        <a-button type="default" @click="openJsonModal">載入 JSON</a-button>
+      </div>
+      <a-modal
+        v-model:visible="isModalVisible"
+        title="載入 JSON"
+        @ok="handleJsonSubmit"
+        @cancel="() => { isModalVisible = false; jsonInput = ''; }"
+      >
+        <a-textarea
+          v-model:value="jsonInput"
+          rows="10"
+          placeholder="請輸入 JSON 資料"
+        />
+      </a-modal>
       <div class="controls-container">
         <div class="select-group">
           <a-select v-model:value="selectedCategory" style="width: 200px">
@@ -532,9 +569,9 @@ watch(selectedCategory, (newCategory) => {
 
 .button-row {
   display: flex;
-  gap: 10px;
-  justify-content: center; /* 按鈕置中 */
-  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .favorites-list ul {
