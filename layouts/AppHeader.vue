@@ -62,7 +62,9 @@
         <template #title>
           <span>寶藏法則</span>
         </template>
-
+        <a-menu-item key="treasure-craft">
+          <NuxtLink to="/treasure/craft">煉金製作表</NuxtLink>
+        </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="experimental">
         <template #title>

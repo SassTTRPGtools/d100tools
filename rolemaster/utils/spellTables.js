@@ -110,4 +110,34 @@ const spellOptions = [
   },
 ];
 
-export { spellTables, spellOptions };
+const CraftSpellTables = {
+  SanctifierBase: {
+  ClericBase: ClericBaseJson,
+  ClosedChanneling: ClosedChannelingJson,
+  DruidBase: DruidBaseJson,
+  EvilChanneling: EvilChannelingJson,
+  OpenChanneling: OpenChannelingJson,
+  PaladinBase: PaladinBaseJson,
+  RangerBase: RangerBaseJson,
+},
+AdeptBase: {
+  BardBase: BardBaseJson,
+  ClosedEssence: ClosedEssenceJson,
+  DabblerBase: DabblerBaseJson,
+  EvilEssence: EvilEssenceJson,
+  IllusionistBase: IllusionistBaseJson,
+  MagicianBase: MagicianBaseJson,
+  OpenEssence: OpenEssenceJson,
+},
+PsychographerBase: {
+  ClosedMentalism: ClosedMentalismJson,
+  EvilMentalism: EvilMentalismJson,
+  LayHealerBase: LayHealerBaseJson,
+  MagentBase: MagentBaseJson,
+  MentalistBase: MentalistBaseJson,
+  MonkBase: MonkBaseJson,
+  OpenMentalism: OpenMentalismJson,
+},
+};
+
+export { spellTables, spellOptions,CraftSpellTables };
