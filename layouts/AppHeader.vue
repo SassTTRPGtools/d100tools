@@ -65,6 +65,9 @@
         <a-menu-item key="treasure-craft">
           <NuxtLink to="/treasure/craft">煉金製作表</NuxtLink>
         </a-menu-item>
+        <a-menu-item key="treasure-item">
+          <NuxtLink to="/treasure/item">冒險裝備</NuxtLink>
+        </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="experimental">
         <template #title>
