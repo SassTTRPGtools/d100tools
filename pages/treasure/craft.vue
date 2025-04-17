@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { spellTables, CraftSpellTables } from '@/rolemaster/utils/spellTables.js';
 
 // 初始值設定
@@ -18,6 +18,7 @@ const styleSpellOptions = ref([]);
 const otherSpellOptions = ref([]);
 const tooltipContent = ref('');
 const dynamicOtherSpells = ref([{ id: Date.now(), selectedSpells: [] }]);
+const dynamicStyleSpells = ref([{ id: Date.now(), selectedSpells: [] }]);
 
 // 工具函數
 const padLevel = (level) => level.toString().padStart(2, '0');
@@ -46,16 +47,20 @@ const initializeOptions = (base) => {
   updateSpellOptions(base, spellTables, craftingSpellOptions, spell => spell.spellName?.includes('#'));
   updateSpellOptions(base, spellTables, styleSpellOptions, spell => !spell.spellName?.includes('#') && spell.level > 0);
   updateSpellOptions(base, CraftSpellTables, otherSpellOptions, spell => spell.spellName && spell.level > 0);
+  dynamicStyleSpells.value = [{ id: Date.now(), selectedSpells: [] }];
 };
-
-initializeOptions(selectedBase.value);
 
 // 監控選擇變更
 watch(selectedBase, (newBase) => {
   formulaData.value.craftingSpells = [];
   formulaData.value.otherSpell = [];
   dynamicOtherSpells.value = [{ id: Date.now(), selectedSpells: [] }];
+  dynamicStyleSpells.value = [{ id: Date.now(), selectedSpells: [] }];
   initializeOptions(newBase);
+});
+
+onMounted(() => {
+  initializeOptions(selectedBase.value); // 初始化選項
 });
 
 // 計算物品等級
@@ -65,7 +70,7 @@ const calculateItemLevel = computed(() => {
 
   return Math.max(
     getMaxLevel(formulaData.value.craftingSpells, craftingSpellOptions.value),
-    getMaxLevel(formulaData.value.otherSpell, styleSpellOptions.value),
+    ...dynamicStyleSpells.value.map(group => getMaxLevel(group.selectedSpells, styleSpellOptions.value)),
     ...dynamicOtherSpells.value.map(group => getMaxLevel(group.selectedSpells, otherSpellOptions.value))
   );
 });
@@ -76,7 +81,9 @@ const mainData = computed(() => {
     spells.reduce((acc, spellName) => acc + parseFloat(options.find(option => option.value === spellName.split(' ').pop())?.level || 0), 0);
 
   const craftingSpellCost = calculateCost(formulaData.value.craftingSpells, craftingSpellOptions.value);
-  const otherSpellCost = calculateCost(formulaData.value.otherSpell, styleSpellOptions.value);
+  const styleSpellCost = dynamicStyleSpells.value.reduce(
+    (acc, group) => acc + calculateCost(group.selectedSpells, styleSpellOptions.value), 0
+  );
   const domainSpellsCost = dynamicOtherSpells.value.reduce(
     (acc, group) => acc + calculateCost(group.selectedSpells, otherSpellOptions.value), 0
   );
@@ -85,8 +92,8 @@ const mainData = computed(() => {
   const extraCost = parseFloat(formulaData.value.extraCost) || 0;
   const itemBonus = parseFloat(formulaData.value.itemBonus) || 0;
 
-  const dailyPP = craftingSpellCost + otherSpellCost + domainSpellsCost;
-  const batchDailyPP = (craftingSpellCost * 5) + otherSpellCost + domainSpellsCost;
+  const dailyPP = craftingSpellCost + styleSpellCost + domainSpellsCost;
+  const batchDailyPP = (craftingSpellCost * 5) + styleSpellCost + domainSpellsCost;
   const finalWorkDays = Math.max(0, Math.ceil((dailyPP - itemBonus) / 2));
   const costPrice = (itemLevel * finalWorkDays) + extraCost;
   const baseMarketValue = costPrice + (finalWorkDays * (Math.floor(dailyPP / 40) + 2));
@@ -116,6 +123,15 @@ const addOtherSpellDropdown = () => {
 
 const removeOtherSpellDropdown = (id) => {
   dynamicOtherSpells.value = dynamicOtherSpells.value.filter(spell => spell.id !== id);
+};
+
+// 動態風格法術操作
+const addStyleSpellDropdown = () => {
+  dynamicStyleSpells.value.push({ id: Date.now(), selectedSpells: [] });
+};
+
+const removeStyleSpellDropdown = (id) => {
+  dynamicStyleSpells.value = dynamicStyleSpells.value.filter(spell => spell.id !== id);
 };
 
 // 材料表 Modal 控制
@@ -220,27 +236,37 @@ const hideMaterialModal = () => { isMaterialModalVisible.value = false; };
                 </a-select>
               </a-form-item>
               <a-form-item label="風格法術">
-                <a-select
-                  v-model:value="formulaData.otherSpell"
-                  mode="multiple"
-                  placeholder="請選擇風格法術"
-                  style="width: 100%;"
-                >
-                  <a-select-option
-                    v-for="spell in styleSpellOptions"
-                    :key="spell.value"
-                    :value="spell.label"
+                <div v-for="(spellGroup, index) in dynamicStyleSpells" :key="spellGroup.id" style="margin-bottom: 16px;">
+                  <a-select
+                    v-model:value="spellGroup.selectedSpells"
+                    mode="multiple"
+                    placeholder="請選擇風格法術"
+                    style="width: 80%;"
                   >
-                    <template #default>
-                      <div
-                        @mouseenter="tooltipContent = spell.details"
-                        @mouseleave="tooltipContent = ''"
-                      >
-                      {{ spell.label }}
-                      </div>
-                    </template>
-                  </a-select-option>
-                </a-select>
+                    <a-select-option
+                      v-for="spell in styleSpellOptions"
+                      :key="spell.value"
+                      :value="spell.label"
+                    >
+                      <template #default>
+                        <div
+                          @mouseenter="tooltipContent = spell.details"
+                          @mouseleave="tooltipContent = ''"
+                        >
+                        {{ spell.label }}
+                        </div>
+                      </template>
+                    </a-select-option>
+                  </a-select>
+                  <a-button
+                    type="danger"
+                    @click="removeStyleSpellDropdown(spellGroup.id)"
+                    style="margin-left: 8px;"
+                  >
+                    刪除
+                  </a-button>
+                </div>
+                <a-button type="primary" @click="addStyleSpellDropdown">新增下拉選單</a-button>
               </a-form-item>
               <a-form-item label="其他法術">
                 <div v-for="(spellGroup, index) in dynamicOtherSpells" :key="spellGroup.id" style="margin-bottom: 16px;">
@@ -296,9 +322,19 @@ const hideMaterialModal = () => { isMaterialModalVisible.value = false; };
               <a-col span="24" class="style-spells-block">
                 <h3 class="style-title">風格法術</h3>
                 <ul>
-                  <li v-for="spell in formulaData.otherSpell" :key="spell">
-                    <strong>{{ spell }}</strong>
-                    <p>{{ styleSpellOptions.find(option => option.label === spell)?.details }}</p>
+                  <li
+                    v-for="spellGroup in dynamicStyleSpells"
+                    :key="spellGroup.id"
+                  >
+                    <ul>
+                      <li
+                        v-for="spell in spellGroup.selectedSpells"
+                        :key="spell"
+                      >
+                        <strong>{{ spell }}</strong>
+                        <p>{{ styleSpellOptions.find(option => option.label === spell)?.details }}</p>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </a-col>
