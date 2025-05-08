@@ -17,21 +17,13 @@
         <a-menu-item key="combat-tool">
         <NuxtLink to="/combat/quickCheckTool">戰鬥快查工具</NuxtLink>
       </a-menu-item>
+      <a-menu-item key="attack">
+            <NuxtLink to="/combat/attack">攻擊表</NuxtLink>
+          </a-menu-item>
+      <a-menu-item key="critical">
+            <NuxtLink to="/combat/critical">重擊表</NuxtLink>
+          </a-menu-item>
 
-        <a-sub-menu key="combat-table">
-          <template #title>
-            <span>相關表格</span>
-          </template>
-          <a-menu-item key="fumble">
-            <NuxtLink to="/combat/fumble">犯蠢表</NuxtLink>
-          </a-menu-item>
-          <a-menu-item key="critical">
-            <NuxtLink to="/combat/critical">重擊</NuxtLink>
-          </a-menu-item>
-          <a-menu-item key="attack">
-            <NuxtLink to="/combat/attack">攻擊</NuxtLink>
-          </a-menu-item>
-        </a-sub-menu>
         <a-sub-menu key="combat-sheet">
           <template #title>
             <span>紀錄表</span>
@@ -43,6 +35,17 @@
         <NuxtLink to="/combat/cure">治療傷勢表</NuxtLink>
       </a-menu-item>
         </a-sub-menu>
+      </a-sub-menu>
+      <a-sub-menu key="fumbles">
+        <template #title>
+          <span>犯蠢表格</span>
+        </template>
+        <a-menu-item key="fumble">
+            <NuxtLink to="/combat/fumble">戰鬥犯蠢表</NuxtLink>
+          </a-menu-item>
+          <a-menu-item key="spellfumble">
+            <NuxtLink to="/combat/spellfumble">法術犯蠢表</NuxtLink>
+          </a-menu-item>
       </a-sub-menu>
       <a-sub-menu key="spell">
         <template #title>
