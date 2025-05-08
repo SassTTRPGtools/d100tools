@@ -197,7 +197,14 @@ const addRow = () => {
     attackOutcome: attackOutcome,
     critOutcome: "✊"+attackOutcome+"🔷"+ critOutcome
   };
+
   tableData.value.unshift(newRow); // 新增結果在最前面
+
+  // 新增條件：若啟用 enableAddToWound，則自動將結果新增至傷勢紀錄表
+  if (enableAddToWound.value) {
+    addToWound(newRow.critOutcome);
+  }
+  copyToClipboard(newRow.critOutcome);
 };
 
 const clearData = () => {
@@ -205,7 +212,7 @@ const clearData = () => {
 };
 
 function addToWound(entry) {
-  if (playerStore.activePlayerIndex !== null) {
+  if (enableAddToWound.value && playerStore.activePlayerIndex !== null) {
     const activePlayer = playerStore.players[playerStore.activePlayerIndex];
     const parsedResults = parseInput(entry);
     if (parsedResults.symbols.length === 0) {
@@ -217,6 +224,8 @@ function addToWound(entry) {
     });
     calculatePlayerStats(activePlayer); // 更新玩家狀態
     console.log('已新增至傷勢紀錄表:', parsedResults.symbols);
+  } else {
+    console.warn('addToWound 功能未啟用或無效的玩家索引');
   }
 }
 
@@ -380,13 +389,19 @@ watch(selectedCategory, (newCategory) => {
 <template>
   <div class="flex flex-row gap-5">
     <!-- 左側區塊 -->
-    <PlayerStatus
-      :applyToWound="applyToWound"
-      :activeTab="activeTab"
-      @update:activeTab="activeTab = $event"
-      @endCombat="endCombat"
-      @endTurn="endTurn"
-    />
+    <template v-if="enableAddToWound">
+      <PlayerStatus
+        :applyToWound="applyToWound"
+        :activeTab="activeTab"
+        @update:activeTab="activeTab = $event"
+        @endCombat="endCombat"
+        @endTurn="endTurn"
+      />
+    </template>
+    <template v-else>
+      <div class="w-64 p-5 transition-opacity">
+      </div>
+    </template>
     <!-- 中間區塊 -->
     <div class="container">
       <!-- 新增開關 -->
@@ -396,11 +411,12 @@ watch(selectedCategory, (newCategory) => {
         un-checked-children="停用傷勢紀錄"
         style="margin-bottom: 20px"
       />
+      <template v-if="enableAddToWound">
       <div class="button-row">
         <a-button type="default" @click="saveAndCopyJSON">複製 JSON</a-button>
         <div style="width: 20px; display: inline-block;"></div>
         <a-button type="default" @click="openJsonModal">載入 JSON</a-button>
-      </div>
+      </div>      
       <a-modal
         v-model:visible="isModalVisible"
         title="載入 JSON"
@@ -413,6 +429,7 @@ watch(selectedCategory, (newCategory) => {
           placeholder="請輸入 JSON 資料"
         />
       </a-modal>
+      </template>
       <div class="controls-container">
         <div class="select-group">
           <a-select v-model:value="selectedCategory" style="width: 200px">
@@ -478,38 +495,44 @@ watch(selectedCategory, (newCategory) => {
       </div>
     </div>
     <!-- 右側區塊 -->
-    <div class="favorites-container">
-      <div class="favorites-header">
-        <h3>新增我的最愛</h3>
-        <div class="button-row">          
-          <a-button type="primary" @click="addFavorite('player')">玩家</a-button>
-          <a-button type="primary" @click="addFavorite('npc')">NPC</a-button>
-          <a-button type="primary" danger @click="clearFavorites">清空最愛</a-button>          
+    <template v-if="enableAddToWound">
+      <div class="favorites-container">
+        <div class="favorites-header">
+          <h3>新增我的最愛</h3>
+          <div class="button-row">          
+            <a-button type="primary" @click="addFavorite('player')">玩家</a-button>
+            <a-button type="primary" @click="addFavorite('npc')">NPC</a-button>
+            <a-button type="primary" danger @click="clearFavorites">清空最愛</a-button>          
+          </div>
         </div>
+        <a-collapse>
+          <a-collapse-panel key="player" header="玩家我的最愛">
+            <ul>
+              <li v-for="(favorite, index) in favoritesStore.favorites.player" :key="'player-' + index">
+                <a @click="applyFavorite(favorite)">
+                  {{ atkOptions.find(option => option.category === favorite.category)?.options.find(sub => sub.value === favorite.subCategory)?.label || favorite.subCategory }}
+                  ({{ atkSizeTables[favorite.attackerSize]?.label || favorite.attackerSize }})
+                </a>
+              </li>
+            </ul>
+          </a-collapse-panel>
+          <a-collapse-panel key="npc" header="NPC 我的最愛">
+            <ul>
+              <li v-for="(favorite, index) in favoritesStore.favorites.npc" :key="'npc-' + index">
+                <a @click="applyFavorite(favorite)">
+                  {{ atkOptions.find(option => option.category === favorite.category)?.options.find(sub => sub.value === favorite.subCategory)?.label || favorite.subCategory }}
+                  ({{ atkSizeTables[favorite.attackerSize]?.label || favorite.attackerSize }})
+                </a>
+              </li>
+            </ul>
+          </a-collapse-panel>
+        </a-collapse>
       </div>
-      <a-collapse>
-        <a-collapse-panel key="player" header="玩家我的最愛">
-          <ul>
-            <li v-for="(favorite, index) in favoritesStore.favorites.player" :key="'player-' + index">
-              <a @click="applyFavorite(favorite)">
-                {{ atkOptions.find(option => option.category === favorite.category)?.options.find(sub => sub.value === favorite.subCategory)?.label || favorite.subCategory }}
-                ({{ atkSizeTables[favorite.attackerSize]?.label || favorite.attackerSize }})
-              </a>
-            </li>
-          </ul>
-        </a-collapse-panel>
-        <a-collapse-panel key="npc" header="NPC 我的最愛">
-          <ul>
-            <li v-for="(favorite, index) in favoritesStore.favorites.npc" :key="'npc-' + index">
-              <a @click="applyFavorite(favorite)">
-                {{ atkOptions.find(option => option.category === favorite.category)?.options.find(sub => sub.value === favorite.subCategory)?.label || favorite.subCategory }}
-                ({{ atkSizeTables[favorite.attackerSize]?.label || favorite.attackerSize }})
-              </a>
-            </li>
-          </ul>
-        </a-collapse-panel>
-      </a-collapse>
-    </div>
+    </template>
+    <template v-else>
+      <div class="w-96 p-5 transition-opacity">
+      </div>
+    </template>
   </div>
 </template>
 

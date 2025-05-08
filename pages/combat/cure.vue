@@ -169,6 +169,39 @@ function addSpecialInjury(playerIndex, injuryText) {
   message.success('特殊受傷減值已成功新增！');
 }
 
+function addManualInjury(playerIndex, injuryText, category) {
+  const player = cureStore.players[playerIndex];
+  const injuryValue = parseInt(injuryText, 10);
+
+  if (!injuryText || isNaN(injuryValue) || !category) {
+    message.error('請輸入有效的數值和選擇分類！');
+    return;
+  }
+
+  player.symbolEntries.push({
+    text: `-${injuryValue}`, // 將數值轉為負數並新增到 entry.text
+    value: injuryValue,
+    category: category,
+    isHeadInjury: false,
+    recovery: { recoveryDays: 0, dailyRecovery: 0 },
+  });
+
+  // 重新計算 totalInjury
+  player.totalInjury = player.symbolEntries.reduce((sum, entry) => {
+    const match = entry.text.match(/-?\d+/);
+    return sum + (match ? parseInt(match[0], 10) : 0);
+  }, 0);
+
+  cureStore.saveToLocalStorage(); // 儲存更新的 cureStore 狀態
+  manualInjuryText.value = ''; // 清空輸入框
+  manualInjuryCategory.value = null; // 清空分類選擇
+  message.success('手動新增傷勢分類成功！');
+}
+
+const newInjuryText = ref('');
+const manualInjuryText = ref('');
+const manualInjuryCategory = ref(null);
+
 // 監聽每個 entry 的 category、isHeadInjury、entry.text 和 entry.value，並重新計算恢復數據
 function setupEntryWatchers(entries) {
   entries.forEach(entry => {
@@ -192,8 +225,6 @@ watch(
   },
   { immediate: true } // 確保在頁面初始化時立即執行
 );
-
-const newInjuryText = ref('');
 </script>
 
 <template>
@@ -229,6 +260,28 @@ const newInjuryText = ref('');
             />
             <button
               @click="addSpecialInjury(activeTab, newInjuryText)"
+              class="add-injury-button"
+            >
+              新增
+            </button>
+          </div>
+        </div>
+        <div class="manual-injury-section">
+          <h3 class="text-lg font-bold mb-2">手動新增傷勢分類</h3>
+          <div class="flex items-center gap-4 mb-4">
+            <a-input
+              v-model:value="manualInjuryText"
+              placeholder="輸入傷勢數值"
+              class="injury-input"
+            />
+            <a-select
+              v-model:value="manualInjuryCategory"
+              :options="injuryCategories"
+              placeholder="選擇分類"
+              class="injury-category-select"
+            />
+            <button
+              @click="addManualInjury(activeTab, manualInjuryText, manualInjuryCategory)"
               class="add-injury-button"
             >
               新增
@@ -337,6 +390,10 @@ const newInjuryText = ref('');
 }
 
 .special-injury-section {
+  margin-bottom: 20px;
+}
+
+.manual-injury-section {
   margin-bottom: 20px;
 }
 
