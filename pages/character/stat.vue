@@ -1,6 +1,7 @@
 <script setup>
 import { DiceRoller, exportFormats } from '@dice-roller/rpg-dice-roller';
-import { reactive, ref } from 'vue';
+import { reactive, ref, computed, watch } from 'vue';
+import powerLevels from '~/rolemaster/misc/powerLevels.json';
 
 const items = ref([
   { id: 1, stat: "Ag", str: "靈巧", PotentValue: 0, TempValue: 0 },
@@ -15,12 +16,36 @@ const items = ref([
   { id: 10, stat: "St", str: "力量", PotentValue: 0, TempValue: 0 },
 ]);
 
+const powerLevelOptions = Object.keys(powerLevels).map((key) => ({
+  value: key,
+  label: powerLevels[key].label,
+}));
+
+const selectedPowerLevel = ref("Superior"); // 預設為 "Superior"
+
+const overloadThreshold = computed(() => {
+  return powerLevels[selectedPowerLevel.value]?.details?.overloadThreshold || 0;
+});
+
+const averagePotent = computed(() => powerLevels[selectedPowerLevel.value]?.details?.averagePotent || 78);
+const averageTemp = computed(() => powerLevels[selectedPowerLevel.value]?.details?.averageTemp || 56);
+
+const powerLevelsTableData = Object.keys(powerLevels).map((key) => ({
+  strength: powerLevels[key].label,
+  skillBonus: powerLevels[key]?.details?.skillBonus || 0,
+  recoveryRate: powerLevels[key]?.details?.recoveryRate || "0%",
+  overloadThreshold: powerLevels[key]?.details?.overloadThreshold || "-",
+  averageTemp: powerLevels[key]?.details?.averageTemp || 0,
+  averagePotent: powerLevels[key]?.details?.averagePotent || 0,
+  enhancementCount: powerLevels[key]?.details?.attributeEnhancement || 0,
+}));
+
 let oriItems;
 let firstSelected = null;
 
 const showEnhancements = ref(false);
 const selectedEnhancement = ref(null); // 用於存儲選中的強化選項
-const enhancementCount = ref(2); // 強化次數變數
+const enhancementCount = ref(powerLevels[selectedPowerLevel.value]?.details?.attributeEnhancement || 0); // 強化次數變數
 
 const growthTable = ref([
   { range: "1-6", dice: "d3-1" },
@@ -79,7 +104,7 @@ function applyGrowth(item) {
   growthAttemptCount.value++;
 
   // 如果成長次數達到 2 次，顯示完成訊息並清空選擇
-  if (growthAttemptCount.value >= 2) {
+  if (growthAttemptCount.value %2 === 0) {
     $swal.fire({
       title: "完成強化",
       text: "已完成此強化的屬性成長。",
@@ -129,7 +154,7 @@ console.log("items:", items.value);
 }
 
 function singleReroll(id) {
-  if (items.value[id - 1].TempValue < 11) {
+  if (items.value[id - 1].TempValue < overloadThreshold.value) {
     const Roller = new DiceRoller();
     Roller.roll('1d100');
 
@@ -178,6 +203,22 @@ function swapAttributes(item) {
 
 const { $swal } = useNuxtApp();
 
+function resetAttributes() {
+  // 重置屬性值
+  items.value.forEach(function (item) {
+    item.PotentValue = 0;
+    item.TempValue = 0;
+    delete item.enhancementUsed; // 移除強化的鎖定
+    delete item.enhancementUsedFor85; // 清空 enhancementUsedFor85
+    delete item.enhancementUsedFor90; // 清空 enhancementUsedFor90
+    delete item.enhancementUsedText; // 清空 enhancementUsedText
+  });
+
+  // 重置強化次數
+  enhancementCount.value = powerLevels[selectedPowerLevel.value]?.details?.attributeEnhancement;
+  diceResults.value = [];
+  growthAttempts.value = [];
+}
 
 function clearStats() {
   $swal.fire({
@@ -191,21 +232,7 @@ function clearStats() {
     cancelButtonText: "我再想想",
   }).then((result) => {
     if (result.isConfirmed) {
-      // 重置屬性值
-      items.value.forEach(function (item) {
-        item.PotentValue = 0;
-        item.TempValue = 0;
-        delete item.enhancementUsed; // 移除強化的鎖定
-        delete item.enhancementUsedFor85; // 清空 enhancementUsedFor85
-        delete item.enhancementUsedFor90; // 清空 enhancementUsedFor90
-        delete item.enhancementUsedText; // 清空 enhancementUsedText
-        
-      });
-
-      // 重置強化次數
-      enhancementCount.value = 2;
-      diceResults.value = [];
-      growthAttempts.value = [];
+      resetAttributes();
       $swal.fire({
         title: "清除!",
         text: "結果已清空。",
@@ -215,10 +242,15 @@ function clearStats() {
   });
 }
 
+// 監聽 selectedPowerLevel 的變化，觸發 resetAttributes
+watch(selectedPowerLevel, () => {
+  resetAttributes();
+});
+
 function canShowEnhancements() {
   // 檢查是否所有屬性都沒有需要重骰的情況
-  console.log("canShowEnhancements:", items.value.every(item => item.TempValue >= 11));
-  return items.value.every(item => item.TempValue >= 11);
+  console.log("canShowEnhancements:", items.value.every(item => item.TempValue >= overloadThreshold.value));
+  return items.value.every(item => item.TempValue >= overloadThreshold.value);
 }
 
 function applyEnhancement() {
@@ -300,8 +332,8 @@ function applyEnhancement() {
 }
 
 function applyEnhancementToItem(item) {
-  const newPotentValue = 78;
-  const newTempValue = 56;
+  const newPotentValue = averagePotent.value;
+  const newTempValue = averageTemp.value;
 
   $swal.fire({
     title: "確認強化",
@@ -353,6 +385,25 @@ function copyStatsToClipboard() {
 </script>
 <template>
   <div>
+    <!-- 更新的可收縮區塊 -->
+    <a-row justify="center" style="padding: 24px 0;">
+      <a-col :span="24">
+        <a-collapse>
+          <a-collapse-panel key="1" header="強度等級資訊">
+            <a-table :data-source="powerLevelsTableData" :pagination="false" bordered>
+              <a-table-column title="強度" data-index="strength" key="strength" :dataIndex="'strength'" />
+              <a-table-column title="手熟技能" data-index="skillBonus" key="skillBonus" :dataIndex="'skillBonus'" />
+              <a-table-column title="每 2 小時睡眠能點恢復" data-index="recoveryRate" key="recoveryRate" :dataIndex="'recoveryRate'" />
+              <a-table-column title="屬性過低重骰值" data-index="overloadThreshold" key="overloadThreshold" :dataIndex="'overloadThreshold'" />
+              <a-table-column title="平均屬性臨時" data-index="averageTemp" key="averageTemp" :dataIndex="'averageTemp'" />
+              <a-table-column title="平均屬性潛能" data-index="averagePotent" key="averagePotent" :dataIndex="'averagePotent'" />
+              <a-table-column title="屬性強化次數" data-index="enhancementCount" key="enhancementCount" :dataIndex="'enhancementCount'" />
+            </a-table>
+          </a-collapse-panel>
+        </a-collapse>
+      </a-col>
+    </a-row>
+
     <a-row justify="center" style="padding: 24px 0;">
       <a-col :span="24" style="text-align: center;">
         <a-space>
@@ -360,6 +411,16 @@ function copyStatsToClipboard() {
           <a-button type="primary" @click="generateState">擲骰</a-button>
           <a-button type="primary" @click="copyStatsToClipboard">複製數值</a-button>
         </a-space>
+      </a-col>
+    </a-row>
+    <!-- 新增強度等級下拉選單 -->
+    <a-row justify="center" style="padding: 10px 0;">
+      <a-col :span="24" style="text-align: center;">
+        <a-select v-model:value="selectedPowerLevel" style="width: 200px;">
+          <a-select-option v-for="option in powerLevelOptions" :key="option.value" :value="option.value">
+            {{ option.label }}
+          </a-select-option>
+        </a-select>
       </a-col>
     </a-row>
 
@@ -386,20 +447,20 @@ function copyStatsToClipboard() {
             <a-form-item :label="item.str + ' (潛能)'">
               <a-input :value="item.PotentValue" 
                        @click="swapAttributes(item)" 
-                       :class="{ highlighted: item.isHighlighted, lowPotent: selectedEnhancement === '1' && item.PotentValue < 78 }" />
+                       :class="{ highlighted: item.isHighlighted, lowPotent: selectedEnhancement === '1' && item.PotentValue < averagePotent }" />
             </a-form-item>
             <a-form-item label="臨時">
               <a-input :value="item.TempValue" 
-                       :style="{ color: item.TempValue < 11 ? 'red' : 'inherit' }" 
-                       :class="{ lowTemp: selectedEnhancement === '1' && item.TempValue < 56 }" />
+                       :style="{ color: item.TempValue < overloadThreshold ? 'red' : 'inherit' }" 
+                       :class="{ lowTemp: selectedEnhancement === '1' && item.TempValue < averageTemp }" />
             </a-form-item>
             <a-form-item>
-              <a-button :type="item.TempValue < 11 ? 'primary' : 'text'" :danger="item.TempValue < 11 ? true : false"
+              <a-button :type="item.TempValue < overloadThreshold ? 'primary' : 'text'" :danger="item.TempValue < overloadThreshold ? true : false"
                 @click="singleReroll(item.id)">
-                {{ item.TempValue < 11 ? '重骰' : '' }} </a-button>
+                {{ item.TempValue < overloadThreshold ? '重骰' : '' }} </a-button>
             </a-form-item>
             <a-form-item v-if="selectedEnhancement === '1'">
-              <a-button type="primary" @click="applyEnhancementToItem(item)">應用 78/56</a-button>
+              <a-button type="primary" @click="applyEnhancementToItem(item)">應用 {{ averagePotent }}/{{ averageTemp }}</a-button>
             </a-form-item>
             <a-form-item v-if="selectedEnhancement === '4'">
               <a-button type="primary" @click="applyGrowth(item)">屬性成長</a-button>
@@ -426,7 +487,7 @@ function copyStatsToClipboard() {
             <a-radio-group v-model:value="selectedEnhancement" @change="applyEnhancement" :disabled="enhancementCount === 0">
               <a-row style="padding: 10px 0;">
                 <a-col>
-                  <a-radio value="1">將任何一項屬性的潛能/臨時改為78/56。</a-radio>
+                  <a-radio value="1">將任何一項屬性的潛能/臨時改為{{ averagePotent }}/{{ averageTemp }}。</a-radio>
                 </a-col>
               </a-row>
               <a-row style="padding: 10px 0;">
@@ -470,13 +531,13 @@ function copyStatsToClipboard() {
   background-color: #ff9800;
 }
 
-/* 潛能值低於 78 的高亮樣式 */
+/* 潛能值低於 averagePotent 的高亮樣式 */
 .lowPotent {
   border: 2px solid #f44336;
   background-color: #fdd;
 }
 
-/* 臨時值低於 56 的高亮樣式 */
+/* 臨時值低於 averageTemp 的高亮樣式 */
 .lowTemp {
   border: 2px solid #2196f3;
   background-color: #dbeeff;
