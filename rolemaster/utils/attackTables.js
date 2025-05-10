@@ -143,16 +143,19 @@ const atkOptions = [
 ];
 
 const atkSizeTables = {
-  Miniscule: { label: '超微型', multiplier: 0.25,sizeAdjustment:-4 },
-  Diminutive: { label: '微型', multiplier: 0.50,sizeAdjustment:-3 },
-  Tiny: { label: '超小型', multiplier: 0.67,sizeAdjustment:-2 },
-  Small: { label: '小型', multiplier: 0.75,sizeAdjustment:-1 },
-  Medium: { label: '中型', multiplier: 1,sizeAdjustment:0 },
-  Big: { label: '大型', multiplier: 1.5,sizeAdjustment:1 },
-  Large: { label: '超大型', multiplier: 2,sizeAdjustment:2 },
-  Huge: { label: '巨型', multiplier: 3 ,sizeAdjustment:3},
-  Gigantic: { label: '超巨型', multiplier: 4 ,sizeAdjustment:4},
-  Enormous: { label: '泰坦級', multiplier: 5 ,sizeAdjustment:5},
+  Miniscule: { label: '超微型 (Mi / 1 / I)', multiplier: 0.25,sizeAdjustment:-4 },
+  Diminutive: { label: '微型 (D / 2 / II)', multiplier: 0.50,sizeAdjustment:-3 },
+  Tiny: { label: '超小型 (T / 3 / III)', multiplier: 0.67,sizeAdjustment:-2 },
+  Small: { label: '小型 (S / 4 / IV)', multiplier: 0.75,sizeAdjustment:-1 },
+  Medium: { label: '中型 (M / 5 / V)', multiplier: 1,sizeAdjustment:0 },
+  Big: { label: '大型 (B / 6 / VI)', multiplier: 1.5,sizeAdjustment:1 },
+  Large: { label: '超大型 (L / 7 / VII)', multiplier: 2,sizeAdjustment:2 },
+  Huge: { label: '巨型 (H / 8 / VIII)', multiplier: 3 ,sizeAdjustment:3},
+  Gigantic: { label: '超巨型 (G / 9 / IX)', multiplier: 4 ,sizeAdjustment:4},
+  Enormous: { label: '泰坦級 (E / 10 / X)', multiplier: 5 ,sizeAdjustment:5},
+  Immense: { label: '巨無霸級 (I / 11 / XI)', multiplier: 6 ,sizeAdjustment:6},
+  Behemoth: { label: '巨獸級 (O / 12 / XII)', multiplier: 7 ,sizeAdjustment:7},
+  Leviathan: { label: '深淵級 (V / 13 / XIII)', multiplier: 8 ,sizeAdjustment:8},
 };
 
 export { atkTables, atkOptions , atkSizeTables };

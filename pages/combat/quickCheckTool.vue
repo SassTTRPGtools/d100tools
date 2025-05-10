@@ -22,6 +22,7 @@ const critResult = ref('');
 const activeTab = ref(playerStore.activePlayerIndex); // 新增：控制目前啟用的分頁
 const applyToWound = ref(true); // 新增開關控制是否應用於傷勢紀錄表
 const enableAddToWound = ref(false); // 新增開關控制是否啟用 addToWound
+const critAdjustment = ref(0); // 新增重擊微調的狀態
 
 const isModalVisible = ref(false); // 控制外跳視窗的顯示
 const jsonInput = ref(''); // 儲存用戶輸入的 JSON
@@ -114,7 +115,7 @@ const getAttackOutcome = (attackType, atValue, attackRoll) => {
   let currentlyIndex = severityMap.indexOf(descriptionLetter);
   let newIndex = severityMap.indexOf(descriptionLetter);
 
-  newIndex += sizeAdjustment;
+  newIndex += sizeAdjustment + critAdjustment.value; // 加入 critAdjustment 的影響
 
   if (newIndex < 0) {
     newIndex = 0;
@@ -432,11 +433,13 @@ watch(selectedCategory, (newCategory) => {
       </template>
       <div class="controls-container">
         <div class="select-group">
+          大分類
           <a-select v-model:value="selectedCategory" style="width: 200px">
             <a-select-option v-for="option in atkOptions" :key="option.category" :value="option.category">
               {{ option.category }}
             </a-select-option>
           </a-select>
+          小分類
           <a-select v-model:value="selectedSubCategory" style="width: 400px">
             <a-select-option
               v-for="option in atkOptions.find(option => option.category === selectedCategory)?.options || []"
@@ -448,19 +451,29 @@ watch(selectedCategory, (newCategory) => {
           </a-select>
         </div>
         <div class="select-group">
-          <a-select v-model:value="selectedAttackerSize" style="width: 200px">
+          攻擊者
+          <a-select v-model:value="selectedAttackerSize" style="width: 200px">            
             <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
               {{ size.label }}
             </a-select-option>
           </a-select>
+          AT
           <a-select v-model:value="selectedATValue" style="width: 200px">
+            
             <a-select-option v-for="n in 10" :key="n" :value="n">
               {{ n }}
             </a-select-option>
           </a-select>
-          <a-select v-model:value="selectedTargetSize" style="width: 200px">
+          目標
+          <a-select v-model:value="selectedTargetSize" style="width: 200px">            
             <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
               {{ size.label }}
+            </a-select-option>
+          </a-select>
+          重擊微調
+          <a-select v-model:value="critAdjustment" style="width: 200px">
+            <a-select-option v-for="n in 11" :key="6 - n" :value="6 - n">
+              {{ 6 - n >= 0 ? `+${6 - n}` : 6 - n }}
             </a-select-option>
           </a-select>
         </div>
