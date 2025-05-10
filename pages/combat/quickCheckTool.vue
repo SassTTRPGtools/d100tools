@@ -493,9 +493,9 @@ watch(selectedCategory, (newCategory) => {
           :dataSource="tableData"
           :columns="[
             { title: '攻擊', dataIndex: 'attackType', key: 'attackType', width: 120 },
-            { title: '攻擊者', dataIndex: 'attackerSize', key: 'attackerSize', width: 80  },
+            { title: '攻擊者', dataIndex: 'attackerSize', key: 'attackerSize', width: 200  },
             { title: 'AT', dataIndex: 'atValue', key: 'atValue' , width: 80 },
-            { title: '目標', dataIndex: 'targetSize', key: 'targetSize' , width: 80 },
+            { title: '目標', dataIndex: 'targetSize', key: 'targetSize' , width: 200 },
             { title: '兩者差距', dataIndex: 'sizeDifferenceText', key: 'sizeDifferenceText' , width: 120 },
             { title: '攻擊值', dataIndex: 'attackRoll', key: 'attackRoll', width: 80  },
             { title: '重擊值', dataIndex: 'critResult', key: 'critResult', width: 80  },

@@ -626,7 +626,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  0,
         "spellName":  "說明",
         "details":  "注意：有關低光與黑暗中視線的更多訊息，請參閱 RMCL 第 15.7 節。",
@@ -638,7 +638,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  1,
         "spellName":  "銳耳術",
         "details":  "施法者獲得極其敏銳的聽覺。這使僅涉及聽覺的察覺檢定有 +50，涉及聽覺與其他感官的察覺檢定 +25。",
@@ -650,7 +650,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  2,
         "spellName":  "夜視術",
         "details":  "只要有一點光線，施法者就能像在白天一樣看到 100\u0027 遠。",
@@ -662,7 +662,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  3,
         "spellName":  "嗅覺靈敏",
         "details":  "施法者獲得極其敏銳的嗅覺。 這使僅涉及氣味的察覺檢定有 +50，涉及嗅覺和其他感官的察覺檢定+25。",
@@ -674,7 +674,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  4,
         "spellName":  "感官標記",
         "details":  "一個位置被「標記」，以便施法者稍後能使用遙遠感知再次找到它。 當施法者施放遙遠感知時，如果標記位於遙遠感知的範圍內，則該標記會自動定位。 標記能放置在任何無生命的物體上。施法者同時間只能擁有最多與此列表等級相同的標記數量；即使施法者不再處於標記範圍內，也能夠取消標記。",
@@ -686,7 +686,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  5,
         "spellName":  "遙遠感知I",
         "details":  "施法者能指定他的任何一種感官在範圍內的任何「標記」位置使用（參見感官標記）。施法者能使用他當時擁有的任何感知能力（例如，如果他目前處於夜視術的效果下，他將在標記的位置擁有夜視）。遙遠感知可以旋轉以面向任何方向。當他在標記的位置進行感知時，施法者必須保持不動並專注（並且在身體所在的位置失去該感官）。",
@@ -698,7 +698,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  6,
         "spellName":  "側視術",
         "details":  "施法者具有 300° 視野。 對目標攻擊的側翼加值降低至 +5，後方加值降低至 +15。",
@@ -710,7 +710,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  7,
         "spellName":  "觸覺術",
         "details":  "施法者獲得極高的觸覺靈敏度。這為任何需要觸覺的動作提供了好處。例如，施法者可能會在撬鎖、解除陷阱、打開秘密門等方面獲得+25，在僅涉及觸摸的察覺有+50，在涉及觸覺和其他感官的察覺上獲得+25。",
@@ -722,7 +722,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  8,
         "spellName":  "水視術",
         "details":  "施法者能在任何水中（包括渾水）看到 100\u0027 遠，就像在白天的正常視覺一樣。",
@@ -734,7 +734,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  9,
         "spellName":  "黑暗視覺",
         "details":  "與夜視術一樣，但能看穿任何黑暗。 即使沒有光也能看見。",
@@ -746,7 +746,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  10,
         "spellName":  "遙遠感知II",
         "details":  "與遙遠感知I一樣，但施法者能指定最多2種感官在標記位置使用。",
@@ -758,7 +758,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  11,
         "spellName":  "木頭透視",
         "details":  "施法者能看穿木頭（1\"／每級）。",
@@ -770,7 +770,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  12,
         "spellName":  "光視術",
         "details":  "施法者能在任何亮度的光線下看到東西（包括令人目眩或刺眼的光線）。 此法術在無光的情況下不起作用。",
@@ -782,7 +782,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  13,
         "spellName":  "織物透視",
         "details":  "施法者能看穿任何編織的有機物質（1\"／每級）。",
@@ -794,7 +794,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  14,
         "spellName":  "高等遙遠感知I",
         "details":  "與遙遠感知I一樣，但施法者能在法術生效時移動（儘管他必須保持專注）。",
@@ -806,7 +806,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  15,
         "spellName":  "長距離遙遠感知I",
         "details":  "與遙遠感知I一樣，但射程不同。",
@@ -818,7 +818,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  16,
         "spellName":  "石頭透視",
         "details":  "施法者能看穿石頭（1\"／每級）。",
@@ -830,7 +830,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  17,
         "spellName":  "定位標記",
         "details":  "施法者知道一個選定的感官標記相對於施法者目前地點的位置（距離和方向）。",
@@ -842,7 +842,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  18,
         "spellName":  "高等遙遠感知II",
         "details":  "與遙遠感知II一樣，但施法者能在法術生效時移動（儘管他必須保持專注）。",
@@ -854,7 +854,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  19,
         "spellName":  "金屬透視",
         "details":  "施法者能看穿任何金屬（1\"／每級）。",
@@ -866,7 +866,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  20,
         "spellName":  "長距離遙遠感知II",
         "details":  "與遙遠感知II一樣，但射程不同。",
@@ -878,7 +878,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  25,
         "spellName":  "完全視覺術",
         "details":  "使此列表中的所有視覺法術同時生效，不包含透視類。",
@@ -890,7 +890,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  30,
         "spellName":  "真．感官術",
         "details":  "施法者同時具有銳耳術、嗅覺靈敏、觸覺術和所有視覺法術的效果。",
@@ -902,7 +902,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  35,
         "spellName":  "險境感知",
         "details":  "施法者會對任何迫近的危險發出警告。 這將使施法者有第二次機會在實際觸發之前注意到他錯過的任何陷阱，防止任何攻擊者獲得突襲加值或成功對施法者使用伏擊技能，並且應該提供類似的保護以防止其他突然的危險（GM決定）。",
@@ -914,7 +914,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  40,
         "spellName":  "真．遙遠感知",
         "details":  "與高等遙遠感知I一樣，但施法者能使用所有感官並且射程得到改善。",
@@ -926,7 +926,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "感知",
+        "spellList":  "感知提升",
         "level":  50,
         "spellName":  "感知精通",
         "details":  "施法者每輪能使用此列表較低等級的法術一次。",
@@ -1250,7 +1250,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  0,
         "spellName":  "說明",
         "details":  "無",
@@ -1262,7 +1262,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  1,
         "spellName":  "加深睡眠*",
         "details":  "[RR Mod.: -30] 至少已經打瞌睡的目標會陷入深度睡眠，甦醒的察覺檢定有 -50 減值。",
@@ -1274,7 +1274,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  2,
         "spellName":  "魅惑動物",
         "details":  "目標動物會相信施法者是好朋友。",
@@ -1286,7 +1286,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  3,
         "spellName":  "識人術I*",
         "details":  "施法者的察言觀色檢定有 +10 加值。",
@@ -1298,7 +1298,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  4,
         "spellName":  "真誠之聲",
         "details":  "任何對施法者進行察言觀色檢定的人都會成為該法術的目標。如果受到影響，目標在法術持續期間的察言觀色將有 -25 減值。",
@@ -1310,7 +1310,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  5,
         "spellName":  "舌燦蓮花I",
         "details":  "施法者的影響力檢定有 +10 加值。",
@@ -1322,7 +1322,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  6,
         "spellName":  "讀心術I",
         "details":  "施法者能讀懂目標表面的想法。",
@@ -1334,7 +1334,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  7,
         "spellName":  "識人術II*",
         "details":  "施法者的察言觀色檢定有 +20 加值。",
@@ -1346,7 +1346,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  8,
         "spellName":  "魅惑群體",
         "details":  "施法者能讓1個／每5級（無條件進位，8級為2個）目標將其視為非常好的朋友。",
@@ -1358,7 +1358,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  9,
         "spellName":  "雄辯之聲",
         "details":  "施法者能非常流利地使用任何至少擁有1級的口語或手語（相當於10級）。",
@@ -1370,7 +1370,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  10,
         "spellName":  "識人術III*",
         "details":  "施法者的察言觀色檢定有 +30 加值。",
@@ -1382,7 +1382,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  11,
         "spellName":  "群體暗示術",
         "details":  "使1個／每5級（無條件進位，11級為3個）的類人目標執行一個沒有自毀傾向或與個性截然相反的暗示行為（例如，不會自傷、不會沒理由的讓自己看不見以陷於危險、祭司不會突然向敵對神明祈禱等）。 所有目標的暗示必須相同。",
@@ -1394,7 +1394,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  12,
         "spellName":  "舌燦蓮花II",
         "details":  "施法者的影響力檢定有 +20 加值。",
@@ -1406,7 +1406,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  13,
         "spellName":  "群體定身術",
         "details":  "使1個／每5級（無條件進位，13級為3個）的類人目標受影響，每輪的AP -3（通常情況下，每輪只有 1AP）。",
@@ -1418,7 +1418,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  14,
         "spellName":  "華麗之聲",
         "details":  "施法者使用他的聲音進行表演藝術檢定時有+25加值。",
@@ -1430,7 +1430,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  15,
         "spellName":  "讀心術II",
         "details":  "與讀心術I一樣，但射程不同。",
@@ -1442,7 +1442,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  16,
         "spellName":  "識人術IV*",
         "details":  "施法者的察言觀色檢定有 +40 加值。",
@@ -1454,7 +1454,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  17,
         "spellName":  "舌燦蓮花III",
         "details":  "施法者的影響力檢定有 +30 加值。",
@@ -1466,7 +1466,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  18,
         "spellName":  "掌控群體",
         "details":  "與群體暗示術一樣，但群組將在整個持續時間內服從，並且能向群體的不同成員發出個別的命令。",
@@ -1478,7 +1478,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  19,
         "spellName":  "閱讀暗示術",
         "details":  "施法者必須以書面記錄一個沒有自毀傾向或與個性截然相反的暗示行為（例如，不會自傷、不會沒理由的讓自己看不見以陷於危險、祭司不會突然向敵對神明祈禱等）。 這會創造一個小魔法物品。 當文本被預期的接收者閱讀時（施法者能指定特定個體，特定類型，或者單純設定為第一個讀者），法術將被觸發並且進行RR檢定，如果失敗，讀者將按照暗示行動。觸發後，文字就會失去效力。",
@@ -1490,7 +1490,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  20,
         "spellName":  "識人術V*",
         "details":  "施法者的察言觀色檢定有 +50 加值。",
@@ -1502,7 +1502,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  25,
         "spellName":  "真．讀心術",
         "details":  "與讀心術I一樣，但射程不同。",
@@ -1514,7 +1514,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  30,
         "spellName":  "神秘文件",
         "details":  "[RR: -25] 施法者出示任何紙張或類似徽章的物品或任何與正確的身份證明、憑證、通行證或其他授予施法者所聲稱的許可和/或權力的文件類型大致相似的物品。 如果法術成功，目標就會認為所呈現的物體是真品。 施法者在第一次檢查時必須觸碰該物品，但隨後當物品被拿去檢驗，甚至在施法者看不見的地方從一個人手中交給另一個人時，效果也不會因此中斷。",
@@ -1526,7 +1526,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  35,
         "spellName":  "舌燦蓮花V",
         "details":  "施法者的影響力檢定有 +50 加值。",
@@ -1538,7 +1538,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  40,
         "spellName":  "大規模暗示術",
         "details":  "[RR Mod.: -10] 使1個／每級的類人目標執行一個沒有自毀傾向或與個性截然相反的暗示行為（例如，不會自傷、不會沒理由的讓自己看不見以陷於危險、祭司不會突然向敵對神明祈禱等）。 所有目標的暗示必須相同。",
@@ -1550,7 +1550,7 @@
     {
         "realms":  "本源",
         "mainList":  "雜學家基本",
-        "spellList":  "影響力",
+        "spellList":  "影響擴增",
         "level":  50,
         "spellName":  "群體使命術",
         "details":  "能讓1個／每5級（無條件進位）的目標被指派一項任務；失敗會導致GM決定的減值（任務必須在目標的能力範圍內）。如果目標忽略任務，或未能與其他目標合作以成功完成任務，則會產生與失敗相同的效果。",

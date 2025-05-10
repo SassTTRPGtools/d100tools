@@ -1874,7 +1874,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  0,
         "spellName":  "說明",
         "details":  "注意：請參閱第 10.15 節有關法術重量限制的內容。",
@@ -1886,7 +1886,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  1,
         "spellName":  "跳躍術*",
         "details":  "允許目標在施放該法術的輪次中橫向跳躍 50\u0027 或垂直跳躍 20\u0027（作為單獨的 1 AP 動作，跳躍運動不會受到速度減值）。",
@@ -1898,7 +1898,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  2,
         "spellName":  "著陸術*",
         "details":  "此法術施展在正在墜落的目標上，並立即生效，允許目標在20\u0027／每級的墜落中安全著陸，並降低更長墜落的嚴重度。",
@@ -1910,7 +1910,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  3,
         "spellName":  "漂浮術I",
         "details":  "讓目標每輪垂直上下移動 10\u0027。 此法術不賦予任何控制水平移動的能力，必須透過其他方式來完成。",
@@ -1922,7 +1922,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  4,
         "spellName":  "風飄術",
         "details":  "施法者變得幾乎失重（比空氣輕），但沒有魔法控制移動；體重在持續時間結束時逐漸恢復。",
@@ -1934,7 +1934,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  5,
         "spellName":  "水下移動",
         "details":  "施法者能像在陸地上一樣在水下行動。",
@@ -1946,7 +1946,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  6,
         "spellName":  "緩慢飛行",
         "details":  "施法者能以 8\u0027／每輪（約 1 英里每小時）的速度飛行。此法術允許在三個維度上自由移動並懸停。",
@@ -1958,7 +1958,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  7,
         "spellName":  "漂浮術V",
         "details":  "與漂浮術I一樣，但有50\u0027／每輪。",
@@ -1970,7 +1970,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  8,
         "spellName":  "高空深潛*",
         "details":  "施法者能從空中向水裡安全深潛50\u0027／每級，只要水深足夠（1\u0027水／25\u0027深潛）。",
@@ -1982,7 +1982,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  9,
         "spellName":  "彈跳術",
         "details":  "有跳躍術和著陸術效果，每輪一次。",
@@ -1994,7 +1994,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  10,
         "spellName":  "融合術",
         "details":  "目標能融合到任何固體、無生命材料。 融合時，目標無法移動、感知或施法。 當目標從材料中出現時，有可能從材料的任何側面或表面出現，儘管這僅限於「穿過」不超過目標身體大小+2\u0027的材料。 目標能隨時退出，直到法術持續時間結束（此時目標會自動出現在入口點）。",
@@ -2006,7 +2006,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  11,
         "spellName":  "飛行I",
         "details":  "與緩慢飛行一樣，但速度為 35\u0027／每輪（約 5 英里每小時）。",
@@ -2018,7 +2018,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  12,
         "spellName":  "真．著陸術*",
         "details":  "與著陸術一樣，但施法者在99%的時間中從任何墜落中安全著陸，即使在那 1% 的不安全時間中也能有20\u0027/每級安全墜落。",
@@ -2030,7 +2030,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  13,
         "spellName":  "漂浮術XXX",
         "details":  "與漂浮術I一樣，但有200\u0027／每輪。",
@@ -2042,7 +2042,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  14,
         "spellName":  "穿行術",
         "details":  "目標能穿過任何無生命物質，最高可達 1\u0027／每級。 需要 1 輪才能穿過 2\u0027 材料。",
@@ -2054,7 +2054,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  15,
         "spellName":  "飛行II",
         "details":  "與緩慢飛行一樣，但速度為 75\u0027／每輪（約 10 英里每小時）。",
@@ -2066,7 +2066,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  16,
         "spellName":  "延長飛行I",
         "details":  "與飛行I一樣，但持續時間為 10 分鐘／每級。",
@@ -2078,7 +2078,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  17,
         "spellName":  "高等融合術",
         "details":  "與融合術一樣，但施法者能在材料內轉動，並且如果在表面的 6\" 範圍內能感知外部世界。",
@@ -2090,7 +2090,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  18,
         "spellName":  "真．漂浮術",
         "details":  "與漂浮術I一樣，但有100\u0027／每輪，且施法者能保持懸浮一整天。",
@@ -2102,7 +2102,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  19,
         "spellName":  "管理行李*",
         "details":  "當施法者施展此列表中的另一個法術時（此法術1分鐘內），施法者將能夠使用該法術移動3倍於正常重量的重量。",
@@ -2114,7 +2114,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  20,
         "spellName":  "真．融合術",
         "details":  "與高等融合術一樣，但施法者能在融合時對自己施展法術。",
@@ -2126,7 +2126,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  25,
         "spellName":  "飛行III",
         "details":  "與緩慢飛行一樣，但速度為 150\u0027／每輪（約 20 英里每小時）。",
@@ -2138,7 +2138,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  30,
         "spellName":  "真．穿行術",
         "details":  "與穿行術一樣，但施法者能以 10\u0027／每輪的速度穿過盡可能多的材料。",
@@ -2150,7 +2150,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  35,
         "spellName":  "真．飛行",
         "details":  "與緩慢飛行一樣，但速度為 225\u0027／每輪（約 30 英里每小時）。",
@@ -2162,7 +2162,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  40,
         "spellName":  "真．延長飛行",
         "details":  "與真．飛行一樣，但持續時間為 10 分鐘／每級。",
@@ -2174,7 +2174,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "移動",
+        "spellList":  "心靈馭動",
         "level":  50,
         "spellName":  "移動大師",
         "details":  "施法者每輪可施展此列表中最高達 30 級的任何法術。",
@@ -2186,7 +2186,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  0,
         "spellName":  "說明",
         "details":  "無",
@@ -2198,7 +2198,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  1,
         "spellName":  "即時姿態*",
         "details":  "施法者能在法術持續時間內隨時改變姿態。 姿勢有站、坐、蹲、臥等。",
@@ -2210,7 +2210,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  2,
         "spellName":  "即時（解除）騎乘*",
         "details":  "施法者「立即」騎乘野獸或下馬（即該動作被視為具有 0 或 1 AP 的立即法術一部分）。",
@@ -2222,7 +2222,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  3,
         "spellName":  "即時意識*",
         "details":  "施法者進行察覺檢定，無需任何減值即可立即評估當前情況（察覺檢定視為具有 0 或 1 AP 的立即法術一部分）。",
@@ -2234,7 +2234,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  4,
         "spellName":  "迅捷I",
         "details":  "目標的先攻 +5。",
@@ -2246,7 +2246,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  5,
         "spellName":  "衝刺I",
         "details":  "施法者在此法術生效的每輪獲得額外 1 AP 能使用（即施法者在該輪中有 5 AP），並且只要他願意，他就能維持法術。 然而，施法者在每輪結束時會受到 -2 的堆疊疲勞減值。 當此法術仍然有效時，無法休息。",
@@ -2258,7 +2258,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  6,
         "spellName":  "大步術I",
         "details":  "施法者的基本移動率 (BMR) +10%，向上取整到最接近的英尺／每輪。 對於 20\u0027／每輪的 BMR，將會 +2\u0027／每輪。",
@@ -2270,7 +2270,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  7,
         "spellName":  "加速I",
         "details":  "目標在法術生效的每輪 +1 AP （代表目標在一輪中有 5 AP）。",
@@ -2282,7 +2282,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  8,
         "spellName":  "迅捷II",
         "details":  "目標的先攻 +10。",
@@ -2294,7 +2294,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  9,
         "spellName":  "閃電反射*",
         "details":  "當施法者受到突襲時，施法者的潛意識會施放此法術，從而消除突襲效果。",
@@ -2306,7 +2306,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  10,
         "spellName":  "迅捷III",
         "details":  "目標的先攻 +15。",
@@ -2318,7 +2318,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  11,
         "spellName":  "衝刺II",
         "details":  "與衝刺I一樣，但有額外2AP。",
@@ -2330,7 +2330,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  12,
         "spellName":  "大步術III",
         "details":  "與大步術I一樣，但+30%。",
@@ -2342,7 +2342,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  13,
         "spellName":  "迅捷IV",
         "details":  "目標的先攻 +20。",
@@ -2354,7 +2354,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  14,
         "spellName":  "閃電思維*",
         "details":  "施法者的思維以令人難以置信的速度運轉，讓他有時間仔細考慮當前的情況，就好像在他下定決心時世界都暫停了一樣。 此時不能採取任何身體動作，也不能施展任何法術，但能進行許多精神活動。 除了在需要立即做出決定時能夠花時間考慮之外，角色的知識與科學技能（以及其他技能的知識方面）能進行檢定（無法超過3次）。 如果施法者與某人有精神連結，他能發送任意長度的訊息，儘管接收者需要正常時間來處理它。 任何精神感知到的東西都能像整輪一樣仔細地檢定。",
@@ -2366,7 +2366,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  15,
         "spellName":  "加速II",
         "details":  "與加速I一樣，但 +2 AP。",
@@ -2378,7 +2378,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  16,
         "spellName":  "閃光魔法",
         "details":  "當法術生效時，施法者將所有法術施展為立即法術。",
@@ -2390,7 +2390,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  17,
         "spellName":  "衝刺III",
         "details":  "與衝刺I一樣，但有額外3AP。",
@@ -2402,7 +2402,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  18,
         "spellName":  "迅捷提升",
         "details":  "施法者的迅捷加值+5。",
@@ -2414,7 +2414,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  19,
         "spellName":  "強力小睡",
         "details":  "允許施法者在1小時內完成整個睡眠週期（允許 PP 與生命值恢復）。",
@@ -2426,7 +2426,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  20,
         "spellName":  "大步術V",
         "details":  "與大步術I一樣，但+50%。",
@@ -2438,7 +2438,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  25,
         "spellName":  "加速III",
         "details":  "與加速I一樣，但 +3 AP。",
@@ -2450,7 +2450,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  30,
         "spellName":  "衝刺IV",
         "details":  "與衝刺I一樣，但有額外4AP。",
@@ -2462,7 +2462,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  35,
         "spellName":  "衝刺V",
         "details":  "與衝刺I一樣，但有額外5AP。",
@@ -2474,7 +2474,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  40,
         "spellName":  "真．迅捷提升",
         "details":  "施法者的迅捷加值+15。",
@@ -2486,7 +2486,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "速度",
+        "spellList":  "心流疾進",
         "level":  50,
         "spellName":  "加速IV",
         "details":  "與加速I一樣，但 +4 AP。",
@@ -2810,7 +2810,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  0,
         "spellName":  "說明",
         "details":  "注意： 請參閱第 10.21 節，以了解名稱中帶有「某類」法術的討論。",
@@ -2822,7 +2822,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  1,
         "spellName":  "平衡術*",
         "details":  "對於以行走速度或更低速度執行的任何平衡移動檢定（例如，在 3\" 橫樑上行走）有 +50 加值。",
@@ -2834,7 +2834,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  2,
         "spellName":  "軟骨術",
         "details":  "允許施法者分離四肢、收縮肌肉等；為了逃脫手銬和繩索並滑過小地方（+50到+100來逃脫檢定）。",
@@ -2846,7 +2846,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  3,
         "spellName":  "變臉術",
         "details":  "將施法者的臉改變成與其他人相似，但又沒有太接近，以至於仔細觀察時會感到困惑。",
@@ -2858,7 +2858,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  4,
         "spellName":  "改變知識",
         "details":  "允許施法者分析另一個存在的形態，以供將來與真．改變術一起使用。 施法者只能分析與他在此列表中的等級數的形態。 施法者能隨時遺忘型態，以便為替換騰出空間。",
@@ -2870,7 +2870,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  5,
         "spellName":  "水肺術",
         "details":  "施法者能在水中呼吸，但無法在呼吸空氣。",
@@ -2882,7 +2882,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  6,
         "spellName":  "橡膠形態",
         "details":  "將施法者的肉體和骨骼改變為更有彈性的形態，將所有受到的「鈍擊」和「衝擊」重擊嚴重度-1級。",
@@ -2894,7 +2894,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  7,
         "spellName":  "自我幻形",
         "details":  "將施法者的整個身體改變為另一個類人生物。 這不能是某個特定個體。 例如，人類施法者能幻形為矮人，但不能幻形為矮人至高議長。 並且只會獲得物理型態（所以幻形為矮人不會讓你有黑暗視覺）。 此法術不允許施法者改變體型類別，但能在限制內根據需要改變體型。這不會改變施法者攜帶或穿著的任何東西，只會改變身體，但外道醫師基礎列表的義肢會跟著改變。",
@@ -2906,7 +2906,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  8,
         "spellName":  "氣體肺",
         "details":  "施法者能像普通空氣一樣呼吸任何氣體。",
@@ -2918,7 +2918,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  9,
         "spellName":  "深度掌握",
         "details":  "施法者的身體能夠適應極高或極低的壓力或壓力突然變化，而不會受到任何傷害。這不適用於固體的粉碎，僅適用於來自環境氣體或液體的壓力。",
@@ -2930,7 +2930,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  10,
         "spellName":  "高等變臉術",
         "details":  "與變臉術一樣，但持續 1小時／每級。",
@@ -2942,7 +2942,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  11,
         "spellName":  "改變肺部",
         "details":  "目標能隨意在水、空氣和任何氣體中呼吸。",
@@ -2954,7 +2954,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  12,
         "spellName":  "體型改變",
         "details":  "將施法者的體型改變±1級。 這不會改變施法者攜帶或穿著的任何東西，只會改變他的身體，但外道醫師基礎列表的義肢會跟著改變。",
@@ -2966,7 +2966,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  13,
         "spellName":  "改變術",
         "details":  "與幻形術一樣，但能改變成目標體型類別內的任何有機形態。 但不會獲得該形態的特殊能力。",
@@ -2978,7 +2978,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  14,
         "spellName":  "水下呼吸者",
         "details":  "與水肺術一樣，但持續時間為1小時／每級。",
@@ -2990,7 +2990,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  15,
         "spellName":  "固體形態",
         "details":  "施法者變得彷彿由非常緻密的石頭製成（無法移動或施法）。",
@@ -3002,7 +3002,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  16,
         "spellName":  "無肺術",
         "details":  "施法者根本不需要呼吸。",
@@ -3014,7 +3014,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  17,
         "spellName":  "真．改變術",
         "details":  "與改變術一樣，但改變型態可以是改變知識分析的特定個體。",
@@ -3026,7 +3026,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  18,
         "spellName":  "變形術",
         "details":  "與真．改變術一樣，但目標能在法術期間隨時透過專注1輪／改變來呈現不同的形態。",
@@ -3038,7 +3038,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  19,
         "spellName":  "如生於海",
         "details":  "與水肺術與深度掌握一樣，但持續1小時／每級。",
@@ -3050,7 +3050,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  20,
         "spellName":  "水形態",
         "details":  "施法者呈液態，能像水一樣滲入裂縫。 在此形態下，施法者能以 10 英哩每小時的速度在水中移動，但無法施展法術。",
@@ -3062,7 +3062,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  25,
         "spellName":  "霧形態",
         "details":  "施法者以迷霧的形式出現，能夠以20英里每小時的速度飛行（當然，會受到環境風的影響）、滲透裂縫、延伸自我以使其幾乎隱形等，但無法施展法術。",
@@ -3074,7 +3074,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  30,
         "spellName":  "形態大師",
         "details":  "與水形態和霧形態一樣，但能任意轉換（專注1輪改變）。",
@@ -3086,7 +3086,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  35,
         "spellName":  "真．水形態",
         "details":  "與水形態一樣，但能以 -10 檢定施法。",
@@ -3098,7 +3098,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  40,
         "spellName":  "真．霧形態",
         "details":  "與霧形態一樣，但能以 -10 檢定施法。",
@@ -3110,7 +3110,7 @@
     {
         "realms":  "心神",
         "mainList":  "封閉心神",
-        "spellList":  "變換",
+        "spellList":  "意念鑄體",
         "level":  50,
         "spellName":  "變身大師",
         "details":  "與變形術和形態大師一樣，但所有形態都可隨意互換（專注1輪改變）。施法者能改變體型±1級。",

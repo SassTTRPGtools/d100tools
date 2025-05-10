@@ -1,0 +1,62 @@
+[
+  {
+    "level": "凡人",
+    "skillBonus": 0,
+    "recoveryRate": "5%",
+    "overloadThreshold": null,
+    "averageAttributes": {
+      "temp": 51,
+      "potent": 76
+    },
+    "attributeEnhancement": 1,
+    "attributePoints": 5
+  },
+  {
+    "level": "優越",
+    "skillBonus": "+10 (+5 最大)",
+    "recoveryRate": "10%",
+    "overloadThreshold": 11,
+    "averageAttributes": {
+      "temp": 56,
+      "potent": 78
+    },
+    "attributeEnhancement": 2,
+    "attributePoints": 15
+  },
+  {
+    "level": "英雄",
+    "skillBonus": "+20 (+10 最大)",
+    "recoveryRate": "15%",
+    "overloadThreshold": 21,
+    "averageAttributes": {
+      "temp": 61,
+      "potent": 81
+    },
+    "attributeEnhancement": 3,
+    "attributePoints": 25
+  },
+  {
+    "level": "傳奇",
+    "skillBonus": "+30 (+15 最大)",
+    "recoveryRate": "20%",
+    "overloadThreshold": 31,
+    "averageAttributes": {
+      "temp": 66,
+      "potent": 83
+    },
+    "attributeEnhancement": 4,
+    "attributePoints": 35
+  },
+  {
+    "level": "史詩",
+    "skillBonus": "+40 (+20 最大)",
+    "recoveryRate": "25%",
+    "overloadThreshold": 41,
+    "averageAttributes": {
+      "temp": 77,
+      "potent": 86
+    },
+    "attributeEnhancement": 5,
+    "attributePoints": 45
+  }
+]

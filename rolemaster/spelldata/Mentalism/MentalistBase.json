@@ -1250,7 +1250,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  0,
         "spellName":  "說明",
         "details":  "注意：感知存在偵測到的思想是比動物智力更佳的（即具有「動物性」或「無意識」缺陷的生物不會被偵測到）。 施法者將意識到 10\u0027 內的接近程度，而 1 AP 動作將為特定思想提供大致方向（上、下、左、右、前或後）。 如果偵測到的思想是被看見並能被辨識（智慧）的存在，那麼施法者將能夠識別出偵測到的思想是誰的。",
@@ -1262,7 +1262,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  1,
         "spellName":  "感知存在•*",
         "details":  "施法者能意識到 20\u0027 所有有知覺/有思想的生物的存在。",
@@ -1274,7 +1274,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  2,
         "spellName":  "感覺I*",
         "details":  "施法者大致了解一個人的種族和等級。 這個存在必須先透過感知存在、真．感知存在或感知意識來定位。",
@@ -1286,7 +1286,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  3,
         "spellName":  "心靈儲存*",
         "details":  "與感覺I一樣，但施法者儲存目標的心理模式以供後續與其他法術（在此列表與其他列表中）一起使用。",
@@ -1298,7 +1298,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  4,
         "spellName":  "轉移心靈儲存",
         "details":  "施法者能將任何一個心靈儲存對象的副本從轉移給另一個心神領域的施法者（即，兩個施法者現在都儲存了那個對象）。 此法術的目標也必須知道心靈儲存法術。",
@@ -1310,7 +1310,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  5,
         "spellName":  "感覺III*",
         "details":  "與感覺I一樣，但同時分析3個目標。",
@@ -1322,7 +1322,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  6,
         "spellName":  "心靈紀錄*",
         "details":  "與感覺I一樣，但施法者了解目標的種族、天職、性別、年齡和等級。",
@@ -1334,7 +1334,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  7,
         "spellName":  "心靈發現I",
         "details":  "施法者獲得未屏蔽心靈的心靈儲存對象範圍內的方向和距離。",
@@ -1346,7 +1346,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  8,
         "spellName":  "方向I",
         "details":  "與心靈發現I一樣，但範圍更廣，且施法者僅知道方向。",
@@ -1358,7 +1358,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  9,
         "spellName":  "真．感知存在*",
         "details":  "可偵測 50\u0027R 內的存在；施法者每輪可專注一個這樣的區域。",
@@ -1370,7 +1370,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  10,
         "spellName":  "感知意識*",
         "details":  "與感知存在一樣，加上對每個存在行為的一般知識（例如，存在正在施展法術，但不知道是什麼）。",
@@ -1382,7 +1382,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  11,
         "spellName":  "方向II",
         "details":  "與方向I一樣，但有 1英里／每級。",
@@ -1394,7 +1394,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  12,
         "spellName":  "遠程感覺*",
         "details":  "與感覺I一樣，但有 100\u0027／每級。",
@@ -1406,7 +1406,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  13,
         "spellName":  "感覺V*",
         "details":  "與感覺I一樣，但同時分析5個目標。",
@@ -1418,7 +1418,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  14,
         "spellName":  "大規模感覺*",
         "details":  "與感覺I一樣，但施法者每輪能「感覺」一個存在。",
@@ -1430,7 +1430,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  15,
         "spellName":  "真．心靈紀錄*",
         "details":  "與心靈紀錄一樣，但有 100\u0027／每級。",
@@ -1442,7 +1442,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  16,
         "spellName":  "心靈分析*",
         "details":  "與心靈紀錄一樣，但施法者能了解目標已學會的法術列表和技能、目標的一般地點/起源文化，以及當前與目標心靈精神接觸的存在（包括目標可能不知道的那些；會知道這些接觸者的性質，但無法辨識身份）。",
@@ -1454,7 +1454,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  17,
         "spellName":  "自我監控",
         "details":  "施法者能隨時意識到以施法者為目標的精神子類型法術。 如果法術在針對施法者等級的RR失敗，那麼此法術的施法者就會知道是什麼法術。",
@@ -1466,7 +1466,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  18,
         "spellName":  "心靈發現II",
         "details":  "與心靈發現I一樣，但有 1英里／每級。",
@@ -1478,7 +1478,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  19,
         "spellName":  "感覺X*",
         "details":  "與感覺I一樣，但同時分析10個目標。",
@@ -1490,7 +1490,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  20,
         "spellName":  "真．感知意識*",
         "details":  "與感知意識一樣，但提供非常詳細的動作知識。",
@@ -1502,7 +1502,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  25,
         "spellName":  "心靈發現III",
         "details":  "與心靈發現I一樣，但有 5英里／每級。",
@@ -1514,7 +1514,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  30,
         "spellName":  "真．方向",
         "details":  "與方向I一樣，但範圍無限。",
@@ -1526,7 +1526,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  35,
         "spellName":  "真．感覺*",
         "details":  "與感覺I一樣，，但同時分析施法者等級數的目標。",
@@ -1538,7 +1538,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  40,
         "spellName":  "大規模心靈紀錄*",
         "details":  "與心靈紀錄一樣，但能同時「紀錄」施法者等級數的目標。",
@@ -1550,7 +1550,7 @@
     {
         "realms":  "心神",
         "mainList":  "心靈術師基本",
-        "spellList":  "存在感",
+        "spellList":  "存在感知",
         "level":  50,
         "spellName":  "真．心靈發現",
         "details":  "與心靈發現I一樣，但範圍無限。",

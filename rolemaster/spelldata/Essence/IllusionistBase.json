@@ -314,7 +314,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  0,
         "spellName":  "說明",
         "details":  "注意：幻術（包括外觀類法術）是較為複雜與微妙的魔法類型之一，第 10.10 節對它們進行了詳細解釋。",
@@ -326,7 +326,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  1,
         "spellName":  "朦朧術*",
         "details":  "目標在攻擊者看來變得模糊，使目標的 DB +10。",
@@ -338,7 +338,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  2,
         "spellName":  "陰影術",
         "details":  "施法者與他身上的物體看起來是個陰影，並且在黑暗區域幾乎看不見（例如，在許多情況下，這可以視為潛行提供 +25 到 +75 的加值來處理）。",
@@ -350,7 +350,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  3,
         "spellName":  "外觀術I",
         "details":  "目標對自己施以有限幻術，使他看起來像任何與他自己體型相差 20% 以內的類人生物。幻術隨著目標移動而移動。",
@@ -362,7 +362,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  4,
         "spellName":  "手語術",
         "details":  "[RR Mod:-50] 施法者能透過手語向目標傳達簡單的想法（是的、不對、肚子餓、再見等）； 對於目標來說，施法者似乎正在使用適合目標文化的手勢。",
@@ -374,7 +374,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  5,
         "spellName":  "位移術I",
         "details":  "施法者的表觀位置與實際位置產生偏移；所有攻擊都有10%機率無效。每當敵人因此效果而失手時，該敵人再次失手的機率就會下降 5%。",
@@ -386,7 +386,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  6,
         "spellName":  "外觀術II",
         "details":  "與外觀術I一樣，但能加上額外1個感官。",
@@ -398,7 +398,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  7,
         "spellName":  "模仿外觀I",
         "details":  "與外觀術I一樣，但能模仿特定人的外觀。 不過必須觀察該人至少 1 分鐘的專注時間。",
@@ -410,7 +410,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  8,
         "spellName":  "外觀術III",
         "details":  "與外觀術I一樣，但能加上額外2個感官。",
@@ -422,7 +422,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  9,
         "spellName":  "模仿外觀II",
         "details":  "與模仿外觀I一樣，但能模仿1個面向（或特徵）。 例如，可以模仿目標聲音。 不過必須觀察該人至少 2 分鐘的專注時間。",
@@ -434,7 +434,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  10,
         "spellName":  "位移術II",
         "details":  "與位移術I一樣，但機率為20%。",
@@ -446,7 +446,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  11,
         "spellName":  "虛假幻影",
         "details":  "創造出施法者的複製體，施法者能專注以控制該複製體，此外將完全執行施法者所做的事情。 幻影能包括視覺與聽覺成分，但沒有其他感官。",
@@ -458,7 +458,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  12,
         "spellName":  "模仿外觀III",
         "details":  "與模仿外觀I一樣，但能模仿2個面向（或特徵）。 例如，可以模仿目標聲音、氣味。 不過必須觀察該人至少 3 分鐘的專注時間。",
@@ -470,7 +470,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  13,
         "spellName":  "群體朦朧術*",
         "details":  "與朦朧術一樣，但影響施法者等級數量的目標。",
@@ -482,7 +482,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  14,
         "spellName":  "外觀術V",
         "details":  "與外觀術I一樣，但能加上所有感官。",
@@ -494,7 +494,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  15,
         "spellName":  "位移術III",
         "details":  "與位移術I一樣，但機率為30%。",
@@ -506,7 +506,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  16,
         "spellName":  "模仿外觀IV",
         "details":  "與模仿外觀I一樣，但能模仿3個面向（或特徵）。例如，可以模仿目標的聲音、氣味和微妙的舉止。不過必須觀察該人至少 4 分鐘的專注時間。",
@@ -518,7 +518,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  17,
         "spellName":  "模仿研究*",
         "details":  "施法者能施展此法術並立即了解模仿外觀法術所需的一切（當使用此法術時，可以免除模仿外觀的觀察時間）。",
@@ -530,7 +530,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  18,
         "spellName":  "大規模陰影術",
         "details":  "與陰影術一樣，但影響施法者等級數的目標。",
@@ -542,7 +542,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  19,
         "spellName":  "真．模仿外觀",
         "details":  "與模仿外觀I一樣，但能夠模仿一個人的所有方面。 施法者必須專注研究目標至少5分鐘，才可生效。 使用此法術時，即使是被冒充者最親密的朋友和親戚也很難注意到外觀特徵的不同。",
@@ -554,7 +554,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  20,
         "spellName":  "位移術IV",
         "details":  "與位移術I一樣，但機率為40%。",
@@ -566,7 +566,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  25,
         "spellName":  "群體外觀術II",
         "details":  "與外觀術II一樣，但影響施法者等級數的目標。",
@@ -578,7 +578,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  30,
         "spellName":  "位移術V",
         "details":  "與位移術I一樣，但機率為50%。",
@@ -590,7 +590,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  35,
         "spellName":  "群體位移術II",
         "details":  "與與位移術I一樣，但影響施法者等級數的目標。",
@@ -602,7 +602,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  40,
         "spellName":  "位移術VI",
         "details":  "與位移術I一樣，但機率為60%。",
@@ -614,7 +614,7 @@
     {
         "realms":  "本源",
         "mainList":  "幻術師基本",
-        "spellList":  "偽裝",
+        "spellList":  "虛幻偽形",
         "level":  50,
         "spellName":  "改變外觀",
         "details":  "與外觀術V一樣，但施法者能每輪將外觀改變。",
