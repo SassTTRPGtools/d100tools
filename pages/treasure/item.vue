@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { Tabs, Table, Checkbox, message } from 'ant-design-vue';
+import { Tabs, Table, Checkbox, message, InputNumber } from 'ant-design-vue';
 
 // 引入 rolemaster\itemdata 的 JSON 資料
 import toolsAndEquipment from '@/rolemaster/itemdata/tools_and_equipment.json';
@@ -58,12 +58,22 @@ const copySelectedItemsToClipboard = () => {
 
 // 計算總價格與總重量
 const totalPrice = computed(() => {
-  return selectedItems.value.reduce((sum, item) => sum + (item.price || 0), 0);
+  // 計算總價格並四捨五入到小數點第五位
+  const sum = selectedItems.value.reduce((sum, item) => sum + (item.price || 0) * (item.quantity || 1), 0);
+  return Math.round(sum * 100000) / 100000;
 });
 
 const totalWeight = computed(() => {
-  return selectedItems.value.reduce((sum, item) => sum + (item.weight || 0), 0);
+  return selectedItems.value.reduce((sum, item) => sum + (item.weight || 0) * (item.quantity || 1), 0);
 });
+
+// 處理數量變更
+const handleQuantityChange = (record, value) => {
+  const idx = selectedItems.value.findIndex(item => item.original === record.original);
+  if (idx !== -1) {
+    selectedItems.value[idx].quantity = value;
+  }
+};
 </script>
 
 <template>
@@ -104,6 +114,17 @@ const totalWeight = computed(() => {
         </div>
       </div>
       <a-table :dataSource="selectedItems" rowKey="original" :pagination="false">
+        <template #bodyCell="{ column, record }">
+          <template v-if="column.key === 'quantity'">
+            <a-input-number
+              v-model:value="record.quantity"
+              :min="0"
+              :max="9999"
+              style="width: 80px"
+              @change="val => handleQuantityChange(record, val)"
+            />
+          </template>
+        </template>
         <a-table-column title="名稱" dataIndex="name" key="name" width="150" />
         <a-table-column title="#" dataIndex="quantity" key="quantity" width="100" />
         <a-table-column title="價格" dataIndex="price" key="price" width="100" />
