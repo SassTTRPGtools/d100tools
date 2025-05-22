@@ -8,6 +8,15 @@ const selectedOption = ref(spellOptions[0].options[0].value);
 const selectedSpellList = ref('');
 const favoriteSpellLists = ref([]);
 
+// 手機判斷
+const $isMobile = ref(false);
+onMounted(() => {
+  $isMobile.value = window.innerWidth <= 600;
+  window.addEventListener('resize', () => {
+    $isMobile.value = window.innerWidth <= 600;
+  });
+});
+
 // 載入最愛法術列表，檢查 URL 中是否有 favorites 參數
 onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search);
@@ -196,7 +205,33 @@ const selectFavoriteSpellList = (spellList) => {
       </div>
     </div>
 
-    <a-tabs v-model:activeKey="selectedSpellList" centered>
+    <div v-if="$isMobile" class="mobile-tab-list">
+      <div
+        v-for="spellList in [...new Set(tableData.map(row => row.spellList))]"
+        :key="spellList"
+        :class="['mobile-tab-btn', { active: selectedSpellList === spellList }]"
+        @click="selectedSpellList = spellList"
+      >
+        {{ spellList }}
+      </div>
+    </div>
+    <div v-if="$isMobile">
+      <div class="content-container">
+        <div v-if="levelZeroDetails" class="level-zero-details-mobile">
+          <p>{{ levelZeroDetails }}</p>
+        </div>
+        <div v-if="filteredTableData.length > 0" class="table-container-mobile">
+          <div class="mobile-table">
+            <div v-for="(row, index) in filteredTableData" :key="index" class="mobile-row">
+              <div class="mobile-cell details" @click="copyToClipboard(row.details)">
+                {{ row.details }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a-tabs v-else v-model:activeKey="selectedSpellList" centered>
       <a-tab-pane
         v-for="spellList in [...new Set(tableData.map(row => row.spellList))]"
         :key="spellList"
@@ -304,6 +339,36 @@ const selectFavoriteSpellList = (spellList) => {
 .table-container {
   flex: 1;
   width: 80%;
+  max-width: 800px;
+}
+
+/* 手機版樣式 */
+.mobile-table {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.mobile-row {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mobile-cell {
+  font-size: 15px;
+  padding: 2px 0;
+  word-break: break-all;
+  cursor: pointer;
+}
+.mobile-label {
+  color: #888;
+  font-size: 13px;
+  margin-right: 4px;
 }
 
 .level-zero-details {
@@ -312,6 +377,83 @@ const selectFavoriteSpellList = (spellList) => {
   border: 1px solid #e5e7eb;
   background-color: #f9fafb;
   width: 80%;
+  word-break: break-all;
+}
+.level-zero-details-mobile {
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
+  word-break: break-all;
+  font-size: 15px;
+}
+.table-container-mobile {
+  width: 100vw;
+  max-width: 100vw;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mobile-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  padding: 4px 0 8px 0;
+  background: #fff;
+}
+.mobile-tab-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #fff;
+  color: #333;
+  font-weight: 500;
+  font-size: 15px;
+  border: 1.5px solid #d9d9d9;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  white-space: nowrap;
+}
+.mobile-tab-btn.active,
+.mobile-tab-btn:hover {
+  background: #f5f5f5;
+  color: #1890ff;
+  border-color: #1890ff;
+}
+
+.button-group .ant-btn {
+  background: #fff !important;
+  color: #333 !important;
+  border: 1.5px solid #d9d9d9 !important;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.button-group .ant-btn:hover,
+.button-group .ant-btn:focus {
+  background: #f5f5f5 !important;
+  color: #1890ff !important;
+  border-color: #1890ff !important;
+}
+
+.action-buttons .ant-btn {
+  background: #fff !important;
+  color: #333 !important;
+  border: 1.5px solid #d9d9d9 !important;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.action-buttons .ant-btn:hover,
+.action-buttons .ant-btn:focus {
+  background: #f5f5f5 !important;
+  color: #1890ff !important;
+  border-color: #1890ff !important;
+}
+
+body, .container, .content-container, .table-container, .table-container-mobile, .mobile-table, .mobile-row, .level-zero-details, .level-zero-details-mobile {
+  background: #fff !important;
 }
 
 h3 {
@@ -327,5 +469,26 @@ td {
   word-wrap: break-word;
   text-align: left;
   cursor: pointer;
+}
+
+.mobile-table {
+  width: 100%;
+}
+
+.mobile-row {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 10px;
+  background-color: #f9fafb;
+}
+
+.mobile-cell {
+  margin-bottom: 5px;
+}
+
+.mobile-label {
+  font-weight: bold;
 }
 </style>

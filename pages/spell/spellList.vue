@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { spellTables } from '@/rolemaster/utils/spellTables.js';
 import { message, AutoComplete } from 'ant-design-vue';
 
@@ -72,6 +72,14 @@ const handleSelect = (value) => {
 const handleTableClick = (value) => {
   searchQuery.value = value;
 };
+
+const $isMobile = ref(false);
+onMounted(() => {
+  $isMobile.value = window.innerWidth <= 600;
+  window.addEventListener('resize', () => {
+    $isMobile.value = window.innerWidth <= 600;
+  });
+});
 </script>
 
 <template>
@@ -82,12 +90,25 @@ const handleTableClick = (value) => {
         :options="autoCompleteOptions"
         @select="handleSelect"
         placeholder="搜尋細節"
-        style="width: 300px; margin-bottom: 20px;"
+        style="width: 100%; max-width: 300px; margin-bottom: 20px;"
       />
     </div>
     <div class="content-container">
       <div v-if="filteredTableData.length > 0" class="table-container">
-        <table class="min-w-full divide-y divide-gray-200 border">
+        <div class="mobile-table" v-if="$isMobile">
+          <div v-for="(row, index) in filteredTableData" :key="index" class="mobile-row">
+            <div class="mobile-cell mainList" @click="handleTableClick(row.mainList)">
+              <span class="mobile-label">主法表：</span>{{ row.mainList }}
+            </div>
+            <div class="mobile-cell spellList" @click="handleTableClick(row.spellList)">
+              <span class="mobile-label">次法表：</span>{{ row.spellList }}
+            </div>
+            <div class="mobile-cell details" @click="copyToClipboard(row.details)">
+              <span class="mobile-label">細節：</span>{{ row.details }}
+            </div>
+          </div>
+        </div>
+        <table v-else class="min-w-full divide-y divide-gray-200 border">
           <thead class="bg-gray-50">
             <tr>
               <th
@@ -128,7 +149,7 @@ const handleTableClick = (value) => {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
 }
 
 .controls-container {
@@ -136,22 +157,16 @@ const handleTableClick = (value) => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  margin-bottom: 20px; /* 新增與表格的間隔 */
-}
-
-.button-container {
+  padding-top: 10px;
+  margin-bottom: 10px;
   width: 100%;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+.controls-container .ant-select,
+.controls-container .ant-input,
+.controls-container .ant-select-selector {
+  width: 300px !important;
+  max-width: 100%;
 }
 
 .content-container {
@@ -164,29 +179,54 @@ const handleTableClick = (value) => {
 
 .table-container {
   flex: 1;
-  width: 80%;
+  width: 100%;
+  max-width: 800px;
 }
 
-.level-zero-details {
-  margin-bottom: 20px;
+/* 手機版樣式 */
+.mobile-table {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.mobile-row {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
   padding: 10px;
-  border: 1px solid #e5e7eb;
-  background-color: #f9fafb;
-  width: 80%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
-
-h3 {
-  text-align: center;
-}
-
-th, td {
-  padding: 4px 8px;
-  border: 1px solid #e5e7eb;
-}
-
-td {
-  word-wrap: break-word;
-  text-align: left;
+.mobile-cell {
+  font-size: 15px;
+  padding: 2px 0;
+  word-break: break-all;
   cursor: pointer;
+}
+.mobile-label {
+  color: #888;
+  font-size: 13px;
+  margin-right: 4px;
+}
+
+@media (max-width: 600px) {
+  .table-container {
+    width: 100%;
+    max-width: 100vw;
+    padding: 0;
+  }
+  .controls-container {
+    width: 100%;
+    padding: 0 4px;
+  }
+  .controls-container .ant-select,
+  .controls-container .ant-input,
+  .controls-container .ant-select-selector {
+    width: 100% !important;
+    min-width: 0;
+  }
 }
 </style>
