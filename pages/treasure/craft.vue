@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue';
 import { spellTables, CraftSpellTables } from '@/rolemaster/utils/spellTables.js';
+import { message } from 'ant-design-vue';
 
 // 初始值設定
 const selectedBase = ref("SanctifierBase");
@@ -116,6 +117,58 @@ const mainData = computed(() => {
   ];
 });
 
+// 彙整結果 computed
+const summaryText = computed(() => {
+  // 取得 spell label 與 level
+  const formatSpells = (spells, options) =>
+    spells.map(spellLabel => {
+      const found = options.find(opt => opt.label === spellLabel);
+      if (found) return `${found.value} (${found.level})`;
+      // 若找不到，直接顯示 label
+      return spellLabel;
+    });
+
+  // 加工法術
+  const crafting = formatSpells(formulaData.value.craftingSpells, craftingSpellOptions.value);
+  // 風格法術（多組）
+  const styles = dynamicStyleSpells.value.map(group => formatSpells(group.selectedSpells, styleSpellOptions.value));
+  // 其他法術（多組）
+  const others = dynamicOtherSpells.value.map(group => formatSpells(group.selectedSpells, otherSpellOptions.value));
+
+  // 將所有法術分組，組內逗號分隔，組間用句號分隔
+  const allGroups = [crafting, ...styles, ...others].filter(g => g.length > 0);
+  const spellsString = allGroups.map(g => g.join(', ')).join('. ');
+
+  // 其他資訊
+  const days = mainData.value[0]?.finalWorkDays || 0;
+  const cost = mainData.value[0]?.costPrice || 0;
+  const itemLevel = mainData.value[0]?.itemLevel || 0;
+
+  if (spellsString.length < 1) {
+    return ``;
+  }else{
+    return `${spellsString}. 天數： ${days}。標準成本：${cost}sp。 ${itemLevel}級物品。`;
+  }
+  
+});
+
+// 複製功能（點擊區塊即可複製，含提示效果）
+const copySummary = async () => {
+  try {
+    await navigator.clipboard.writeText(summaryText.value);
+    message.success('已複製到剪貼簿！');
+  } catch (e) {
+    // fallback
+    const textarea = document.createElement('textarea');
+    textarea.value = summaryText.value;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    message.success('已複製到剪貼簿！');
+  }
+};
+
 // 動態法術操作
 const addOtherSpellDropdown = () => {
   dynamicOtherSpells.value.push({ id: Date.now(), selectedSpells: [] });
@@ -144,11 +197,6 @@ const hideMaterialModal = () => { isMaterialModalVisible.value = false; };
 <template>
   <a-layout>
     <a-layout-content style="padding: 24px">
-      <a-row :gutter="16">
-        <a-col span="24" style="text-align: center; margin-bottom: 24px;">
-          <a-button type="primary" @click="showMaterialModal">顯示材料概估表</a-button>
-        </a-col>
-      </a-row>
       <a-row :gutter="16">
         <!-- 左側：成品計算與製作公式 -->
         <a-col span="12">
@@ -306,6 +354,19 @@ const hideMaterialModal = () => { isMaterialModalVisible.value = false; };
         </a-col>
         <!-- 右側：成品內容 -->
         <a-col span="12">
+          <!-- 成品作法彙整區塊（移到成品內容上方，點擊即可複製） -->
+          <div style="margin-bottom: 16px;">
+            <a-card
+              style="cursor: pointer; min-width: 400px; max-width: 900px; text-align: center; background: #f0f5ff; user-select: all;"
+              @click="copySummary"
+            >
+              <div style="font-size: 18px; font-weight: bold; margin-bottom: 8px;">成品做法</div>
+              <div style="font-size: 16px; white-space: pre-line; word-break: break-all; margin-bottom: 8px;">
+                {{ summaryText }}
+              </div>
+              <div style="color: #888; font-size: 13px;">（點擊此區塊可複製）</div>
+            </a-card>
+          </div>
           <a-card title="成品內容">
             <a-row :gutter="16">
               <!-- 加工法術區塊 -->
