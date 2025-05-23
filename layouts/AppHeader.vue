@@ -1,89 +1,133 @@
 <script setup>
+import { ref } from 'vue'
+const drawerVisible = ref(false)
+const openDrawer = () => { drawerVisible.value = true }
+const closeDrawer = () => { drawerVisible.value = false }
 
+const menuItems = [
+  { key: 'index', title: '回首頁', link: '/' },
+  { key: 'character', title: '角色創建', link: '/character/stat' },
+  {
+    key: 'combat', title: '戰鬥', children: [
+      { key: 'combat-tool', title: '戰鬥快查工具', link: '/combat/quickCheckTool' },
+      { key: 'attack', title: '攻擊表', link: '/combat/attack' },
+      { key: 'critical', title: '重擊表', link: '/combat/critical' },
+      {
+        key: 'combat-sheet', title: '紀錄表', children: [
+          { key: 'sheet-wound', title: '傷勢紀錄表', link: '/combat/wound' },
+          { key: 'sheet-cure', title: '治療傷勢表', link: '/combat/cure' },
+        ]
+      }
+    ]
+  },
+  {
+    key: 'fumbles', title: '犯蠢表格', children: [
+      { key: 'fumble', title: '戰鬥犯蠢表', link: '/combat/fumble' },
+      { key: 'spellfumble', title: '法術犯蠢表', link: '/combat/spellfumble' },
+    ]
+  },
+  {
+    key: 'spell', title: '法術', children: [
+      { key: 'spell-tool', title: '法術快查工具', link: '/spell/quickCheckTool' },
+      { key: 'spell-list', title: '法術查詢', link: '/spell/spellList' },
+      { key: 'spell-ritual', title: '儀式計算表', link: '/spell/ritualTool' },
+    ]
+  },
+  {
+    key: 'treasure', title: '寶藏法則', children: [
+      { key: 'treasure-craft', title: '煉金製作表', link: '/treasure/craft' },
+      { key: 'treasure-item', title: '冒險裝備', link: '/treasure/item' },
+    ]
+  },
+  {
+    key: 'experimental', title: '實驗功能', children: [
+      { key: 'sheet-import', title: '角色表導入', link: '/sheet/import' },
+    ]
+  },
+]
 </script>
 <template>
   <div>
-    <a-menu mode="horizontal" :style="{ boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }">
-      <a-menu-item key="index">
-        <NuxtLink to="/">回首頁</NuxtLink>
-      </a-menu-item>
-      <a-menu-item key="character">
-        <NuxtLink to="/character/stat">角色創建</NuxtLink>
-      </a-menu-item>
-      <a-sub-menu key="combat">
-        <template #title>
-          <span>戰鬥</span>
+    <!-- 手機漢堡按鈕 -->
+    <a-button class="mobile-menu-btn" type="text" @click="openDrawer">
+      <template #icon>
+        <span style="font-size: 2rem;">☰</span>
+      </template>
+    </a-button>
+    <!-- 桌機橫向選單 -->
+    <a-menu mode="horizontal" class="desktop-menu" :style="{ boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }">
+      <template v-for="item in menuItems" :key="item.key">
+        <template v-if="item.children">
+          <a-sub-menu :key="item.key">
+            <template #title>
+              <span>{{ item.title }}</span>
+            </template>
+            <template v-for="child in item.children" :key="child.key">
+              <template v-if="child.children">
+                <a-sub-menu :key="child.key">
+                  <template #title>
+                    <span>{{ child.title }}</span>
+                  </template>
+                  <template v-for="sub in child.children" :key="sub.key">
+                    <a-menu-item>
+                      <NuxtLink :to="sub.link">{{ sub.title }}</NuxtLink>
+                    </a-menu-item>
+                  </template>
+                </a-sub-menu>
+              </template>
+              <template v-else>
+                <a-menu-item>
+                  <NuxtLink :to="child.link">{{ child.title }}</NuxtLink>
+                </a-menu-item>
+              </template>
+            </template>
+          </a-sub-menu>
         </template>
-        <a-menu-item key="combat-tool">
-        <NuxtLink to="/combat/quickCheckTool">戰鬥快查工具</NuxtLink>
-      </a-menu-item>
-      <a-menu-item key="attack">
-            <NuxtLink to="/combat/attack">攻擊表</NuxtLink>
+        <template v-else>
+          <a-menu-item>
+            <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
           </a-menu-item>
-      <a-menu-item key="critical">
-            <NuxtLink to="/combat/critical">重擊表</NuxtLink>
-          </a-menu-item>
-
-        <a-sub-menu key="combat-sheet">
-          <template #title>
-            <span>紀錄表</span>
-          </template>
-          <a-menu-item key="sheet-wound">
-        <NuxtLink to="/combat/wound">傷勢紀錄表</NuxtLink>
-      </a-menu-item>
-      <a-menu-item key="sheet-cure">
-        <NuxtLink to="/combat/cure">治療傷勢表</NuxtLink>
-      </a-menu-item>
-        </a-sub-menu>
-      </a-sub-menu>
-      <a-sub-menu key="fumbles">
-        <template #title>
-          <span>犯蠢表格</span>
         </template>
-        <a-menu-item key="fumble">
-            <NuxtLink to="/combat/fumble">戰鬥犯蠢表</NuxtLink>
-          </a-menu-item>
-          <a-menu-item key="spellfumble">
-            <NuxtLink to="/combat/spellfumble">法術犯蠢表</NuxtLink>
-          </a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu key="spell">
-        <template #title>
-          <span>法術</span>
-        </template>
-        <a-menu-item key="spell-tool">
-          <NuxtLink to="/spell/quickCheckTool">法術快查工具</NuxtLink>
-        </a-menu-item>
-        <a-menu-item key="spell-list">
-          <NuxtLink to="/spell/spellList">法術查詢</NuxtLink>
-        </a-menu-item>
-        <a-menu-item key="spell-ritual">
-          <NuxtLink to="/spell/ritualTool">儀式計算表</NuxtLink>
-        </a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu key="treasure">
-        <template #title>
-          <span>寶藏法則</span>
-        </template>
-        <a-menu-item key="treasure-craft">
-          <NuxtLink to="/treasure/craft">煉金製作表</NuxtLink>
-        </a-menu-item>
-        <a-menu-item key="treasure-item">
-          <NuxtLink to="/treasure/item">冒險裝備</NuxtLink>
-        </a-menu-item>
-      </a-sub-menu>
-      <a-sub-menu key="experimental">
-        <template #title>
-          <span>實驗功能</span>
-        </template>
-
-        <a-menu-item key="sheet-import">
-        <NuxtLink to="/sheet/import">角色表導入</NuxtLink>
-      </a-menu-item>
-
-      </a-sub-menu>
-
+      </template>
     </a-menu>
+    <!-- 手機 Drawer 選單 -->
+    <a-drawer v-model:open="drawerVisible" placement="left" width="80vw" :closable="true" @close="closeDrawer" bodyStyle="padding:0;">
+      <a-menu mode="inline" style="border: none;">
+        <template v-for="item in menuItems" :key="item.key">
+          <template v-if="item.children">
+            <a-sub-menu :key="item.key">
+              <template #title>
+                <span>{{ item.title }}</span>
+              </template>
+              <template v-for="child in item.children" :key="child.key">
+                <template v-if="child.children">
+                  <a-sub-menu :key="child.key">
+                    <template #title>
+                      <span>{{ child.title }}</span>
+                    </template>
+                    <template v-for="sub in child.children" :key="sub.key">
+                      <a-menu-item>
+                        <NuxtLink :to="sub.link">{{ sub.title }}</NuxtLink>
+                      </a-menu-item>
+                    </template>
+                  </a-sub-menu>
+                </template>
+                <template v-else>
+                  <a-menu-item>
+                    <NuxtLink :to="child.link">{{ child.title }}</NuxtLink>
+                  </a-menu-item>
+                </template>
+              </template>
+            </a-sub-menu>
+          </template>
+          <template v-else>
+            <a-menu-item>
+              <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
+            </a-menu-item>
+          </template>
+        </template>
+      </a-menu>
+    </a-drawer>
   </div>
 </template>
 <style scoped>
@@ -97,5 +141,23 @@
 
 .ant-menu-item a:hover {
   color: #1890ff;
+}
+.mobile-menu-btn {
+  display: none;
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  z-index: 1001;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+@media (max-width: 600px) {
+  .desktop-menu {
+    display: none !important;
+  }
+  .mobile-menu-btn {
+    display: block !important;
+  }
 }
 </style>

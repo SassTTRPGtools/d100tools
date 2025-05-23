@@ -570,7 +570,6 @@ const modalBodyStyle = {
   background: '#fff',
   boxSizing: 'border-box',
 }
-// ...existing code...
 </script>
 
 <template>
@@ -667,7 +666,7 @@ const modalBodyStyle = {
         <a-form-item label="重擊（填上每個±）">
           <a-input v-model:value="attackForm.cri_total" placeholder="+0" />
         </a-form-item>
-        <!-- 攻擊區域修改 -->
+        <!-- 攻击区域修改 -->
         <div class="bg-gray-400 text-white px-2 py-1 mb-1 rounded font-bold">通用修改</div>
         <div class="flex flex-wrap gap-2 mb-2">
           <a-checkbox-group v-model:value="attackForm.commonOBMod">
@@ -809,7 +808,7 @@ const modalBodyStyle = {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center; /* 由 flex-start 改為 center 讓內容垂直置中 */
 }
 .main-btn-vertical {
   display: flex;
