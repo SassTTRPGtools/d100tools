@@ -240,6 +240,62 @@ function openAttackModal() {
   }
 }
 
+function getSizeDifference(attackerSize, targetSize) {
+  const keys = Object.keys(atkSizeTables)
+  return keys.indexOf(attackerSize) - keys.indexOf(targetSize)
+}
+function getMultiplier(attackerSize, targetSize) {
+  const keys = Object.keys(atkSizeTables)
+  const baseIndex = keys.indexOf('Medium')
+  let newIndex = baseIndex + getSizeDifference(attackerSize, targetSize)
+  if (newIndex < 0) newIndex = 0
+  if (newIndex >= keys.length) newIndex = keys.length - 1
+  const newSize = keys[newIndex]
+  return atkSizeTables[newSize].multiplier
+}
+function getAttackOutcome(attackType, atValue, attackRoll, attackerSize, targetSize, critAdjustment) {
+  const table = atkTables[attackType]
+  if (!table) return '無效的攻擊類型'
+  const ranges = Object.keys(table[atValue]).map(range => range.split('-').map(Number))
+  const minRange = Math.min(...ranges.map(range => range[0]))
+  const maxRange = Math.max(...ranges.map(range => range[1]))
+  if (attackRoll < minRange) attackRoll = minRange
+  if (attackRoll > maxRange) attackRoll = maxRange
+  const row = Object.entries(table[atValue]).find(([range]) => {
+    const [min, max] = range.split('-').map(Number)
+    return min <= attackRoll && max >= attackRoll
+  })
+  if (!row) return '無結果'
+  const severityMap = critSeverityOptions.map(option => option.value)
+  const sizeAdjustment = getSizeDifference(attackerSize, targetSize)
+  let description = row[1]
+  let numericValue = parseFloat(description)
+  const newValue = Math.ceil(numericValue * getMultiplier(attackerSize, targetSize))
+  description = description.replace(numericValue, newValue)
+  let descriptionLetter = description.slice(-2, -1)
+  let currentlyIndex = severityMap.indexOf(descriptionLetter)
+  let newIndex = severityMap.indexOf(descriptionLetter)
+  newIndex += sizeAdjustment + critAdjustment
+  if (newIndex < 0) newIndex = 0
+  if (newIndex > 10) newIndex = 10
+  return description.replace(severityMap[currentlyIndex], severityMap[newIndex])
+}
+function getCritOutcome(critResult, attackOutcome) {
+  if (!isNaN(attackOutcome)) return '無重擊結果'
+  const critType = attackOutcome.slice(-2, -1)
+  const critTableKey = attackOutcome.slice(-1)
+  const critTable = critKeyMapping[critTableKey]
+  if (!critTable) return '無效的重擊表'
+  const severityLevels = critSeverityOptions.find(option => option.value === critType).label.split('+')
+  const critOutcomes = severityLevels.map(level => {
+    let _level = (level === 'Z') ? 'A' : level
+    let critData = critTable[_level]
+    let critRow = critData.find(row => row.min <= critResult && row.max >= critResult)
+    return critRow ? `${level}: ${critRow.description}` : `${level}: 無結果`
+  })
+  return critOutcomes.join('🔷')
+}
+
 function handleAttackRoll() {
   const Xroll = rollD100()
   let total_number = 0
@@ -256,7 +312,6 @@ function handleAttackRoll() {
   const html_hitLocationMod = attackForm.value.hitLocationMod || '+0'
   const html_restrictedQuartersMod = attackForm.value.restrictedQuartersMod || '+0'
   const modNum = parseModifier(html_total)
-
   if (Xroll >= 96) {
     const RExplode = rollD100()
     total_number = Xroll + RExplode + modNum + commonSum + meleeSum + stanceSum + rangedSum + parseInt(html_rangeMod) + parseInt(html_hitLocationMod) + parseInt(html_restrictedQuartersMod)
@@ -273,7 +328,6 @@ function handleAttackRoll() {
   if (parseInt(html_rangeMod) !== 0) total_string += `${html_rangeMod}(射程)`
   if (parseInt(html_hitLocationMod) !== 0) total_string += `${html_hitLocationMod}(部位)`
   if (parseInt(html_restrictedQuartersMod) !== 0) total_string += `${html_restrictedQuartersMod}(受限)`
-
   // 重擊
   let cri_bouns = 0
   if (total_number >= 180) cri_bouns = Math.floor((total_number - 175) / 5)
@@ -311,13 +365,27 @@ function handleAttackRoll() {
   if (total_number <= 67) {
     result_string = '完全失誤/除非是範圍法術'
   }
+  // ===== 查表組裝完整描述 =====
+  let attackOutcome = getAttackOutcome(
+    attackForm.value.subCategory,
+    attackForm.value.AT,
+    total_number,
+    attackForm.value.attackerSize,
+    attackForm.value.targetSize,
+    attackForm.value.critAdjustment
+  )
+  let critOutcome = getCritOutcome(hitdice, attackOutcome)
+  let fullResult = `✊${attackOutcome}🔷${critOutcome}`
+  // 命中部位說明
+  let locationDesc = result_string
   attackResult.value = {
     total_string,
     total_string_css,
     total_number,
     total_cri_string,
     hitdice,
-    result_string,
+    result_string: fullResult,
+    locationDesc,
   }
 }
 // 新增：攻擊結果點擊複製（參考 quickCheckTool 的 renderCritOutcomeCell）
@@ -629,7 +697,7 @@ function handleResistRoll() {
         ✊+X : X 傷害, 🩸X: 流血 X /輪, 💦 (-X): 疲勞減值, 🛠️ (-X): 損壞檢定, -X: 受傷減值, X 💫 [-xx]: 眩暈 X 輪及減值[-xx], 😵: 失衡, 🌊 X’: 擊退, 👎: 擊倒/伏地, 🕸️: 擒拿 X%, ✴️(X): 額外重擊, 💀: 目標瀕死或被擊敗
         </a-card>
         <div class="font-bold text-lg mt-2">
-          <component :is="renderAttackResultCell(attackResult.result_string, attackResult.result_string && attackResult.result_string.startsWith('命中') ? attackResult.result_string : null)" />
+          <component :is="renderAttackResultCell(attackResult.result_string, attackResult.locationDesc)" />
         </div>
       </div>
     </a-modal>
