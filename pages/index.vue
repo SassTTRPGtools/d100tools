@@ -1,5 +1,7 @@
 <script setup>
 import { ref } from 'vue'
+import { atkTables, atkOptions, atkSizeTables } from '@/rolemaster/utils/attackTables.js';
+import { critTables, critSeverityOptions, critKeyMapping, hitLocationMapping } from '@/rolemaster/utils/critTables.js';
 import { message, Modal, Button, Form, Select, Input } from 'ant-design-vue'
 
 const showCheckModal = ref(false)
@@ -160,6 +162,12 @@ function getCheckResult(Xroll, total_number, total_string, total_string_css, htm
 // ===== 攻擊功能 =====
 const showAttackModal = ref(false)
 const attackForm = ref({
+  category: atkOptions[0].category,
+  subCategory: atkOptions[0].options[0].value,
+  attackerSize: 'Medium',
+  AT: 1,
+  targetSize: 'Medium',
+  critAdjustment: 0,
   total: '+0',
   cri_total: '+0',
   commonOBMod: [], // 通用
@@ -214,6 +222,12 @@ function openAttackModal() {
   attackResult.value = null
   // reset form
   attackForm.value = {
+    category: atkOptions[0].category,
+    subCategory: atkOptions[0].options[0].value,
+    attackerSize: 'Medium',
+    AT: 1,
+    targetSize: 'Medium',
+    critAdjustment: 0,
     total: '+0',
     cri_total: '+0',
     commonOBMod: [],
@@ -478,12 +492,60 @@ function handleResistRoll() {
     <!-- 攻擊 Modal -->
     <a-modal v-model:open="showAttackModal" title="攻擊檢定" :footer="null" :centered="true" width="95vw" :bodyStyle="{padding:'8px'}">
       <a-form layout="vertical" @submit.prevent="handleAttackRoll">
+        <!-- 參數選擇區塊（完全參考 quickCheckTool） -->
+        <div class="flex flex-wrap gap-2 mb-4 items-center">
+          <div>
+            <label class="font-bold">大分類</label>
+            <a-select v-model:value="attackForm.category" style="width: 160px">
+              <a-select-option v-for="option in atkOptions" :key="option.category" :value="option.category">
+                {{ option.category }}
+              </a-select-option>
+            </a-select>
+          </div>
+          <div>
+            <label class="font-bold">小分類</label>
+            <a-select v-model:value="attackForm.subCategory" style="width: 160px">
+              <a-select-option v-for="option in (atkOptions.find(o=>o.category===attackForm.category)?.options||[])" :key="option.value" :value="option.value">
+                {{ option.label }}
+              </a-select-option>
+            </a-select>
+          </div>
+          <div>
+            <label class="font-bold">攻擊者</label>
+            <a-select v-model:value="attackForm.attackerSize" style="width: 160px">
+              <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
+                {{ size.label }}
+              </a-select-option>
+            </a-select>
+          </div>
+          <div>
+            <label class="font-bold">AT</label>
+            <a-select v-model:value="attackForm.AT" style="width: 80px">
+              <a-select-option v-for="n in 10" :key="n" :value="n">{{ n }}</a-select-option>
+            </a-select>
+          </div>
+          <div>
+            <label class="font-bold">目標</label>
+            <a-select v-model:value="attackForm.targetSize" style="width: 160px">
+              <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
+                {{ size.label }}
+              </a-select-option>
+            </a-select>
+          </div>
+          <div>
+            <label class="font-bold">重擊微調</label>
+            <a-select v-model:value="attackForm.critAdjustment" style="width: 80px">
+              <a-select-option v-for="n in 11" :key="6-n" :value="6-n">{{ 6-n >= 0 ? `+${6-n}` : 6-n }}</a-select-option>
+            </a-select>
+          </div>
+        </div>
         <a-form-item label="攻擊（填上每個±）">
           <a-input v-model:value="attackForm.total" placeholder="+0" />
         </a-form-item>
         <a-form-item label="重擊（填上每個±）">
           <a-input v-model:value="attackForm.cri_total" placeholder="+0" />
         </a-form-item>
+        <!-- 攻擊區域修改 -->
         <div class="bg-gray-400 text-white px-2 py-1 mb-1 rounded font-bold">通用修改</div>
         <div class="flex flex-wrap gap-2 mb-2">
           <a-checkbox-group v-model:value="attackForm.commonOBMod">
