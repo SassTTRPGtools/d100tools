@@ -428,7 +428,7 @@ const hideMaterialModal = () => { isMaterialModalVisible.value = false; };
 
   <!-- 材料概估表 Modal -->
   <a-modal
-    v-model:visible="isMaterialModalVisible"
+    v-model:open="isMaterialModalVisible"
     title="材料概估表"
     @ok="hideMaterialModal"
     @cancel="hideMaterialModal"

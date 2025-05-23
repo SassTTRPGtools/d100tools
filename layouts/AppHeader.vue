@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 const drawerVisible = ref(false)
 const openDrawer = () => { drawerVisible.value = true }
 const closeDrawer = () => { drawerVisible.value = false }
@@ -45,6 +46,28 @@ const menuItems = [
     ]
   },
 ]
+
+// 新增：追蹤選單選中狀態
+const route = useRoute()
+const selectedKey = ref('index')
+
+function findMenuKeyByPath(path, items = menuItems) {
+  // 僅精確比對 path，不允許 /character/stat 匹配 / 這種情況
+  for (const item of items) {
+    if (item.link === path) return item.key
+    if (item.children) {
+      const found = findMenuKeyByPath(path, item.children)
+      if (found) return found
+    }
+  }
+  return undefined
+}
+
+// 初始化與路由變化時自動同步選中
+watchEffect(() => {
+  const key = findMenuKeyByPath(route.path)
+  if (key) selectedKey.value = key
+})
 </script>
 <template>
   <div>
@@ -55,7 +78,7 @@ const menuItems = [
       </template>
     </a-button>
     <!-- 桌機橫向選單 -->
-    <a-menu mode="horizontal" class="desktop-menu" :style="{ boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }">
+    <a-menu mode="horizontal" class="desktop-menu" :style="{ boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }" :selectedKeys="[selectedKey]">
       <template v-for="item in menuItems" :key="item.key">
         <template v-if="item.children">
           <a-sub-menu :key="item.key">
@@ -70,14 +93,14 @@ const menuItems = [
                   </template>
                   <template v-for="sub in child.children" :key="sub.key">
                     <a-menu-item>
-                      <NuxtLink :to="sub.link">{{ sub.title }}</NuxtLink>
+                      <NuxtLink :to="sub.link" @click="selectedKey = sub.key">{{ sub.title }}</NuxtLink>
                     </a-menu-item>
                   </template>
                 </a-sub-menu>
               </template>
               <template v-else>
                 <a-menu-item>
-                  <NuxtLink :to="child.link">{{ child.title }}</NuxtLink>
+                  <NuxtLink :to="child.link" @click="selectedKey = child.key">{{ child.title }}</NuxtLink>
                 </a-menu-item>
               </template>
             </template>
@@ -85,14 +108,14 @@ const menuItems = [
         </template>
         <template v-else>
           <a-menu-item>
-            <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
+            <NuxtLink :to="item.link" @click="selectedKey = item.key">{{ item.title }}</NuxtLink>
           </a-menu-item>
         </template>
       </template>
     </a-menu>
     <!-- 手機 Drawer 選單 -->
     <a-drawer v-model:open="drawerVisible" placement="left" width="80vw" :closable="true" @close="closeDrawer" bodyStyle="padding:0;">
-      <a-menu mode="inline" style="border: none;">
+      <a-menu mode="inline" style="border: none;" :selectedKeys="[selectedKey]">
         <template v-for="item in menuItems" :key="item.key">
           <template v-if="item.children">
             <a-sub-menu :key="item.key">
@@ -107,14 +130,14 @@ const menuItems = [
                     </template>
                     <template v-for="sub in child.children" :key="sub.key">
                       <a-menu-item>
-                        <NuxtLink :to="sub.link">{{ sub.title }}</NuxtLink>
+                        <NuxtLink :to="sub.link" @click="selectedKey = sub.key">{{ sub.title }}</NuxtLink>
                       </a-menu-item>
                     </template>
                   </a-sub-menu>
                 </template>
                 <template v-else>
                   <a-menu-item>
-                    <NuxtLink :to="child.link">{{ child.title }}</NuxtLink>
+                    <NuxtLink :to="child.link" @click="selectedKey = child.key">{{ child.title }}</NuxtLink>
                   </a-menu-item>
                 </template>
               </template>
@@ -122,7 +145,7 @@ const menuItems = [
           </template>
           <template v-else>
             <a-menu-item>
-              <NuxtLink :to="item.link">{{ item.title }}</NuxtLink>
+              <NuxtLink :to="item.link" @click="selectedKey = item.key">{{ item.title }}</NuxtLink>
             </a-menu-item>
           </template>
         </template>

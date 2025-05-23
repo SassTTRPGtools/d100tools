@@ -419,7 +419,7 @@ watch(selectedCategory, (newCategory) => {
         <a-button type="default" @click="openJsonModal">載入 JSON</a-button>
       </div>      
       <a-modal
-        v-model:visible="isModalVisible"
+        v-model:open="isModalVisible"
         title="載入 JSON"
         @ok="handleJsonSubmit"
         @cancel="() => { isModalVisible = false; jsonInput = ''; }"
