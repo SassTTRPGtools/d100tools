@@ -1,5 +1,5 @@
 <script setup>
-import { ref, h } from 'vue'
+import { ref, h, computed } from 'vue'
 import { atkTables, atkOptions, atkSizeTables } from '@/rolemaster/utils/attackTables.js';
 import { critTables, critSeverityOptions, critKeyMapping, hitLocationMapping } from '@/rolemaster/utils/critTables.js';
 import { message, Modal, Button, Form, Select, Input } from 'ant-design-vue'
@@ -562,18 +562,27 @@ const manual = ref({
   cast: '',
   resist: ''
 })
+
+const modalBodyStyle = {
+  padding: '8px',
+  borderRadius: '18px 18px 0 0',
+  minHeight: '60vh',
+  background: '#fff',
+  boxSizing: 'border-box',
+}
+// ...existing code...
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
-    <div class="flex gap-2 w-full max-w-xs mb-4">
-      <a-button block type="primary" @click="openCheckModal">檢定</a-button>
-      <a-button block type="primary" @click="openAttackModal">攻擊</a-button>
-      <a-button block type="primary" @click="openCastModal">施法</a-button>
-      <a-button block type="primary" @click="openResistModal">抵抗</a-button>
+  <div class="main-mobile-bg">
+    <div class="main-btn-vertical">
+      <a-button block type="primary" size="large" @click="openCheckModal">檢定</a-button>
+      <a-button block type="primary" size="large" @click="openAttackModal">攻擊</a-button>
+      <a-button block type="primary" size="large" @click="openCastModal">施法</a-button>
+      <a-button block type="primary" size="large" @click="openResistModal">抵抗</a-button>
     </div>
     <!-- 檢定 Modal -->
-    <a-modal v-model:open="showCheckModal" title="技能檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="{padding:'16px'}">
+    <a-modal v-model:open="showCheckModal" title="技能檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleCheckRoll()">
         <a-form-item label="檢定類型">
           <a-select v-model:value="checkForm.check_method" :options="checkMethodOptions" />
@@ -603,7 +612,7 @@ const manual = ref({
       </div>
     </a-modal>
     <!-- 攻擊 Modal -->
-    <a-modal v-model:open="showAttackModal" title="攻擊檢定" :footer="null" :centered="true" width="95vw" :bodyStyle="{padding:'8px'}">
+    <a-modal v-model:open="showAttackModal" title="攻擊檢定" :footer="null" :centered="true" width="95vw" :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleAttackRoll()">
         <!-- 參數選擇區塊（完全參考 quickCheckTool） -->
         <div class="flex flex-wrap gap-2 mb-4 items-center">
@@ -738,7 +747,7 @@ const manual = ref({
       </div>
     </a-modal>
     <!-- 施法 Modal -->
-    <a-modal v-model:open="showCastModal" title="施法檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="{padding:'16px'}">
+    <a-modal v-model:open="showCastModal" title="施法檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleCastRoll()">
         <a-form-item label="修改（填上每個±）">
           <a-input v-model:value="castForm.total" placeholder="+0" />
@@ -762,7 +771,7 @@ const manual = ref({
       </div>
     </a-modal>
     <!-- 抵抗 Modal -->
-    <a-modal v-model:open="showResistModal" title="抵抗檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="{padding:'16px'}">
+    <a-modal v-model:open="showResistModal" title="抵抗檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleResistRoll()">
         <a-form-item label="RR DC（預設50）">
           <a-input v-model:value="resistForm.rr_check" placeholder="50" />
@@ -790,3 +799,75 @@ const manual = ref({
     </a-modal>
   </div>
 </template>
+
+<style scoped>
+.main-mobile-bg {
+  min-height: 100vh;
+  background: #f9fafb;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.main-btn-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100vw;
+  max-width: 480px;
+  margin: 0 auto 24px auto;
+  padding: 16px 0 0 0;
+}
+.main-btn-vertical .ant-btn {
+  width: 100vw;
+  max-width: 480px;
+  font-size: 1.25rem;
+  height: 56px;
+  border-radius: 12px;
+}
+.ant-modal-root .ant-modal {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  top: 0 !important;
+  padding: 0 !important;
+  border-radius: 18px 18px 0 0 !important;
+  min-height: 100vh;
+}
+.ant-modal-content {
+  border-radius: 18px 18px 0 0 !important;
+  padding: 0 !important;
+  min-height: 100vh;
+}
+@media (max-width: 600px) {
+  .main-btn-vertical {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 8px 0 0 0;
+    gap: 12px;
+  }
+  .main-btn-vertical .ant-btn {
+    width: 100vw;
+    max-width: 100vw;
+    font-size: 1.1rem;
+    height: 48px;
+    border-radius: 10px;
+  }
+  .ant-modal-root .ant-modal {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    top: 0 !important;
+    padding: 0 !important;
+    border-radius: 18px 18px 0 0 !important;
+    min-height: 100vh;
+  }
+  .ant-modal-content {
+    border-radius: 18px 18px 0 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+  }
+}
+</style>
