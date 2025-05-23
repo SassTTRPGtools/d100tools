@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, h } from 'vue'
 import { atkTables, atkOptions, atkSizeTables } from '@/rolemaster/utils/attackTables.js';
 import { critTables, critSeverityOptions, critKeyMapping, hitLocationMapping } from '@/rolemaster/utils/critTables.js';
 import { message, Modal, Button, Form, Select, Input } from 'ant-design-vue'
@@ -320,6 +320,22 @@ function handleAttackRoll() {
     result_string,
   }
 }
+// 新增：攻擊結果點擊複製（參考 quickCheckTool 的 renderCritOutcomeCell）
+
+function renderAttackResultCell(text, location) {
+  return h(
+    'span',
+    {
+      style: { cursor: 'pointer', color: '#2563eb', 'text-decoration': 'underline' },
+      title: '點擊複製',
+      onClick: () => {
+        navigator.clipboard.writeText(text)
+        message.success('已複製攻擊結果')
+      }
+    },
+    location ? `${location}｜${text}` : text
+  )
+}
 // ===== 施法功能 =====
 const showCastModal = ref(false)
 const castForm = ref({
@@ -609,7 +625,12 @@ function handleResistRoll() {
         <div>過程: {{ attackResult.total_cri_string }}</div>
         <div>重擊結果: {{ attackResult.hitdice }}</div>
         <hr>
-        <div class="font-bold text-lg">結果: {{ attackResult.result_string }}</div>
+        <a-card class="info-card">
+        ✊+X : X 傷害, 🩸X: 流血 X /輪, 💦 (-X): 疲勞減值, 🛠️ (-X): 損壞檢定, -X: 受傷減值, X 💫 [-xx]: 眩暈 X 輪及減值[-xx], 😵: 失衡, 🌊 X’: 擊退, 👎: 擊倒/伏地, 🕸️: 擒拿 X%, ✴️(X): 額外重擊, 💀: 目標瀕死或被擊敗
+        </a-card>
+        <div class="font-bold text-lg mt-2">
+          <component :is="renderAttackResultCell(attackResult.result_string, attackResult.result_string && attackResult.result_string.startsWith('命中') ? attackResult.result_string : null)" />
+        </div>
       </div>
     </a-modal>
     <!-- 施法 Modal -->
