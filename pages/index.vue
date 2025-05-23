@@ -50,8 +50,9 @@ function rollD100() {
   return Math.floor(Math.random() * 100) + 1
 }
 
-function handleCheckRoll() {
-  const Xroll = rollD100()
+function handleCheckRoll(manualD100) {
+  const isManual = manualD100 !== undefined && manualD100 !== null && manualD100 !== ''
+  const Xroll = isManual ? manualD100 : rollD100()
   let total_number = 0
   let total_string = ''
   let total_string_css = ''
@@ -62,14 +63,14 @@ function handleCheckRoll() {
   const diffNum = parseInt(html_difficulty)
   const modNum = parseModifier(html_total)
 
-  if (Xroll <= 5) {
+  if (!isManual && Xroll <= 5) {
     const RExplode = rollD100()
     total_number = Xroll - RExplode + diffNum + modNum
     total_string = `${Xroll}(擲骰)-${RExplode}(擲骰)${html_difficulty}(難度)${html_total}(修改)`
     total_string_css = 'color:red;'
     checkResult.value = getCheckResult(Xroll, total_number, total_string, total_string_css, html_check_method)
     return
-  } else if (Xroll >= 96) {
+  } else if (!isManual && Xroll >= 96) {
     const RExplode = rollD100()
     total_number = Xroll + RExplode + diffNum + modNum
     total_string = `${Xroll}(擲骰)+${RExplode}(擲骰)${html_difficulty}(難度)${html_total}(修改)`
@@ -78,7 +79,9 @@ function handleCheckRoll() {
     return
   } else {
     total_number = Xroll + diffNum + modNum
-    total_string = `${Xroll}(擲骰)${html_difficulty}(難度)${html_total}(修改)`
+    total_string = isManual
+      ? `${Xroll}(手動)${html_difficulty}(難度)${html_total}(修改)`
+      : `${Xroll}(擲骰)${html_difficulty}(難度)${html_total}(修改)`
     checkResult.value = getCheckResult(Xroll, total_number, total_string, '', html_check_method)
   }
 }
@@ -296,8 +299,10 @@ function getCritOutcome(critResult, attackOutcome) {
   return critOutcomes.join('🔷')
 }
 
-function handleAttackRoll() {
-  const Xroll = rollD100()
+function handleAttackRoll(manualAttackD100, manualCritD100) {
+  const isManualAtk = manualAttackD100 !== undefined && manualAttackD100 !== null && manualAttackD100 !== ''
+  const isManualCrit = manualCritD100 !== undefined && manualCritD100 !== null && manualCritD100 !== ''
+  const Xroll = isManualAtk ? manualAttackD100 : rollD100()
   let total_number = 0
   let total_string = ''
   let total_string_css = ''
@@ -312,14 +317,16 @@ function handleAttackRoll() {
   const html_hitLocationMod = attackForm.value.hitLocationMod || '+0'
   const html_restrictedQuartersMod = attackForm.value.restrictedQuartersMod || '+0'
   const modNum = parseModifier(html_total)
-  if (Xroll >= 96) {
+  if (!isManualAtk && Xroll >= 96) {
     const RExplode = rollD100()
     total_number = Xroll + RExplode + modNum + commonSum + meleeSum + stanceSum + rangedSum + parseInt(html_rangeMod) + parseInt(html_hitLocationMod) + parseInt(html_restrictedQuartersMod)
     total_string = `${Xroll}(擲骰)+${RExplode}(擲骰)${html_total}(攻擊)`
     total_string_css = 'color:green;'
   } else {
     total_number = Xroll + modNum + commonSum + meleeSum + stanceSum + rangedSum + parseInt(html_rangeMod) + parseInt(html_hitLocationMod) + parseInt(html_restrictedQuartersMod)
-    total_string = `${Xroll}(擲骰)${html_total}(攻擊)`
+    total_string = isManualAtk
+      ? `${Xroll}(手動)${html_total}(攻擊)`
+      : `${Xroll}(擲骰)${html_total}(攻擊)`
   }
   if (commonSum !== 0) total_string += `${commonSum > 0 ? '+' : ''}${commonSum}(通用)`
   if (meleeSum !== 0) total_string += `${meleeSum > 0 ? '+' : ''}${meleeSum}(近戰)`
@@ -333,9 +340,11 @@ function handleAttackRoll() {
   if (total_number >= 180) cri_bouns = Math.floor((total_number - 175) / 5)
   let total_cri_string = ''
   const html_cri_total = attackForm.value.cri_total || '+0'
-  const hitroll = rollD100()
+  const hitroll = isManualCrit ? manualCritD100 : rollD100()
   let hitdice = hitroll + parseModifier(html_cri_total) + cri_bouns
-  total_cri_string = `${hitroll}(擲骰)${html_cri_total}(修改)+${cri_bouns}(加重攻擊)`
+  total_cri_string = isManualCrit
+    ? `${hitroll}(手動)${html_cri_total}(修改)+${cri_bouns}(加重攻擊)`
+    : `${hitroll}(擲骰)${html_cri_total}(修改)+${cri_bouns}(加重攻擊)`
   const HitLocation = {
     Head: '命中頭部',
     Chest: '命中胸部',
@@ -357,9 +366,9 @@ function handleAttackRoll() {
   } else if ((hitdice >= 11 && hitdice <= 15) || (hitdice >= 46 && hitdice <= 55) || (hitdice >= 56 && hitdice <= 65) || (hitdice >= 86 && hitdice <= 90)) {
     result_string = hitdice % 2 == 1 ? HitLocation.ArmLeft : HitLocation.ArmRight
   }
-  if (Xroll === 66) {
+  if (!isManualAtk && Xroll === 66) {
     result_string += ' (異常事件)'
-  } else if (Xroll === 33 || Xroll === 77) {
+  } else if (!isManualAtk && (Xroll === 33 || Xroll === 77)) {
     result_string += ' (檢查損壞檢定)'
   }
   if (total_number <= 67) {
@@ -417,8 +426,9 @@ function openCastModal() {
   castForm.value = { total: '+0' }
 }
 
-function handleCastRoll() {
-  const Xroll = rollD100()
+function handleCastRoll(manualD100) {
+  const isManual = manualD100 !== undefined && manualD100 !== null && manualD100 !== ''
+  const Xroll = isManual ? manualD100 : rollD100()
   let total_number = 0
   let total_string = ''
   let total_string_css = ''
@@ -427,19 +437,21 @@ function handleCastRoll() {
   const modNum = parseModifier(html_total)
   let fail_message = ''
 
-  if (Xroll <= 5) {
+  if (!isManual && Xroll <= 5) {
     const RExplode = rollD100()
     total_number = Xroll - RExplode + modNum
     total_string = `${Xroll}(擲骰)-${RExplode}(擲骰)${html_total}(修改)`
     total_string_css = 'color:red;'
-  } else if (Xroll >= 96) {
+  } else if (!isManual && Xroll >= 96) {
     const RExplode = rollD100()
     total_number = Xroll + RExplode + modNum
     total_string = `${Xroll}(擲骰)+${RExplode}(擲骰)${html_total}(修改)`
     total_string_css = 'color:green;'
   } else {
     total_number = Xroll + modNum
-    total_string = `${Xroll}(擲骰)${html_total}(修改)`
+    total_string = isManual
+      ? `${Xroll}(手動)${html_total}(修改)`
+      : `${Xroll}(擲骰)${html_total}(修改)`
   }
 
   if (total_number <= 0) {
@@ -487,8 +499,9 @@ function openResistModal() {
   resistForm.value = { rr_check: '50', total: '+0' }
 }
 
-function handleResistRoll() {
-  const Xroll = rollD100()
+function handleResistRoll(manualD100) {
+  const isManual = manualD100 !== undefined && manualD100 !== null && manualD100 !== ''
+  const Xroll = isManual ? manualD100 : rollD100()
   let total_number = 0
   let total_string = ''
   let total_string_css = ''
@@ -498,19 +511,21 @@ function handleResistRoll() {
   const modNum = parseModifier(html_total)
   let RExplode = 0
 
-  if (Xroll <= 5) {
+  if (!isManual && Xroll <= 5) {
     RExplode = rollD100()
     total_number = Xroll - RExplode + modNum
     total_string = `${Xroll}(擲骰)-${RExplode}(擲骰)${html_total}(修改)`
     total_string_css = 'color:red;'
-  } else if (Xroll >= 96) {
+  } else if (!isManual && Xroll >= 96) {
     RExplode = rollD100()
     total_number = Xroll + RExplode + modNum
     total_string = `${Xroll}(擲骰)+${RExplode}(擲骰)${html_total}(修改)`
     total_string_css = 'color:green;'
   } else {
     total_number = Xroll + modNum
-    total_string = `${Xroll}(擲骰)${html_total}(修改)`
+    total_string = isManual
+      ? `${Xroll}(手動)${html_total}(修改)`
+      : `${Xroll}(擲骰)${html_total}(修改)`
   }
 
   const rrDC = parseInt(html_rr_check)
@@ -539,6 +554,14 @@ function handleResistRoll() {
     result_string,
   }
 }
+// ====== 新增：手動 D100 欄位 ======
+const manual = ref({
+  check: '',
+  attack: '',
+  attackCrit: '',
+  cast: '',
+  resist: ''
+})
 </script>
 
 <template>
@@ -551,7 +574,7 @@ function handleResistRoll() {
     </div>
     <!-- 檢定 Modal -->
     <a-modal v-model:open="showCheckModal" title="技能檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="{padding:'16px'}">
-      <a-form layout="vertical" @submit.prevent="handleCheckRoll">
+      <a-form layout="vertical" @submit.prevent="handleCheckRoll()">
         <a-form-item label="檢定類型">
           <a-select v-model:value="checkForm.check_method" :options="checkMethodOptions" />
         </a-form-item>
@@ -561,8 +584,14 @@ function handleResistRoll() {
         <a-form-item label="修改（填上每個±）">
           <a-input v-model:value="checkForm.total" placeholder="+0" />
         </a-form-item>
-        <div class="flex justify-center mt-2">
-          <a-button type="primary" @click="handleCheckRoll">擲骰</a-button>
+        <div class="flex mt-2">
+          <a-button type="primary" @click="handleCheckRoll()">擲骰</a-button>
+        </div>
+        <div class="flex flex-col gap-2 mt-2">
+          <div class="flex gap-2">
+            <a-input v-model:value="manual.check" placeholder="手動 D100" style="width:100px" />
+            <a-button @click="handleCheckRoll(Number(manual.check) || undefined)">手動擲骰</a-button>
+          </div>
         </div>
       </a-form>
       <div v-if="checkResult" class="mt-4 text-center">
@@ -575,7 +604,7 @@ function handleResistRoll() {
     </a-modal>
     <!-- 攻擊 Modal -->
     <a-modal v-model:open="showAttackModal" title="攻擊檢定" :footer="null" :centered="true" width="95vw" :bodyStyle="{padding:'8px'}">
-      <a-form layout="vertical" @submit.prevent="handleAttackRoll">
+      <a-form layout="vertical" @submit.prevent="handleAttackRoll()">
         <!-- 參數選擇區塊（完全參考 quickCheckTool） -->
         <div class="flex flex-wrap gap-2 mb-4 items-center">
           <div>
@@ -682,8 +711,15 @@ function handleResistRoll() {
             <a-select v-model:value="attackForm.rangeMod" :options="rangeOptions" style="width:100%" />
           </div>
         </div>
-        <div class="flex justify-center mt-2">
-          <a-button type="primary" @click="handleAttackRoll" style="width:100%">確定</a-button>
+        <div class="flex mt-2">
+          <a-button type="primary" @click="handleAttackRoll()" style="width:100%">擲骰</a-button>
+        </div>
+        <div class="flex flex-col gap-2 mt-2">
+          <div class="flex gap-2">
+            <a-input v-model:value="manual.attack" placeholder="手動攻擊 D100" style="width:110px" />
+            <a-input v-model:value="manual.attackCrit" placeholder="手動重擊 D100" style="width:110px" />
+            <a-button @click="handleAttackRoll(Number(manual.attack) || undefined, Number(manual.attackCrit) || undefined)">手動擲骰</a-button>
+          </div>
         </div>
       </a-form>
       <div v-if="attackResult" class="mt-4 text-center">
@@ -703,12 +739,18 @@ function handleResistRoll() {
     </a-modal>
     <!-- 施法 Modal -->
     <a-modal v-model:open="showCastModal" title="施法檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="{padding:'16px'}">
-      <a-form layout="vertical" @submit.prevent="handleCastRoll">
+      <a-form layout="vertical" @submit.prevent="handleCastRoll()">
         <a-form-item label="修改（填上每個±）">
           <a-input v-model:value="castForm.total" placeholder="+0" />
         </a-form-item>
-        <div class="flex justify-center mt-2">
-          <a-button type="primary" @click="handleCastRoll">擲骰</a-button>
+        <div class="flex mt-2">
+          <a-button type="primary" @click="handleCastRoll()">擲骰</a-button>
+        </div>
+        <div class="flex flex-col gap-2 mt-2">
+          <div class="flex gap-2">
+            <a-input v-model:value="manual.cast" placeholder="手動 D100" style="width:100px" />
+            <a-button @click="handleCastRoll(Number(manual.cast) || undefined)">手動擲骰</a-button>
+          </div>
         </div>
       </a-form>
       <div v-if="castResult" class="mt-4 text-center">
@@ -721,15 +763,21 @@ function handleResistRoll() {
     </a-modal>
     <!-- 抵抗 Modal -->
     <a-modal v-model:open="showResistModal" title="抵抗檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="{padding:'16px'}">
-      <a-form layout="vertical" @submit.prevent="handleResistRoll">
+      <a-form layout="vertical" @submit.prevent="handleResistRoll()">
         <a-form-item label="RR DC（預設50）">
           <a-input v-model:value="resistForm.rr_check" placeholder="50" />
         </a-form-item>
         <a-form-item label="修改（填上每個±）">
           <a-input v-model:value="resistForm.total" placeholder="+0" />
         </a-form-item>
-        <div class="flex justify-center mt-2">
-          <a-button type="primary" @click="handleResistRoll">擲骰</a-button>
+        <div class="flex mt-2">
+          <a-button type="primary" @click="handleResistRoll()">擲骰</a-button>
+        </div>
+        <div class="flex flex-col gap-2 mt-2">
+          <div class="flex gap-2">
+            <a-input v-model:value="manual.resist" placeholder="手動 D100" style="width:100px" />
+            <a-button @click="handleResistRoll(Number(manual.resist) || undefined)">手動擲骰</a-button>
+          </div>
         </div>
       </a-form>
       <div v-if="resistResult" class="mt-4 text-center">
