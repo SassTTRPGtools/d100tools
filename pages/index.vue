@@ -613,52 +613,46 @@ const modalBodyStyle = {
     <!-- 攻擊 Modal -->
     <a-modal v-model:open="showAttackModal" title="攻擊檢定" :footer="null" :centered="true" width="95vw" :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleAttackRoll()">
-        <!-- 參數選擇區塊（完全參考 quickCheckTool） -->
-        <div class="flex flex-wrap gap-2 mb-4 items-center">
-          <div>
-            <label class="font-bold">大分類</label>
-            <a-select v-model:value="attackForm.category" style="width: 160px">
+        <!-- 參數選擇區塊：單欄直式排列，欄位間距加大 -->
+        <div class="attack-form-section">
+          <a-form-item label="大分類" class="attack-form-item">
+            <a-select v-model:value="attackForm.category" style="width: 100%">
               <a-select-option v-for="option in atkOptions" :key="option.category" :value="option.category">
                 {{ option.category }}
               </a-select-option>
             </a-select>
-          </div>
-          <div>
-            <label class="font-bold">小分類</label>
-            <a-select v-model:value="attackForm.subCategory" style="width: 160px">
+          </a-form-item>
+          <a-form-item label="小分類" class="attack-form-item">
+            <a-select v-model:value="attackForm.subCategory" style="width: 100%">
               <a-select-option v-for="option in (atkOptions.find(o=>o.category===attackForm.category)?.options||[])" :key="option.value" :value="option.value">
                 {{ option.label }}
               </a-select-option>
             </a-select>
-          </div>
-          <div>
-            <label class="font-bold">攻擊者</label>
-            <a-select v-model:value="attackForm.attackerSize" style="width: 160px">
+          </a-form-item>
+          <a-form-item label="攻擊者" class="attack-form-item">
+            <a-select v-model:value="attackForm.attackerSize" style="width: 100%">
               <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
                 {{ size.label }}
               </a-select-option>
             </a-select>
-          </div>
-          <div>
-            <label class="font-bold">AT</label>
-            <a-select v-model:value="attackForm.AT" style="width: 80px">
+          </a-form-item>
+          <a-form-item label="AT" class="attack-form-item">
+            <a-select v-model:value="attackForm.AT" style="width: 100%">
               <a-select-option v-for="n in 10" :key="n" :value="n">{{ n }}</a-select-option>
             </a-select>
-          </div>
-          <div>
-            <label class="font-bold">目標</label>
-            <a-select v-model:value="attackForm.targetSize" style="width: 160px">
+          </a-form-item>
+          <a-form-item label="目標" class="attack-form-item">
+            <a-select v-model:value="attackForm.targetSize" style="width: 100%">
               <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
                 {{ size.label }}
               </a-select-option>
             </a-select>
-          </div>
-          <div>
-            <label class="font-bold">重擊微調</label>
-            <a-select v-model:value="attackForm.critAdjustment" style="width: 80px">
+          </a-form-item>
+          <a-form-item label="重擊微調" class="attack-form-item">
+            <a-select v-model:value="attackForm.critAdjustment" style="width: 100%">
               <a-select-option v-for="n in 11" :key="6-n" :value="6-n">{{ 6-n >= 0 ? `+${6-n}` : 6-n }}</a-select-option>
             </a-select>
-          </div>
+          </a-form-item>
         </div>
         <a-form-item label="攻擊（填上每個±）">
           <a-input v-model:value="attackForm.total" placeholder="+0" />
@@ -666,15 +660,18 @@ const modalBodyStyle = {
         <a-form-item label="重擊（填上每個±）">
           <a-input v-model:value="attackForm.cri_total" placeholder="+0" />
         </a-form-item>
-        <!-- 攻击区域修改 -->
-        <div class="bg-gray-400 text-white px-2 py-1 mb-1 rounded font-bold">通用修改</div>
-        <div class="flex flex-wrap gap-2 mb-2">
+        <!-- 分組區塊：每組單獨一欄，標題明顯 -->
+        <div class="attack-group-title">通用修改</div>
+        <div class="attack-group-block">
           <a-checkbox-group v-model:value="attackForm.commonOBMod">
             <a-checkbox :value="-20">副手(-20)</a-checkbox>
             <a-checkbox :value="10">位於高地(+10)</a-checkbox>
             <a-checkbox :value="20">敵人眩暈(+20)</a-checkbox>
             <a-checkbox :value="25">*突襲敵人(+25)</a-checkbox>
           </a-checkbox-group>
+        </div>
+        <div class="attack-group-title">瞄準/受限</div>
+        <div class="attack-group-block flex gap-2">
           <div class="flex-1 min-w-[120px]">
             <label class="block font-bold">瞄準部位</label>
             <a-select v-model:value="attackForm.hitLocationMod" :options="hitLocationOptions" style="width:100%" />
@@ -684,49 +681,47 @@ const modalBodyStyle = {
             <a-select v-model:value="attackForm.restrictedQuartersMod" :options="restrictedQuartersOptions" style="width:100%" />
           </div>
         </div>
-        <div class="bg-gray-400 text-white px-2 py-1 mb-1 rounded font-bold">近戰修改</div>
-        <div class="flex flex-wrap gap-2 mb-2">
-          <div class="flex flex-col min-w-[120px]">
-            <label class="block font-bold">僅近戰</label>
-            <a-checkbox-group v-model:value="attackForm.meleeOBMod">
-              <a-checkbox :value="-50">處於伏地(-50)</a-checkbox>
-              <a-checkbox :value="30">目標伏地(+30)</a-checkbox>
-              <a-checkbox :value="10">使用2-H武器(+10)</a-checkbox>
-            </a-checkbox-group>
-          </div>
-          <div class="flex flex-col min-w-[120px]">
-            <label class="block font-bold">站位</label>
-            <a-checkbox-group v-model:value="attackForm.stanceOBMod">
-              <a-checkbox :value="15">從側翼攻擊(+15)</a-checkbox>
-              <a-checkbox :value="35">*從後方攻擊(+35)</a-checkbox>
-              <a-checkbox :value="-30">攻擊側翼(-30)</a-checkbox>
-              <a-checkbox :value="-70">攻擊後方(-70)</a-checkbox>
-            </a-checkbox-group>
-          </div>
+        <div class="attack-group-title">近戰修改</div>
+        <div class="attack-group-block">
+          <label class="block font-bold">僅近戰</label>
+          <a-checkbox-group v-model:value="attackForm.meleeOBMod">
+            <a-checkbox :value="-50">處於伏地(-50)</a-checkbox>
+            <a-checkbox :value="30">目標伏地(+30)</a-checkbox>
+            <a-checkbox :value="10">使用2-H武器(+10)</a-checkbox>
+          </a-checkbox-group>
         </div>
-        <div class="text-red-600 text-xs mb-2 font-bold">*措手不及：攻擊者對目標擁有突襲(+25)及從後方攻擊(+35)的好處</div>
-        <div class="bg-gray-400 text-white px-2 py-1 mb-1 rounded font-bold">遠程修改</div>
-        <div class="flex flex-wrap gap-2 mb-2">
-          <div class="flex flex-col min-w-[120px]">
-            <label class="block font-bold">目標狀態</label>
-            <a-checkbox-group v-model:value="attackForm.rangedOBMod">
-              <a-checkbox :value="-30">伏地目標(-30)</a-checkbox>
-              <a-checkbox :value="-20">處於敵人近戰內(-20)</a-checkbox>
-            </a-checkbox-group>
-          </div>
-          <div class="flex-1 min-w-[120px]">
-            <label class="block font-bold">射程</label>
-            <a-select v-model:value="attackForm.rangeMod" :options="rangeOptions" style="width:100%" />
-          </div>
+        <div class="attack-group-block">
+          <label class="block font-bold">站位</label>
+          <a-checkbox-group v-model:value="attackForm.stanceOBMod">
+            <a-checkbox :value="15">從側翼攻擊(+15)</a-checkbox>
+            <a-checkbox :value="35">*從後方攻擊(+35)</a-checkbox>
+            <a-checkbox :value="-30">攻擊側翼(-30)</a-checkbox>
+            <a-checkbox :value="-70">攻擊後方(-70)</a-checkbox>
+          </a-checkbox-group>
         </div>
-        <div class="flex mt-2">
-          <a-button type="primary" @click="handleAttackRoll()" style="width:100%">擲骰</a-button>
+        <div class="attack-group-title">遠程修改</div>
+        <div class="attack-group-block">
+          <label class="block font-bold">目標狀態</label>
+          <a-checkbox-group v-model:value="attackForm.rangedOBMod">
+            <a-checkbox :value="-30">伏地目標(-30)</a-checkbox>
+            <a-checkbox :value="-20">處於敵人近戰內(-20)</a-checkbox>
+          </a-checkbox-group>
         </div>
-        <div class="flex flex-col gap-2 mt-2">
+        <div class="attack-group-block">
+          <label class="block font-bold">射程</label>
+          <a-select v-model:value="attackForm.rangeMod" :options="rangeOptions" style="width:100%" />
+        </div>
+        <a-card class="attack-tip-card">
+          *措手不及：攻擊者對目標擁有突襲(+25)及從後方攻擊(+35)的好處
+        </a-card>
+        <div class="attack-btn-row">
+          <a-button type="primary" @click="handleAttackRoll()" block size="large">擲骰</a-button>
+        </div>
+        <div class="attack-btn-row">
           <div class="flex gap-2">
             <a-input v-model:value="manual.attack" placeholder="手動攻擊 D100" style="width:110px" />
             <a-input v-model:value="manual.attackCrit" placeholder="手動重擊 D100" style="width:110px" />
-            <a-button @click="handleAttackRoll(Number(manual.attack) || undefined, Number(manual.attackCrit) || undefined)">手動擲骰</a-button>
+            <a-button @click="handleAttackRoll(Number(manual.attack) || undefined, Number(manual.attackCrit) || undefined)" size="large">手動擲骰</a-button>
           </div>
         </div>
       </a-form>
@@ -840,6 +835,53 @@ const modalBodyStyle = {
   padding: 0 !important;
   min-height: 100vh;
 }
+.attack-form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+.attack-form-item {
+  width: 100%;
+}
+.attack-group-title {
+  font-weight: bold;
+  background: #e0e7ef;
+  color: #1e293b;
+  padding: 6px 12px;
+  border-radius: 8px;
+  margin: 18px 0 6px 0;
+  font-size: 1.1rem;
+}
+.attack-group-block {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 10px 12px 8px 12px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.attack-group-block .ant-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+}
+.attack-group-block .ant-checkbox-wrapper {
+  width: 50%;
+  margin: 0;
+  font-size: 1.15rem;
+  padding: 4px 0;
+  /* 讓checkbox更大 */
+}
+.attack-group-block .ant-checkbox-inner {
+  width: 24px !important;
+  height: 24px !important;
+}
+.attack-group-block .ant-checkbox {
+  min-width: 28px;
+  min-height: 28px;
+}
 @media (max-width: 600px) {
   .main-btn-vertical {
     width: 100vw;
@@ -867,6 +909,27 @@ const modalBodyStyle = {
     border-radius: 18px 18px 0 0 !important;
     padding: 0 !important;
     min-height: 100vh;
+  }
+  .attack-form-section {
+    gap: 14px;
+    margin-bottom: 8px;
+  }
+  .attack-group-title {
+    font-size: 1rem;
+    padding: 5px 8px;
+    margin: 14px 0 4px 0;
+  }
+  .attack-group-block {
+    padding: 8px 6px 6px 6px;
+    margin-bottom: 6px;
+  }
+  .attack-tip-card {
+    font-size: 0.95rem;
+    padding: 8px 6px;
+  }
+  .attack-btn-row {
+    margin: 10px 0 0 0;
+    gap: 8px;
   }
 }
 </style>
