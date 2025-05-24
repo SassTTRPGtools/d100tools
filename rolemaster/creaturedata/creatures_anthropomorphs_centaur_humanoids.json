@@ -1,0 +1,283 @@
+[
+  {
+    "Name": "Garks",
+    "Level": 1,
+    "Spread": "B",
+    "Outlook": "Hungry",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "17 (Dash)"
+    },
+    "End_Ftg": 36,
+    "Size_Crit": "M/V, -",
+    "Hits": "61 (123)",
+    "AT_DB": "1/3 [4/41] (N20+3/+37)",
+    "Init": 2,
+    "Attack_OBs": ["38M(5)gr", "43M(5)we", "38M(5)rw"],
+    "Magical_Stats": {
+      "PP": 6,
+      "Es": 17,
+      "EM": 17,
+      "Men": 19,
+      "Phy": 18,
+      "Fear": 2
+    },
+    "Skills": {
+      "Percept": 15,
+      "Surv_Biome": 4,
+      "Climb": "",
+      "Fly": "",
+      "Metalcraft": 10,
+      "Subt.Amb.": "(1): 8",
+      "Run": "(4): 41"
+    },
+    "Biome": "FJS---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Centaur, horse",
+    "Level": 6,
+    "Spread": "C",
+    "Outlook": "Normal",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "Quad.: 37 (Dash)"
+    },
+    "End_Ftg": 104,
+    "Size_Crit": "B/V/L, -",
+    "Hits": "179 (367)",
+    "AT_DB": "1/9 [7/60] (T15+10/+88)",
+    "Init": 3,
+    "Attack_OBs": ["104M(5)un", "93M(5)we", "88M(5)rw"],
+    "Magical_Stats": {
+      "PP": 10,
+      "Es": 23,
+      "EM": 10,
+      "Men": 7,
+      "Phy": 10,
+      "Fear": 14
+    },
+    "Skills": {
+      "Percept": 74,
+      "Surv_Biome": 69,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 72,
+      "Wei. Trn.": 93,
+      "Woodcraft": 77,
+      "Subt.Amb.": "(6): 39",
+      "Run": "(7): 60"
+    },
+    "Biome": "BFPS--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Hira’razhir",
+    "Level": 3,
+    "Spread": "D",
+    "Outlook": "Aloof",
+    "Archetype": "Discipline",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "58 (Run)",
+      "Swim_III": "",
+      "Walk": "18 (Dash)"
+    },
+    "End_Ftg": 39,
+    "Size_Crit": "M/V, -",
+    "Hits": "59 (124)",
+    "AT_DB": "1/57 [2/14] or [2/44] (none)",
+    "Init": 4,
+    "Attack_OBs": ["57M(5)un", "57M(5)rw", "57M(5)rw"],
+    "Magical_Stats": {
+      "PP": 13,
+      "Es": -3,
+      "EM": -4,
+      "Men": -1,
+      "Phy": 6,
+      "Fear": 13
+    },
+    "Skills": {
+      "Percept": 44,
+      "Surv_Biome": 9,
+      "Climb": "",
+      "Fly": "(4): 24",
+      "Footwork": 10,
+      "Acrob.": 46,
+      "Adr. Foc.": 48,
+      "Run": "(2): 14"
+    },
+    "Biome": "AW-----",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Mermen",
+    "Level": 5,
+    "Spread": "C",
+    "Outlook": "Normal",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "",
+      "Swim_III": "35 (Run)",
+      "Walk": "15 (Walk)"
+    },
+    "End_Ftg": 84,
+    "Size_Crit": "B/VI, -",
+    "Hits": "171 (350)",
+    "AT_DB": "3/3 [3/34] or [12/87] (N20+9/+74)",
+    "Init": 1,
+    "Attack_OBs": ["88D(6)ra", "88D(6)rw", "88D(6)rw"],
+    "Magical_Stats": {
+      "PP": 7,
+      "Es": 21,
+      "EM": 7,
+      "Men": 4,
+      "Phy": 1,
+      "Fear": 2
+    },
+    "Skills": {
+      "Percept": 65,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 64,
+      "Ani. Han. Spec.": 11,
+      "Rid. Spec.": 60,
+      "Mount. Com.": 64,
+      "Subt.Amb.": "(5): 31",
+      "Swim": "(12): 87"
+    },
+    "Biome": "O------",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Strige",
+    "Level": 5,
+    "Spread": "E",
+    "Outlook": "Greedy",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "60 (Run)",
+      "Swim_III": "",
+      "Walk": "20 (Dash)"
+    },
+    "End_Ftg": 49,
+    "Size_Crit": "M/V, @-",
+    "Hits": "49 (101)",
+    "AT_DB": "2/3 [3/9] or [6/24] (T15+3/+9)",
+    "Init": 7,
+    "Attack_OBs": ["33M(5)un", "33M(5)be", "33M(5)rw"],
+    "Magical_Stats": {
+      "PP": 52,
+      "Es": 9,
+      "EM": 12,
+      "Men": 8,
+      "Phy": 28,
+      "Fear": 8
+    },
+    "Skills": {
+      "Percept": 20,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "(6): 24",
+      "Stalking": 39,
+      "Mechanics. Spec.": 12,
+      "Run": "(3): 9"
+    },
+    "Biome": "ABF---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Troglodyte",
+    "Level": 2,
+    "Spread": "B",
+    "Outlook": "Aggressive",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Climb-Grip": "12 (Walk)",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "16 (Dash)"
+    },
+    "End_Ftg": 40,
+    "Size_Crit": "M/V, -",
+    "Hits": "35 (76)",
+    "AT_DB": "2/6 [3/91] (N20+2/+21)",
+    "Init": 0,
+    "Attack_OBs": ["29M(5)cl", "29M(5)un", "29M(5)rw"],
+    "Magical_Stats": {
+      "PP": 7,
+      "Es": 29,
+      "EM": 11,
+      "Men": 3,
+      "Phy": 1,
+      "Fear": 5
+    },
+    "Skills": {
+      "Percept": 41,
+      "Surv_Biome": 5,
+      "Climb": "(3): 9",
+      "Fly": "",
+      "Stalking": 47,
+      "Subt.Amb.": "(2): 23",
+      "Run": "(2): 18"
+    },
+    "Biome": "UW-----",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Vestice",
+    "Level": 7,
+    "Spread": "F",
+    "Outlook": "Obsessive",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "19 (Dash)"
+    },
+    "End_Ftg": 35,
+    "Size_Crit": "M/V, -",
+    "Hits": "60 (124)",
+    "AT_DB": "1/6 [16/75] (none)",
+    "Init": -2,
+    "Attack_OBs": ["49M(5)un", "49M(5)cl", "49M(5)rw"],
+    "Magical_Stats": {
+      "PP": 48,
+      "Es": 31,
+      "EM": 21,
+      "Men": 10,
+      "Phy": 20,
+      "Fear": 15
+    },
+    "Skills": {
+      "Percept": 43,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 48,
+      "Acrobat.": 31,
+      "Pow. Dev.": 20,
+      "Subt.Amb.": "(5): 29",
+      "Run": "(2): 15"
+    },
+    "Biome": "BERT--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  }
+]

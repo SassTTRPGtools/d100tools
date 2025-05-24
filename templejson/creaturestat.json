@@ -1,0 +1,30 @@
+[
+  {
+    "Name": "",
+    "Level": null,
+    "Spread": "",
+    "Outlook": "",
+    "Archetype": "",
+    "Movement": {
+    },
+    "End_Ftg": null,
+    "Size_Crit": "",
+    "Hits": "",
+    "AT_DB": "",
+    "Init": null,
+    "Attack_OBs": [],
+    "Magical_Stats": {
+      "PP": null,
+      "Es": null,
+      "EM": null,
+      "Men": null,
+      "Phy": null,
+      "Fear": null
+    },
+    "Skills": {      
+    },
+    "Biome": "",
+    "#Enc": "",
+    "Freq": ""
+  }
+]

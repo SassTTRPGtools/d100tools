@@ -1,0 +1,521 @@
+[
+  {
+    "Name": "Ghoul, standard (III)",
+    "Level": 12,
+    "Spread": "A",
+    "Outlook": "Protective",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "20 (Dash)"
+    },
+    "End_Ftg": 164,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "174 (360)",
+    "AT_DB": "2/6 [13/95] (none)",
+    "Init": 2,
+    "Attack_OBs": [
+      "158M(5)cl [Disease]",
+      "158S(4)bi [Disease]",
+      "136M(5)un",
+      "136M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 17,
+      "Es": 39,
+      "EM": 19,
+      "Men": 25,
+      "Phy": 36,
+      "Fear": 26
+    },
+    "Skills": {
+      "Percept": 26,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 15,
+      "Prof. Miner": 92,
+      "Subt.Amb.": "(6): 40",
+      "Run": "(13): 95"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Streak (1d6)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Ghoul, greater (IV)",
+    "Level": 15,
+    "Spread": "H",
+    "Outlook": "Protective",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 180,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "190 (392)",
+    "AT_DB": "2/9 [16/104] (none)",
+    "Init": 3,
+    "Attack_OBs": [
+      "172M(5)cl [Disease]",
+      "172M(5)un",
+      "172M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 19,
+      "Es": 46,
+      "EM": 27,
+      "Men": 31,
+      "Phy": 42,
+      "Fear": 34
+    },
+    "Skills": {
+      "Percept": 40,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 131,
+      "Prof. Miner": 111,
+      "Subt.Amb.": "(7): 48",
+      "Run": "(16): 104"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Gaggle (1d12)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Mummy, standard (III)",
+    "Level": 12,
+    "Spread": "C",
+    "Outlook": "Protective",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "19 (Dash)"
+    },
+    "End_Ftg": 169,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "169 (350)",
+    "AT_DB": "0 [13/93] (none)",
+    "Init": 0,
+    "Attack_OBs": [
+      "144M(5)gr",
+      "144M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 11,
+      "Es": 44,
+      "EM": 28,
+      "Men": 26,
+      "Phy": 35,
+      "Fear": 31
+    },
+    "Skills": {
+      "Percept": 31,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 30,
+      "Protect": 115,
+      "Subt.Amb.": "(6): 36",
+      "Run": "(13): 93"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Mummy, greater (IV)",
+    "Level": 15,
+    "Spread": "H",
+    "Outlook": "Protective",
+    "Archetype": "Skill",
+    "Movement": {
+      "Walk": "18 (Dash)"
+    },
+    "End_Ftg": 53,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "78 (180)",
+    "AT_DB": "3-6 [16/77] (none)",
+    "Init": -2,
+    "Attack_OBs": [
+      "76M(5)un",
+      "78M(5)gr",
+      "76M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 161,
+      "Es": 53,
+      "EM": 38,
+      "Men": 41,
+      "Phy": 31,
+      "Fear": 31
+    },
+    "Skills": {
+      "Percept": 130,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 112,
+      "Restr. Quar.": 132,
+      "Subud.": 132,
+      "Intimidat.": 115,
+      "Pow. Dev.": 141,
+      "Subt.Amb.": "(7): 44",
+      "Run": "(16): 77"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Standard created undead, class I",
+    "Level": 2,
+    "Spread": "H",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "17 (Dash)"
+    },
+    "End_Ftg": 81,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "76 (154)",
+    "AT_DB": "1-12 [3/33] (none)",
+    "Init": 4,
+    "Attack_OBs": [
+      "56M(5)un",
+      "56M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 9,
+      "Es": 24,
+      "EM": 6,
+      "Men": 18,
+      "Phy": 30,
+      "Fear": 21
+    },
+    "Skills": {
+      "Percept": 9,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 5,
+      "Subt.Amb.": "(1): 0",
+      "Run": "(3): 33"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "+10"
+  },
+  {
+    "Name": "Standard created undead, class II",
+    "Level": 6,
+    "Spread": "H",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "18 (Dash)"
+    },
+    "End_Ftg": 123,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "118 (242)",
+    "AT_DB": "1-6 [7/58] (none)",
+    "Init": 3,
+    "Attack_OBs": [
+      "102M(5)un",
+      "102M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 10,
+      "Es": 26,
+      "EM": 10,
+      "Men": 23,
+      "Phy": 30,
+      "Fear": 23
+    },
+    "Skills": {
+      "Percept": 11,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 15,
+      "Subt.Amb.": "(3): 12",
+      "Run": "(7): 58"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "+10"
+  },
+  {
+    "Name": "Standard created undead, class III",
+    "Level": 10,
+    "Spread": "H",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "18 (Dash)"
+    },
+    "End_Ftg": 166,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "151 (312)",
+    "AT_DB": "1-6 [11/81] (none)",
+    "Init": 3,
+    "Attack_OBs": [
+      "139M(5)un",
+      "139M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 11,
+      "Es": 40,
+      "EM": 24,
+      "Men": 28,
+      "Phy": 31,
+      "Fear": 38
+    },
+    "Skills": {
+      "Percept": 22,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 25,
+      "Subt.Amb.": "(5): 24",
+      "Run": "(11): 81"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Standard created undead, class IV",
+    "Level": 14,
+    "Spread": "H",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "19 (Dash)"
+    },
+    "End_Ftg": 233,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "178 (370)",
+    "AT_DB": "9/3 [17/91] (none)",
+    "Init": 2,
+    "Attack_OBs": [
+      "168M(5)un",
+      "168M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 19,
+      "Es": 43,
+      "EM": 30,
+      "Men": 36,
+      "Phy": 40,
+      "Fear": 50
+    },
+    "Skills": {
+      "Percept": 34,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 35,
+      "Subt.Amb.": "(7): 37",
+      "Run": "(15): 97"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Standard created undead, class V",
+    "Level": 18,
+    "Spread": "H",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "19 (Dash)"
+    },
+    "End_Ftg": 283,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "189 (394)",
+    "AT_DB": "1/3 [10/94] (none)",
+    "Init": -1,
+    "Attack_OBs": [
+      "176M(5)un",
+      "176M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 20,
+      "Es": 45,
+      "EM": 46,
+      "Men": 48,
+      "Phy": 62,
+      "Fear": 58
+    },
+    "Skills": {
+      "Percept": 47,
+      "Surv_Biome": 45,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 45,
+      "Subt.Amb.": "(9): 49",
+      "Run": "(19): 109"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Standard created undead, class VI",
+    "Level": 22,
+    "Spread": "H",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "19 (Dash)"
+    },
+    "End_Ftg": 291,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "196 (414)",
+    "AT_DB": "3-12 [23/118] (none)",
+    "Init": -2,
+    "Attack_OBs": [
+      "184M(5)un",
+      "184M(5)we"
+    ],
+    "Magical_Stats": {
+      "PP": 21,
+      "Es": 81,
+      "EM": 51,
+      "Men": 46,
+      "Phy": 69,
+      "Fear": 63
+    },
+    "Skills": {
+      "Percept": 58,
+      "Surv_Biome": 53,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 53,
+      "Subt.Amb.": "(10): 55",
+      "Run": "(23): 118"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Zombie (I)",
+    "Level": 0,
+    "Spread": "B",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "18 (Dash)"
+    },
+    "End_Ftg": 125,
+    "Size_Crit": "M/V, l@,#.-",
+    "Hits": "50 (110)",
+    "AT_DB": "1-12 [1/21] (none)",
+    "Init": -1,
+    "Attack_OBs": [
+      "30M(5)un"
+    ],
+    "Magical_Stats": {
+      "PP": -12,
+      "Es": 10,
+      "EM": -6,
+      "Men": -3,
+      "Phy": 18,
+      "Fear": 19
+    },
+    "Skills": {
+      "Percept": -24,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Run": "(1): 21"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Lich (V)",
+    "Level": 20,
+    "Spread": "G",
+    "Outlook": "Cruel",
+    "Archetype": "Hybrid spell user",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 87,
+    "Size_Crit": "S/N, @#,-",
+    "Hits": "58 (124)",
+    "AT_DB": "9/3 [12/61] (none)",
+    "Init": -1,
+    "Attack_OBs": [
+      "106M(5)un [Cold]",
+      "56M(5)we[Cold]"
+    ],
+    "Magical_Stats": {
+      "PP": 169,
+      "Es": 67,
+      "EM": 51,
+      "Men": 71,
+      "Phy": 42,
+      "Fear": 72
+    },
+    "Skills": {
+      "Percept": 67,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Sel. Astro.": 159,
+      "Grace. Spell I": 134,
+      "Attune.": 159,
+      "Runes": 159,
+      "Run": "(12): 61"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Lich, classic (VI+)",
+    "Level": 40,
+    "Spread": "G",
+    "Outlook": "Cruel",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 86,
+    "Size_Crit": "S/N, @#,-",
+    "Hits": "80 (190)",
+    "AT_DB": "9/3 [21/91] (none)",
+    "Init": -1,
+    "Attack_OBs": [
+      "156M(5)un [Cold]",
+      "86M(5)we[Cold]"
+    ],
+    "Magical_Stats": {
+      "PP": 203,
+      "Es": 105,
+      "EM": 121,
+      "Men": 95,
+      "Phy": 84,
+      "Fear": 78
+    },
+    "Skills": {
+      "Percept": 122,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Sel. Astro.": 264,
+      "Grace. Spell I": 234,
+      "Attune.": 256,
+      "Runes": 256,
+      "Run": "(21): 91"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-70"
+  }
+]

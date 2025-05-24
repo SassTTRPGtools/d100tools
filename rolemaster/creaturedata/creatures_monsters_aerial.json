@@ -1,0 +1,438 @@
+[
+  {
+    "Name": "Androsphinx",
+    "Level": 10,
+    "Spread": "G",
+    "Outlook": "Obsessive",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk.Quad.": "30 (Dash)",
+      "Wings.III": "90 (Sprint)"
+    },
+    "End_Ftg": 57,
+    "Size_Crit": "B/VI, -",
+    "Hits": "131 (270)",
+    "AT_DB": "2/7 [11/50] (none)",
+    "Init": -1,
+    "Attack_OBs": ["74B(6)cl", "74B(6)cl(Left)"],
+    "Magical_Stats": {
+      "PP": 71,
+      "Es": 29,
+      "EM": 16,
+      "Men": 14,
+      "Phy": 19,
+      "Fear": 18
+    },
+    "Skills": {
+      "Percept": 72,
+      "Adr. Foc.": 61,
+      "Lor. Hist. Spec.": 83,
+      "Lor. Hist. Spec.#2": 44,
+      "Stalking": 69,
+      "Run": "(11): 50"
+    },
+    "Biome": "DEX---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Banshee",
+    "Level": 4,
+    "Spread": "C",
+    "Outlook": "Hostile",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "11 (Dash)",
+      "Wings.II": "35 (Sprint)"
+    },
+    "End_Ftg": 70,
+    "Size_Crit": "M/V, -",
+    "Hits": "90 (184)",
+    "AT_DB": "2/19 [3/31] or [10/76] (none)",
+    "Init": 3,
+    "Attack_OBs": ["77M(5)cl", "59M(5)we"],
+    "Magical_Stats": {
+      "PP": 5,
+      "Es": 23,
+      "EM": 4,
+      "Men": 8,
+      "Phy": 33,
+      "Fear": 18
+    },
+    "Skills": {
+      "Percept": 54,
+      "Track": 14,
+      "Intimidat.": 10,
+      "Subt.Amb.": "(8): 45",
+      "Run": "(3): 31",
+      "Fly": "(10): 76"
+    },
+    "Biome": "DEPR--",
+    "#Enc": "Yoke (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Geryon",
+    "Level": 4,
+    "Spread": "C",
+    "Outlook": "Aggressive",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "24 (Jog)",
+      "Climb.Snake": "19 (Dash)",
+      "Wings.II": "69 (Run)"
+    },
+    "End_Ftg": 68,
+    "Size_Crit": "M/V, -",
+    "Hits": "93 (190)",
+    "AT_DB": "3/3 [5/45] (none)",
+    "Init": 3,
+    "Attack_OBs": ["80M(5)cl", "59M(5)we", "67M(5)we"],
+    "Magical_Stats": {
+      "PP": 6,
+      "Es": 32,
+      "EM": 11,
+      "Men": 13,
+      "Phy": 26,
+      "Fear": 13
+    },
+    "Skills": {
+      "Percept": 29,
+      "Footwork": 74,
+      "Track": 10,
+      "Subt.Amb.": "(4): 22",
+      "Run": "(5): 45",
+      "Climb": "(3): 35",
+      "Fly": "(5): 45"
+    },
+    "Biome": "BEFJ--",
+    "#Enc": "Streak (1d6)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Gorcrow",
+    "Level": 0,
+    "Spread": "A",
+    "Outlook": "Inquisitive",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Walk": "9 (Run)",
+      "Wings.III": "44 (Sprint)"
+    },
+    "End_Ftg": 26,
+    "Size_Crit": "T/III, -",
+    "Hits": "7 (15)",
+    "AT_DB": "2/2 [2/13] (none)",
+    "Init": 4,
+    "Attack_OBs": ["6T(3)ra", "16S(4) (Coop10)", "6T(3)be"],
+    "Magical_Stats": {
+      "PP": 6,
+      "Es": 15,
+      "EM": -9,
+      "Men": -1,
+      "Phy": -4,
+      "Fear": -1
+    },
+    "Skills": {
+      "Percept": 11,
+      "Track": 11,
+      "Acrob.": 1,
+      "Surv. Biome": 7,
+      "Subt.Amb.": "(1): 9",
+      "Run": "(1): 9",
+      "Fly": "(2): 13"
+    },
+    "Biome": "EHRW--",
+    "#Enc": "Flight (8d10)",
+    "Freq": "+10"
+  },
+  {
+    "Name": "Great Eagle, minor",
+    "Level": 12,
+    "Spread": "F",
+    "Outlook": "Considerate",
+    "Archetype": "Discipline",
+    "Movement": {
+      "Walk": "25 (Jog)",
+      "Wings.III": "100 (Sprint)"
+    },
+    "End_Ftg": 134,
+    "Size_Crit": "B/VI, -",
+    "Hits": "216 (461)",
+    "AT_DB": "2/31 [7/52] or [26/135] (none)",
+    "Init": 7,
+    "Attack_OBs": ["142B(6)cl", "142B(6)be"],
+    "Magical_Stats": {
+      "PP": 19,
+      "Es": 40,
+      "EM": 11,
+      "Men": 21,
+      "Phy": 26,
+      "Fear": 38
+    },
+    "Skills": {
+      "Percept": 118,
+      "Footwork": 96,
+      "Acrob.": 11,
+      "Surv. Biome": 105,
+      "Subt.Amb.": "(6): 52",
+      "Fly": "(26): 135"
+    },
+    "Biome": "ABFP--",
+    "#Enc": "Team (1d10)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Great Eagle, lesser",
+    "Level": 16,
+    "Spread": "G",
+    "Outlook": "Considerate",
+    "Archetype": "Discipline",
+    "Movement": {
+      "Walk": "59 (Jog)",
+      "Wings.III": "145 (Sprint)"
+    },
+    "End_Ftg": 154,
+    "Size_Crit": "H/VIII, -",
+    "Hits": "392 (905)",
+    "AT_DB": "2/34 [9/64] or [34/153] (none)",
+    "Init": 8,
+    "Attack_OBs": ["162H(8)cl", "162H(8)be"],
+    "Magical_Stats": {
+      "PP": 20,
+      "Es": 45,
+      "EM": 30,
+      "Men": 27,
+      "Phy": 34,
+      "Fear": 47
+    },
+    "Skills": {
+      "Percept": 140,
+      "Footwork": 115,
+      "Acrob.": 10,
+      "Surv. Biome": 126,
+      "Run": "(9): 64",
+      "Fly": "(34): 153"
+    },
+    "Biome": "ABFP--",
+    "#Enc": "Streak (1d6)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Great Eagle, greater",
+    "Level": 21,
+    "Spread": "G",
+    "Outlook": "Considerate",
+    "Archetype": "Discipline",
+    "Movement": {
+      "Walk": "97 (Jog)",
+      "Wings.III": "143 (Run)"
+    },
+    "End_Ftg": 172,
+    "Size_Crit": "E/X, -",
+    "Hits": "930 (2025)",
+    "AT_DB": "2/34 [11/75] or [44/166] (none)",
+    "Init": 8,
+    "Attack_OBs": ["173E(10)cl", "173E(10)be"],
+    "Magical_Stats": {
+      "PP": 28,
+      "Es": 59,
+      "EM": 39,
+      "Men": 42,
+      "Phy": 47,
+      "Fear": 66
+    },
+    "Skills": {
+      "Percept": 159,
+      "Footwork": 133,
+      "Acrob.": 159,
+      "Surv. Biome": 147,
+      "Run": "(11): 75",
+      "Fly": "(44): 166"
+    },
+    "Biome": "ABFP--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Great Falcon",
+    "Level": 10,
+    "Spread": "G",
+    "Outlook": "Aggressive",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "27 (Jog)",
+      "Wings.IV": "132 (Dash)"
+    },
+    "End_Ftg": 137,
+    "Size_Crit": "B/VI,-",
+    "Hits": "87 (174)",
+    "AT_DB": "2/22 [1/36] or [22/137] (none)",
+    "Init": 4,
+    "Attack_OBs": ["142B(6)cl", "142B(6)be"],
+    "Magical_Stats": {
+      "PP": 9,
+      "Es": 30,
+      "EM": 18,
+      "Men": 23,
+      "Phy": 19,
+      "Fear": 27
+    },
+    "Skills": {
+      "Percept": 103,
+      "Footwork": 106,
+      "Acrob.": 126,
+      "Stalking": 137,
+      "Subt.Amb.": "(10): 51",
+      "Run": "(1): 36",
+      "Fly": "(22): 137"
+    },
+    "Biome": "BPT---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Great Wasp",
+    "Level": 8,
+    "Spread": "B",
+    "Outlook": "Hostile",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk.Multi": "44 (Sprint)",
+      "Climb.Abil.": "30 (Walk)",
+      "Wings.IV": "124 (Dash)"
+    },
+    "End_Ftg": 108,
+    "Size_Crit": "B/VI,@-",
+    "Hits": "108 (224)",
+    "AT_DB": "5/5 [5/53] or [18/120] (none)",
+    "Init": 5,
+    "Attack_OBs": ["122B(6)be", "122B(6)gr", "122B(6)bw"],
+    "Magical_Stats": {
+      "PP": 7,
+      "Es": 41,
+      "EM": 16,
+      "Men": 21,
+      "Phy": 15,
+      "Fear": 34
+    },
+    "Skills": {
+      "Percept": 58,
+      "Footwork": 53,
+      "Surv. Biome": 78,
+      "Subt.Amb.": "(4): 25",
+      "Run": "(5): 53",
+      "Climb": "(3): 5"
+    },
+    "Biome": "AEFP--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Griffin/Gryphon",
+    "Level": 9,
+    "Spread": "F",
+    "Outlook": "Belligerent",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk.Quad.": "39 (Dash)",
+      "Wings.III": "99 (Sprint)"
+    },
+    "End_Ftg": 121,
+    "Size_Crit": "B/VI,-",
+    "Hits": "234 (482)",
+    "AT_DB": "2/8 [10/81] or [20/131] (none)",
+    "Init": 3,
+    "Attack_OBs": ["136L(7)cl>>", "130B(6)gr", "136B(6)be"],
+    "Magical_Stats": {
+      "PP": 10,
+      "Es": 33,
+      "EM": 18,
+      "Men": 27,
+      "Phy": 38,
+      "Fear": 38
+    },
+    "Skills": {
+      "Percept": 94,
+      "Footwork": 76,
+      "Surv. Biome": 87,
+      "Subt.Amb.": "(4): 31",
+      "Run": "(3): 131"
+    },
+    "Biome": "ABFR--",
+    "#Enc": "Yoke (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Harpy",
+    "Level": 4,
+    "Spread": "C",
+    "Outlook": "Cruel",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Walk": "23 (Run)",
+      "Wings.II": "63 (Run)"
+    },
+    "End_Ftg": 35,
+    "Size_Crit": "M/V,-",
+    "Hits": "45 (100)",
+    "AT_DB": "1/16 [5/31] (none)",
+    "Init": 0,
+    "Attack_OBs": ["50M(5)cl", "32M(5)we"],
+    "Magical_Stats": {
+      "PP": 7,
+      "Es": 31,
+      "EM": 15,
+      "Men": 10,
+      "Phy": 20,
+      "Fear": 19
+    },
+    "Skills": {
+      "Percept": 67,
+      "Footwork": 10,
+      "Acrob.": 66,
+      "Stalking": 76,
+      "Run": "(5): 31"
+    },
+    "Biome": "AEFP--",
+    "#Enc": "Team (1d10)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Hippogriff",
+    "Level": 9,
+    "Spread": "F",
+    "Outlook": "Normal",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk.Quad.": "41 (Dash)",
+      "Wings.II": "107 (Sprint)"
+    },
+    "End_Ftg": 134,
+    "Size_Crit": "L/VII,-",
+    "Hits": "298 (614)",
+    "AT_DB": "1/22 [10/81] or [20/131] (none)",
+    "Init": 2,
+    "Attack_OBs": ["136L(7)cl", "136L(7)be", "116L(7)rt"],
+    "Magical_Stats": {
+      "PP": 10,
+      "Es": 28,
+      "EM": 25,
+      "Men": 16,
+      "Phy": 27,
+      "Fear": 22
+    },
+    "Skills": {
+      "Percept": 95,
+      "Footwork": 96,
+      "Wei. Trn.": 85,
+      "Acrob.": 121,
+      "Subt.Amb.": "(4): 30",
+      "Run": "(10): 81",
+      "Fly": "(20): 131"
+    },
+    "Biome": "AEFP--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  }
+]

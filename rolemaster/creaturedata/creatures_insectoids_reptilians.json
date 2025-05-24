@@ -1,0 +1,209 @@
+[
+  {
+    "Name": "Maazhat, worker/drone",
+    "Level": 3,
+    "Spread": "A",
+    "Outlook": "Normal",
+    "Archetype": "Skill",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "18 (Dash)",
+      "Climb.Claw": "14 (Walk)"
+    },
+    "End_Ftg": -3,
+    "Size_Crit": "B/VI,L, -",
+    "Hits": "33 (75)",
+    "AT_DB": "5/-6 [8/45] (none)",
+    "Init": 2,
+    "Attack_OBs": ["15B(6)be>>", "19B(6)gr", "19B(6)rw"],
+    "Magical_Stats": {
+      "PP": -4,
+      "Es": 10,
+      "EM": 13,
+      "Men": 22,
+      "Phy": 5,
+      "Fear": 5
+    },
+    "Skills": {
+      "Percept": 54,
+      "Surv_Biome": 58,
+      "Climb": "(2): 17",
+      "Fly": "",
+      "Footwork": 36,
+      "Woodcraft": 56,
+      "Serv. Spec.": 61,
+      "Run": "(8): 45"
+    },
+    "Biome": "ABEU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Maazhat, warrior",
+    "Level": 7,
+    "Spread": "C",
+    "Outlook": "Normal",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "22 (Dash)",
+      "Climb.Claw": "18 (Walk)"
+    },
+    "End_Ftg": 101,
+    "Size_Crit": "B/VI,L,@-",
+    "Hits": "178 (405)",
+    "AT_DB": "5/6 [16/108] (W30+12/+95)",
+    "Init": 2,
+    "Attack_OBs": ["111B(6)be", "105B(6)gr", "105B(6)we", "105B(6)rw"],
+    "Magical_Stats": {
+      "PP": 8,
+      "Es": 13,
+      "EM": 17,
+      "Men": 22,
+      "Phy": 15,
+      "Fear": 7
+    },
+    "Skills": {
+      "Percept": 74,
+      "Surv_Biome": 80,
+      "Climb": "(6): 4",
+      "Fly": "",
+      "Footwork": 80,
+      "Rev. Str.": 80,
+      "Protect": 80,
+      "Std. Rest. Quar.": 80,
+      "Subt.Amb.": "(7): 35",
+      "Run": "(16): 108"
+    },
+    "Biome": "ABEU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Maazhat, lieutenant",
+    "Level": 9,
+    "Spread": "C",
+    "Outlook": "Normal",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "17 (Dash)",
+      "Climb.Claw": "13 (Walk)"
+    },
+    "End_Ftg": 47,
+    "Size_Crit": "B/VI,L, -",
+    "Hits": "108 (224)",
+    "AT_DB": "5/6 [10/44] (W30+6/+30)",
+    "Init": 2,
+    "Attack_OBs": ["66B(6)be", "36B(6)gr", "66B(6)we", "72B(6)rw"],
+    "Magical_Stats": {
+      "PP": 64,
+      "Es": 25,
+      "EM": 24,
+      "Men": 37,
+      "Phy": 19,
+      "Fear": 19
+    },
+    "Skills": {
+      "Percept": 67,
+      "Surv_Biome": 0,
+      "Climb": "(2): 14",
+      "Fly": "",
+      "Footwork": 25,
+      "Leadership": 67,
+      "Intimidat.": 32,
+      "Protect": 25
+    },
+    "Biome": "ABEU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Maazhat, queen",
+    "Level": 15,
+    "Spread": "G",
+    "Outlook": "Normal",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "28 (Dash)",
+      "Climb.Claw": "24 (Walk)"
+    },
+    "End_Ftg": 134,
+    "Size_Crit": "L/VII,L, -",
+    "Hits": "134 (298)",
+    "AT_DB": "5/3 [16/70] (N20+8/+74)",
+    "Init": 2,
+    "Attack_OBs": ["102L(7)be", "102L(7)cl", "102L(7)rw"],
+    "Magical_Stats": {
+      "PP": 146,
+      "Es": 29,
+      "EM": 43,
+      "Men": 31,
+      "Phy": 25,
+      "Fear": 14
+    },
+    "Skills": {
+      "Percept": 70,
+      "Surv_Biome": 0,
+      "Climb": "(8): 42",
+      "Fly": "",
+      "Leadership": 143,
+      "Intimidat.": 131,
+      "Soc. Aware": 137,
+      "Run": "(16): 70"
+    },
+    "Biome": "ABEU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-70"
+  },
+  {
+    "Name": "Naga",
+    "Level": 8,
+    "Spread": "E",
+    "Outlook": "Dominant",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Climb-Grip": "55 (Jog)",
+      "Wings_III": "",
+      "Swim_III": "",
+      "Walk": "50 (Dash)"
+    },
+    "End_Ftg": 53,
+    "Size_Crit": "B/VII,L, -",
+    "Hits": "125 (277)",
+    "AT_DB": "3/9 [18/98] (none)",
+    "Init": 3,
+    "Attack_OBs": ["78B(6)bi[Poison]", "93B(6)gr", "96B(6)rw"],
+    "Magical_Stats": {
+      "PP": 9,
+      "Es": 10,
+      "EM": -1,
+      "Men": 9,
+      "Phy": 17,
+      "Fear": 21
+    },
+    "Skills": {
+      "Percept": 102,
+      "Surv_Biome": 0,
+      "Climb": "(9): 51",
+      "Fly": "",
+      "Footwork": 25,
+      "Charm": 92,
+      "Stalking": 115,
+      "Subt.Amb.": "(8): 63",
+      "Run": "(18): 98"
+    },
+    "Biome": "EUW---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  }
+]

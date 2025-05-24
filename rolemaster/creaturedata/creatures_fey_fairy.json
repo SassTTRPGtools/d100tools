@@ -1,0 +1,395 @@
+[
+  {
+    "Name": "Changeling",
+    "Level": 3,
+    "Spread": "C",
+    "Outlook": "Hidden agenda",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Walk": "25 (Dash)"
+    },
+    "End_Ftg": 12,
+    "Size_Crit": "M/V, @-",
+    "Hits": "32 (72)",
+    "AT_DB": "2/3 [8/48] (none)",
+    "Init": 2,
+    "Attack_OBs": ["38M(5)we", "31M(5)rw"],
+    "Magical_Stats": {
+      "PP": 7,
+      "Es": 24,
+      "EM": 16,
+      "Men": 19,
+      "Phy": 9,
+      "Fear": 8
+    },
+    "Skills": {
+      "Percept": 56,
+      "Contort.": 21,
+      "Lor. Fey": 46,
+      "Lor. Rac. Spec.": 46,
+      "Stalking": 48,
+      "Duping": 6,
+      "Run": "(8): 48"
+    },
+    "Biome": "EWW---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-50"
+  },
+  {
+    "Name": "Dwelf",
+    "Level": 2,
+    "Spread": "C",
+    "Outlook": "Timid",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "14 (Dash)"
+    },
+    "End_Ftg": 71,
+    "Size_Crit": "M/V, -",
+    "Hits": "77 (116)",
+    "AT_DB": "1/0 [3/33] (none)",
+    "Init": 0,
+    "Attack_OBs": ["56S(4)we", "65S(4)rw"],
+    "Magical_Stats": {
+      "PP": 5,
+      "Es": 30,
+      "EM": 9,
+      "Men": 12,
+      "Phy": 6,
+      "Fear": 8
+    },
+    "Skills": {
+      "Percept": 30,
+      "Restr. Quar.": 30,
+      "Footwork": 5,
+      "Drawing": 28,
+      "Sci. Archi.": 3,
+      "Prof. Miner": 16,
+      "Run": "(3): 33"
+    },
+    "Biome": "BEFX--",
+    "#Enc": "Span (1d8)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Gremlin",
+    "Level": 3,
+    "Spread": "C",
+    "Outlook": "Inconsiderate",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Walk": "14 (Dash)"
+    },
+    "End_Ftg": 52,
+    "Size_Crit": "S/IV,@-",
+    "Hits": "26 (58)",
+    "AT_DB": "3/6 [24/24] (none)",
+    "Init": 1,
+    "Attack_OBs": ["41S(4)cl", "41S(4)we", "33S(4)rw"],
+    "Magical_Stats": {
+      "PP": 8,
+      "Es": 32,
+      "EM": 9,
+      "Men": 11,
+      "Phy": 6,
+      "Fear": 8
+    },
+    "Skills": {
+      "Percept": 55,
+      "Stalking": 63,
+      "Mechanics. Spec.": 63,
+      "Subt.Amb.": "(3): 20",
+      "Run": "(2): 24"
+    },
+    "Biome": "BEFTU-",
+    "#Enc": "Streak (1d6)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Nysk/Nixie",
+    "Level": 5,
+    "Spread": "C",
+    "Outlook": "Inquisitive",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "13 (Dash)",
+      "Swim_II": "13 (Jog)"
+    },
+    "End_Ftg": 35,
+    "Size_Crit": "S/IV, -",
+    "Hits": "27 (66)",
+    "AT_DB": "3/0 [3/10] (none)",
+    "Init": 3,
+    "Attack_OBs": ["35S(4)we", "43S(4)rw"],
+    "Magical_Stats": {
+      "PP": 8,
+      "Es": 33,
+      "EM": 16,
+      "Men": 14,
+      "Phy": 7,
+      "Fear": 8
+    },
+    "Skills": {
+      "Percept": 23,
+      "Comp. Mus.": 74,
+      "Singing": 81,
+      "Charm": 74,
+      "Soc. Aware.": 25,
+      "Transcend.": 13,
+      "Swim": "(3): 60"
+    },
+    "Biome": "EFJP--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Pysk",
+    "Level": 3,
+    "Spread": "C",
+    "Outlook": "Playful",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "6 (Dash)"
+    },
+    "End_Ftg": 15,
+    "Size_Crit": "T/III,-",
+    "Hits": "15 (31)",
+    "AT_DB": "1/9 [2/-3] (none)",
+    "Init": -3,
+    "Attack_OBs": ["-3T(3)da", "3T(3)rw"],
+    "Magical_Stats": {
+      "PP": 8,
+      "Es": 38,
+      "EM": 19,
+      "Men": 16,
+      "Phy": 20,
+      "Fear": 3
+    },
+    "Skills": {
+      "Percept": 24,
+      "Trickery": 25,
+      "Singing": 39,
+      "Music. Spec.": 39,
+      "Charm": 37,
+      "Stalking": 25,
+      "Run": "(2): 3"
+    },
+    "Biome": "ABEFTU",
+    "#Enc": "Streak (1d6)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Sylph",
+    "Level": 3,
+    "Spread": "C",
+    "Outlook": "Carefree",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "3 (Dash)",
+      "Wings_III": "20 (Sprint)"
+    },
+    "End_Ftg": 13,
+    "Size_Crit": "D/II,-",
+    "Hits": "16 (34)",
+    "AT_DB": "1/3 [2/-1] (none)",
+    "Init": 1,
+    "Attack_OBs": ["-3D(2)we", "11D(2)rw", "32M(5)we"],
+    "Magical_Stats": {
+      "PP": 9,
+      "Es": 33,
+      "EM": 14,
+      "Men": 18,
+      "Phy": 7,
+      "Fear": 6
+    },
+    "Skills": {
+      "Percept": 23,
+      "Surv. Biome": 65,
+      "Lor. Fey": 63,
+      "Acrob.": 12,
+      "Run": "(2): 1",
+      "Fly": "(3): 67"
+    },
+    "Biome": "BEFL--",
+    "#Enc": "Gaggle (1d12)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Tylwyth Teg",
+    "Level": 7,
+    "Spread": "D",
+    "Outlook": "Crusading",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "13 (Dash)"
+    },
+    "End_Ftg": 33,
+    "Size_Crit": "S/IV,-",
+    "Hits": "44 (90)",
+    "AT_DB": "2-3 [8/31] (Normal)",
+    "Init": -1,
+    "Attack_OBs": ["59S(4)we", "49S(5)rw", "49M(5)tp"],
+    "Magical_Stats": {
+      "PP": 10,
+      "Es": 34,
+      "EM": 23,
+      "Men": 18,
+      "Phy": 12,
+      "Fear": 11
+    },
+    "Skills": {
+      "Percept": 57,
+      "Footwork": 20,
+      "Rid. Horse": 56,
+      "Mount. Com.": 48,
+      "Music. Spec.": 59,
+      "Transcend.": 48,
+      "Run": "(8): 31"
+    },
+    "Biome": "BEFL--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Leprechaun",
+    "Level": 3,
+    "Spread": "C",
+    "Outlook": "Altruistic",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "12 (Dash)"
+    },
+    "End_Ftg": 15,
+    "Size_Crit": "S/V,-",
+    "Hits": "16 (54)",
+    "AT_DB": "1-6 [1/43] (none)",
+    "Init": -2,
+    "Attack_OBs": ["49M(5)tp", "91S(4)ro", "10S(4)tw"],
+    "Magical_Stats": {
+      "PP": 9,
+      "Es": 34,
+      "EM": 19,
+      "Men": 18,
+      "Phy": 14,
+      "Fear": 7
+    },
+    "Skills": {
+      "Percept": 58,
+      "Footwork": 10,
+      "Leathercraft": 33,
+      "Stalking": 17,
+      "Run": "(4): 13"
+    },
+    "Biome": "BJFP--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Pech",
+    "Level": 5,
+    "Spread": "C",
+    "Outlook": "Considerate",
+    "Archetype": "Skill",
+    "Movement": {
+      "Walk": "12 (Dash)"
+    },
+    "End_Ftg": 28,
+    "Size_Crit": "S/IV,-",
+    "Hits": "29 (81)",
+    "AT_DB": "1-3 [6/23] (Normal)",
+    "Init": -2,
+    "Attack_OBs": ["72S(4)tw", "68S(4)bi"],
+    "Magical_Stats": {
+      "PP": 13,
+      "Es": 31,
+      "EM": 15,
+      "Men": 16,
+      "Phy": 13,
+      "Fear": 5
+    },
+    "Skills": {
+      "Percept": 79,
+      "Stonecraft": 105,
+      "Wei. Trn.": 87,
+      "Locks": 87,
+      "Mechanics Spec.": 87,
+      "Run": "(6): 32"
+    },
+    "Biome": "BJFP--",
+    "#Enc": "Streak (1d6)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Fosse-Grim",
+    "Level": 6,
+    "Spread": "C",
+    "Outlook": "Normal",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "19 (Dash)",
+      "Swim_I": "9 (Walk)"
+    },
+    "End_Ftg": 62,
+    "Size_Crit": "M/V,-",
+    "Hits": "19 (41)",
+    "AT_DB": "1-9 [4/18] (none)",
+    "Init": -3,
+    "Attack_OBs": ["13M(5)we", "23M(5)rw", "66M(5)elb"],
+    "Magical_Stats": {
+      "PP": 15,
+      "Es": 46,
+      "EM": 27,
+      "Men": 26,
+      "Phy": 10,
+      "Fear": 20
+    },
+    "Skills": {
+      "Percept": 96,
+      "Acrob.": 29,
+      "Jump": 29,
+      "Lor. Fey": 63,
+      "Run": "(6): 60",
+      "Swim": "(4): 18"
+    },
+    "Biome": "BFJP--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+{
+  "Name": "Yaai",
+  "Level": 3,
+  "Spread": "C",
+  "Outlook": "Secretive",
+  "Archetype": "Discipline",
+  "Movement": {
+    "Walk": "22 (Dash)",
+    "Climb.Grip": "27 (Jog)"
+  },
+  "End_Ftg": 47,
+  "Size_Crit": "M/V,-",
+  "Hits": "67 (140)",
+  "AT_DB": "2/12 [4/31] (none)",
+  "Init": 4,
+  "Attack_OBs": ["64M(5)we", "35M(5)rw"],
+  "Magical_Stats": {
+    "PP": 10,
+    "Es": 10,
+    "EM": 9,
+    "Men": 30,
+    "Phy": -12,
+    "Fear": 13
+  },
+  "Skills": {
+    "Percept": 36,
+    "Footwork": 36,
+    "Rev. Str.": 36,
+    "Acrob.": 49,
+    "Singing": 31,
+    "Run": "(4): 31",
+    "Climb": "(8): 59"
+  },
+  "Biome": "AEPS--",
+  "#Enc": "Solo (1d2)",
+  "Freq": "-50"
+}
+]

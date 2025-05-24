@@ -1,0 +1,675 @@
+[
+  {
+    "Name": "Cyclops",
+    "Level": 8,
+    "Spread": "G",
+    "Outlook": "Hostile",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Climb.Claw": "",
+      "Climb.Cling": "",
+      "Walk": "40 (Sprint)"
+    },
+    "End_Ftg": 135,
+    "Size_Crit": "H/VIII,-",
+    "Hits": "480 (984)",
+    "AT_DB": "3-6 [18/125] (none)",
+    "Init": -2,
+    "Attack_OBs": ["121H(8)un", "121H(8)gr", "86H(8)tp", "86H(8)gr", "121H(8)crP"],
+    "Magical_Stats": {
+      "PP": 8,
+      "Es": 24,
+      "EM": 6,
+      "Men": 11,
+      "Phy": 28,
+      "Fear": 25
+    },
+    "Skills": {
+      "Percept": 4,
+      "Surv_Biome": 11,
+      "Climb": "",
+      "Fly": "",
+      "Track": 14,
+      "Footwork": 8,
+      "Subt.": 20,
+      "Prof. Miner": 3,
+      "Subt.Amb.": "(8): 40",
+      "Run": "(18): 125"
+    },
+    "Biome": "DEFR--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Giant, greater, cloud",
+    "Level": 19,
+    "Spread": "G",
+    "Outlook": "Normal",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "48 (Sprint)"
+    },
+    "End_Ftg": 117,
+    "Size_Crit": "H/VIII,-",
+    "Hits": "441 (912)",
+    "AT_DB": "2-2 [20/91] (N20+13/+82)",
+    "Init": -4,
+    "Attack_OBs": ["134H(8)un", "132H(8)we", "132H(8)gr", "128H(8)tp", "128H(8)rt"],
+    "Magical_Stats": {
+      "PP": 131,
+      "Es": 43,
+      "EM": 61,
+      "Men": 42,
+      "Phy": 43,
+      "Fear": 59
+    },
+    "Skills": {
+      "Percept": 63,
+      "Surv_Biome": 0,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 50,
+      "Soc. Aware": 131,
+      "Intimidat.": 72,
+      "Transcend.": 100,
+      "Run": "(20): 91"
+    },
+    "Biome": "AW----",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-50"
+  },
+  {
+    "Name": "Giant, greater, fire",
+    "Level": 15,
+    "Spread": "F",
+    "Outlook": "Greedy",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "38 (Dash)"
+    },
+    "End_Ftg": 169,
+    "Size_Crit": "L/VII,-",
+    "Hits": "388 (806)",
+    "AT_DB": "2/3 [32/170] (none)",
+    "Init": 1,
+    "Attack_OBs": ["176H(8)we[Heat]", "143L(7)rt", "118M(5)fbo[Heat]", "118M(5)fbaS"],
+    "Magical_Stats": {
+      "PP": 41,
+      "Es": 24,
+      "EM": 39,
+      "Men": 27,
+      "Phy": 43,
+      "Fear": 51
+    },
+    "Skills": {
+      "Percept": 127,
+      "Surv_Biome": 125,
+      "Climb": "(10): 51",
+      "Fly": "",
+      "Footwork": 131,
+      "Restr. Quar.": 131,
+      "Pow. Dev.": 55,
+      "Intimidat.": 30,
+      "Subt.Amb.": "(10): 170",
+      "Run": "(32): 170"
+    },
+    "Biome": "ADJU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Giant, greater, forest",
+    "Level": 18,
+    "Spread": "F",
+    "Outlook": "Aloof",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "39 (Dash)",
+      "Climb.Claw": "34 (Walk)"
+    },
+    "End_Ftg": 110,
+    "Size_Crit": "L/VII,-",
+    "Hits": "270 (558)",
+    "AT_DB": "5/4 [19/88] (none)",
+    "Init": 2,
+    "Attack_OBs": ["130L(7)un", "133L(7)lb", "77L(7)we"],
+    "Magical_Stats": {
+      "PP": 112,
+      "Es": 52,
+      "EM": 40,
+      "Men": 37,
+      "Phy": 50,
+      "Fear": 56
+    },
+    "Skills": {
+      "Percept": 56,
+      "Surv_Biome": 113,
+      "Climb": "(8): 60",
+      "Fly": "",
+      "Footwork": 45,
+      "Track": 107,
+      "Intimidat.": 56,
+      "Stalking": 107,
+      "Run": "(16): 98"
+    },
+    "Biome": "ABFJ--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Giant, greater, frost",
+    "Level": 18,
+    "Spread": "F",
+    "Outlook": "Greedy",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "39 (Dash)",
+      "Climb.Cling": "28 (Walk)"
+    },
+    "End_Ftg": 108,
+    "Size_Crit": "L/VII,-",
+    "Hits": "266 (550)",
+    "AT_DB": "4-6 [38/149] (N20+12/+77)",
+    "Init": 2,
+    "Attack_OBs": [
+      "130L(7)un",
+      "130L(7)we[Cold]w/shield",
+      "80L(7)rt",
+      "130H(8)we[Cold]",
+      "2-handed, +1 Sz",
+      "82M(5)jobS",
+      "82M(5)eba"
+    ],
+    "Magical_Stats": {
+      "PP": 122,
+      "Es": 44,
+      "EM": 57,
+      "Men": 38,
+      "Phy": 50,
+      "Fear": 64
+    },
+    "Skills": {
+      "Percept": 102,
+      "Surv_Biome": 115,
+      "Climb": "(10): 61",
+      "Fly": "",
+      "Footwork": 45,
+      "Alpine": 115,
+      "Pow. Dev.": 59,
+      "Stalking": 56,
+      "Subt.Amb.": "(10): 61",
+      "Run": "(38): 149"
+    },
+    "Biome": "AITU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Giant, greater, hill",
+    "Level": 8,
+    "Spread": "D",
+    "Outlook": "Normal",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "31 (Dash)",
+      "Climb.Cling": "20 (Walk)"
+    },
+    "End_Ftg": 156,
+    "Size_Crit": "L/VII,-",
+    "Hits": "156 (320)",
+    "AT_DB": "3-12 [18/93] (N20+6/+29)",
+    "Init": -2,
+    "Attack_OBs": ["67L(7)un", "67L(7)we", "34L(7)rt"],
+    "Magical_Stats": {
+      "PP": 76,
+      "Es": 21,
+      "EM": 37,
+      "Men": 15,
+      "Phy": 16,
+      "Fear": 36
+    },
+    "Skills": {
+      "Percept": 60,
+      "Surv_Biome": 64,
+      "Climb": "(5): 26",
+      "Fly": "",
+      "Footwork": 20,
+      "Intimidat.": 35,
+      "Soc. Aware": 47,
+      "Pow. Dev.": 22,
+      "Subt.Amb.": "(8): 48",
+      "Run": "(9): 93"
+    },
+    "Biome": "ABFP--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Giant, greater, mountain",
+    "Level": 21,
+    "Spread": "G",
+    "Outlook": "Hostile",
+    "Archetype": "Hybrid spell user",
+    "Movement": {
+      "Walk": "51 (Sprint)",
+      "Climb.Grip": "57 (Jog)"
+    },
+    "End_Ftg": 78,
+    "Size_Crit": "H/VIII,-",
+    "Hits": "324 (681)",
+    "AT_DB": "6-9 [11/67] (N20+11/+65)",
+    "Init": -3,
+    "Attack_OBs": ["113H(8)un", "113H(8)we", "62H(8)rt"],
+    "Magical_Stats": {
+      "PP": 171,
+      "Es": 59,
+      "EM": 65,
+      "Men": 51,
+      "Phy": 70,
+      "Fear": 65
+    },
+    "Skills": {
+      "Percept": 67,
+      "Surv_Biome": 118,
+      "Climb": "(11): 67",
+      "Fly": "",
+      "Footwork": 53,
+      "Intimidat.": 71,
+      "Stonecraft": 147,
+      "Run": "(11): 67"
+    },
+    "Biome": "AU----",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Giant, greater, stone",
+    "Level": 20,
+    "Spread": "E",
+    "Outlook": "Normal",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "36 (Dash)",
+      "Climb.Cling": "25 (Walk)"
+    },
+    "End_Ftg": 181,
+    "Size_Crit": "L/VII,-",
+    "Hits": "412 (864)",
+    "AT_DB": "9/3 [42/184] (N20+30/+180)",
+    "Init": -3,
+    "Attack_OBs": ["191L(7)un", "171L(7)we", "169L(7)rt"],
+    "Magical_Stats": {
+      "PP": 132,
+      "Es": 38,
+      "EM": 40,
+      "Men": 33,
+      "Phy": 53,
+      "Fear": 63
+    },
+    "Skills": {
+      "Percept": 143,
+      "Surv_Biome": 43,
+      "Climb": "(11): 95",
+      "Fly": "",
+      "Footwork": 141,
+      "Intimidat.": 64,
+      "Pow. Dev.": 63,
+      "Spell list Spec.": 49,
+      "Subt.Amb.": "(6): 42",
+      "Run": "(11): 184"
+    },
+    "Biome": "APSU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Giant, greater, storm",
+    "Level": 30,
+    "Spread": "G",
+    "Outlook": "Normal",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "53 (Sprint)",
+      "Swim_II": "42 (Walk)"
+    },
+    "End_Ftg": 85,
+    "Size_Crit": "H/VIII,-",
+    "Hits": "345 (780)",
+    "AT_DB": "6-9 [31/118] or [16/85] (none)",
+    "Init": -3,
+    "Attack_OBs": [
+      "83H(8)un",
+      "83H(8)we",
+      "83H(8)sp",
+      "83H(8)rt",
+      "150M(5)elbP"
+    ],
+    "Magical_Stats": {
+      "PP": 195,
+      "Es": 58,
+      "EM": 84,
+      "Men": 65,
+      "Phy": 65,
+      "Fear": 90
+    },
+    "Skills": {
+      "Percept": 106,
+      "Surv_Biome": 211,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 100,
+      "Man. In Arm.": 100,
+      "Grace. Spell I": 194,
+      "Transcend.": 194,
+      "Run": "(31): 118",
+      "Swim": "(16): 85"
+    },
+    "Biome": "AW----",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-50"
+  },
+  {
+    "Name": "Giant, greater, water",
+    "Level": 20,
+    "Spread": "E",
+    "Outlook": "Greedy",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "41 (Dash)",
+      "Swim_II": "41 (Jog)"
+    },
+    "End_Ftg": 119,
+    "Size_Crit": "L/VII,-",
+    "Hits": "288 (596)",
+    "AT_DB": "2-3 [21/92] or [42/152] (none)",
+    "Init": -1,
+    "Attack_OBs": [
+      "78L(7)un",
+      "78L(7)we",
+      "81L(7)ro"
+    ],
+    "Magical_Stats": {
+      "PP": 130,
+      "Es": 37,
+      "EM": 64,
+      "Men": 45,
+      "Phy": 39,
+      "Fear": 58
+    },
+    "Skills": {
+      "Percept": 105,
+      "Surv_Biome": 113,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 50,
+      "Intimidat.": 69,
+      "Pow. Dev.": 67,
+      "Stalking": 50,
+      "Subt.Amb.": "(10): 50",
+      "Run": "(21): 92",
+      "Swim": "(42): 152"
+    },
+    "Biome": "OPSU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Giant, lesser, servant",
+    "Level": 5,
+    "Spread": "E",
+    "Outlook": "Belligerent",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "40 (Dash)",
+      "Swim_II": "29 (Walk)"
+    },
+    "End_Ftg": 98,
+    "Size_Crit": "L/VII,-",
+    "Hits": "246 (502)",
+    "AT_DB": "2/0 [6/58] (none)",
+    "Init": 0,
+    "Attack_OBs": [
+      "100L(7)un",
+      "100L(7)we",
+      "76L(7)ro"
+    ],
+    "Magical_Stats": {
+      "PP": 6,
+      "Es": 6,
+      "EM": 18,
+      "Men": 3,
+      "Phy": 20,
+      "Fear": 20
+    },
+    "Skills": {
+      "Percept": 55,
+      "Surv_Biome": 48,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 64,
+      "Intimidat.": 2,
+      "Soc. Aware.": 7,
+      "Stalking": 15,
+      "Subt.Amb.": "(2): 10",
+      "Run": "(6): 58",
+      "Swim": "(3): 43"
+    },
+    "Biome": "AUW---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Giant, lesser, thrall",
+    "Level": 6,
+    "Spread": "F",
+    "Outlook": "Belligerent",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "34 (Dash)",
+      "Swim_II": "23 (Walk)"
+    },
+    "End_Ftg": 106,
+    "Size_Crit": "L/VII,L-",
+    "Hits": "262 (536)",
+    "AT_DB": "2/3 [7/64] (none)",
+    "Init": 1,
+    "Attack_OBs": [
+      "109M(5)un",
+      "109B(6)we",
+      "84M(5)ro"
+    ],
+    "Magical_Stats": {
+      "PP": 6,
+      "Es": 8,
+      "EM": 20,
+      "Men": 5,
+      "Phy": 22,
+      "Fear": 22
+    },
+    "Skills": {
+      "Percept": 63,
+      "Surv_Biome": 56,
+      "Climb": "",
+      "Fly": "",
+      "Footwork": 72,
+      "Intimidat.": 2,
+      "Soc. Aware.": 7,
+      "Stalking": 16,
+      "Run": "(7): 64",
+      "Swim": "(4): 49"
+    },
+    "Biome": "AUW---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Giant, lesser, vassal",
+    "Level": 8,
+    "Spread": "F",
+    "Outlook": "Belligerent",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "51 (Sprint)",
+      "Swim_II": "40 (Walk)"
+    },
+    "End_Ftg": 124,
+    "Size_Crit": "H/VIII,-",
+    "Hits": "447 (918)",
+    "AT_DB": "2/3 [9/76] (none)",
+    "Init": 1,
+    "Attack_OBs": [
+      "127H(8)un",
+      "127H(8)we",
+      "97H(8)ro"
+    ],
+    "Magical_Stats": {
+      "PP": 7,
+      "Es": 12,
+      "EM": 20,
+      "Men": 10,
+      "Phy": 27,
+      "Fear": 26
+    },
+    "Skills": {
+      "Percept": 79,
+      "Surv_Biome": 73,
+      "Climb": "(5): 56",
+      "Fly": "",
+      "Footwork": 88,
+      "Intimidat.": 8,
+      "Soc. Aware.": 12,
+      "Stalking": 21,
+      "Subt.Amb.": "(4): 21",
+      "Run": "(9): 76"
+    },
+    "Biome": "AUW---",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Ogre, big",
+    "Level": 4,
+    "Spread": "D",
+    "Outlook": "Greedy",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "25 (Dash)"
+    },
+    "End_Ftg": 84,
+    "Size_Crit": "B/VII,L-",
+    "Hits": "156 (318)",
+    "AT_DB": "3/3 [5/49] (N20+7/+70)",
+    "Init": -2,
+    "Attack_OBs": [
+      "88B(6)ra>>",
+      "88B(6)cl",
+      "88B(6)we"
+    ],
+    "Magical_Stats": {
+      "PP": 4,
+      "Es": 16,
+      "EM": -2,
+      "Men": 1,
+      "Phy": 23,
+      "Fear": 24
+    },
+    "Skills": {
+      "Percept": 3,
+      "Surv_Biome": 44,
+      "Climb": "",
+      "Fly": "",
+      "Subt.": 10,
+      "Fort.": 58,
+      "Footwork": 10,
+      "Subt.Amb.": "(4): 20",
+      "Run": "(5): 49"
+    },
+    "Biome": "ABFR--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Ogre, large",
+    "Level": 6,
+    "Spread": "F",
+    "Outlook": "Belligerent",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "32 (Dash)"
+    },
+    "End_Ftg": 102,
+    "Size_Crit": "L/VII,-",
+    "Hits": "244 (500)",
+    "AT_DB": "3/6 [7/62] (N20+10/+91)",
+    "Init": -2,
+    "Attack_OBs": [
+      "107L(7)ra>>",
+      "107L(7)cl",
+      "107L(7)we"
+    ],
+    "Magical_Stats": {
+      "PP": 5,
+      "Es": 20,
+      "EM": 2,
+      "Men": 6,
+      "Phy": 46,
+      "Fear": 22
+    },
+    "Skills": {
+      "Percept": 8,
+      "Surv_Biome": 65,
+      "Climb": "(6): 31",
+      "Fly": "",
+      "Subt.": 15,
+      "Fort.": 77,
+      "Footwork": 15,
+      "Run": "(7): 62"
+    },
+    "Biome": "ABFR--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Titan",
+    "Level": 35,
+    "Spread": "G",
+    "Outlook": "Carefree",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "56 (Sprint)"
+    },
+    "End_Ftg": 108,
+    "Size_Crit": "H/VIII,-",
+    "Hits": "414 (933)",
+    "AT_DB": "2-9 [18/90] (W30+18/+90)",
+    "Init": -3,
+    "Attack_OBs": [
+      "154H(8)gr",
+      "90H(8)cr",
+      "156H(8)we",
+      "154H(8)rw"
+    ],
+    "Magical_Stats": {
+      "PP": 206,
+      "Es": 72,
+      "EM": 73,
+      "Men": 91,
+      "Phy": 64,
+      "Fear": 91
+    },
+    "Skills": {
+      "Percept": 117,
+      "Surv_Biome": 235,
+      "Climb": "",
+      "Fly": "",
+      "Grace. Spell I": 214,
+      "Intimidat.": 233,
+      "Meditation": 232,
+      "Run": "(18): 90"
+    },
+    "Biome": "AFPS--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-70"
+  }
+]

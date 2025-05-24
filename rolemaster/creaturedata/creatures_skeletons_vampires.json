@@ -1,0 +1,419 @@
+[
+  {
+    "Name": "Skeleton, fodder (I)",
+    "Level": 1,
+    "Spread": "H",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "19 (Dash)"
+    },
+    "End_Ftg": 57,
+    "Size_Crit": "S/V, @#,PP",
+    "Hits": "43 (87)",
+    "AT_DB": "6/0 [2/28] (N20+3/+40)",
+    "Init": 0,
+    "Attack_OBs": ["46M(5)un", "46M(5)we"],
+    "Magical_Stats": {
+      "PP": 4,
+      "Es": 21,
+      "EM": 1,
+      "Men": 5,
+      "Phy": 8,
+      "Fear": 3
+    },
+    "Skills": {
+      "Percept": -1,
+      "Footwork": 5,
+      "Run": "(2): 28"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Gaggle (1d12)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Skeleton, lesser (I)",
+    "Level": 2,
+    "Spread": "A",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "19 (Dash)"
+    },
+    "End_Ftg": 71,
+    "Size_Crit": "S/V, @#,PP",
+    "Hits": "53 (108)",
+    "AT_DB": "6/0 [3/35] (N20+4/+48)",
+    "Init": 0,
+    "Attack_OBs": ["60M(5)un", "60M(5)we"],
+    "Magical_Stats": {
+      "PP": 5,
+      "Es": 23,
+      "EM": 3,
+      "Men": 7,
+      "Phy": 11,
+      "Fear": 5
+    },
+    "Skills": {
+      "Percept": -1,
+      "Footwork": 5,
+      "Multi. Att.": 5,
+      "Subt.Amb.": "(1): 7",
+      "Run": "(3): 35"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Posse (2d10)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Skeleton, minor (II)",
+    "Level": 6,
+    "Spread": "H",
+    "Outlook": "Berserk",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 113,
+    "Size_Crit": "S/V, @#,PP",
+    "Hits": "89 (183)",
+    "AT_DB": "6/6 [7/60] (N20+10/+90)",
+    "Init": 2,
+    "Attack_OBs": ["106B(6)un", "108B(6)we"],
+    "Magical_Stats": {
+      "PP": 6,
+      "Es": 31,
+      "EM": 11,
+      "Men": 15,
+      "Phy": 20,
+      "Fear": 13
+    },
+    "Skills": {
+      "Percept": 9,
+      "Footwork": 15,
+      "Multi. Att.": 5,
+      "Subt.Amb.": "(3): 19",
+      "Run": "(7): 60"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Streak (1d6)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Skeleton, ice (III)",
+    "Level": 13,
+    "Spread": "B",
+    "Outlook": "Hostile",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "20 (Dash)"
+    },
+    "End_Ftg": 166,
+    "Size_Crit": "S/V, @#,PP",
+    "Hits": "125 (260)",
+    "AT_DB": "4/6 [14/96] (N20+21/+145)",
+    "Init": 1,
+    "Attack_OBs": ["166B(6)un[Cold]"],
+    "Magical_Stats": {
+      "PP": 15,
+      "Es": 46,
+      "EM": 30,
+      "Men": 34,
+      "Phy": 36,
+      "Fear": 25
+    },
+    "Skills": {
+      "Percept": 34,
+      "Footwork": 35,
+      "Multi. Att.": 35,
+      "Subt.Amb.": "(6): 38",
+      "Run": "(14): 96"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Skeleton, joker (III)",
+    "Level": 14,
+    "Spread": "A",
+    "Outlook": "Playful",
+    "Archetype": "Skill",
+    "Movement": {
+      "Walk": "19 (Dash)"
+    },
+    "End_Ftg": 64,
+    "Size_Crit": "S/V, @#,PP",
+    "Hits": "48 (113)",
+    "AT_DB": "6/0 [15/76] (T15+7/+50)",
+    "Init": 3,
+    "Attack_OBs": ["77M(5)un", "77M(5)we", "83S(4)ro"],
+    "Magical_Stats": {
+      "PP": 16,
+      "Es": 50,
+      "EM": 38,
+      "Men": 29,
+      "Phy": 27,
+      "Fear": 29
+    },
+    "Skills": {
+      "Percept": 121,
+      "Grace. Spell I": 106,
+      "Stage Mag.": 135,
+      "Duping": 133,
+      "Soc. Aware.": 132,
+      "Run": "(15): 76"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Skeleton, noble (IV)",
+    "Level": 18,
+    "Spread": "H",
+    "Outlook": "Dominant",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "22 (Dash)"
+    },
+    "End_Ftg": 183,
+    "Size_Crit": "S/V, l@#,PP",
+    "Hits": "137 (288)",
+    "AT_DB": "6/9 [19/111] (none)",
+    "Init": 3,
+    "Attack_OBs": ["180B(6)un[Cold]", "180B(6)we"],
+    "Magical_Stats": {
+      "PP": 16,
+      "Es": 55,
+      "EM": 46,
+      "Men": 46,
+      "Phy": 41,
+      "Fear": 46
+    },
+    "Skills": {
+      "Percept": 51,
+      "Footwork": 45,
+      "Multi. Att.": 45,
+      "Leadership": 135,
+      "Soc. Aware.": 133,
+      "Org. Officer": 137,
+      "Subt.Amb.": "(9): 60",
+      "Run": "(19): 111"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Skeleton, red (V)",
+    "Level": 22,
+    "Spread": "G",
+    "Outlook": "Playful",
+    "Archetype": "Semi spell user",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 132,
+    "Size_Crit": "S/V, l@#,PP",
+    "Hits": "103 (214)",
+    "AT_DB": "6/3 [23/97] (none)",
+    "Init": 1,
+    "Attack_OBs": ["146B(6)un", "147B(6)ro"],
+    "Magical_Stats": {
+      "PP": 125,
+      "Es": 71,
+      "EM": 64,
+      "Men": 46,
+      "Phy": 41,
+      "Fear": 66
+    },
+    "Skills": {
+      "Percept": 69,
+      "Adr. Def.": 62,
+      "Trickery": 123,
+      "Duping": 127,
+      "Soc. Aware.": 132,
+      "Run": "(23): 97"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Skeleton, sovereign (VI)",
+    "Level": 30,
+    "Spread": "F",
+    "Outlook": "Dominant",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 91,
+    "Size_Crit": "S/V, l@#,PP",
+    "Hits": "72 (167)",
+    "AT_DB": "6/3 [16/79] (none)",
+    "Init": 3,
+    "Attack_OBs": ["142L(7)un[Cold]", "142L(7)we[Cold]"],
+    "Magical_Stats": {
+      "PP": 196,
+      "Es": 122,
+      "EM": 111,
+      "Men": 84,
+      "Phy": 72,
+      "Fear": 90
+    },
+    "Skills": {
+      "Percept": 122,
+      "Multi. Att.": 100,
+      "Leadership": 212,
+      "Soc. Aware.": 211,
+      "Officer": 213,
+      "Run": "(16): 79"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Vampire, bunny (III)",
+    "Level": 10,
+    "Spread": "A",
+    "Outlook": "Cruel",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Walk": "Quad.: 11 (Dash)",
+      "Leap_II": "11 (Run)"
+    },
+    "End_Ftg": 121,
+    "Size_Crit": "T/III, l@#,-",
+    "Hits": "91 (189)",
+    "AT_DB": "1/9 [11/83] (none)",
+    "Init": 3,
+    "Attack_OBs": ["141T(3)bit[Cold]", "141T(3)cl[Cold]"],
+    "Magical_Stats": {
+      "PP": 169,
+      "Es": 67,
+      "EM": 71,
+      "Men": 41,
+      "Phy": 72,
+      "Fear": 67
+    },
+    "Skills": {
+      "Percept": 96,
+      "Footwork": 103,
+      "Charm": 91,
+      "Stalking": 104,
+      "Subt.Amb.": "(10): 51",
+      "Run": "(11): 83"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Vampire, major (V)",
+    "Level": 24,
+    "Spread": "H",
+    "Outlook": "Dominant",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 83,
+    "Size_Crit": "M/V, l@#,-",
+    "Hits": "83 (194)",
+    "AT_DB": "1/6 [15/76] (none)",
+    "Init": 3,
+    "Attack_OBs": ["136M(5)bit[Cold]", "128M(5)cl[Cold]", "66M(5)we[Cold]"],
+    "Magical_Stats": {
+      "PP": 184,
+      "Es": 57,
+      "EM": 90,
+      "Men": 56,
+      "Phy": 78,
+      "Fear": 66
+    },
+    "Skills": {
+      "Percept": 89,
+      "Lor. Hist. Spec.": 191,
+      "Soc. Aware.": 169,
+      "Stalking": 174,
+      "Charm": 185,
+      "Run": "(13): 70"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Vampire, lord (V)",
+    "Level": 28,
+    "Spread": "H",
+    "Outlook": "Dominant",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 96,
+    "Size_Crit": "M/V, l@#,-",
+    "Hits": "83 (194)",
+    "AT_DB": "1/6 [15/76] (none)",
+    "Init": 3,
+    "Attack_OBs": ["136M(5)bit[Cold]", "128M(5)cl[Cold]", "66M(5)we[Cold]"],
+    "Magical_Stats": {
+      "PP": 184,
+      "Es": 57,
+      "EM": 90,
+      "Men": 56,
+      "Phy": 78,
+      "Fear": 66
+    },
+    "Skills": {
+      "Percept": 89,
+      "Lor. Hist. Spec.": 191,
+      "Soc. Aware.": 169,
+      "Stalking": 174,
+      "Charm": 185,
+      "Run": "(13): 70"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Vampire, sovereign (VI+)",
+    "Level": 36,
+    "Spread": "G",
+    "Outlook": "Dominant",
+    "Archetype": "Spell user",
+    "Movement": {
+      "Walk": "21 (Dash)"
+    },
+    "End_Ftg": 75,
+    "Size_Crit": "M/V, II@#,-",
+    "Hits": "95 (226)",
+    "AT_DB": "1/9 [19/88] (none)",
+    "Init": -2,
+    "Attack_OBs": ["152M(5)bit[Cold]", "152M(5)cl[Cold]", "84M(5)rw"],
+    "Magical_Stats": {
+      "PP": 208,
+      "Es": 81,
+      "EM": 122,
+      "Men": 95,
+      "Phy": 78,
+      "Fear": 74
+    },
+    "Skills": {
+      "Percept": 107,
+      "Lor. Hist. Spec.": 239,
+      "Soc. Aware.": 217,
+      "Stalking": 222,
+      "Charm": 233,
+      "Run": "(19): 88"
+    },
+    "Biome": "EHRU--",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-70"
+  }
+]

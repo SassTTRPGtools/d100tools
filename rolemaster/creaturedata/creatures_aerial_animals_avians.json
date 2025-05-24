@@ -1,0 +1,417 @@
+[
+  {
+    "Name": "Bat, miniscule",
+    "Level": 0,
+    "Spread": "A",
+    "Outlook": "Jumpy",
+    "Archetype": "Defensive",
+    "Movement": {
+      "Climb-Grip": "2 (Jog)",
+      "Wings_III": "9 (Sprint)"
+    },
+    "End_Ftg": 21,
+    "Size_Crit": "Mi/L, -",
+    "Hits": "3 (7)",
+    "AT_DB": "1/38 [2/8]",
+    "Init": 2,
+    "Attack_OBs": ["-3D(2)bi", "17D(3)bi(Coop100)"],
+    "Magical_Stats": {
+      "PP": 0,
+      "Es": 11,
+      "EM": -3,
+      "Men": 0,
+      "Phy": -4,
+      "Fear": 0
+    },
+    "Skills": {
+      "Percept": 2,
+      "Surv_Biome": 8,
+      "Climb": "(1): 3",
+      "Fly": "(2): 8"
+    },
+    "Biome": "ABDFX-",
+    "#Enc": "Unit (1d100)",
+    "Freq": "+20"
+  },
+  {
+    "Name": "Bat, diminutive",
+    "Level": 0,
+    "Spread": "A",
+    "Outlook": "Jumpy",
+    "Archetype": "Defensive",
+    "Movement": {
+      "Climb-Grip": "6 (Jog)",
+      "Wings_III": "22 (Sprint)"
+    },
+    "End_Ftg": 21,
+    "Size_Crit": "D/L, -",
+    "Hits": "8 (17)",
+    "AT_DB": "2/28 [2/8]",
+    "Init": 2,
+    "Attack_OBs": ["-3D(2)bi", "17D(3)bi(Coop20)"],
+    "Magical_Stats": {
+      "PP": 2,
+      "Es": 11,
+      "EM": -3,
+      "Men": 0,
+      "Phy": -4,
+      "Fear": 0
+    },
+    "Skills": {
+      "Percept": 2,
+      "Surv_Biome": 8,
+      "Climb": "(1): 3",
+      "Fly": "(2): 8"
+    },
+    "Biome": "ABFJX-",
+    "#Enc": "Flight (8d10)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Lizard, flying",
+    "Level": 0,
+    "Spread": "A",
+    "Outlook": "Jumpy",
+    "Archetype": "Defensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "4 (Run)"
+    },
+    "End_Ftg": 21,
+    "Size_Crit": "Mi/L, -",
+    "Hits": "7 (17)",
+    "AT_DB": "1/16 [none]",
+    "Init": 3,
+    "Attack_OBs": ["-10M(1)ra", "-5D(1)bi", "-6M(1)cl(Coop100)"],
+    "Magical_Stats": {
+      "PP": 4,
+      "Es": 11,
+      "EM": 3,
+      "Men": 2,
+      "Phy": -4,
+      "Fear": 1
+    },
+    "Skills": {
+      "Percept": 7,
+      "Surv_Biome": 6,
+      "Climb": "(1): 3",
+      "Fly": "(1): 3"
+    },
+    "Biome": "XFSJ-",
+    "#Enc": "Streak (1d6)",
+    "Freq": "+0"
+  },
+  {
+    "Name": "Bird, miniscule",
+    "Level": 0,
+    "Spread": "A",
+    "Outlook": "Jumpy",
+    "Archetype": "Defensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "9 (Sprint)"
+    },
+    "End_Ftg": 21,
+    "Size_Crit": "Mi/L, -",
+    "Hits": "1 (15)",
+    "AT_DB": "1/53 [2/11]",
+    "Init": 2,
+    "Attack_OBs": ["-1D(2)ra", "19D(2)ra(Coop100)", "-6M(1)cl"],
+    "Magical_Stats": {
+      "PP": 4,
+      "Es": 12,
+      "EM": 3,
+      "Men": 2,
+      "Phy": 0,
+      "Fear": -4
+    },
+    "Skills": {
+      "Percept": 3,
+      "Surv_Biome": 7,
+      "Climb": "",
+      "Fly": "(2): 11"
+    },
+    "Biome": "ABDFXO",
+    "#Enc": "Flock (4d100)",
+    "Freq": "+30"
+  },
+  {
+    "Name": "Bird, diminutive",
+    "Level": 0,
+    "Spread": "A",
+    "Outlook": "Jumpy",
+    "Archetype": "Defensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "20 (Sprint)"
+    },
+    "End_Ftg": 21,
+    "Size_Crit": "D/L, -",
+    "Hits": "7 (27)",
+    "AT_DB": "1/53 [2/11]",
+    "Init": 2,
+    "Attack_OBs": ["-1D(2)ra", "14D(3)ra(Coop20)", "-1D(2)cl", "-6D(2)cl"],
+    "Magical_Stats": {
+      "PP": 4,
+      "Es": 12,
+      "EM": 3,
+      "Men": 2,
+      "Phy": 0,
+      "Fear": -4
+    },
+    "Skills": {
+      "Percept": 3,
+      "Surv_Biome": 7,
+      "Climb": "",
+      "Fly": "(2): 11"
+    },
+    "Biome": "ABDFXO",
+    "#Enc": "Parliament (3d8)",
+    "Freq": "+10"
+  },
+  {
+    "Name": "Condor",
+    "Level": 3,
+    "Spread": "C",
+    "Outlook": "Hidden agenda",
+    "Archetype": "Defensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "60 (Run)"
+    },
+    "End_Ftg": 73,
+    "Size_Crit": "S/III, -",
+    "Hits": "36 (77)",
+    "AT_DB": "3/21 [8/51]",
+    "Init": 1,
+    "Attack_OBs": ["17M(5)be"],
+    "Magical_Stats": {
+      "PP": 22,
+      "Es": 18,
+      "EM": 9,
+      "Men": 2,
+      "Phy": 3,
+      "Fear": 9
+    },
+    "Skills": {
+      "Percept": 29,
+      "Surv_Biome": 34,
+      "Climb": "",
+      "Fly": "(3): 51"
+    },
+    "Biome": "AB-FX-",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Eagle",
+    "Level": 3,
+    "Spread": "C",
+    "Outlook": "Normal",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "46 (Dash)"
+    },
+    "End_Ftg": 84,
+    "Size_Crit": "T/I/L, -",
+    "Hits": "56 (114)",
+    "AT_DB": "2/22 [8/72]",
+    "Init": 9,
+    "Attack_OBs": ["75T(3)cl", "63T(3)be"],
+    "Magical_Stats": {
+      "PP": 9,
+      "Es": 17,
+      "EM": 3,
+      "Men": 4,
+      "Phy": 3,
+      "Fear": 28
+    },
+    "Skills": {
+      "Percept": 40,
+      "Surv_Biome": 31,
+      "Climb": "",
+      "Fly": "(3): 72"
+    },
+    "Biome": "ABDFX-",
+    "#Enc": "Yoke (1d3)",
+    "Freq": "-20"
+  },
+  {
+    "Name": "Falcon/peregrine",
+    "Level": 2,
+    "Spread": "B",
+    "Outlook": "Normal",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "53 (Dash)"
+    },
+    "End_Ftg": 44,
+    "Size_Crit": "D/L, -",
+    "Hits": "15 (33)",
+    "AT_DB": "1/22 [6/64]",
+    "Init": 3,
+    "Attack_OBs": ["36D(2)cl", "36D(2)be"],
+    "Magical_Stats": {
+      "PP": 8,
+      "Es": 19,
+      "EM": -2,
+      "Men": 3,
+      "Phy": 2,
+      "Fear": 17
+    },
+    "Skills": {
+      "Percept": 40,
+      "Surv_Biome": 32,
+      "Climb": "",
+      "Fly": "(6): 46"
+    },
+    "Biome": "ABDFX-",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Hawk",
+    "Level": 2,
+    "Spread": "B",
+    "Outlook": "Normal",
+    "Archetype": "Offensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "49 (Dash)"
+    },
+    "End_Ftg": 72,
+    "Size_Crit": "T/I/L, -",
+    "Hits": "48 (97)",
+    "AT_DB": "1/22 [6/69]",
+    "Init": 7,
+    "Attack_OBs": ["81D(2)cl", "79D(2)gr", "61D(2)be"],
+    "Magical_Stats": {
+      "PP": 7,
+      "Es": 14,
+      "EM": 0,
+      "Men": 6,
+      "Phy": 0,
+      "Fear": 21
+    },
+    "Skills": {
+      "Percept": 27,
+      "Surv_Biome": 20,
+      "Climb": "",
+      "Fly": "(6): 59"
+    },
+    "Biome": "ABDFXO",
+    "#Enc": "Solo (1d2)",
+    "Freq": "-10"
+  },
+  {
+    "Name": "Owl, diminutive",
+    "Level": 1,
+    "Spread": "A",
+    "Outlook": "Jumpy",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "20 (Sprint)"
+    },
+    "End_Ftg": 30,
+    "Size_Crit": "D/L, -",
+    "Hits": "18 (38)",
+    "AT_DB": "1/34 [4/33]",
+    "Init": 3,
+    "Attack_OBs": ["28D(2)cl", "38T(3)gr", "28M(1)be"],
+    "Magical_Stats": {
+      "PP": 8,
+      "Es": 14,
+      "EM": -3,
+      "Men": 1,
+      "Phy": 3,
+      "Fear": 4
+    },
+    "Skills": {
+      "Percept": 28,
+      "Surv_Biome": 25,
+      "Climb": "",
+      "Fly": "(4): 33"
+    },
+    "Biome": "ABDFX-",
+    "#Enc": "Yoke (1d3)",
+    "Freq": "-30"
+  },
+  {
+    "Name": "Owl, tiny",
+    "Level": 2,
+    "Spread": "B",
+    "Outlook": "Normal",
+    "Archetype": "Stealth",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "42 (Sprint)"
+    },
+    "End_Ftg": 27,
+    "Size_Crit": "T/I/L, -",
+    "Hits": "27 (58)",
+    "AT_DB": "2/24 [6/64]",
+    "Init": 6,
+    "Attack_OBs": [
+      "35T(3)cl",
+      "45G(4)gr",
+      "35D(2)be"
+    ],
+    "Magical_Stats": {
+      "PP": 6,
+      "Es": 17,
+      "EM": -1,
+      "Men": 3,
+      "Phy": 2,
+      "Fear": 6
+    },
+    "Skills": {
+      "Percept": 40,
+      "Surv_Biome": 37,
+      "Climb": "",
+      "Fly": "(4): 46"
+    },
+    "Biome": "ABDFX-",
+    "#Enc": "Solo (1d2)",
+    "Freq": "+20"
+  },
+  {
+    "Name": "Vulture",
+    "Level": 1,
+    "Spread": "B",
+    "Outlook": "Hidden agenda",
+    "Archetype": "Defensive",
+    "Movement": {
+      "Climb-Grip": "",
+      "Wings_III": "28 (Run)"
+    },
+    "End_Ftg": 53,
+    "Size_Crit": "T/I/L, -",
+    "Hits": "29 (60)",
+    "AT_DB": "2/19 [4/27]",
+    "Init": 3,
+    "Attack_OBs": [
+      "10T(3)cl",
+      "10T(3)be"
+    ],
+    "Magical_Stats": {
+      "PP": 7,
+      "Es": 12,
+      "EM": -3,
+      "Men": 2,
+      "Phy": -4,
+      "Fear": 1
+    },
+    "Skills": {
+      "Percept": 11,
+      "Surv_Biome": 13,
+      "Climb": "(1): 8",
+      "Fly": "(4): 27"
+    },
+    "Biome": "ABDFX-",
+    "#Enc": "Posse (2d10)",
+    "Freq": "+10"
+  }
+]
