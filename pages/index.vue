@@ -570,6 +570,63 @@ const modalBodyStyle = {
   background: '#fff',
   boxSizing: 'border-box',
 }
+// ====== 新增：神諭問答功能 ======
+const showOracleModal = ref(false)
+const oracleForm = ref({
+  chance: '50/50',
+  chaos: 5,
+  manualRoll: '',
+})
+const oracleResult = ref(null)
+
+const oracleChanceOptions = [
+  { label: '確定', value: '確定' },
+  { label: '幾乎確定', value: '幾乎確定' },
+  { label: '非常可能', value: '非常可能' },
+  { label: '有可能', value: '有可能' },
+  { label: '50/50', value: '50/50' },
+  { label: '不太可能', value: '不太可能' },
+  { label: '非常不可能', value: '非常不可能' },
+  { label: '幾乎不可能', value: '幾乎不可能' },
+  { label: '不可能', value: '不可能' },
+]
+const oracleChaosOptions = Array.from({ length: 9 }, (_, i) => ({ label: (i + 1).toString(), value: i + 1 }))
+
+// 命運表資料（左,中,右）
+const oracleTable = {
+  '確定':      [[10,50,91],[13,65,94],[15,75,96],[17,85,98],[18,90,99],[19,95,100],[20,99,null],[20,99,null],[20,99,null]],
+  '幾乎確定': [[7,35,88],[10,50,91],[13,65,94],[15,75,96],[17,85,98],[18,90,99],[19,95,100],[20,99,null],[20,99,null]],
+  '非常可能': [[5,25,86],[7,35,88],[10,50,91],[13,65,94],[15,75,96],[17,85,98],[18,90,99],[19,95,100],[20,99,null]],
+  '有可能':   [[3,15,84],[5,25,86],[7,35,88],[10,50,91],[13,65,94],[15,75,96],[17,85,98],[18,90,99],[19,95,100]],
+  '50/50':    [[2,10,83],[3,15,84],[5,25,86],[7,35,88],[10,50,91],[13,65,94],[15,75,96],[17,85,98],[18,90,99]],
+  '不太可能':[[1,5,82],[2,10,83],[3,15,84],[5,25,86],[7,35,88],[10,50,91],[13,65,94],[15,75,96],[17,85,98]],
+  '非常不可能':[[null,1,81],[1,5,82],[2,10,83],[3,15,84],[5,25,86],[7,35,88],[10,50,91],[13,65,94],[15,75,96]],
+  '幾乎不可能':[[null,1,81],[null,1,81],[1,5,82],[2,10,83],[3,15,84],[5,25,86],[7,35,88],[10,50,91],[13,65,94]],
+  '不可能':   [[null,1,81],[null,1,81],[null,1,81],[1,5,82],[2,10,83],[3,15,84],[5,25,86],[7,35,88],[10,50,91]],
+}
+
+function openOracleModal() {
+  showOracleModal.value = true
+  oracleResult.value = null
+  oracleForm.value = { chance: '50/50', chaos: 5, manualRoll: '' }
+}
+
+function handleOracleRoll(manual) {
+  const chanceIdx = oracleChanceOptions.findIndex(opt => opt.value === oracleForm.value.chance)
+  const chaosIdx = Number(oracleForm.value.chaos) - 1
+  const [left, mid, right] = oracleTable[oracleForm.value.chance][chaosIdx]
+  let roll = manual ? Number(oracleForm.value.manualRoll) : rollD100()
+  let result = ''
+  if (isNaN(roll) || roll < 1 || roll > 100) {
+    oracleResult.value = { roll: '', result: '請輸入1~100的數字或點擊擲骰' }
+    return
+  }
+  if (left !== null && roll <= left) result = `例外的是（${roll} ≤ ${left}）`
+  else if (mid !== null && roll <= mid) result = `是（${left+1}~${mid}）`
+  else if (right !== null && roll > right) result = `例外的否（${roll} > ${right}）`
+  else result = `否（${mid+1}~${right}）`
+  oracleResult.value = { roll, left, mid, right, result }
+}
 </script>
 
 <template>
@@ -579,6 +636,7 @@ const modalBodyStyle = {
       <a-button block type="primary" size="large" @click="openAttackModal">攻擊</a-button>
       <a-button block type="primary" size="large" @click="openCastModal">施法</a-button>
       <a-button block type="primary" size="large" @click="openResistModal">抵抗</a-button>
+      <a-button block type="primary" size="large" @click="openOracleModal">神諭問答</a-button>
     </div>
     <!-- 檢定 Modal -->
     <a-modal v-model:open="showCheckModal" title="技能檢定" :footer="null" :centered="true" width="90vw" :bodyStyle="modalBodyStyle">
@@ -789,6 +847,34 @@ const modalBodyStyle = {
         <div>差額比較: {{ resistResult.total_number }} vs. {{ resistResult.rrDC }} = {{ resistResult.compareNumber }}</div>
         <hr>
         <div class="font-bold text-lg">結果: {{ resistResult.result_string }}</div>
+      </div>
+    </a-modal>
+    <!-- 神諭問答 Modal -->
+    <a-modal v-model:open="showOracleModal" title="神諭問答" :footer="null" :centered="true" width="90vw" :bodyStyle="modalBodyStyle">
+      <a-form layout="vertical" @submit.prevent="handleOracleRoll()">
+        <a-form-item label="機率">
+          <a-select v-model:value="oracleForm.chance" :options="oracleChanceOptions" />
+        </a-form-item>
+        <a-form-item label="混沌值">
+          <a-slider v-model:value="oracleForm.chaos" :min="1" :max="9" :marks="{1:'1',5:'5',9:'9'}" />
+        </a-form-item>
+        <div class="flex mt-2">
+          <a-button type="primary" @click="handleOracleRoll()">擲骰</a-button>
+        </div>
+      </a-form>
+      <div v-if="oracleResult" class="mt-4 text-center">        
+        <div class="flex items-end justify-center gap-1 mt-2">
+          <span class="text-base text-gray-400">{{ oracleResult.left }}</span>
+          <span class="text-4xl font-bold text-gray-700">{{ oracleResult.mid }}</span>
+          <span class="text-base text-gray-400">{{ oracleResult.right }}</span>
+        </div>
+        <div :class=" [
+          'font-bold text-lg mt-2',
+          oracleResult.result.includes('否') ? 'text-red-600' : '',
+          oracleResult.result.includes('是') ? 'text-green-600' : ''
+        ]">
+          結果: {{ oracleResult.result }}：{{ oracleResult.roll}}
+        </div>
       </div>
     </a-modal>
   </div>
