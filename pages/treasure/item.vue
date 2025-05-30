@@ -106,7 +106,7 @@ const handleQuantityChange = (record, value) => {
 
     <!-- 右邊區塊 -->
     <div class="flex-1 pt-4">
-      <div class="mt-4">       
+      <div class="mt-4">
         <div class="flex justify-between">
             <a-button type="primary" @click="copySelectedItemsToClipboard">複製到剪貼簿</a-button>
           <div>總價格: {{ totalPrice }}</div>
@@ -124,6 +124,9 @@ const handleQuantityChange = (record, value) => {
               @change="val => handleQuantityChange(record, val)"
             />
           </template>
+          <template v-if="column.key === 'action'">
+            <a-button type="text" danger @click="selectedItems = selectedItems.filter(item => item.original !== record.original)">✕</a-button>
+          </template>
         </template>
         <a-table-column title="名稱" dataIndex="name" key="name" width="150" />
         <a-table-column title="#" dataIndex="quantity" key="quantity" width="100" />
@@ -131,6 +134,7 @@ const handleQuantityChange = (record, value) => {
         <a-table-column title="重量" dataIndex="weight" key="weight" width="100" />
         <a-table-column title="犯蠢閾值" dataIndex="threshold" key="threshold" width="120" />
         <a-table-column title="強度" dataIndex="strength" key="strength" width="100" />
+        <a-table-column title="操作" key="action" width="60" />
       </a-table>
 
     </div>
