@@ -34,10 +34,26 @@ const handleCheckboxChange = (record, checked) => {
 
 // 處理名稱與備註合併
 const mergeNameAndNotes = (items) => {
-  return items.map(item => ({
-    ...item,
-    name: item.notes ? `${item.name} / ${item.notes}` : item.name,
-  }));
+  return items.map(item => {
+    if (item.length) {
+      return {
+        ...item,
+        name: `${item.name} / 長度${item.length}' / ${item.notes}`,
+      };
+    } 
+    else if (item.notes) {
+      return {
+        ...item,
+        name: `${item.name} / ${item.notes}`,
+      };
+    } 
+    else {
+      return {
+        ...item,
+        name: item.name,
+      };
+    }
+  });
 };
 
 // 合併資料
@@ -177,7 +193,7 @@ const remainingWealth = computed(() => {
             </template>
             <a-table-column title="選擇" key="checkbox" width="7%" />
             <a-table-column title="名稱" dataIndex="name" key="name" width="30%" />
-            <a-table-column title="#" dataIndex="quantity" key="quantity" width="3%" />
+            <a-table-column title="#" dataIndex="quantity" key="quantity" width="5%" />
             <a-table-column title="價格" dataIndex="price" key="price" width="5%" />
             <a-table-column title="重量" dataIndex="weight" key="weight" width="5%" />
             <a-table-column title="犯蠢" dataIndex="threshold" key="threshold" width="5%" />
