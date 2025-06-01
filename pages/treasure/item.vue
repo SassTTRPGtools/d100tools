@@ -56,11 +56,6 @@ const mergeNameAndNotes = (items) => {
   });
 };
 
-// 合併資料
-Object.keys(itemData).forEach(key => {
-  itemData[key] = mergeNameAndNotes(itemData[key]);
-});
-
 // 新增複製功能
 const copySelectedItemsToClipboard = () => {
   const statsText = selectedItems.value
@@ -173,15 +168,72 @@ const currentWealth = ref(90);
 const remainingWealth = computed(() => {
   return Math.round((currentWealth.value - totalPrice.value) * 1000) / 1000;
 });
+
+const sizeOptions = [
+  { label: '小型', value: 'small' },
+  { label: '中型', value: 'medium' },
+  { label: '大型', value: 'large' },
+];
+const selectedSize = ref('medium');
+
+function adjustItemBySize(item, size, tab) {
+  let newItem = { ...item };
+  // 處理價格與重量
+  if (size === 'large') {
+    if (tab === '盔甲') {
+      newItem.price = Math.round((item.price || 0) * 4 * 100000) / 100000;
+    } else {
+      newItem.price = Math.round((item.price || 0) * 4 * 100000) / 100000;
+      newItem.weight = Math.round((item.weight || 0) * 4 * 100000) / 100000;
+    }
+    if (tab === '武器' && item.length) {
+      newItem.length = Math.round(item.length * 1.6 * 10) / 10;
+    }
+  } else if (size === 'small') {
+    if (tab === '盔甲') {
+      newItem.price = Math.round((item.price || 0) / 4 * 100000) / 100000;
+    } else {
+      newItem.price = Math.round((item.price || 0) / 4 * 100000) / 100000;
+      newItem.weight = Math.round((item.weight || 0) / 4 * 100000) / 100000;
+    }
+    if (tab === '武器' && item.length) {
+      newItem.length = Math.round((item.length / 1.6) * 10) / 10;
+    }
+  } else {
+    // 中型，回復原始
+    newItem.price = item.price;
+    newItem.weight = item.weight;
+    if (tab === '武器' && item.length) newItem.length = item.length;
+  }
+  return newItem;
+}
+
+function getAdjustedItems(items, tab) {
+  return mergeNameAndNotes(items.map(item => adjustItemBySize(item, selectedSize.value, tab)));
+}
+
+// 合併資料（改為動態 computed）
+const computedItemData = computed(() => {
+  const result = {};
+  Object.keys(itemData).forEach(key => {
+    result[key] = getAdjustedItems(itemData[key], key);
+  });
+  return result;
+});
 </script>
 
 <template>
   <div class="flex gap-4 pt-6 px-8">
     <!-- 左邊區塊 -->
     <div class="flex-1">
-
+      <div class="mb-2">
+        <label>體型：</label>
+        <a-select v-model:value="selectedSize" style="width: 120px">
+          <a-select-option v-for="opt in sizeOptions" :key="opt.value" :value="opt.value">{{ opt.label }}</a-select-option>
+        </a-select>
+      </div>
       <a-tabs v-model:activeKey="activeTab">
-        <a-tab-pane v-for="(items, tab) in itemData" :key="tab" :tab="tab">
+        <a-tab-pane v-for="(items, tab) in computedItemData" :key="tab" :tab="tab">
           <a-table :dataSource="items" rowKey="original" :pagination="false" :scroll="{ y: 700, x: '100%' }">
             <template #bodyCell="{ column, record }">
               <template v-if="column.key === 'checkbox'">
