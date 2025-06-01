@@ -8,6 +8,7 @@ import instruments from '@/rolemaster/itemdata/instruments.json';
 import foodItems from '@/rolemaster/itemdata/food_items.json';
 import clothingAndAccessories from '@/rolemaster/itemdata/clothing_and_accessories.json';
 import weapons from '@/rolemaster/itemdata/weapon.json';
+import armor from '@/rolemaster/itemdata/armor.json';
 
 // 整理資料到 Tabs
 const itemData = {
@@ -16,6 +17,7 @@ const itemData = {
   '食物': foodItems,
   '服飾與配件': clothingAndAccessories,
   '武器': weapons,
+  '盔甲': armor,
 };
 
 const activeTab = ref('工具與設備');
@@ -64,7 +66,12 @@ const totalPrice = computed(() => {
 });
 
 const totalWeight = computed(() => {
-  return selectedItems.value.reduce((sum, item) => sum + (item.weight || 0) * (item.quantity || 1), 0);
+  return selectedItems.value.reduce((sum, item) => {
+    if (typeof item.weight === 'string' && item.weight.includes('%')) {
+      return sum; // 忽略重量是字串且包含百分比的項目
+    }
+    return sum + (item.weight || 0) * (item.quantity || 1);
+  }, 0);
 });
 
 // 處理數量變更
@@ -74,6 +81,82 @@ const handleQuantityChange = (record, value) => {
     selectedItems.value[idx].quantity = value;
   }
 };
+
+const dungeonExplorerKit = [
+  { original: '背包', name: '背包', quantity: 1, price: 0.2, weight: 3, strength: 25 },
+  { original: '口糧', name: '口糧', quantity: 7, price: 0.05, weight: 2.6, strength: 0 },
+  { original: '火炬', name: "火炬 / 照亮 10'R，6 小時。", quantity: 7, price: 0.003, weight: 1, strength: 35 },
+  { original: '輕型撬棍', name: '輕型撬棍', quantity: 1, price: 0.6, weight: 3, strength: 75 },
+  { original: '錘子', name: '錘子', quantity: 1, price: 1, weight: 1, strength: 65 },
+  { original: '岩釘', name: '岩釘', quantity: 10, price: 0.2, weight: 0.25, strength: 65 },
+  { original: '大水袋', name: '大水袋', quantity: 1, price: 0.02, weight: 0.75, strength: 25 },
+  { original: '打火石', name: '打火石', quantity: 1, price: 0.1, weight: 0.5, strength: 100 },
+  { original: '火鐮袋', name: '火鐮袋', quantity: 1, price: 0.02, weight: 0.25, strength: 60 },
+  { original: '標準繩索', name: "標準繩索 / 麻。 50' 長。", quantity: 1, price: 0.4, weight: 5, strength: 25 },
+  { original: '10呎長桿', name: '10呎長桿', quantity: 1, price: 0.05, weight: 7, strength: 30 }
+];
+
+// 實作 addDungeonExplorerKit 方法
+const addDungeonExplorerKit = () => {
+  dungeonExplorerKit.forEach(item => {
+    if (!selectedItems.value.some(selected => selected.original === item.original)) {
+      selectedItems.value.push({ ...item });
+    }
+  });
+};
+
+const explorerKit = [
+  { original: '背包', name: '背包', quantity: 1, price: 0.2, weight: 3, strength: 25 },
+  { original: '口糧', name: '口糧', quantity: 7, price: 0.05, weight: 2.6, strength: 0 },
+  { original: '火炬', name: "火炬 / 照亮 10'R，6 小時。", quantity: 7, price: 0.003, weight: 1, strength: 35 },
+  { original: '大水袋', name: '大水袋', quantity: 1, price: 0.02, weight: 0.75, strength: 25 },
+  { original: '打火石', name: '打火石', quantity: 1, price: 0.1, weight: 0.5, strength: 100 },
+  { original: '火鐮袋', name: '火鐮袋', quantity: 1, price: 0.02, weight: 0.25, strength: 60 },
+  { original: '標準繩索', name: "標準繩索 / 麻。 50' 長。", quantity: 1, price: 0.4, weight: 5, strength: 25 },
+  { original: '輕睡袋', name: '輕睡袋', quantity: 1, price: 0.2, weight: 5, strength: 50 },
+  { original: '烹飪鍋', name: '烹飪鍋', quantity: 1, price: 0.7, weight: 2.5, strength: 80 },
+  { original: '金屬碗', name: '金屬碗', quantity: 1, price: 0.2, weight: 1, strength: 65 },
+  { original: '湯勺', name: '湯勺', quantity: 1, price: 0.03, weight: 0.5, strength: 20 }
+];
+
+// 實作 addExplorerKit 方法
+const addExplorerKit = () => {
+  explorerKit.forEach(item => {
+    if (!selectedItems.value.some(selected => selected.original === item.original)) {
+      selectedItems.value.push({ ...item });
+    }
+  });
+};
+
+const thiefKit = [
+  { original: '背包', name: '背包', quantity: 1, price: 0.2, weight: 3, strength: 25 },
+  { original: '口糧', name: '口糧', quantity: 3, price: 0.05, weight: 2.6, strength: 0 },
+  { original: '標準繩索', name: "標準繩索 / 麻。 50' 長。", quantity: 1, price: 0.4, weight: 5, strength: 25 },
+  { original: '大水袋', name: '大水袋', quantity: 1, price: 0.02, weight: 0.75, strength: 25 },
+  { original: '打火石', name: '打火石', quantity: 1, price: 0.1, weight: 0.5, strength: 100 },
+  { original: '火鐮袋', name: '火鐮袋', quantity: 1, price: 0.02, weight: 0.25, strength: 60 },
+  { original: '輕型撬棍', name: '輕型撬棍', quantity: 1, price: 0.6, weight: 3, strength: 75 },
+  { original: '錘子', name: '錘子', quantity: 1, price: 1, weight: 1, strength: 65 },
+  { original: '岩釘', name: '岩釘', quantity: 10, price: 0.2, weight: 0.25, strength: 65 },
+  { original: '蠟燭', name: "蠟燭 / 蠟或牛脂。 點燃 10'R ，燃燒 2 小時。", quantity: 5, price: 0.04, weight: 0.25, strength: 30 },
+  { original: '油瓶', name: "油瓶 / 包括 1 品脫燈油（相當於 6 小時）。", quantity: 2, price: 0.3, weight: 1, strength: 5 },
+  { original: '提燈', name: "提燈 / 光源 25'R。 防風。", quantity: 1, price: 1.2, weight: 1.5, strength: 10 },
+  { original: '撬鎖工具', name: '撬鎖工具 / 幾個小工具。', quantity: 1, price: 1, weight: 0.2, strength: 15 }
+];
+
+// 實作 addThiefKit 方法
+const addThiefKit = () => {
+  thiefKit.forEach(item => {
+    if (!selectedItems.value.some(selected => selected.original === item.original)) {
+      selectedItems.value.push({ ...item });
+    }
+  });
+};
+
+const currentWealth = ref(90);
+const remainingWealth = computed(() => {
+  return Math.round((currentWealth.value - totalPrice.value) * 1000) / 1000;
+});
 </script>
 
 <template>
@@ -83,7 +166,7 @@ const handleQuantityChange = (record, value) => {
 
       <a-tabs v-model:activeKey="activeTab">
         <a-tab-pane v-for="(items, tab) in itemData" :key="tab" :tab="tab">
-          <a-table :dataSource="items" rowKey="original" :pagination="false">
+          <a-table :dataSource="items" rowKey="original" :pagination="false" :scroll="{ y: 700, x: '100%' }">
             <template #bodyCell="{ column, record }">
               <template v-if="column.key === 'checkbox'">
                 <a-checkbox
@@ -92,13 +175,13 @@ const handleQuantityChange = (record, value) => {
                 />
               </template>
             </template>
-            <a-table-column title="選擇" key="checkbox" width="80" />
-            <a-table-column title="名稱" dataIndex="name" key="name" width="150" />
-            <a-table-column title="#" dataIndex="quantity" key="quantity" width="100" />
-            <a-table-column title="價格" dataIndex="price" key="price" width="100" />
-            <a-table-column title="重量" dataIndex="weight" key="weight" width="100" />
-            <a-table-column title="犯蠢閾值" dataIndex="threshold" key="threshold" width="120" />
-            <a-table-column title="強度" dataIndex="strength" key="strength" width="100" />
+            <a-table-column title="選擇" key="checkbox" width="7%" />
+            <a-table-column title="名稱" dataIndex="name" key="name" width="30%" />
+            <a-table-column title="#" dataIndex="quantity" key="quantity" width="3%" />
+            <a-table-column title="價格" dataIndex="price" key="price" width="5%" />
+            <a-table-column title="重量" dataIndex="weight" key="weight" width="5%" />
+            <a-table-column title="犯蠢" dataIndex="threshold" key="threshold" width="5%" />
+            <a-table-column title="強度" dataIndex="strength" key="strength" width="5%" />
           </a-table>
         </a-tab-pane>
       </a-tabs>
@@ -107,13 +190,37 @@ const handleQuantityChange = (record, value) => {
     <!-- 右邊區塊 -->
     <div class="flex-1 pt-4">
       <div class="mt-4">
-        <div class="flex justify-between">
-            <a-button type="primary" @click="copySelectedItemsToClipboard">複製到剪貼簿</a-button>
-          <div>總價格: {{ totalPrice }}</div>
-          <div>總重量: {{ totalWeight }}</div>
+        <div class="flex justify-between items-center">
+          <div>
+            <label for="current-wealth">目前財富（銀幣）:</label>
+            <a-input-number
+              id="current-wealth"
+              v-model:value="currentWealth"
+              :min="0"
+              :max="9999"
+              style="width: 100px; margin-left: 8px;"
+            />
+          </div>
+          <div>剩餘財富: {{ remainingWealth }}</div>
         </div>
       </div>
-      <a-table :dataSource="selectedItems" rowKey="original" :pagination="false">
+      <div class="mt-4">
+        <div class="flex justify-between">
+          起始套裝組：
+            <a-button type="default" @click="addDungeonExplorerKit">地城探險者套裝</a-button>
+            <a-button type="default" @click="addExplorerKit">探索者套裝</a-button>
+            <a-button type="default" @click="addThiefKit">竊賊套裝</a-button>
+        </div>
+      </div>
+      <div class="mt-4">
+        <div class="flex justify-between">
+            <a-button type="primary" @click="copySelectedItemsToClipboard">複製到剪貼簿</a-button>           
+          <div>總價格: {{ totalPrice }}</div>
+          <div>總重量: {{ totalWeight }}</div>
+          <a-button type="primary" danger @click="selectedItems = []">清空全部</a-button>
+        </div>
+      </div>
+      <a-table :dataSource="selectedItems" rowKey="original" :pagination="false" :scroll="{ y: 600, x: '100%' }">
         <template #bodyCell="{ column, record }">
           <template v-if="column.key === 'quantity'">
             <a-input-number
@@ -128,15 +235,15 @@ const handleQuantityChange = (record, value) => {
             <a-button type="text" danger @click="selectedItems = selectedItems.filter(item => item.original !== record.original)">✕</a-button>
           </template>
         </template>
-        <a-table-column title="名稱" dataIndex="name" key="name" width="150" />
-        <a-table-column title="#" dataIndex="quantity" key="quantity" width="100" />
-        <a-table-column title="價格" dataIndex="price" key="price" width="100" />
-        <a-table-column title="重量" dataIndex="weight" key="weight" width="100" />
-        <a-table-column title="犯蠢閾值" dataIndex="threshold" key="threshold" width="120" />
-        <a-table-column title="強度" dataIndex="strength" key="strength" width="100" />
-        <a-table-column title="操作" key="action" width="60" />
+            
+            <a-table-column title="名稱" dataIndex="name" key="name" width="30%" />
+            <a-table-column title="#" dataIndex="quantity" key="quantity" width="10%" />
+            <a-table-column title="價格" dataIndex="price" key="price" width="5%" />
+            <a-table-column title="重量" dataIndex="weight" key="weight" width="5%" />
+            <a-table-column title="犯蠢" dataIndex="threshold" key="threshold" width="5%" />
+            <a-table-column title="強度" dataIndex="strength" key="strength" width="5%" />
+        <a-table-column title="操作" key="action" width="7%" />
       </a-table>
-
     </div>
   </div>
 </template>
