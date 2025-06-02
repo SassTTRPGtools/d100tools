@@ -77,50 +77,39 @@ const tableColumns = computed(() => {
 </script>
 
 <template>
-  <div class="container">
-    <a-card class="info-card">
+  <div class="w-full min-h-screen flex flex-col items-center justify-start bg-gray-50 py-8">
+    <a-card class="mb-6 w-full max-w-3xl text-sm text-gray-700 bg-white shadow rounded-lg p-4">
       ✊+X : X 傷害, 🩸X: 流血 X /輪, 💦 (-X): 疲勞減值, 🛠️ (-X): 損壞檢定, -X: 受傷減值, X 💫 [-xx]: 眩暈 X 輪及減值[-xx], 😵: 失衡, 🌊 X’: 擊退, 👎: 擊倒/伏地, 🕸️: 擒拿 X%, ✴️(X): 額外重擊, 💀: 目標瀕死或被擊敗
     </a-card>
-
-    <div class="switch-container">
+    <div class="flex flex-col items-center w-full mb-8 pt-8">
       <a-switch
         checked-children="近戰犯蠢表"
         un-checked-children="遠程犯蠢表"
         v-model:checked="selectedType"
+        class="mb-4"
       />
     </div>
-
-    <div v-if="selectedTableData.length" class="table-container">
-      <a-table :dataSource="selectedTableData" :columns="tableColumns" rowKey="range" :pagination="false" bordered />
+    <div v-if="selectedTableData.length" class="w-full max-w-5xl bg-white rounded-lg shadow-md p-4">
+      <a-table
+        :dataSource="selectedTableData"
+        :columns="tableColumns"
+        rowKey="range"
+        :pagination="false"
+        bordered
+        class="fumble-table"
+      />
+      <div class="text-xs text-gray-400 mt-2 text-right">* 點擊說明可複製內容</div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.fumble-table :deep(.ant-table) {
   width: 100%;
-  padding: 20px;
 }
-
-.switch-container {
-  padding-top: 20px;
-  margin-bottom: 20px;
-}
-
-.table-container {
-  width: 70%;
-}
-
-h3 {
+.fumble-table :deep(.ant-table th),
+.fumble-table :deep(.ant-table td) {
   text-align: center;
-}
-
-.ant-table th,
-.ant-table td {
-  text-align: center;
+  vertical-align: middle;
 }
 </style>

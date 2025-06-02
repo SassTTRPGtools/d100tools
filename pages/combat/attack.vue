@@ -94,16 +94,15 @@ watchEffect(async () => {
 </script>
 
 <template>
-  <div class="container">
-    <div class="controls-container">
-      <div class="select-group">
-        <!-- 改為下拉選單 -->
-        <a-select v-model:value="selectedCategory" style="width: 200px">
+  <div class="w-full min-h-screen flex flex-col items-center justify-start bg-gray-50 py-8">
+    <div class="flex flex-col items-center w-full mb-8">
+      <div class="flex gap-4 mb-4">
+        <a-select v-model:value="selectedCategory" class="w-52">
           <a-select-option v-for="option in atkOptions" :key="option.category" :value="option.category">
             {{ option.category }}
           </a-select-option>
         </a-select>
-        <a-select v-model:value="selectedSubCategory" style="width: 400px">
+        <a-select v-model:value="selectedSubCategory" class="w-96">
           <a-select-option
             v-for="option in atkOptions.find(option => option.category === selectedCategory)?.options || []"
             :key="option.value"
@@ -114,106 +113,39 @@ watchEffect(async () => {
         </a-select>
       </div>
     </div>
-
-    <div class="content-container">
-      <img :src="imageSrc" alt="Attack Table Image" class="attack-image" />
-      <div v-if="selectedTableData" class="table-container">
-        <div class="size-selector">
-          <a-select v-model:value="selectedSize" style="width: 200px">
+    <div class="flex flex-row w-full max-w-7xl justify-center items-start gap-8">
+      <img :src="imageSrc" alt="Attack Table Image" class="pt-12 mr-4 max-h-[1000px] rounded shadow" />
+      <div v-if="selectedTableData" class="flex-1">
+        <div class="flex justify-end mb-4">
+          <a-select v-model:value="selectedSize" class="w-52">
             <a-select-option v-for="(size, key) in atkSizeTables" :key="key" :value="key">
               {{ size.label }}
             </a-select-option>
           </a-select>
         </div>
-        <table class="min-w-full divide-y divide-gray-200 border">
-          <thead class="bg-gray-50">
-            <tr>
-              <th scope="col" class="px-2 py-1 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border">範圍</th>
-              <th v-for="column in tableColumns.slice(1)" :key="column.key" scope="col" class="px-2 py-1 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border">{{ column.title }}</th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <tr v-for="(row, index) in tableData" :key="row.range" :class="{'bg-gray-100': Math.floor(index / 3) % 2 === 0}">
-              <td class="px-2 py-1 whitespace-nowrap text-sm text-gray-500 text-center border">{{ row.range }}</td>
-              <td v-for="column in tableColumns.slice(1)" :key="column.key" class="px-2 py-1 whitespace-nowrap text-sm text-gray-500 text-center border">{{ row[column.dataIndex] }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="overflow-x-auto rounded-lg shadow bg-white">
+          <table class="min-w-full divide-y divide-gray-200 border">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-2 py-1 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border">範圍</th>
+                <th v-for="column in tableColumns.slice(1)" :key="column.key" scope="col" class="px-2 py-1 text-center text-xs font-medium text-gray-500 uppercase tracking-wider border">{{ column.title }}</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              <tr v-for="(row, index) in tableData" :key="row.range" :class="{'bg-gray-100': Math.floor(index / 3) % 2 === 0}">
+                <td class="px-2 py-1 whitespace-nowrap text-sm text-gray-500 text-center border">{{ row.range }}</td>
+                <td v-for="column in tableColumns.slice(1)" :key="column.key" class="px-2 py-1 whitespace-nowrap text-sm text-gray-500 text-center border">{{ row[column.dataIndex] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-}
-
-.controls-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 20px;
-}
-
-.select-group {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.button-container {
-  width: 100%;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.size-selector {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.content-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-}
-
-.attack-image {
-  padding-top: 50px;
-  margin-right: 20px;
-  align-self: flex-start; /* 確保圖片與表格標題對齊 */
-}
-
-.table-container {
-  flex: 1;
-}
-
-h3 {
-  text-align: center;
-}
-
-th, td {
-  padding: 4px 8px; /* 縮小表格高度的間距 */
-  border: 1px solid #e5e7eb; /* 添加框線 */
-}
-
 .bg-gray-100 {
-  background-color: #f3f4f6; /* 每三行用灰色背景 */
+  background-color: #f3f4f6;
 }
 </style>

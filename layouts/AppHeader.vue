@@ -23,8 +23,9 @@ const menuItems = [
   },
   {
     key: 'fumbles', title: '犯蠢表格', children: [
-      { key: 'fumble', title: '戰鬥犯蠢表', link: '/combat/fumble' },
-      { key: 'spellfumble', title: '法術犯蠢表', link: '/combat/spellfumble' },
+      { key: 'fumble', title: '戰鬥犯蠢表', link: '/fumble/fumble' },
+      { key: 'spellfumble', title: '法術犯蠢表', link: '/fumble/spellfumble' },
+      { key: 'alchemicalfumble', title: '煉金犯蠢表', link: '/fumble/alchemicalfumble' },
     ]
   },
   {

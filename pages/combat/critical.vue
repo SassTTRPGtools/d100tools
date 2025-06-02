@@ -202,10 +202,10 @@ function endCombat() {
     <!-- 中間區塊 -->
     <div class="flex-1 p-5">
       <div class="flex flex-col items-center justify-center w-full p-5">
-        <div class="container">
-          <div class="button-container">
-            <h3>物理類型</h3>
-            <div class="button-group">
+        <div class="w-full flex flex-col items-center">
+          <div class="w-full max-w-2xl mb-6">
+            <h3 class="text-lg font-bold text-center mb-2">物理類型</h3>
+            <div class="flex flex-wrap justify-center gap-2 mb-4">
               <a-button
                 v-for="option in physicalCategories"
                 :key="option.value"
@@ -215,8 +215,8 @@ function endCombat() {
                 {{ option.label }}
               </a-button>
             </div>
-            <h3>元素表</h3>
-            <div class="button-group">
+            <h3 class="text-lg font-bold text-center mb-2">元素表</h3>
+            <div class="flex flex-wrap justify-center gap-2 mb-4">
               <a-button
                 v-for="option in elementalCategories"
                 :key="option.value"
@@ -227,14 +227,15 @@ function endCombat() {
               </a-button>
             </div>
           </div>
-          <a-card class="info-card">
+          <a-card class="w-full max-w-2xl mb-6 text-sm text-gray-700 bg-white shadow rounded-lg p-4 text-center">
             ✊+X : X 傷害, 🩸X: 流血 X /輪, 💦 (-X): 疲勞減值, 🛠️ (-X): 損壞檢定, -X: 受傷減值, X 💫 [-xx]: 眩暈 X 輪及減值[-xx], 😵: 失衡, 🌊 X’: 擊退, 👎: 擊倒/伏地, 🕸️: 擒拿 X%, ✴️(X): 額外重擊, 💀: 目標瀕死或被擊敗
-            <div class="switch-container">
-              <a-switch v-model:checked="applyToWound" /> 將重擊應用於傷勢紀錄表
+            <div class="flex items-center justify-center mt-2">
+              <a-switch v-model:checked="applyToWound" class="mr-2" />
+              <span class="text-xs text-gray-500">將重擊應用於傷勢紀錄表</span>
             </div>
           </a-card>
-          <div v-if="selectedTableData" class="table-container">
-            <h3>{{ selectedCategoryLabel }}表（嚴重度）</h3>
+          <div v-if="selectedTableData" class="w-full max-w-5xl bg-white rounded-lg shadow-md p-4">
+            <h3 class="text-lg font-bold text-center mb-4">{{ selectedCategoryLabel }}表（嚴重度）</h3>
             <a-table
               :dataSource="tableData"
               :columns="[
@@ -249,7 +250,9 @@ function endCombat() {
               rowKey="range"
               :pagination="false"
               bordered
+              class="critical-table"
             />
+            <div class="text-xs text-gray-400 mt-2 text-right">* 點擊說明可複製內容</div>
           </div>
         </div>
       </div>
@@ -258,92 +261,12 @@ function endCombat() {
 </template>
 
 <style scoped>
-.layout {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.sidebar {
-  width: 250px;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-right: 1px solid #ddd;
-  transition: opacity 0.3s;
-}
-
-.sidebar.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.sidebar h2 {
-  margin-bottom: 10px;
-}
-
-.player-summary {
-  cursor: pointer;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  transition: background-color 0.3s;
-  line-height: 1.5;
-}
-
-.player-summary:hover {
-  background-color: #f0f0f0;
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-}
-
-.player-tabs {
+.critical-table :deep(.ant-table) {
   width: 100%;
 }
-
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 20px;
-}
-
-.info-card {
-  margin-bottom: 20px;
+.critical-table :deep(.ant-table th),
+.critical-table :deep(.ant-table td) {
   text-align: center;
-}
-
-.button-container {
-  width: 80%;
-  margin-bottom: 20px;
-}
-
-.button-group {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.table-container {
-  width: 70%;
-}
-
-.switch-container {
-  margin-top: 10px;
-  text-align: center;
-}
-
-h3 {
-  text-align: center;
-}
-
-.ant-table th,
-.ant-table td {
-  text-align: center;
+  vertical-align: middle;
 }
 </style>
