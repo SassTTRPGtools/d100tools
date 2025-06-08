@@ -20,7 +20,8 @@ export default defineNuxtConfig({
         // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     },
-    pageTransition: {name: 'page', mode: 'out-in'}
+    pageTransition: {name: 'page', mode: 'out-in'},
+    baseURL: '/d100tools/',
   },
   devtools: {enabled: true},
   css: ['~/assets/css/main.css'],
