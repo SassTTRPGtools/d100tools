@@ -38,13 +38,13 @@ const mergeNameAndNotes = (items) => {
     if (item.length) {
       return {
         ...item,
-        name: `${item.name} / 長度${item.length}' / ${item.notes}`,
+        name: `${item.name}/長度${item.length}'${item.notes ? '/' + item.notes : ''}`,
       };
     } 
     else if (item.notes) {
       return {
         ...item,
-        name: `${item.name} / ${item.notes}`,
+        name: `${item.name}/${item.notes}`,
       };
     } 
     else {
