@@ -59,14 +59,25 @@ const mergeNameAndNotes = (items) => {
 // 新增複製功能
 const copySelectedItemsToClipboard = () => {
   const statsText = selectedItems.value
-    .map(item => `${item.name}\t${item.quantity}\t${item.price}\t${item.weight}\t${item.threshold}\t${item.strength}`)
+    .map(item => [
+      item.name ?? '',
+      item.quantity ?? '',
+      item.price ?? '',
+      item.weight ?? '',
+      item.threshold ?? '',
+      item.strength ?? ''
+    ].map(v => v === undefined ? '' : v).join('\t'))
     .join('\n'); // 使用 TAB 分隔
-  navigator.clipboard.writeText(statsText).then(() => {
-    message.success("已複製到剪貼簿，可直接貼到 EXCEL。");
-  }).catch(err => {
-    console.error("複製失敗:", err);
-    message.error("無法複製到剪貼簿，請重試。");
-  });
+  if (process.client && navigator.clipboard) {
+    navigator.clipboard.writeText(statsText).then(() => {
+      message.success("已複製到剪貼簿，可直接貼到 EXCEL。");
+    }).catch(err => {
+      console.error("複製失敗:", err);
+      message.error("無法複製到剪貼簿，請重試。");
+    });
+  } else {
+    message.error("僅支援瀏覽器複製功能。");
+  }
 };
 
 // 計算總價格與總重量
@@ -285,14 +296,14 @@ const computedItemData = computed(() => {
             <a-button type="primary" @click="copySelectedItemsToClipboard">複製到剪貼簿</a-button>           
           <div>總價格: {{ totalPrice }}</div>
           <div>總重量: {{ totalWeight }}</div>
-          <a-button type="primary" danger @click="selectedItems = []">清空全部</a-button>
+          <a-button type="primary" danger @click="selectedItems.value = []">清空全部</a-button>
         </div>
       </div>
       <a-table :dataSource="selectedItems" rowKey="original" :pagination="false" :scroll="{ y: 600, x: '100%' }">
         <template #bodyCell="{ column, record }">
           <template v-if="column.key === 'quantity'">
             <a-input-number
-              v-model:value="record.quantity"
+              :value="record.quantity"
               :min="0"
               :max="9999"
               style="width: 80px"
@@ -300,7 +311,7 @@ const computedItemData = computed(() => {
             />
           </template>
           <template v-if="column.key === 'action'">
-            <a-button type="text" danger @click="selectedItems = selectedItems.filter(item => item.original !== record.original)">✕</a-button>
+            <a-button type="text" danger @click="selectedItems.value = selectedItems.value.filter(item => item.original !== record.original)">✕</a-button>
           </template>
         </template>
             
