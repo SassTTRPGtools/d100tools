@@ -115,7 +115,7 @@ watchEffect(() => {
       </template>
     </a-menu>
     <!-- 手機 Drawer 選單 -->
-    <a-drawer v-model:open="drawerVisible" placement="left" width="80vw" :closable="true" @close="closeDrawer" bodyStyle="padding:0;">
+    <a-drawer v-model:open="drawerVisible" placement="left" width="80vw" :closable="true" @close="closeDrawer" :bodyStyle="{ padding:0 }">
       <a-menu mode="inline" style="border: none;" :selectedKeys="[selectedKey]">
         <template v-for="item in menuItems" :key="item.key">
           <template v-if="item.children">

@@ -639,7 +639,7 @@ function handleOracleRoll(manual) {
       <a-button block type="primary" size="large" class="w-full max-w-full text-xl h-14 rounded-lg" @click="openOracleModal">神諭問答</a-button>
     </div>
     <!-- 檢定 Modal -->
-    <a-modal v-model:open="showCheckModal" title="技能檢定" :footer="null" :centered="true" :width="modalWidth" :bodyStyle="modalBodyStyle">
+    <a-modal v-model:open="showCheckModal" title="技能檢定" :footer="null" :centered="true"  :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleCheckRoll()">
         <a-form-item label="檢定類型">
           <a-select v-model:value="checkForm.check_method" :options="checkMethodOptions" />
@@ -669,7 +669,7 @@ function handleOracleRoll(manual) {
       </div>
     </a-modal>
     <!-- 攻擊 Modal -->
-    <a-modal v-model:open="showAttackModal" title="攻擊檢定" :footer="null" :centered="true" :width="modalWidth" :bodyStyle="modalBodyStyle">
+    <a-modal v-model:open="showAttackModal" title="攻擊檢定" :footer="null" :centered="true"  :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleAttackRoll()">
         <!-- 參數選擇區塊：大分類到重擊微調，label 與 select 同行，使用淺藍底色 -->
         <div class="flex flex-col gap-2 mb-2 bg-blue-50 rounded-lg p-3 border border-blue-200">
@@ -812,7 +812,7 @@ function handleOracleRoll(manual) {
       </div>
     </a-modal>
     <!-- 施法 Modal -->
-    <a-modal v-model:open="showCastModal" title="施法檢定" :footer="null" :centered="true" :width="modalWidth" :bodyStyle="modalBodyStyle">
+    <a-modal v-model:open="showCastModal" title="施法檢定" :footer="null" :centered="true"  :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleCastRoll()">
         <a-form-item label="修改（填上每個±）">
           <a-input v-model:value="castForm.total" placeholder="+0" />
@@ -836,7 +836,7 @@ function handleOracleRoll(manual) {
       </div>
     </a-modal>
     <!-- 抵抗 Modal -->
-    <a-modal v-model:open="showResistModal" title="抵抗檢定" :footer="null" :centered="true" :width="modalWidth" :bodyStyle="modalBodyStyle">
+    <a-modal v-model:open="showResistModal" title="抵抗檢定" :footer="null" :centered="true"  :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleResistRoll()">
         <a-form-item label="RR DC（預設50）">
           <a-input v-model:value="resistForm.rr_check" placeholder="50" />
@@ -863,7 +863,7 @@ function handleOracleRoll(manual) {
       </div>
     </a-modal>
     <!-- 神諭問答 Modal -->
-    <a-modal v-model:open="showOracleModal" title="神諭問答" :footer="null" :centered="true" :width="modalWidth" :bodyStyle="modalBodyStyle">
+    <a-modal v-model:open="showOracleModal" title="神諭問答" :footer="null" :centered="true"  :bodyStyle="modalBodyStyle">
       <a-form layout="vertical" @submit.prevent="handleOracleRoll()">
         <a-form-item label="機率">
           <a-select v-model:value="oracleForm.chance" :options="oracleChanceOptions" />
