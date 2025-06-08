@@ -296,7 +296,7 @@ const computedItemData = computed(() => {
             <a-button type="primary" @click="copySelectedItemsToClipboard">複製到剪貼簿</a-button>           
           <div>總價格: {{ totalPrice }}</div>
           <div>總重量: {{ totalWeight }}</div>
-          <a-button type="primary" danger @click="selectedItems.value = []">清空全部</a-button>
+          <a-button type="primary" danger @click="selectedItems = []">清空全部</a-button>
         </div>
       </div>
       <a-table :dataSource="selectedItems" rowKey="original" :pagination="false" :scroll="{ y: 600, x: '100%' }">
@@ -311,7 +311,7 @@ const computedItemData = computed(() => {
             />
           </template>
           <template v-if="column.key === 'action'">
-            <a-button type="text" danger @click="selectedItems.value = selectedItems.value.filter(item => item.original !== record.original)">✕</a-button>
+            <a-button type="text" danger @click="selectedItems = selectedItems.filter(item => item.original !== record.original)">✕</a-button>
           </template>
         </template>
             
