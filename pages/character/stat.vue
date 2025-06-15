@@ -259,34 +259,30 @@ function applyEnhancement() {
   }
   if (selectedEnhancement.value === "2") {
     // 找到最高臨時屬性
-    const highestTemp = items.value.reduce((prev, curr) => (curr.TempValue > prev.TempValue ? curr : prev), items.value[0]);
-
-    // 計算預期結果
+    const highestTemp = items.value.reduce((prev, curr) => (curr.TempValue > prev.TempValue ? curr : prev), items.value[0]);    // 計算預期結果
     const newTempValue = 90;
     const newPotentValue = Math.min(highestTemp.PotentValue + 10, 100);
+    const adjustedPotentValue = newPotentValue < newTempValue ? newTempValue : newPotentValue;
 
     // 顯示確認訊息
     $swal.fire({
       title: "確認強化",
-      text: `將屬性「${highestTemp.str}」的臨時值替換為 ${newTempValue}，潛能值提升至 ${newPotentValue}。是否確認？`,
+      text: `將屬性「${highestTemp.str}」的臨時值替換為 ${newTempValue}，潛能值提升至 ${adjustedPotentValue}。是否確認？`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "確定",
-      cancelButtonText: "取消",
-    }).then((result) => {
+      cancelButtonText: "取消",    }).then((result) => {
       if (result.isConfirmed) {
         // 更新屬性值
         highestTemp.TempValue = newTempValue;
-        highestTemp.PotentValue = Math.max(highestTemp.PotentValue, newPotentValue);
+        highestTemp.PotentValue = Math.max(highestTemp.PotentValue, adjustedPotentValue);
 
         // 更新強化次數
-        enhancementCount.value--;
-
-        // 禁用該選項
+        enhancementCount.value--;        // 禁用該選項
         highestTemp.enhancementUsedFor90 = true;
-        highestTemp.enhancementUsedText = `屬性「${highestTemp.str}」的臨時值已替換為 ${newTempValue}，潛能值提升至 ${newPotentValue}。`;
+        highestTemp.enhancementUsedText = `屬性「${highestTemp.str}」的臨時值已替換為 ${newTempValue}，潛能值提升至 ${adjustedPotentValue}。`;
 
         // 清空選擇
         selectedEnhancement.value = null;
@@ -295,34 +291,30 @@ function applyEnhancement() {
   } else if (selectedEnhancement.value === "3") {
     // 找到第二高臨時屬性
     const sortedItems = [...items.value].sort((a, b) => b.TempValue - a.TempValue);
-    const secondHighestTemp = sortedItems[1]; // 第二高臨時屬性
-
-    // 計算預期結果
+    const secondHighestTemp = sortedItems[1]; // 第二高臨時屬性    // 計算預期結果
     const newTempValue = 85;
     const newPotentValue = Math.min(secondHighestTemp.PotentValue + 10, 100);
+    const adjustedPotentValue = newPotentValue < newTempValue ? newTempValue : newPotentValue;
 
     // 顯示確認訊息
     $swal.fire({
       title: "確認強化",
-      text: `將屬性「${secondHighestTemp.str}」的臨時值替換為 ${newTempValue}，潛能值提升至 ${newPotentValue}。是否確認？`,
+      text: `將屬性「${secondHighestTemp.str}」的臨時值替換為 ${newTempValue}，潛能值提升至 ${adjustedPotentValue}。是否確認？`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "確定",
-      cancelButtonText: "取消",
-    }).then((result) => {
+      cancelButtonText: "取消",    }).then((result) => {
       if (result.isConfirmed) {
         // 更新屬性值
         secondHighestTemp.TempValue = newTempValue;
-        secondHighestTemp.PotentValue = Math.max(secondHighestTemp.PotentValue, newPotentValue);
+        secondHighestTemp.PotentValue = Math.max(secondHighestTemp.PotentValue, adjustedPotentValue);
 
         // 更新強化次數
-        enhancementCount.value--;
-
-        // 禁用該選項
+        enhancementCount.value--;        // 禁用該選項
         secondHighestTemp.enhancementUsedFor85 = true;
-        secondHighestTemp.enhancementUsedText = `屬性「${secondHighestTemp.str}」的臨時值已替換為 ${newTempValue}，潛能值提升至 ${newPotentValue}。`;
+        secondHighestTemp.enhancementUsedText = `屬性「${secondHighestTemp.str}」的臨時值已替換為 ${newTempValue}，潛能值提升至 ${adjustedPotentValue}。`;
 
         // 清空選擇
         selectedEnhancement.value = null;
