@@ -10,7 +10,8 @@
         "difficulty": "C (+70)",
         "workHours": "1h",
         "notes": "",
-        "length": null
+        "length": null,
+        "class": "投石索"
     },
     {
         "original": "Sling Bullet (10)",
@@ -23,7 +24,8 @@
         "difficulty": "E (+20)",
         "workHours": "1h",
         "notes": "",
-        "length": null
+        "length": null,
+        "class": "投石索"
     },
     {
         "original": "Slingshot",
@@ -36,7 +38,8 @@
         "difficulty": "E (+20)",
         "workHours": "6h",
         "notes": "尺寸-1/🏹20’",
-        "length": 1
+        "length": 1,
+        "class": "投石索"
     },
     {
         "original": "Sling",
@@ -49,7 +52,8 @@
         "difficulty": "R (+30)",
         "workHours": "12h",
         "notes": "🏹60’",
-        "length": 2
+        "length": 2,
+        "class": "投石索"
     },
     {
         "original": "Staff-sling",
@@ -62,7 +66,8 @@
         "difficulty": "E (+20)",
         "workHours": "1d",
         "notes": "2H/尺寸+1/🏹70’",
-        "length": 5
+        "length": 5,
+        "class": "投石索"
     },
     {
         "original": "Blowpipe",
@@ -75,7 +80,8 @@
         "difficulty": "H (-10)",
         "workHours": "1d",
         "notes": "尺寸-1/🏹10’",
-        "length": 5
+        "length": 5,
+        "class": "異種"
     },
     {
         "original": "Needles (20)",
@@ -88,7 +94,8 @@
         "difficulty": "H (-10)",
         "workHours": "1d",
         "notes": "",
-        "length": null
+        "length": null,
+        "class": "異種"
     },
     {
         "original": "Whip",
@@ -101,7 +108,8 @@
         "difficulty": "H (-10)",
         "workHours": "12h",
         "notes": "",
-        "length": 8
+        "length": 8,
+        "class": "異種"
     },
     {
         "original": "Small net",
@@ -114,7 +122,8 @@
         "difficulty": "H (-10)",
         "workHours": "3d",
         "notes": "尺寸-1",
-        "length": 5
+        "length": 5,
+        "class": "異種"
     },
     {
         "original": "Net",
@@ -127,7 +136,8 @@
         "difficulty": "H (-10)",
         "workHours": "4d",
         "notes": "",
-        "length": 10
+        "length": 10,
+        "class": "異種"
     },
     {
         "original": "Large net",
@@ -140,7 +150,8 @@
         "difficulty": "XH (-30)",
         "workHours": "9d",
         "notes": "2H/尺寸+1",
-        "length": 15
+        "length": 15,
+        "class": "異種"
     },
     {
         "original": "Lariat",
@@ -153,7 +164,8 @@
         "difficulty": "S (+50)",
         "workHours": "2 AP",
         "notes": "🏹20’",
-        "length": 20
+        "length": 20,
+        "class": "異種"
     },
     {
         "original": "Light stick",
@@ -166,7 +178,8 @@
         "difficulty": "S (+50)",
         "workHours": "1h",
         "notes": "尺寸-1",
-        "length": 2
+        "length": 2,
+        "class": "短柄"
     },
     {
         "original": "Club",
@@ -179,7 +192,8 @@
         "difficulty": "C (+70)",
         "workHours": "6h",
         "notes": "",
-        "length": 4
+        "length": 4,
+        "class": "短柄"
     },
     {
         "original": "Fighting Stick",
@@ -192,7 +206,8 @@
         "difficulty": "E (+20)",
         "workHours": "6h",
         "notes": "",
-        "length": 3
+        "length": 3,
+        "class": "短柄"
     },
     {
         "original": "Blackjack",
@@ -205,7 +220,8 @@
         "difficulty": "L (+10)",
         "workHours": "6h",
         "notes": "尺寸-1",
-        "length": 2
+        "length": 2,
+        "class": "短柄"
     },
     {
         "original": "Light mace",
@@ -218,7 +234,8 @@
         "difficulty": "M (+0)",
         "workHours": "2d",
         "notes": "尺寸-1",
-        "length": 2
+        "length": 2,
+        "class": "短柄"
     },
     {
         "original": "Mace",
@@ -231,7 +248,8 @@
         "difficulty": "M (+0)",
         "workHours": "2d",
         "notes": "",
-        "length": 2
+        "length": 2,
+        "class": "短柄"
     },
     {
         "original": "Battle axe",
@@ -244,7 +262,8 @@
         "difficulty": "M (+0)",
         "workHours": "3d",
         "notes": "",
-        "length": 3
+        "length": 3,
+        "class": "短柄"
     },
     {
         "original": "War hammer",
@@ -257,7 +276,8 @@
         "difficulty": "H (-10)",
         "workHours": "2d",
         "notes": "",
-        "length": 3
+        "length": 3,
+        "class": "短柄"
     },
     {
         "original": "Spear",
@@ -270,7 +290,8 @@
         "difficulty": "M (+0)",
         "workHours": "1d",
         "notes": "1-2H/2H尺寸+1/🏹15’",
-        "length": 6
+        "length": 6,
+        "class": "長桿武器"
     },
     {
         "original": "Long spear",
@@ -283,7 +304,8 @@
         "difficulty": "M (+0)",
         "workHours": "1d",
         "notes": "2H/尺寸+1",
-        "length": 10
+        "length": 10,
+        "class": "長桿武器"
     },
     {
         "original": "Halberd",
@@ -296,7 +318,8 @@
         "difficulty": "H (-10)",
         "workHours": "2d",
         "notes": "2H/尺寸+1",
-        "length": 7
+        "length": 7,
+        "class": "長桿武器"
     },
     {
         "original": "Glaive",
@@ -309,7 +332,8 @@
         "difficulty": "M (+0)",
         "workHours": "2d",
         "notes": "2H/尺寸+1",
-        "length": 8
+        "length": 8,
+        "class": "長桿武器"
     },
     {
         "original": "Poleaxe",
@@ -322,7 +346,8 @@
         "difficulty": "H (-10)",
         "workHours": "3d",
         "notes": "2H/尺寸+1",
-        "length": 6
+        "length": 6,
+        "class": "長桿武器"
     },
     {
         "original": "Bolts (20)",
@@ -335,7 +360,8 @@
         "difficulty": "M (+0)",
         "workHours": "2d",
         "notes": "",
-        "length": null
+        "length": null,
+        "class": "弩類"
     },
     {
         "original": "Crossbow",
@@ -348,7 +374,8 @@
         "difficulty": "VH (-20)",
         "workHours": "7d",
         "notes": "2H/抵近10’(+20)/🏹70’",
-        "length": 3
+        "length": 3,
+        "class": "弩類"
     },
     {
         "original": "Hand crossbow",
@@ -361,7 +388,8 @@
         "difficulty": "XH (-30)",
         "workHours": "9d",
         "notes": "尺寸-1/抵近10’(+20)/🏹30’",
-        "length": 1.5
+        "length": 1.5,
+        "class": "弩類"
     },
     {
         "original": "Heavy crossbow",
@@ -374,7 +402,8 @@
         "difficulty": "SF (-50)",
         "workHours": "16d",
         "notes": "2H/尺寸+1/抵近20’(+20)/🏹80’",
-        "length": 4
+        "length": 4,
+        "class": "弩類"
     },
     {
         "original": "Machete",
@@ -387,7 +416,8 @@
         "difficulty": "L (+10)",
         "workHours": "1d",
         "notes": "尺寸-1",
-        "length": 1
+        "length": 1,
+        "class": "刀劍"
     },
     {
         "original": "Short sword",
@@ -400,7 +430,8 @@
         "difficulty": "M (+0)",
         "workHours": "2d",
         "notes": "尺寸-1",
-        "length": 2
+        "length": 2,
+        "class": "刀劍"
     },
     {
         "original": "Broadsword",
@@ -413,7 +444,8 @@
         "difficulty": "L (+10)",
         "workHours": "3d",
         "notes": "",
-        "length": 3
+        "length": 3,
+        "class": "刀劍"
     },
     {
         "original": "Falchion",
@@ -426,7 +458,8 @@
         "difficulty": "L (+10)",
         "workHours": "3d",
         "notes": "",
-        "length": 4
+        "length": 4,
+        "class": "刀劍"
     },
     {
         "original": "Scimitar",
@@ -439,7 +472,8 @@
         "difficulty": "M (+0)",
         "workHours": "3d",
         "notes": "",
-        "length": 4
+        "length": 4,
+        "class": "刀劍"
     },
     {
         "original": "Epee",
@@ -452,7 +486,8 @@
         "difficulty": "H (-10)",
         "workHours": "5d",
         "notes": "尺寸-1",
-        "length": 3
+        "length": 3,
+        "class": "刀劍"
     },
     {
         "original": "Arming Sword",
@@ -465,7 +500,8 @@
         "difficulty": "M (+0)",
         "workHours": "4d",
         "notes": "",
-        "length": 4
+        "length": 4,
+        "class": "刀劍"
     },
     {
         "original": "Rapier",
@@ -478,7 +514,8 @@
         "difficulty": "VH (-20)",
         "workHours": "7d",
         "notes": "",
-        "length": 4
+        "length": 4,
+        "class": "刀劍"
     },
     {
         "original": "Throwing club",
@@ -491,7 +528,8 @@
         "difficulty": "M (+0)",
         "workHours": "6h",
         "notes": "尺寸-1/🏹25’",
-        "length": 2
+        "length": 2,
+        "class": "投擲"
     },
     {
         "original": "Dart",
@@ -504,7 +542,8 @@
         "difficulty": "M (+0)",
         "workHours": "1h",
         "notes": "尺寸-1/🏹10’",
-        "length": 6
+        "length": 6,
+        "class": "投擲"
     },
     {
         "original": "Javelin",
@@ -517,7 +556,8 @@
         "difficulty": "H (-10)",
         "workHours": "1d",
         "notes": "尺寸-1/🏹25’",
-        "length": 6
+        "length": 6,
+        "class": "投擲"
     },
     {
         "original": "Bola",
@@ -530,7 +570,8 @@
         "difficulty": "H (-10)",
         "workHours": "1d",
         "notes": "🏹20’",
-        "length": 5
+        "length": 5,
+        "class": "投擲"
     },
     {
         "original": "Arrows (20)",
@@ -543,7 +584,8 @@
         "difficulty": "H (-10)",
         "workHours": "1d",
         "notes": "",
-        "length": null
+        "length": null,
+        "class": "弓類"
     },
     {
         "original": "Short bow",
@@ -556,7 +598,8 @@
         "difficulty": "M (+0)",
         "workHours": "3d",
         "notes": "2H/🏹60’",
-        "length": 3
+        "length": 3,
+        "class": "弓類"
     },
     {
         "original": "Composite Bow",
@@ -569,7 +612,8 @@
         "difficulty": "XH (-30)",
         "workHours": "7d",
         "notes": "2H/🏹100’",
-        "length": 4
+        "length": 4,
+        "class": "弓類"
     },
     {
         "original": "Long bow",
@@ -582,7 +626,8 @@
         "difficulty": "VH (-20)",
         "workHours": "4d",
         "notes": "2H/🏹100’",
-        "length": 6
+        "length": 6,
+        "class": "弓類"
     },
     {
         "original": "Long scimitar",
@@ -595,7 +640,8 @@
         "difficulty": "M (+0)",
         "workHours": "6d",
         "notes": "2H/尺寸+1",
-        "length": 5
+        "length": 5,
+        "class": "大刀劍"
     },
     {
         "original": "Claymore",
@@ -608,7 +654,8 @@
         "difficulty": "M (+0)",
         "workHours": "5d",
         "notes": "2H/尺寸+1",
-        "length": 5
+        "length": 5,
+        "class": "大刀劍"
     },
     {
         "original": "Longsword",
@@ -621,7 +668,8 @@
         "difficulty": "M (+0)",
         "workHours": "5d",
         "notes": "2H/尺寸+1",
-        "length": 5
+        "length": 5,
+        "class": "大刀劍"
     },
     {
         "original": "Great Falchion",
@@ -634,7 +682,8 @@
         "difficulty": "M (+0)",
         "workHours": "5d",
         "notes": "2H/尺寸+1",
-        "length": 4.5
+        "length": 4.5,
+        "class": "大刀劍"
     },
     {
         "original": "Quarterstaff",
@@ -647,7 +696,8 @@
         "difficulty": "E (+20)",
         "workHours": "1d",
         "notes": "2H/尺寸+1",
-        "length": 6
+        "length": 6,
+        "class": "長柄"
     },
     {
         "original": "Large club",
@@ -660,7 +710,8 @@
         "difficulty": "S (+50)",
         "workHours": "12h",
         "notes": "2H/尺寸+1",
-        "length": 5
+        "length": 5,
+        "class": "長柄"
     },
     {
         "original": "Great Mace",
@@ -673,7 +724,8 @@
         "difficulty": "M (+0)",
         "workHours": "4d",
         "notes": "2H/尺寸+1",
-        "length": 4
+        "length": 4,
+        "class": "長柄"
     },
     {
         "original": "War mattock",
@@ -686,7 +738,8 @@
         "difficulty": "VH (-20)",
         "workHours": "2d",
         "notes": "2H/尺寸+1",
-        "length": 5
+        "length": 5,
+        "class": "長柄"
     },
     {
         "original": "Long axe",
@@ -699,7 +752,8 @@
         "difficulty": "M (+0)",
         "workHours": "5d",
         "notes": "2H/尺寸+1",
-        "length": 5
+        "length": 5,
+        "class": "長柄"
     },
     {
         "original": "Light flail",
@@ -712,7 +766,8 @@
         "difficulty": "VH (-20)",
         "workHours": "1d",
         "notes": "尺寸-1",
-        "length": 3
+        "length": 3,
+        "class": "鎖鏈"
     },
     {
         "original": "Flail",
@@ -725,7 +780,8 @@
         "difficulty": "VH (-20)",
         "workHours": "2d",
         "notes": "",
-        "length": 4
+        "length": 4,
+        "class": "鎖鏈"
     },
     {
         "original": "Hand axe",
@@ -738,7 +794,8 @@
         "difficulty": "M (+0)",
         "workHours": "1d",
         "notes": "尺寸-1/🏹15’",
-        "length": 2
+        "length": 2,
+        "class": "短柄/投擲"
     },
     {
         "original": "Dagger",
@@ -751,7 +808,8 @@
         "difficulty": "E (+20)",
         "workHours": "1d",
         "notes": "🏹10’",
-        "length": 1
+        "length": 1,
+        "class": "刀劍/投擲"
     },
     {
         "original": "Heavy flail",
@@ -764,6 +822,7 @@
         "difficulty": "VH (-20)",
         "workHours": "5d",
         "notes": "2H/尺寸+1",
-        "length": 4
+        "length": 4,
+        "class": "大鎖鍊"
     }
 ]
