@@ -80,7 +80,7 @@
         "details":  "目標立即醒來。",
         "areaOfEffect":  "1 目標",
         "duration":  "P",
-        "range":  "100\u0027",
+        "range":  "100'",
         "type":  "Us"
     },
     {
@@ -380,7 +380,7 @@
         "details":  "與診斷一樣，但範圍不同。",
         "areaOfEffect":  "1 目標",
         "duration":  "—",
-        "range":  "2\u0027/每級",
+        "range":  "2'/每級",
         "type":  "Im"
     },
     {
@@ -452,7 +452,7 @@
         "details":  "與轉移一樣，但範圍不同。",
         "areaOfEffect":  "1 目標",
         "duration":  "P",
-        "range":  "2\u0027/每級",
+        "range":  "2'/每級",
         "type":  "U"
     },
     {
@@ -488,7 +488,7 @@
         "details":  "與診斷一樣，但施法者每輪能選擇此法術範圍內的任何一個個體。",
         "areaOfEffect":  "1 目標/每級",
         "duration":  "—",
-        "range":  "2\u0027/每級",
+        "range":  "2'/每級",
         "type":  "Im"
     },
     {
@@ -500,7 +500,7 @@
         "details":  "施法者可以從 1 個目標轉移任意數量的痛苦。",
         "areaOfEffect":  "1 目標",
         "duration":  "P",
-        "range":  "2\u0027/每級",
+        "range":  "2'/每級",
         "type":  "U"
     },
     {
@@ -584,7 +584,7 @@
         "details":  "施法者能將範圍內任意數量的目標最多 1 個狀態／每級轉移給自己。 本文中的狀態是指傷勢、受傷、疾病、毒藥、詛咒、精神疾病或成癮。",
         "areaOfEffect":  "1 狀態/每級",
         "duration":  "P",
-        "range":  "2\u0027/每級",
+        "range":  "2'/每級",
         "type":  "U"
     },
     {
